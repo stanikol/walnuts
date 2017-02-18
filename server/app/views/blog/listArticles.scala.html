@@ -1,0 +1,30 @@
+@(userOption: Option[models.User], articles: Seq[models.nuts.Data.Article])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+@* @import helper.CSRF *@
+
+@main(Messages("blog.title"), userOption){
+    @{if(articles.length<=0){
+        <div class="col-md-10 col-md-offset-2 alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>No blog is found in DB, so it's nothing to display. Please contact administrator!</strong>
+        </div>
+    }}
+    @for(article<-articles){
+        <br>
+        <a href='@{if(userOption.isDefined && userOption.get.isAdmin) s"/blog/${article.id.get}/edit" else s"/blog/${article.id.get}"}'>
+            <h2>
+                @if(userOption.isDefined && userOption.get.isAdmin){
+                    #@article.id.get @article.title <br> @article.sort_order
+                } else {
+                    @article.title
+                }
+            </h2>
+        </a><br>
+        @article.description
+        <br>
+    }
+
+<!-- Include the Quill library -->
+<link href="https://cdn.quilljs.com/1.2.0/quill.snow.css" rel="stylesheet"/>
+<!--<link href="/assets/styles/editArticle.css" rel="stylesheet"/>-->
+<!--<script src="https://cdn.quilljs.com/1.2.0/quill.js"></script>-->
+}

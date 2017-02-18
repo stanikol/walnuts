@@ -1,0 +1,41 @@
+
+@(user: Option[models.User], article: models.nuts.Data.Article)(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+
+@import helper.CSRF
+
+@main(article.title, user, article.keywords, article.description){
+    <a href="@controllers.nuts.routes.Blog.showAllArticles">
+        <h1>@Messages("Blog")</h1>
+    </a>
+    @*if(article.isEmpty){
+        <div class="col-md-10 col-md-offset-2 alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>@{Messages("editArticle.not-found")}</strong>
+        </div>
+    }*@
+    <div class="article">
+        <strong>ID #@{article.id.getOrElse("")}</strong>
+        <div class="form-group">
+            <label for="description" class="control-label">@Messages("editArticle.title")</label>
+            <textarea type="text" id="article-title" name="article-title" class="form-control" disabled>@{article.title}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="description" class="control-label">@Messages("editArticle.description")</label>
+            <textarea type="text" id="description" name="description" class="form-control" disabled>@{article.description}</textarea>
+        </div>
+        <div class="blog-text" disabled>@Html(article.text)</div>
+        <div class="form-group">
+            <label for="keywords" class="control-label">@Messages("editArticle.keywords")</label>
+            <input type="text" id="keywords" name="keywords" value='@{article.keywords}'
+                   class="form-control" disabled/>
+        </div>
+        <div class="form-group">
+            <label for="sort-order" class="control-label">@Messages("editArticle.sort-order")</label>
+            <input type="text" id="sort-order" name="sort-order" value='@{article.sort_order}'
+                   class="form-control" disabled/>
+        </div>
+    </div>
+}
+
+
+

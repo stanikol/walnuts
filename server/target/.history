@@ -1,0 +1,62 @@
+exit
+clean
+run
+clean
+~ run
+exit
+~ run
+clean
+compile
+clean
+compile
+clean
+compile
+clean
+compile
+clean 
+compile
+~ run
+compile
+~ run
+clean 
+compile
+exit
+clean
+compile
+clean
+compile
+~ run
+exit
+run
+~ run
+clean
+~ run
+clean
+~ run
+clean
+~ run
+clean
+compile
+clean
+compile
+~ run
+clean
+compile
+~ run
+clean
+~ run
+clean
+~ run
+exit
+clean
+compile
+~ run
+reload
+compile
+~ run
+clean
+compile
+~ run
+clean
+compile
+~ run

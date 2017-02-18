@@ -1,0 +1,522 @@
+2017-02-18 23:43:27,532 [INFO] from play.core.server.NettyServer in pool-8-thread-1 - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+2017-02-18 23:43:52,552 [INFO] from play.api.Play in ForkJoinPool-1-worker-1 - Application started (Dev)
+2017-02-18 23:43:53,218 [INFO] from application in ForkJoinPool-1-worker-2 - Searching images with  == ''. SQL: 'select "name", "content", "bytes" from "images" where false order by "name"' ...
+2017-02-18 23:43:53,397 [INFO] from application in application-akka.actor.default-dispatcher-2 - GET /img/show took 735ms and returned 200
+2017-02-18 23:43:53,623 [INFO] from application in application-akka.actor.default-dispatcher-7 - GET /assets/styles/main.css took 92ms and returned 304
+2017-02-18 23:43:53,623 [INFO] from application in application-akka.actor.default-dispatcher-4 - GET /webjars/jquery-ui/1.11.4/jquery-ui.css took 93ms and returned 304
+2017-02-18 23:43:53,623 [INFO] from application in application-akka.actor.default-dispatcher-6 - GET /webjars/jquery/2.1.4/jquery.min.js took 85ms and returned 304
+2017-02-18 23:43:53,624 [INFO] from application in application-akka.actor.default-dispatcher-9 - GET /webjars/jquery-ui/1.11.4/jquery-ui.js took 86ms and returned 304
+2017-02-18 23:43:53,624 [INFO] from application in application-akka.actor.default-dispatcher-3 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css took 94ms and returned 304
+2017-02-18 23:43:53,629 [INFO] from application in application-akka.actor.default-dispatcher-5 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css took 98ms and returned 304
+2017-02-18 23:43:53,644 [INFO] from application in application-akka.actor.default-dispatcher-6 - GET /webjars/bootstrap/3.3.6/js/bootstrap.min.js took 3ms and returned 304
+2017-02-18 23:43:53,644 [INFO] from application in application-akka.actor.default-dispatcher-7 - GET /assets/javascripts/zxcvbnShim.js took 3ms and returned 304
+2017-02-18 23:43:53,649 [INFO] from application in application-akka.actor.default-dispatcher-7 - GET /assets/javascripts/editImages.js took 2ms and returned 304
+2017-02-18 23:43:53,845 [INFO] from application in application-akka.actor.default-dispatcher-7 - GET /assets/images/favicon.png took 5ms and returned 200
+2017-02-18 23:45:20,161 [ERROR] from application in netty-event-loop-5 - 
+
+! @73522a93i - Internal server error, for (GET) [/img/show] ->
+ 
+play.sbt.PlayExceptions$UnexpectedException: Unexpected exception[IOException: No such file or directory]
+	at play.sbt.run.PlayReload$$anonfun$taskFailureHandler$1.apply(PlayReload.scala:51)
+	at play.sbt.run.PlayReload$$anonfun$taskFailureHandler$1.apply(PlayReload.scala:44)
+	at scala.Option.map(Option.scala:145)
+	at play.sbt.run.PlayReload$.taskFailureHandler(PlayReload.scala:44)
+	at play.sbt.run.PlayReload$.compileFailure(PlayReload.scala:40)
+	at play.sbt.run.PlayReload$$anonfun$compile$1.apply(PlayReload.scala:17)
+	at play.sbt.run.PlayReload$$anonfun$compile$1.apply(PlayReload.scala:17)
+	at scala.util.Either$LeftProjection.map(Either.scala:377)
+	at play.sbt.run.PlayReload$.compile(PlayReload.scala:17)
+	at play.sbt.run.PlayRun$$anonfun$playRunTask$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$2.apply(PlayRun.scala:61)
+	at play.sbt.run.PlayRun$$anonfun$playRunTask$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$2.apply(PlayRun.scala:61)
+	at play.runsupport.Reloader$$anonfun$reload$1.apply(Reloader.scala:339)
+	at play.runsupport.Reloader$$anon$3.run(Reloader.scala:44)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at play.runsupport.Reloader$.play$runsupport$Reloader$$withReloaderContextClassLoader(Reloader.scala:40)
+	at play.runsupport.Reloader.reload(Reloader.scala:337)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:118)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:116)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:39)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:405)
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+Caused by: java.io.IOException: No such file or directory
+	at java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.io.File.createTempFile(File.java:2024)
+	at sbt.inc.ClassfileManager$$anonfun$transactional$1$$anon$2.sbt$inc$ClassfileManager$$anonfun$$anon$$move(ClassfileManager.scala:74)
+	at sbt.inc.ClassfileManager$$anonfun$transactional$1$$anon$2$$anonfun$delete$3.apply(ClassfileManager.scala:52)
+	at sbt.inc.ClassfileManager$$anonfun$transactional$1$$anon$2$$anonfun$delete$3.apply(ClassfileManager.scala:51)
+	at scala.collection.immutable.HashSet$HashSet1.foreach(HashSet.scala:153)
+	at scala.collection.immutable.HashSet$HashTrieSet.foreach(HashSet.scala:306)
+	at scala.collection.immutable.HashSet$HashTrieSet.foreach(HashSet.scala:306)
+	at sbt.inc.ClassfileManager$$anonfun$transactional$1$$anon$2.delete(ClassfileManager.scala:51)
+	at sbt.inc.Incremental$.prune(Incremental.scala:88)
+	at sbt.inc.IncrementalCommon.cycle(IncrementalCommon.scala:29)
+	at sbt.inc.Incremental$$anonfun$1.apply(Incremental.scala:68)
+	at sbt.inc.Incremental$$anonfun$1.apply(Incremental.scala:67)
+	at sbt.inc.Incremental$.manageClassfiles(Incremental.scala:95)
+	at sbt.inc.Incremental$.compile(Incremental.scala:67)
+	at sbt.inc.IncrementalCompile$.apply(Compile.scala:54)
+	at sbt.compiler.IC$.compileInternal(IncrementalCompiler.scala:160)
+	at sbt.compiler.IC$.incrementalCompile(IncrementalCompiler.scala:138)
+	at sbt.Compiler$.compile(Compiler.scala:152)
+	at sbt.Compiler$.compile(Compiler.scala:138)
+	at sbt.Defaults$.sbt$Defaults$$compileIncrementalTaskImpl(Defaults.scala:860)
+	at sbt.Defaults$$anonfun$compileIncrementalTask$1.apply(Defaults.scala:851)
+	at sbt.Defaults$$anonfun$compileIncrementalTask$1.apply(Defaults.scala:849)
+	at scala.Function1$$anonfun$compose$1.apply(Function1.scala:47)
+	at sbt.$tilde$greater$$anonfun$$u2219$1.apply(TypeFunctions.scala:40)
+	at sbt.std.Transform$$anon$4.work(System.scala:63)
+	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:228)
+	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:228)
+	at sbt.ErrorHandling$.wideConvert(ErrorHandling.scala:17)
+	at sbt.Execute.work(Execute.scala:237)
+	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:228)
+	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:228)
+	at sbt.ConcurrentRestrictions$$anon$4$$anonfun$1.apply(ConcurrentRestrictions.scala:159)
+	at sbt.CompletionService$$anon$2.call(CompletionService.scala:28)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2017-02-18 23:45:30,168 [INFO] from play.api.Play in application-akka.actor.default-dispatcher-4 - Application started (Dev)
+2017-02-18 23:45:30,233 [INFO] from application in ForkJoinPool-1-worker-0 - Searching images with  == ''. SQL: 'select "name", "content", "bytes" from "images" where false order by "name"' ...
+2017-02-18 23:45:30,277 [INFO] from application in application-akka.actor.default-dispatcher-4 - GET /img/show took 98ms and returned 200
+2017-02-18 23:45:30,306 [INFO] from application in application-akka.actor.default-dispatcher-2 - GET /webjars/jquery-ui/1.11.4/jquery-ui.css took 9ms and returned 304
+2017-02-18 23:45:30,311 [INFO] from application in application-akka.actor.default-dispatcher-5 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css took 13ms and returned 304
+2017-02-18 23:45:30,312 [INFO] from application in application-akka.actor.default-dispatcher-3 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css took 15ms and returned 304
+2017-02-18 23:45:30,317 [INFO] from application in application-akka.actor.default-dispatcher-5 - GET /webjars/jquery/2.1.4/jquery.min.js took 2ms and returned 304
+2017-02-18 23:45:30,320 [INFO] from application in application-akka.actor.default-dispatcher-9 - GET /assets/styles/main.css took 3ms and returned 304
+2017-02-18 23:45:30,328 [INFO] from application in application-akka.actor.default-dispatcher-9 - GET /webjars/jquery-ui/1.11.4/jquery-ui.js took 4ms and returned 304
+2017-02-18 23:45:30,333 [INFO] from application in application-akka.actor.default-dispatcher-3 - GET /assets/javascripts/editImages.js took 3ms and returned 304
+2017-02-18 23:45:30,334 [INFO] from application in application-akka.actor.default-dispatcher-9 - GET /webjars/bootstrap/3.3.6/js/bootstrap.min.js took 4ms and returned 304
+2017-02-18 23:45:30,339 [INFO] from application in application-akka.actor.default-dispatcher-5 - GET /assets/javascripts/zxcvbnShim.js took 3ms and returned 304
+2017-02-18 23:45:30,605 [INFO] from application in application-akka.actor.default-dispatcher-4 - GET /assets/images/favicon.png took 3ms and returned 200
+2017-02-18 23:45:42,397 [INFO] from application in application-akka.actor.default-dispatcher-2 - GET /img/list?csrfToken=4a7feb2a1f575f107bd2e24b519af608935bc293-1487454330178-f6125a8baf06be2bb1d03a38&search=%25&what=name took 39ms and returned 303
+2017-02-18 23:45:42,446 [INFO] from application in ForkJoinPool-1-worker-3 - Searching images with name == '%'. SQL: 'select "name", "content", "bytes" from "images" where "name" like '%' order by "name"' ...
+2017-02-18 23:45:42,473 [INFO] from application in application-akka.actor.default-dispatcher-2 - GET /img/show?search=%25&c=name took 56ms and returned 200
+2017-02-18 23:45:42,503 [INFO] from application in application-akka.actor.default-dispatcher-2 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css took 11ms and returned 304
+2017-02-18 23:45:42,503 [INFO] from application in application-akka.actor.default-dispatcher-9 - GET /webjars/jquery-ui/1.11.4/jquery-ui.js took 6ms and returned 304
+2017-02-18 23:45:42,510 [INFO] from application in application-akka.actor.default-dispatcher-9 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css took 2ms and returned 304
+2017-02-18 23:45:42,517 [INFO] from application in application-akka.actor.default-dispatcher-14 - GET /webjars/bootstrap/3.3.6/js/bootstrap.min.js took 6ms and returned 304
+2017-02-18 23:45:42,518 [INFO] from application in application-akka.actor.default-dispatcher-14 - GET /assets/javascripts/zxcvbnShim.js took 6ms and returned 304
+2017-02-18 23:45:42,523 [INFO] from application in application-akka.actor.default-dispatcher-6 - GET /webjars/jquery/2.1.4/jquery.min.js took 2ms and returned 304
+2017-02-18 23:45:42,523 [INFO] from application in application-akka.actor.default-dispatcher-15 - GET /assets/styles/main.css took 4ms and returned 304
+2017-02-18 23:45:42,523 [INFO] from application in application-akka.actor.default-dispatcher-3 - GET /webjars/jquery-ui/1.11.4/jquery-ui.css took 4ms and returned 304
+2017-02-18 23:45:42,532 [INFO] from application in application-akka.actor.default-dispatcher-15 - GET /assets/javascripts/editImages.js took 2ms and returned 304
+2017-02-18 23:45:51,493 [INFO] from application in application-akka.actor.default-dispatcher-9 - GET /img/list?csrfToken=349004d0d38609531e1c6473d6209302f6a09171-1487454342416-f6125a8baf06be2bb1d03a38&search=cat2&what=name took 18ms and returned 303
+2017-02-18 23:45:51,516 [INFO] from application in ForkJoinPool-1-worker-0 - Searching images with name == 'cat2'. SQL: 'select "name", "content", "bytes" from "images" where "name" like 'cat2' order by "name"' ...
+2017-02-18 23:45:51,528 [INFO] from application in application-akka.actor.default-dispatcher-9 - GET /img/show?search=cat2&c=name took 30ms and returned 200
+2017-02-18 23:45:51,565 [INFO] from application in application-akka.actor.default-dispatcher-2 - GET /webjars/jquery-ui/1.11.4/jquery-ui.js took 8ms and returned 304
+2017-02-18 23:45:51,570 [INFO] from application in application-akka.actor.default-dispatcher-9 - GET /assets/styles/main.css took 6ms and returned 304
+2017-02-18 23:45:51,570 [INFO] from application in application-akka.actor.default-dispatcher-6 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css took 15ms and returned 304
+2017-02-18 23:45:51,570 [INFO] from application in application-akka.actor.default-dispatcher-7 - GET /webjars/jquery-ui/1.11.4/jquery-ui.css took 3ms and returned 304
+2017-02-18 23:45:51,571 [INFO] from application in application-akka.actor.default-dispatcher-14 - GET /webjars/jquery/2.1.4/jquery.min.js took 11ms and returned 304
+2017-02-18 23:45:51,574 [INFO] from application in application-akka.actor.default-dispatcher-7 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css took 2ms and returned 304
+2017-02-18 23:45:51,589 [INFO] from application in application-akka.actor.default-dispatcher-7 - GET /webjars/bootstrap/3.3.6/js/bootstrap.min.js took 4ms and returned 304
+2017-02-18 23:45:51,590 [INFO] from application in application-akka.actor.default-dispatcher-14 - GET /assets/javascripts/zxcvbnShim.js took 2ms and returned 304
+2017-02-18 23:45:51,597 [INFO] from application in application-akka.actor.default-dispatcher-7 - GET /assets/javascripts/editImages.js took 2ms and returned 304
+2017-02-18 23:50:27,900 [INFO] from play.api.Play in application-akka.actor.default-dispatcher-2 - Application started (Dev)
+2017-02-18 23:50:27,950 [INFO] from application in ForkJoinPool-1-worker-1 - Searching images with '' == ''. SQL: 'select "name", "content", "bytes" from "images" where false order by "name"' ...
+2017-02-18 23:50:27,981 [INFO] from application in application-akka.actor.default-dispatcher-4 - GET /img/show took 71ms and returned 200
+2017-02-18 23:50:28,011 [INFO] from application in application-akka.actor.default-dispatcher-2 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css took 5ms and returned 304
+2017-02-18 23:50:28,014 [INFO] from application in application-akka.actor.default-dispatcher-4 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css took 8ms and returned 304
+2017-02-18 23:50:28,038 [INFO] from application in application-akka.actor.default-dispatcher-4 - GET /webjars/jquery-ui/1.11.4/jquery-ui.js took 4ms and returned 304
+2017-02-18 23:50:28,039 [INFO] from application in application-akka.actor.default-dispatcher-9 - GET /assets/styles/main.css took 3ms and returned 304
+2017-02-18 23:50:28,039 [INFO] from application in application-akka.actor.default-dispatcher-2 - GET /webjars/jquery-ui/1.11.4/jquery-ui.css took 4ms and returned 304
+2017-02-18 23:50:28,043 [INFO] from application in application-akka.actor.default-dispatcher-6 - GET /webjars/jquery/2.1.4/jquery.min.js took 2ms and returned 304
+2017-02-18 23:50:28,063 [INFO] from application in application-akka.actor.default-dispatcher-6 - GET /assets/javascripts/editImages.js took 2ms and returned 304
+2017-02-18 23:50:28,065 [INFO] from application in application-akka.actor.default-dispatcher-8 - GET /assets/javascripts/zxcvbnShim.js took 3ms and returned 304
+2017-02-18 23:50:28,068 [INFO] from application in application-akka.actor.default-dispatcher-8 - GET /webjars/bootstrap/3.3.6/js/bootstrap.min.js took 2ms and returned 304
+2017-02-19 00:00:54,210 [INFO] from play.api.Play in application-akka.actor.default-dispatcher-3 - Application started (Dev)
+2017-02-19 00:00:54,294 [INFO] from application in application-akka.actor.default-dispatcher-3 - GET /img/list took 74ms and returned 400
+2017-02-19 00:00:54,349 [INFO] from application in application-akka.actor.default-dispatcher-6 - GET /assets/styles/main.css took 3ms and returned 304
+2017-02-19 00:00:54,355 [INFO] from application in application-akka.actor.default-dispatcher-4 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css took 7ms and returned 304
+2017-02-19 00:00:54,356 [INFO] from application in application-akka.actor.default-dispatcher-3 - GET /webjars/jquery-ui/1.11.4/jquery-ui.css took 3ms and returned 304
+2017-02-19 00:00:54,356 [INFO] from application in application-akka.actor.default-dispatcher-7 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css took 3ms and returned 304
+2017-02-19 00:00:54,356 [INFO] from application in application-akka.actor.default-dispatcher-6 - GET /webjars/jquery-ui/1.11.4/jquery-ui.js took 3ms and returned 304
+2017-02-19 00:00:54,361 [INFO] from application in application-akka.actor.default-dispatcher-6 - GET /webjars/jquery/2.1.4/jquery.min.js took 13ms and returned 304
+2017-02-19 00:00:54,371 [INFO] from application in application-akka.actor.default-dispatcher-4 - GET /assets/javascripts/zxcvbnShim.js took 2ms and returned 304
+2017-02-19 00:00:54,372 [INFO] from application in application-akka.actor.default-dispatcher-4 - GET /assets/javascripts/editImages.js took 3ms and returned 304
+2017-02-19 00:00:54,372 [INFO] from application in application-akka.actor.default-dispatcher-2 - GET /webjars/bootstrap/3.3.6/js/bootstrap.min.js took 3ms and returned 304
+2017-02-19 00:00:54,631 [INFO] from application in application-akka.actor.default-dispatcher-2 - GET /assets/images/favicon.png took 2ms and returned 304
+2017-02-19 00:01:07,720 [INFO] from application in application-akka.actor.default-dispatcher-4 - GET /img/show took 18ms and returned 200
+2017-02-19 00:01:07,785 [INFO] from application in application-akka.actor.default-dispatcher-3 - GET /assets/styles/main.css took 12ms and returned 304
+2017-02-19 00:01:07,787 [INFO] from application in application-akka.actor.default-dispatcher-10 - GET /webjars/jquery-ui/1.11.4/jquery-ui.js took 13ms and returned 304
+2017-02-19 00:01:07,787 [INFO] from application in application-akka.actor.default-dispatcher-10 - GET /webjars/jquery-ui/1.11.4/jquery-ui.css took 4ms and returned 304
+2017-02-19 00:01:07,789 [INFO] from application in application-akka.actor.default-dispatcher-8 - GET /webjars/jquery/2.1.4/jquery.min.js took 3ms and returned 304
+2017-02-19 00:01:07,792 [INFO] from application in application-akka.actor.default-dispatcher-7 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css took 34ms and returned 304
+2017-02-19 00:01:07,809 [INFO] from application in application-akka.actor.default-dispatcher-4 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css took 63ms and returned 304
+2017-02-19 00:01:07,813 [INFO] from application in application-akka.actor.default-dispatcher-4 - GET /assets/javascripts/zxcvbnShim.js took 3ms and returned 304
+2017-02-19 00:01:07,814 [INFO] from application in application-akka.actor.default-dispatcher-12 - GET /webjars/bootstrap/3.3.6/js/bootstrap.min.js took 3ms and returned 304
+2017-02-19 00:01:07,819 [INFO] from application in application-akka.actor.default-dispatcher-10 - GET /assets/javascripts/editImages.js took 2ms and returned 304
+2017-02-19 00:01:11,593 [INFO] from application in application-akka.actor.default-dispatcher-7 - GET /img/list?csrfToken=800d001409bcd969c599ec5611b3fdb3006cdd97-1487455267701-f6125a8baf06be2bb1d03a38&search=%25&what=name took 18ms and returned 303
+2017-02-19 00:01:11,620 [INFO] from application in ForkJoinPool-1-worker-2 - Searching images with 'name' == '%'. SQL: 'select "name", "content", "bytes" from "images" where "name" like '%' order by "name"' ...
+2017-02-19 00:01:11,638 [INFO] from application in application-akka.actor.default-dispatcher-7 - GET /img/show?search=%25&what=name took 42ms and returned 200
+2017-02-19 00:01:11,670 [INFO] from application in application-akka.actor.default-dispatcher-7 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css took 13ms and returned 304
+2017-02-19 00:01:11,674 [INFO] from application in application-akka.actor.default-dispatcher-8 - GET /webjars/jquery-ui/1.11.4/jquery-ui.js took 6ms and returned 304
+2017-02-19 00:01:11,674 [INFO] from application in application-akka.actor.default-dispatcher-8 - GET /webjars/jquery/2.1.4/jquery.min.js took 3ms and returned 304
+2017-02-19 00:01:11,677 [INFO] from application in application-akka.actor.default-dispatcher-11 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css took 4ms and returned 304
+2017-02-19 00:01:11,679 [INFO] from application in application-akka.actor.default-dispatcher-7 - GET /assets/styles/main.css took 7ms and returned 304
+2017-02-19 00:01:11,685 [INFO] from application in application-akka.actor.default-dispatcher-9 - GET /webjars/jquery-ui/1.11.4/jquery-ui.css took 4ms and returned 304
+2017-02-19 00:01:11,693 [INFO] from application in application-akka.actor.default-dispatcher-3 - GET /webjars/bootstrap/3.3.6/js/bootstrap.min.js took 5ms and returned 304
+2017-02-19 00:01:11,697 [INFO] from application in application-akka.actor.default-dispatcher-11 - GET /assets/javascripts/zxcvbnShim.js took 3ms and returned 304
+2017-02-19 00:01:11,707 [INFO] from application in application-akka.actor.default-dispatcher-11 - GET /assets/javascripts/editImages.js took 3ms and returned 304
+2017-02-19 00:01:36,870 [INFO] from application in application-akka.actor.default-dispatcher-3 - GET /img/list?csrfToken=b0b6820b31eb4e28c8316e09c0f3dd361cda9dbd-1487455271596-f6125a8baf06be2bb1d03a38&search=cat4%25&what=content took 27ms and returned 303
+2017-02-19 00:01:36,902 [INFO] from application in ForkJoinPool-1-worker-1 - Searching images with 'content' == 'cat4%'. SQL: 'select "name", "content", "bytes" from "images" where "content" like 'cat4%' order by "name"' ...
+2017-02-19 00:01:36,910 [INFO] from application in application-akka.actor.default-dispatcher-12 - GET /img/show?search=cat4%25&what=content took 36ms and returned 200
+2017-02-19 00:01:36,938 [INFO] from application in application-akka.actor.default-dispatcher-15 - GET /webjars/jquery-ui/1.11.4/jquery-ui.css took 3ms and returned 304
+2017-02-19 00:01:36,942 [INFO] from application in application-akka.actor.default-dispatcher-3 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css took 9ms and returned 304
+2017-02-19 00:01:36,942 [INFO] from application in application-akka.actor.default-dispatcher-8 - GET /assets/styles/main.css took 7ms and returned 304
+2017-02-19 00:01:36,950 [INFO] from application in application-akka.actor.default-dispatcher-17 - GET /webjars/jquery/2.1.4/jquery.min.js took 6ms and returned 304
+2017-02-19 00:01:36,956 [INFO] from application in application-akka.actor.default-dispatcher-17 - GET /webjars/jquery-ui/1.11.4/jquery-ui.js took 3ms and returned 304
+2017-02-19 00:01:36,963 [INFO] from application in application-akka.actor.default-dispatcher-17 - GET /assets/javascripts/zxcvbnShim.js took 5ms and returned 304
+2017-02-19 00:01:36,967 [INFO] from application in application-akka.actor.default-dispatcher-8 - GET /webjars/bootstrap/3.3.6/js/bootstrap.min.js took 6ms and returned 304
+2017-02-19 00:01:36,968 [INFO] from application in application-akka.actor.default-dispatcher-15 - GET /assets/javascripts/editImages.js took 3ms and returned 304
+2017-02-19 00:01:36,971 [INFO] from application in application-akka.actor.default-dispatcher-16 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css took 6ms and returned 304
+2017-02-19 00:02:13,761 [INFO] from application in application-akka.actor.default-dispatcher-12 - GET /img/list?csrfToken=1026983fdb409b1cb1daa33e9f7c3f149ccb05d0-1487455296874-f6125a8baf06be2bb1d03a38&search=%25&what=content took 13ms and returned 303
+2017-02-19 00:02:13,787 [INFO] from application in ForkJoinPool-1-worker-2 - Searching images with 'content' == '%'. SQL: 'select "name", "content", "bytes" from "images" where "content" like '%' order by "name"' ...
+2017-02-19 00:02:13,801 [INFO] from application in application-akka.actor.default-dispatcher-12 - GET /img/show?search=%25&what=content took 32ms and returned 200
+2017-02-19 00:02:13,855 [INFO] from application in application-akka.actor.default-dispatcher-14 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css took 26ms and returned 304
+2017-02-19 00:02:13,856 [INFO] from application in application-akka.actor.default-dispatcher-20 - GET /webjars/jquery-ui/1.11.4/jquery-ui.js took 14ms and returned 304
+2017-02-19 00:02:13,859 [INFO] from application in application-akka.actor.default-dispatcher-8 - GET /webjars/jquery-ui/1.11.4/jquery-ui.css took 23ms and returned 304
+2017-02-19 00:02:13,867 [INFO] from application in application-akka.actor.default-dispatcher-8 - GET /webjars/jquery/2.1.4/jquery.min.js took 7ms and returned 304
+2017-02-19 00:02:13,868 [INFO] from application in application-akka.actor.default-dispatcher-18 - GET /assets/styles/main.css took 2ms and returned 304
+2017-02-19 00:02:13,870 [INFO] from application in application-akka.actor.default-dispatcher-14 - GET /webjars/bootstrap/3.3.6/js/bootstrap.min.js took 3ms and returned 304
+2017-02-19 00:02:13,873 [INFO] from application in application-akka.actor.default-dispatcher-18 - GET /assets/javascripts/zxcvbnShim.js took 3ms and returned 304
+2017-02-19 00:02:13,879 [INFO] from application in application-akka.actor.default-dispatcher-18 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css took 57ms and returned 304
+2017-02-19 00:02:13,882 [INFO] from application in application-akka.actor.default-dispatcher-20 - GET /assets/javascripts/editImages.js took 3ms and returned 304
+2017-02-19 00:02:35,590 [INFO] from application in application-akka.actor.default-dispatcher-14 - GET /img/list?csrfToken=3a489c65937c5b6222fc37d50a9936e2d9581c01-1487455333768-f6125a8baf06be2bb1d03a38&search=cat3%25&what=content took 20ms and returned 303
+2017-02-19 00:02:35,621 [INFO] from application in ForkJoinPool-1-worker-1 - Searching images with 'content' == 'cat3%'. SQL: 'select "name", "content", "bytes" from "images" where "content" like 'cat3%' order by "name"' ...
+2017-02-19 00:02:35,646 [INFO] from application in application-akka.actor.default-dispatcher-14 - GET /img/show?search=cat3%25&what=content took 47ms and returned 200
+2017-02-19 00:02:35,678 [INFO] from application in application-akka.actor.default-dispatcher-21 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css took 5ms and returned 304
+2017-02-19 00:02:35,695 [INFO] from application in application-akka.actor.default-dispatcher-24 - GET /webjars/jquery-ui/1.11.4/jquery-ui.css took 18ms and returned 304
+2017-02-19 00:02:35,698 [INFO] from application in application-akka.actor.default-dispatcher-18 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css took 25ms and returned 304
+2017-02-19 00:02:35,702 [INFO] from application in application-akka.actor.default-dispatcher-24 - GET /webjars/jquery-ui/1.11.4/jquery-ui.js took 3ms and returned 304
+2017-02-19 00:02:35,705 [INFO] from application in application-akka.actor.default-dispatcher-18 - GET /assets/styles/main.css took 2ms and returned 304
+2017-02-19 00:02:35,707 [INFO] from application in application-akka.actor.default-dispatcher-18 - GET /webjars/jquery/2.1.4/jquery.min.js took 3ms and returned 304
+2017-02-19 00:02:35,720 [INFO] from application in application-akka.actor.default-dispatcher-18 - GET /webjars/bootstrap/3.3.6/js/bootstrap.min.js took 2ms and returned 304
+2017-02-19 00:02:35,728 [INFO] from application in application-akka.actor.default-dispatcher-18 - GET /assets/javascripts/zxcvbnShim.js took 2ms and returned 304
+2017-02-19 00:02:35,737 [INFO] from application in application-akka.actor.default-dispatcher-8 - GET /assets/javascripts/editImages.js took 2ms and returned 304
+2017-02-19 00:03:37,781 [INFO] from application in ForkJoinPool-1-worker-0 - Renaming image from cat3.png to cat3 ...
+2017-02-19 00:03:37,795 [INFO] from application in application-akka.actor.default-dispatcher-14 - POST /img/edit?csrfToken=e7b929765a10eb1782e1541b94b4e48fa03d6a95-1487455355599-f6125a8baf06be2bb1d03a38 took 79ms and returned 303
+2017-02-19 00:03:37,820 [INFO] from application in application-akka.actor.default-dispatcher-14 - GET /img/show took 18ms and returned 200
+2017-02-19 00:03:37,855 [INFO] from application in application-akka.actor.default-dispatcher-27 - GET /webjars/jquery-ui/1.11.4/jquery-ui.css took 4ms and returned 304
+2017-02-19 00:03:37,855 [INFO] from application in application-akka.actor.default-dispatcher-27 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css took 17ms and returned 304
+2017-02-19 00:03:37,856 [INFO] from application in application-akka.actor.default-dispatcher-30 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css took 18ms and returned 304
+2017-02-19 00:03:37,860 [INFO] from application in application-akka.actor.default-dispatcher-28 - GET /assets/styles/main.css took 2ms and returned 304
+2017-02-19 00:03:37,863 [INFO] from application in application-akka.actor.default-dispatcher-28 - GET /webjars/jquery/2.1.4/jquery.min.js took 5ms and returned 304
+2017-02-19 00:03:37,871 [INFO] from application in application-akka.actor.default-dispatcher-29 - GET /webjars/jquery-ui/1.11.4/jquery-ui.js took 18ms and returned 304
+2017-02-19 00:03:37,875 [INFO] from application in application-akka.actor.default-dispatcher-29 - GET /assets/javascripts/editImages.js took 5ms and returned 304
+2017-02-19 00:03:37,876 [INFO] from application in application-akka.actor.default-dispatcher-33 - GET /assets/javascripts/zxcvbnShim.js took 2ms and returned 304
+2017-02-19 00:03:37,880 [INFO] from application in application-akka.actor.default-dispatcher-32 - GET /webjars/bootstrap/3.3.6/js/bootstrap.min.js took 3ms and returned 304
+2017-02-19 00:03:49,958 [INFO] from application in application-akka.actor.default-dispatcher-31 - GET /img/list?csrfToken=41e87db7b3c6e493a5a358386a62e4ea1a2922e2-1487455417801-f6125a8baf06be2bb1d03a38&search=cat3%25&what=name took 19ms and returned 303
+2017-02-19 00:03:49,978 [INFO] from application in ForkJoinPool-1-worker-0 - Searching images with 'name' == 'cat3%'. SQL: 'select "name", "content", "bytes" from "images" where "name" like 'cat3%' order by "name"' ...
+2017-02-19 00:03:49,984 [INFO] from application in application-akka.actor.default-dispatcher-31 - GET /img/show?search=cat3%25&what=name took 21ms and returned 200
+2017-02-19 00:03:50,024 [INFO] from application in application-akka.actor.default-dispatcher-27 - GET /webjars/jquery/2.1.4/jquery.min.js took 5ms and returned 304
+2017-02-19 00:03:50,029 [INFO] from application in application-akka.actor.default-dispatcher-28 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css took 13ms and returned 304
+2017-02-19 00:03:50,035 [INFO] from application in application-akka.actor.default-dispatcher-28 - GET /webjars/jquery-ui/1.11.4/jquery-ui.js took 19ms and returned 304
+2017-02-19 00:03:50,035 [INFO] from application in application-akka.actor.default-dispatcher-36 - GET /assets/styles/main.css took 2ms and returned 304
+2017-02-19 00:03:50,037 [INFO] from application in application-akka.actor.default-dispatcher-31 - GET /webjars/jquery-ui/1.11.4/jquery-ui.css took 12ms and returned 304
+2017-02-19 00:03:50,039 [INFO] from application in application-akka.actor.default-dispatcher-35 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css took 6ms and returned 304
+2017-02-19 00:03:50,046 [INFO] from application in application-akka.actor.default-dispatcher-30 - GET /webjars/bootstrap/3.3.6/js/bootstrap.min.js took 8ms and returned 304
+2017-02-19 00:03:50,048 [INFO] from application in application-akka.actor.default-dispatcher-34 - GET /assets/javascripts/zxcvbnShim.js took 10ms and returned 304
+2017-02-19 00:03:50,055 [INFO] from application in application-akka.actor.default-dispatcher-34 - GET /assets/javascripts/editImages.js took 2ms and returned 304
+2017-02-19 00:11:18,504 [INFO] from play.api.Play in application-akka.actor.default-dispatcher-14 - Application started (Dev)
+2017-02-19 00:11:18,736 [INFO] from application in ForkJoinPool-1-worker-3 - Received request to save image to DB with params: Map(name -> Vector(cat5), height -> Vector(), csrfToken -> Vector(805e28394601871b4452653be3805798554afeaf-1487455429963-f6125a8baf06be2bb1d03a38), content -> Vector(cat5), width -> Vector())
+2017-02-19 00:11:18,842 [INFO] from application in application-akka.actor.default-dispatcher-3 - cat5 (image/jpeg) was saved to DB.
+2017-02-19 00:11:18,849 [INFO] from application in application-akka.actor.default-dispatcher-3 - POST /img/save took 269ms and returned 303
+2017-02-19 00:11:18,890 [INFO] from application in application-akka.actor.default-dispatcher-3 - GET /img/show took 33ms and returned 200
+2017-02-19 00:11:18,928 [INFO] from application in application-akka.actor.default-dispatcher-5 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css took 5ms and returned 304
+2017-02-19 00:11:18,936 [INFO] from application in application-akka.actor.default-dispatcher-5 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css took 4ms and returned 304
+2017-02-19 00:11:18,950 [INFO] from application in application-akka.actor.default-dispatcher-2 - GET /webjars/jquery-ui/1.11.4/jquery-ui.js took 3ms and returned 304
+2017-02-19 00:11:18,950 [INFO] from application in application-akka.actor.default-dispatcher-9 - GET /webjars/jquery/2.1.4/jquery.min.js took 3ms and returned 304
+2017-02-19 00:11:18,952 [INFO] from application in application-akka.actor.default-dispatcher-3 - GET /assets/styles/main.css took 3ms and returned 304
+2017-02-19 00:11:18,954 [INFO] from application in application-akka.actor.default-dispatcher-4 - GET /webjars/jquery-ui/1.11.4/jquery-ui.css took 8ms and returned 304
+2017-02-19 00:11:18,961 [INFO] from application in application-akka.actor.default-dispatcher-3 - GET /webjars/bootstrap/3.3.6/js/bootstrap.min.js took 3ms and returned 304
+2017-02-19 00:11:18,962 [INFO] from application in application-akka.actor.default-dispatcher-12 - GET /assets/javascripts/editImages.js took 3ms and returned 304
+2017-02-19 00:11:18,962 [INFO] from application in application-akka.actor.default-dispatcher-11 - GET /assets/javascripts/zxcvbnShim.js took 3ms and returned 304
+2017-02-19 00:11:21,779 [INFO] from application in application-akka.actor.default-dispatcher-4 - GET /img/list?csrfToken=3851ef6c56a13ec45129fa927eb6d6d001d5598b-1487455878857-f6125a8baf06be2bb1d03a38&search=%25&what=name took 30ms and returned 303
+2017-02-19 00:11:21,805 [INFO] from application in ForkJoinPool-1-worker-0 - Searching images with 'name' == '%'. SQL: 'select "name", "content", "bytes" from "images" where "name" like '%' order by "name"' ...
+2017-02-19 00:11:21,831 [INFO] from application in application-akka.actor.default-dispatcher-3 - GET /img/show?search=%25&what=name took 47ms and returned 200
+2017-02-19 00:11:21,864 [INFO] from application in application-akka.actor.default-dispatcher-3 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css took 7ms and returned 304
+2017-02-19 00:11:21,865 [INFO] from application in application-akka.actor.default-dispatcher-9 - GET /webjars/jquery-ui/1.11.4/jquery-ui.js took 5ms and returned 304
+2017-02-19 00:11:21,871 [INFO] from application in application-akka.actor.default-dispatcher-12 - GET /webjars/jquery/2.1.4/jquery.min.js took 5ms and returned 304
+2017-02-19 00:11:21,874 [INFO] from application in application-akka.actor.default-dispatcher-3 - GET /assets/styles/main.css took 3ms and returned 304
+2017-02-19 00:11:21,877 [INFO] from application in application-akka.actor.default-dispatcher-3 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css took 2ms and returned 304
+2017-02-19 00:11:21,878 [INFO] from application in application-akka.actor.default-dispatcher-4 - GET /assets/javascripts/zxcvbnShim.js took 2ms and returned 304
+2017-02-19 00:11:21,881 [INFO] from application in application-akka.actor.default-dispatcher-2 - GET /webjars/bootstrap/3.3.6/js/bootstrap.min.js took 4ms and returned 304
+2017-02-19 00:11:21,882 [INFO] from application in application-akka.actor.default-dispatcher-12 - GET /webjars/jquery-ui/1.11.4/jquery-ui.css took 9ms and returned 304
+2017-02-19 00:11:21,888 [INFO] from application in application-akka.actor.default-dispatcher-12 - GET /assets/javascripts/editImages.js took 2ms and returned 304
+2017-02-19 00:11:21,924 [INFO] from application in application-akka.actor.default-dispatcher-12 - GET /img/cat5 took 15ms and returned 200
+2017-02-19 00:11:45,984 [INFO] from application in ForkJoinPool-1-worker-3 - Renaming image from cat5 to cats with gun ...
+2017-02-19 00:11:45,994 [INFO] from application in application-akka.actor.default-dispatcher-13 - POST /img/edit?csrfToken=729ed505d712900faaa64d17c83a26ce50326df6-1487455881784-f6125a8baf06be2bb1d03a38 took 45ms and returned 303
+2017-02-19 00:11:46,021 [INFO] from application in application-akka.actor.default-dispatcher-5 - GET /img/show took 22ms and returned 200
+2017-02-19 00:11:46,046 [INFO] from application in application-akka.actor.default-dispatcher-14 - GET /webjars/jquery-ui/1.11.4/jquery-ui.css took 4ms and returned 304
+2017-02-19 00:11:46,058 [INFO] from application in application-akka.actor.default-dispatcher-9 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css took 14ms and returned 304
+2017-02-19 00:11:46,073 [INFO] from application in application-akka.actor.default-dispatcher-17 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css took 31ms and returned 304
+2017-02-19 00:11:46,075 [INFO] from application in application-akka.actor.default-dispatcher-10 - GET /webjars/jquery-ui/1.11.4/jquery-ui.js took 9ms and returned 304
+2017-02-19 00:11:46,078 [INFO] from application in application-akka.actor.default-dispatcher-14 - GET /webjars/jquery/2.1.4/jquery.min.js took 15ms and returned 304
+2017-02-19 00:11:46,081 [INFO] from application in application-akka.actor.default-dispatcher-17 - GET /webjars/bootstrap/3.3.6/js/bootstrap.min.js took 6ms and returned 304
+2017-02-19 00:11:46,086 [INFO] from application in application-akka.actor.default-dispatcher-5 - GET /assets/styles/main.css took 11ms and returned 304
+2017-02-19 00:11:46,086 [INFO] from application in application-akka.actor.default-dispatcher-16 - GET /assets/javascripts/zxcvbnShim.js took 9ms and returned 304
+2017-02-19 00:11:46,086 [INFO] from application in application-akka.actor.default-dispatcher-14 - GET /assets/javascripts/editImages.js took 4ms and returned 304
+2017-02-19 00:11:50,397 [INFO] from application in application-akka.actor.default-dispatcher-14 - GET /img/list?csrfToken=eef00b58f058ce107afd3ed5c810956252be3d82-1487455905999-f6125a8baf06be2bb1d03a38&search=%25&what=name took 19ms and returned 303
+2017-02-19 00:11:50,423 [INFO] from application in ForkJoinPool-1-worker-1 - Searching images with 'name' == '%'. SQL: 'select "name", "content", "bytes" from "images" where "name" like '%' order by "name"' ...
+2017-02-19 00:11:50,440 [INFO] from application in application-akka.actor.default-dispatcher-14 - GET /img/show?search=%25&what=name took 36ms and returned 200
+2017-02-19 00:11:50,468 [INFO] from application in application-akka.actor.default-dispatcher-14 - GET /webjars/jquery-ui/1.11.4/jquery-ui.js took 6ms and returned 304
+2017-02-19 00:11:50,480 [INFO] from application in application-akka.actor.default-dispatcher-10 - GET /assets/styles/main.css took 3ms and returned 304
+2017-02-19 00:11:50,481 [INFO] from application in application-akka.actor.default-dispatcher-18 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css took 9ms and returned 304
+2017-02-19 00:11:50,482 [INFO] from application in application-akka.actor.default-dispatcher-16 - GET /webjars/jquery-ui/1.11.4/jquery-ui.css took 3ms and returned 304
+2017-02-19 00:11:50,486 [INFO] from application in application-akka.actor.default-dispatcher-14 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css took 9ms and returned 304
+2017-02-19 00:11:50,493 [INFO] from application in application-akka.actor.default-dispatcher-10 - GET /webjars/jquery/2.1.4/jquery.min.js took 7ms and returned 304
+2017-02-19 00:11:50,494 [INFO] from application in application-akka.actor.default-dispatcher-17 - GET /webjars/bootstrap/3.3.6/js/bootstrap.min.js took 6ms and returned 304
+2017-02-19 00:11:50,494 [INFO] from application in application-akka.actor.default-dispatcher-16 - GET /assets/javascripts/zxcvbnShim.js took 3ms and returned 304
+2017-02-19 00:11:50,511 [INFO] from application in application-akka.actor.default-dispatcher-16 - GET /assets/javascripts/editImages.js took 7ms and returned 304
+2017-02-19 00:19:46,423 [INFO] from play.api.Play in application-akka.actor.default-dispatcher-15 - Application started (Dev)
+2017-02-19 00:19:46,506 [INFO] from application in application-akka.actor.default-dispatcher-5 - GET /blog took 75ms and returned 200
+2017-02-19 00:19:46,535 [INFO] from application in application-akka.actor.default-dispatcher-5 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css took 4ms and returned 304
+2017-02-19 00:19:46,561 [INFO] from application in application-akka.actor.default-dispatcher-5 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css took 6ms and returned 304
+2017-02-19 00:19:46,562 [INFO] from application in application-akka.actor.default-dispatcher-4 - GET /webjars/bootstrap/3.3.6/js/bootstrap.min.js took 5ms and returned 304
+2017-02-19 00:19:46,563 [INFO] from application in application-akka.actor.default-dispatcher-6 - GET /webjars/jquery-ui/1.11.4/jquery-ui.js took 3ms and returned 304
+2017-02-19 00:19:46,570 [INFO] from application in application-akka.actor.default-dispatcher-4 - GET /webjars/jquery-ui/1.11.4/jquery-ui.css took 6ms and returned 304
+2017-02-19 00:19:46,575 [INFO] from application in application-akka.actor.default-dispatcher-6 - GET /webjars/jquery/2.1.4/jquery.min.js took 3ms and returned 304
+2017-02-19 00:19:46,577 [INFO] from application in application-akka.actor.default-dispatcher-2 - GET /assets/styles/main.css took 5ms and returned 304
+2017-02-19 00:19:46,592 [INFO] from application in application-akka.actor.default-dispatcher-2 - GET /assets/javascripts/zxcvbnShim.js took 3ms and returned 304
+2017-02-19 00:20:11,478 [INFO] from application in application-akka.actor.default-dispatcher-8 - GET /blog took 24ms and returned 200
+2017-02-19 00:20:11,521 [INFO] from application in application-akka.actor.default-dispatcher-12 - GET /webjars/jquery-ui/1.11.4/jquery-ui.js took 2ms and returned 304
+2017-02-19 00:20:11,521 [INFO] from application in application-akka.actor.default-dispatcher-3 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css took 9ms and returned 304
+2017-02-19 00:20:11,525 [INFO] from application in application-akka.actor.default-dispatcher-13 - GET /webjars/jquery/2.1.4/jquery.min.js took 3ms and returned 304
+2017-02-19 00:20:11,527 [INFO] from application in application-akka.actor.default-dispatcher-7 - GET /assets/styles/main.css took 3ms and returned 304
+2017-02-19 00:20:11,531 [INFO] from application in application-akka.actor.default-dispatcher-3 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css took 23ms and returned 304
+2017-02-19 00:20:11,531 [INFO] from application in application-akka.actor.default-dispatcher-13 - GET /webjars/jquery-ui/1.11.4/jquery-ui.css took 4ms and returned 304
+2017-02-19 00:20:11,545 [INFO] from application in application-akka.actor.default-dispatcher-3 - GET /assets/javascripts/zxcvbnShim.js took 3ms and returned 304
+2017-02-19 00:20:11,545 [INFO] from application in application-akka.actor.default-dispatcher-13 - GET /webjars/bootstrap/3.3.6/js/bootstrap.min.js took 3ms and returned 304
+2017-02-19 00:23:15,798 [INFO] from application in application-akka.actor.default-dispatcher-7 - GET /blog took 30ms and returned 200
+2017-02-19 00:23:15,846 [INFO] from application in application-akka.actor.default-dispatcher-7 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css took 11ms and returned 304
+2017-02-19 00:23:15,854 [INFO] from application in application-akka.actor.default-dispatcher-14 - GET /assets/styles/main.css took 3ms and returned 304
+2017-02-19 00:23:15,857 [INFO] from application in application-akka.actor.default-dispatcher-16 - GET /webjars/jquery-ui/1.11.4/jquery-ui.js took 10ms and returned 304
+2017-02-19 00:23:15,858 [INFO] from application in application-akka.actor.default-dispatcher-17 - GET /webjars/jquery/2.1.4/jquery.min.js took 5ms and returned 304
+2017-02-19 00:23:15,858 [INFO] from application in application-akka.actor.default-dispatcher-7 - GET /webjars/jquery-ui/1.11.4/jquery-ui.css took 8ms and returned 304
+2017-02-19 00:23:15,858 [INFO] from application in application-akka.actor.default-dispatcher-20 - GET /webjars/bootstrap/3.3.6/js/bootstrap.min.js took 4ms and returned 304
+2017-02-19 00:23:15,863 [INFO] from application in application-akka.actor.default-dispatcher-15 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css took 17ms and returned 304
+2017-02-19 00:23:15,868 [INFO] from application in application-akka.actor.default-dispatcher-15 - GET /assets/javascripts/zxcvbnShim.js took 3ms and returned 304
+2017-02-19 00:23:24,912 [INFO] from application in application-akka.actor.default-dispatcher-7 - GET /blog/new took 30ms and returned 200
+2017-02-19 00:23:24,951 [INFO] from application in application-akka.actor.default-dispatcher-7 - GET /webjars/jquery-ui/1.11.4/jquery-ui.js took 8ms and returned 304
+2017-02-19 00:23:24,953 [INFO] from application in application-akka.actor.default-dispatcher-21 - GET /webjars/jquery/2.1.4/jquery.min.js took 4ms and returned 304
+2017-02-19 00:23:24,958 [INFO] from application in application-akka.actor.default-dispatcher-14 - GET /webjars/jquery-ui/1.11.4/jquery-ui.css took 5ms and returned 304
+2017-02-19 00:23:24,964 [INFO] from application in application-akka.actor.default-dispatcher-17 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css took 23ms and returned 304
+2017-02-19 00:23:24,968 [INFO] from application in application-akka.actor.default-dispatcher-17 - GET /assets/styles/main.css took 2ms and returned 304
+2017-02-19 00:23:24,968 [INFO] from application in application-akka.actor.default-dispatcher-22 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css took 2ms and returned 304
+2017-02-19 00:23:24,973 [INFO] from application in application-akka.actor.default-dispatcher-22 - GET /assets/javascripts/zxcvbnShim.js took 3ms and returned 304
+2017-02-19 00:23:24,973 [INFO] from application in application-akka.actor.default-dispatcher-21 - GET /assets/javascripts/editArticle.js took 2ms and returned 304
+2017-02-19 00:23:24,980 [INFO] from application in application-akka.actor.default-dispatcher-21 - GET /assets/styles/editArticle.css took 3ms and returned 304
+2017-02-19 00:23:24,981 [INFO] from application in application-akka.actor.default-dispatcher-20 - GET /webjars/bootstrap/3.3.6/js/bootstrap.min.js took 3ms and returned 304
+2017-02-19 00:23:41,421 [INFO] from application in application-akka.actor.default-dispatcher-7 - GET /blog took 24ms and returned 200
+2017-02-19 00:23:41,464 [INFO] from application in application-akka.actor.default-dispatcher-18 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css took 3ms and returned 304
+2017-02-19 00:23:41,464 [INFO] from application in application-akka.actor.default-dispatcher-7 - GET /webjars/jquery-ui/1.11.4/jquery-ui.js took 4ms and returned 304
+2017-02-19 00:23:41,467 [INFO] from application in application-akka.actor.default-dispatcher-18 - GET /assets/styles/main.css took 4ms and returned 304
+2017-02-19 00:23:41,467 [INFO] from application in application-akka.actor.default-dispatcher-22 - GET /webjars/jquery/2.1.4/jquery.min.js took 7ms and returned 304
+2017-02-19 00:23:41,473 [INFO] from application in application-akka.actor.default-dispatcher-25 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css took 2ms and returned 304
+2017-02-19 00:23:41,475 [INFO] from application in application-akka.actor.default-dispatcher-23 - GET /webjars/jquery-ui/1.11.4/jquery-ui.css took 10ms and returned 304
+2017-02-19 00:23:41,487 [INFO] from application in application-akka.actor.default-dispatcher-23 - GET /webjars/bootstrap/3.3.6/js/bootstrap.min.js took 4ms and returned 304
+2017-02-19 00:23:41,489 [INFO] from application in application-akka.actor.default-dispatcher-24 - GET /assets/javascripts/zxcvbnShim.js took 5ms and returned 304
+2017-02-19 00:23:53,626 [INFO] from application in application-akka.actor.default-dispatcher-18 - GET /blog/24/edit took 40ms and returned 200
+2017-02-19 00:23:53,677 [INFO] from application in application-akka.actor.default-dispatcher-22 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css took 4ms and returned 304
+2017-02-19 00:23:53,679 [INFO] from application in application-akka.actor.default-dispatcher-16 - GET /webjars/jquery/2.1.4/jquery.min.js took 3ms and returned 304
+2017-02-19 00:23:53,680 [INFO] from application in application-akka.actor.default-dispatcher-28 - GET /webjars/jquery-ui/1.11.4/jquery-ui.js took 4ms and returned 304
+2017-02-19 00:23:53,681 [INFO] from application in application-akka.actor.default-dispatcher-14 - GET /webjars/jquery-ui/1.11.4/jquery-ui.css took 3ms and returned 304
+2017-02-19 00:23:53,684 [INFO] from application in application-akka.actor.default-dispatcher-25 - GET /assets/styles/main.css took 6ms and returned 304
+2017-02-19 00:23:53,686 [INFO] from application in application-akka.actor.default-dispatcher-28 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css took 2ms and returned 304
+2017-02-19 00:23:53,696 [INFO] from application in application-akka.actor.default-dispatcher-25 - GET /assets/styles/editArticle.css took 2ms and returned 304
+2017-02-19 00:23:53,696 [INFO] from application in application-akka.actor.default-dispatcher-28 - GET /assets/javascripts/zxcvbnShim.js took 2ms and returned 304
+2017-02-19 00:23:53,696 [INFO] from application in application-akka.actor.default-dispatcher-27 - GET /webjars/bootstrap/3.3.6/js/bootstrap.min.js took 2ms and returned 304
+2017-02-19 00:23:53,708 [INFO] from application in application-akka.actor.default-dispatcher-18 - GET /assets/javascripts/editArticle.js took 2ms and returned 304
+2017-02-19 00:24:16,257 [INFO] from application in application-akka.actor.default-dispatcher-26 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css took 6ms and returned 304
+2017-02-19 00:24:16,260 [INFO] from application in application-akka.actor.default-dispatcher-29 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css took 3ms and returned 304
+2017-02-19 00:24:16,263 [INFO] from application in application-akka.actor.default-dispatcher-14 - GET /webjars/jquery-ui/1.11.4/jquery-ui.css took 3ms and returned 304
+2017-02-19 00:24:16,266 [INFO] from application in application-akka.actor.default-dispatcher-14 - GET /assets/styles/main.css took 2ms and returned 304
+2017-02-19 00:24:16,269 [INFO] from application in application-akka.actor.default-dispatcher-14 - GET /assets/styles/editArticle.css took 2ms and returned 304
+2017-02-19 00:24:16,333 [INFO] from application in application-akka.actor.default-dispatcher-16 - GET /webjars/jquery/2.1.4/jquery.min.map took 3ms and returned 304
+2017-02-19 00:24:16,456 [INFO] from application in application-akka.actor.default-dispatcher-14 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css.map took 7ms and returned 304
+2017-02-19 00:24:16,456 [INFO] from application in application-akka.actor.default-dispatcher-16 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css.map took 7ms and returned 304
+2017-02-19 00:25:00,602 [INFO] from application in application-akka.actor.default-dispatcher-26 - GET /blog/24/edit took 35ms and returned 200
+2017-02-19 00:25:00,670 [INFO] from application in application-akka.actor.default-dispatcher-35 - GET /webjars/jquery/2.1.4/jquery.min.js took 3ms and returned 304
+2017-02-19 00:25:00,679 [INFO] from application in application-akka.actor.default-dispatcher-37 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css took 24ms and returned 304
+2017-02-19 00:25:00,681 [INFO] from application in application-akka.actor.default-dispatcher-35 - GET /assets/styles/main.css took 8ms and returned 304
+2017-02-19 00:25:00,689 [INFO] from application in application-akka.actor.default-dispatcher-34 - GET /webjars/jquery-ui/1.11.4/jquery-ui.js took 28ms and returned 304
+2017-02-19 00:25:00,689 [INFO] from application in application-akka.actor.default-dispatcher-38 - GET /webjars/jquery-ui/1.11.4/jquery-ui.css took 3ms and returned 304
+2017-02-19 00:25:00,698 [INFO] from application in application-akka.actor.default-dispatcher-36 - GET /assets/styles/editArticle.css took 4ms and returned 304
+2017-02-19 00:25:00,699 [INFO] from application in application-akka.actor.default-dispatcher-36 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css took 5ms and returned 304
+2017-02-19 00:25:00,708 [INFO] from application in application-akka.actor.default-dispatcher-34 - GET /webjars/bootstrap/3.3.6/js/bootstrap.min.js took 3ms and returned 304
+2017-02-19 00:25:00,716 [INFO] from application in application-akka.actor.default-dispatcher-34 - GET /assets/javascripts/zxcvbnShim.js took 4ms and returned 304
+2017-02-19 00:25:00,768 [INFO] from application in application-akka.actor.default-dispatcher-36 - GET /assets/javascripts/editArticle.js took 5ms and returned 304
+2017-02-19 00:25:00,791 [INFO] from application in application-akka.actor.default-dispatcher-36 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css.map took 2ms and returned 304
+2017-02-19 00:25:00,805 [INFO] from application in application-akka.actor.default-dispatcher-36 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css.map took 4ms and returned 304
+2017-02-19 00:25:01,139 [INFO] from application in application-akka.actor.default-dispatcher-36 - GET /webjars/jquery/2.1.4/jquery.min.map took 5ms and returned 304
+2017-02-19 00:25:10,324 [INFO] from application in ForkJoinPool-1-worker-2 - Going to save Article(Some(24),2017-02-09T23:01:10.486Z,Особенности выращивания орехов, nuts,Особенности выращивания орехов.,<p class="ql-align-justify">Грецкий орех обладает гетерозиготностью. Гетерозиготность позволяет&nbsp;в дальнейшем будущим деревьям грецкого ореха быть готовыми и более устойчивыми к натиску различных паразитов и инфекций, что приводит&nbsp;лучшему выживанию. Поэтому сохранение признаков и свойств материнского растения возможно лишь при вегетативном размножении, где выращивание подвоев является одним из важных вопросов.</p><p class="ql-align-justify">Семенной материал необходимо заготавливать выделенных форм, устойчивых к грибным заболеваниям и&nbsp;по возможности с поздним началом вегетации. Заготавливают плоды полностью созревшие, высушивают до стандартной влажности ядра (10%) и хранят в&nbsp;сухом месте. Выделенные маточно-семенные деревья должны быть морозостойкими и высокоурожайными.</p><p class="ql-align-justify"><img src="/img/cat4.jpg" alt="three cats"></p><p class="ql-align-justify"><br></p><p class="ql-align-justify">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p class="ql-align-justify">Выращивают посадочный материал в специализированных питомниках. Под питомник отводят хорошо защищенные от господствующих ветров, ровные и пригодные для орошения участки. Сеют орехи весной. До этого их стратифицируют или проращивают. Стратификация проходит в течение 60-70 дней. Режим стратификации орехов такой, как и для плодовых культур. В качестве субстрата лучше использовать древесные опилки. Однако процесс стратификации трудоемкий, имеет определенные недостатки и затраты, занимает длительный период. Кроме того, завершение процесса стратификации&nbsp;не всегда совпадает с оптимальным сроком посева, а отсутствие условий задержания прорастания семян приводит в дальнейшем к большому проценту брака как семян, так и сеянцев.</p><p><br></p>,Грецкий орех обладает гетерозиготностью. Гетерозиготность позволяет  в дальнейшем будущим деревьям грецкого ореха быть готовыми и более устойчивыми к натиску различных паразитов и инфекций, что приводит  лучшему выживанию. Поэтому сохранение признаков и свойств материнского растения возможно лишь при вегетативном размножении, где выращивание подвоев является одним из важных вопросов.) ...
+2017-02-19 00:25:10,338 [INFO] from application in application-akka.actor.default-dispatcher-34 - POST /blog/submit?csrfToken=38927ff952320905d21846656fdefe625afd7cdc-1487456700567-f6125a8baf06be2bb1d03a38 took 55ms and returned 303
+2017-02-19 00:25:10,360 [ERROR] from application in ForkJoinPool-1-worker-1 - Article 24
+2017-02-19 00:25:10,377 [INFO] from application in application-akka.actor.default-dispatcher-34 - GET /blog/24 took 30ms and returned 200
+2017-02-19 00:25:10,432 [INFO] from application in application-akka.actor.default-dispatcher-34 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css took 12ms and returned 304
+2017-02-19 00:25:10,441 [INFO] from application in application-akka.actor.default-dispatcher-35 - GET /webjars/jquery/2.1.4/jquery.min.js took 4ms and returned 304
+2017-02-19 00:25:10,442 [INFO] from application in application-akka.actor.default-dispatcher-40 - GET /assets/styles/main.css took 2ms and returned 304
+2017-02-19 00:25:10,442 [INFO] from application in application-akka.actor.default-dispatcher-34 - GET /webjars/jquery-ui/1.11.4/jquery-ui.js took 9ms and returned 304
+2017-02-19 00:25:10,455 [INFO] from application in application-akka.actor.default-dispatcher-40 - GET /webjars/jquery-ui/1.11.4/jquery-ui.css took 13ms and returned 304
+2017-02-19 00:25:10,468 [INFO] from application in application-akka.actor.default-dispatcher-37 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css took 17ms and returned 304
+2017-02-19 00:25:10,472 [INFO] from application in application-akka.actor.default-dispatcher-37 - GET /assets/javascripts/zxcvbnShim.js took 2ms and returned 304
+2017-02-19 00:25:10,475 [INFO] from application in application-akka.actor.default-dispatcher-40 - GET /webjars/bootstrap/3.3.6/js/bootstrap.min.js took 3ms and returned 304
+2017-02-19 00:25:10,574 [INFO] from application in application-akka.actor.default-dispatcher-22 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css.map took 3ms and returned 304
+2017-02-19 00:25:10,574 [INFO] from application in application-akka.actor.default-dispatcher-35 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css.map took 3ms and returned 304
+2017-02-19 00:25:10,723 [INFO] from application in application-akka.actor.default-dispatcher-35 - GET /webjars/jquery/2.1.4/jquery.min.map took 2ms and returned 304
+2017-02-19 00:25:19,425 [ERROR] from application in ForkJoinPool-1-worker-3 - Article 24
+2017-02-19 00:25:19,432 [INFO] from application in application-akka.actor.default-dispatcher-37 - GET /blog/24 took 15ms and returned 200
+2017-02-19 00:25:19,473 [INFO] from application in application-akka.actor.default-dispatcher-34 - GET /webjars/jquery-ui/1.11.4/jquery-ui.css took 3ms and returned 304
+2017-02-19 00:25:19,477 [INFO] from application in application-akka.actor.default-dispatcher-26 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css took 4ms and returned 304
+2017-02-19 00:25:19,478 [INFO] from application in application-akka.actor.default-dispatcher-41 - GET /webjars/jquery-ui/1.11.4/jquery-ui.js took 3ms and returned 304
+2017-02-19 00:25:19,481 [INFO] from application in application-akka.actor.default-dispatcher-34 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css took 14ms and returned 304
+2017-02-19 00:25:19,499 [INFO] from application in application-akka.actor.default-dispatcher-26 - GET /webjars/jquery/2.1.4/jquery.min.js took 19ms and returned 304
+2017-02-19 00:25:19,500 [INFO] from application in application-akka.actor.default-dispatcher-40 - GET /assets/javascripts/zxcvbnShim.js took 7ms and returned 304
+2017-02-19 00:25:19,502 [INFO] from application in application-akka.actor.default-dispatcher-37 - GET /assets/styles/main.css took 11ms and returned 304
+2017-02-19 00:25:19,504 [INFO] from application in application-akka.actor.default-dispatcher-34 - GET /webjars/bootstrap/3.3.6/js/bootstrap.min.js took 5ms and returned 304
+2017-02-19 00:25:19,543 [INFO] from application in application-akka.actor.default-dispatcher-41 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css.map took 3ms and returned 304
+2017-02-19 00:25:19,543 [INFO] from application in application-akka.actor.default-dispatcher-42 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css.map took 3ms and returned 304
+2017-02-19 00:25:19,623 [INFO] from application in application-akka.actor.default-dispatcher-39 - GET /webjars/jquery/2.1.4/jquery.min.map took 2ms and returned 304
+2017-02-19 00:25:28,244 [INFO] from application in application-akka.actor.default-dispatcher-37 - GET /blog took 22ms and returned 200
+2017-02-19 00:25:28,278 [INFO] from application in application-akka.actor.default-dispatcher-42 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css took 4ms and returned 304
+2017-02-19 00:25:28,285 [INFO] from application in application-akka.actor.default-dispatcher-38 - GET /webjars/jquery-ui/1.11.4/jquery-ui.js took 4ms and returned 304
+2017-02-19 00:25:28,287 [INFO] from application in application-akka.actor.default-dispatcher-40 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css took 18ms and returned 304
+2017-02-19 00:25:28,293 [INFO] from application in application-akka.actor.default-dispatcher-34 - GET /webjars/jquery/2.1.4/jquery.min.js took 4ms and returned 304
+2017-02-19 00:25:28,297 [INFO] from application in application-akka.actor.default-dispatcher-42 - GET /assets/styles/main.css took 2ms and returned 304
+2017-02-19 00:25:28,299 [INFO] from application in application-akka.actor.default-dispatcher-43 - GET /webjars/jquery-ui/1.11.4/jquery-ui.css took 5ms and returned 304
+2017-02-19 00:25:28,358 [INFO] from application in application-akka.actor.default-dispatcher-34 - GET /assets/javascripts/zxcvbnShim.js took 43ms and returned 304
+2017-02-19 00:25:28,364 [INFO] from application in application-akka.actor.default-dispatcher-34 - GET /webjars/bootstrap/3.3.6/js/bootstrap.min.js took 49ms and returned 304
+2017-02-19 00:25:28,443 [INFO] from application in application-akka.actor.default-dispatcher-34 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css.map took 3ms and returned 304
+2017-02-19 00:25:28,443 [INFO] from application in application-akka.actor.default-dispatcher-44 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css.map took 3ms and returned 304
+2017-02-19 00:25:28,568 [INFO] from application in application-akka.actor.default-dispatcher-34 - GET /webjars/jquery/2.1.4/jquery.min.map took 5ms and returned 304
+2017-02-19 00:38:02,953 [ERROR] from application in netty-event-loop-3 - 
+
+! @7352987od - Internal server error, for (GET) [/blog/18/edit] ->
+ 
+play.sbt.PlayExceptions$CompilationException: Compilation error[value list is not a member of controllers.nuts.ReverseImages]
+	at play.sbt.PlayExceptions$CompilationException$.apply(PlayExceptions.scala:27)
+	at play.sbt.PlayExceptions$CompilationException$.apply(PlayExceptions.scala:27)
+	at scala.Option.map(Option.scala:145)
+	at play.sbt.run.PlayReload$$anonfun$taskFailureHandler$1.apply(PlayReload.scala:49)
+	at play.sbt.run.PlayReload$$anonfun$taskFailureHandler$1.apply(PlayReload.scala:44)
+	at scala.Option.map(Option.scala:145)
+	at play.sbt.run.PlayReload$.taskFailureHandler(PlayReload.scala:44)
+	at play.sbt.run.PlayReload$.compileFailure(PlayReload.scala:40)
+	at play.sbt.run.PlayReload$$anonfun$compile$1.apply(PlayReload.scala:17)
+	at play.sbt.run.PlayReload$$anonfun$compile$1.apply(PlayReload.scala:17)
+	at scala.util.Either$LeftProjection.map(Either.scala:377)
+	at play.sbt.run.PlayReload$.compile(PlayReload.scala:17)
+	at play.sbt.run.PlayRun$$anonfun$playRunTask$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$2.apply(PlayRun.scala:61)
+	at play.sbt.run.PlayRun$$anonfun$playRunTask$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$2.apply(PlayRun.scala:61)
+	at play.runsupport.Reloader$$anonfun$reload$1.apply(Reloader.scala:339)
+	at play.runsupport.Reloader$$anon$3.run(Reloader.scala:44)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at play.runsupport.Reloader$.play$runsupport$Reloader$$withReloaderContextClassLoader(Reloader.scala:40)
+	at play.runsupport.Reloader.reload(Reloader.scala:337)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:118)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:116)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:39)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:405)
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+2017-02-19 00:38:46,661 [ERROR] from application in netty-event-loop-3 - 
+
+! @73529akff - Internal server error, for (GET) [/blog/18/edit] ->
+ 
+play.sbt.PlayExceptions$UnexpectedException: Unexpected exception[IOException: No such file or directory]
+	at play.sbt.run.PlayReload$$anonfun$taskFailureHandler$1.apply(PlayReload.scala:51)
+	at play.sbt.run.PlayReload$$anonfun$taskFailureHandler$1.apply(PlayReload.scala:44)
+	at scala.Option.map(Option.scala:145)
+	at play.sbt.run.PlayReload$.taskFailureHandler(PlayReload.scala:44)
+	at play.sbt.run.PlayReload$.compileFailure(PlayReload.scala:40)
+	at play.sbt.run.PlayReload$$anonfun$compile$1.apply(PlayReload.scala:17)
+	at play.sbt.run.PlayReload$$anonfun$compile$1.apply(PlayReload.scala:17)
+	at scala.util.Either$LeftProjection.map(Either.scala:377)
+	at play.sbt.run.PlayReload$.compile(PlayReload.scala:17)
+	at play.sbt.run.PlayRun$$anonfun$playRunTask$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$2.apply(PlayRun.scala:61)
+	at play.sbt.run.PlayRun$$anonfun$playRunTask$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$2.apply(PlayRun.scala:61)
+	at play.runsupport.Reloader$$anonfun$reload$1.apply(Reloader.scala:339)
+	at play.runsupport.Reloader$$anon$3.run(Reloader.scala:44)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at play.runsupport.Reloader$.play$runsupport$Reloader$$withReloaderContextClassLoader(Reloader.scala:40)
+	at play.runsupport.Reloader.reload(Reloader.scala:337)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:118)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:116)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:39)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:405)
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+Caused by: java.io.IOException: No such file or directory
+	at java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.io.File.createTempFile(File.java:2024)
+	at sbt.inc.ClassfileManager$$anonfun$transactional$1$$anon$2.sbt$inc$ClassfileManager$$anonfun$$anon$$move(ClassfileManager.scala:74)
+	at sbt.inc.ClassfileManager$$anonfun$transactional$1$$anon$2$$anonfun$delete$3.apply(ClassfileManager.scala:52)
+	at sbt.inc.ClassfileManager$$anonfun$transactional$1$$anon$2$$anonfun$delete$3.apply(ClassfileManager.scala:51)
+	at scala.collection.immutable.HashSet$HashSet1.foreach(HashSet.scala:153)
+	at scala.collection.immutable.HashSet$HashTrieSet.foreach(HashSet.scala:306)
+	at scala.collection.immutable.HashSet$HashTrieSet.foreach(HashSet.scala:306)
+	at sbt.inc.ClassfileManager$$anonfun$transactional$1$$anon$2.delete(ClassfileManager.scala:51)
+	at sbt.inc.Incremental$.prune(Incremental.scala:88)
+	at sbt.inc.IncrementalCommon.cycle(IncrementalCommon.scala:29)
+	at sbt.inc.Incremental$$anonfun$1.apply(Incremental.scala:68)
+	at sbt.inc.Incremental$$anonfun$1.apply(Incremental.scala:67)
+	at sbt.inc.Incremental$.manageClassfiles(Incremental.scala:95)
+	at sbt.inc.Incremental$.compile(Incremental.scala:67)
+	at sbt.inc.IncrementalCompile$.apply(Compile.scala:54)
+	at sbt.compiler.IC$.compileInternal(IncrementalCompiler.scala:160)
+	at sbt.compiler.IC$.incrementalCompile(IncrementalCompiler.scala:138)
+	at sbt.Compiler$.compile(Compiler.scala:152)
+	at sbt.Compiler$.compile(Compiler.scala:138)
+	at sbt.Defaults$.sbt$Defaults$$compileIncrementalTaskImpl(Defaults.scala:860)
+	at sbt.Defaults$$anonfun$compileIncrementalTask$1.apply(Defaults.scala:851)
+	at sbt.Defaults$$anonfun$compileIncrementalTask$1.apply(Defaults.scala:849)
+	at scala.Function1$$anonfun$compose$1.apply(Function1.scala:47)
+	at sbt.$tilde$greater$$anonfun$$u2219$1.apply(TypeFunctions.scala:40)
+	at sbt.std.Transform$$anon$4.work(System.scala:63)
+	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:228)
+	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:228)
+	at sbt.ErrorHandling$.wideConvert(ErrorHandling.scala:17)
+	at sbt.Execute.work(Execute.scala:237)
+	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:228)
+	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:228)
+	at sbt.ConcurrentRestrictions$$anon$4$$anonfun$1.apply(ConcurrentRestrictions.scala:159)
+	at sbt.CompletionService$$anon$2.call(CompletionService.scala:28)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2017-02-19 00:38:57,766 [INFO] from play.api.Play in application-akka.actor.default-dispatcher-26 - Application started (Dev)
+2017-02-19 00:38:57,834 [INFO] from application in application-akka.actor.default-dispatcher-2 - GET /blog/18/edit took 62ms and returned 200
+2017-02-19 00:38:57,909 [INFO] from application in application-akka.actor.default-dispatcher-7 - GET /assets/styles/main.css took 6ms and returned 304
+2017-02-19 00:38:57,910 [INFO] from application in application-akka.actor.default-dispatcher-7 - GET /webjars/jquery/2.1.4/jquery.min.js took 9ms and returned 304
+2017-02-19 00:38:57,912 [INFO] from application in application-akka.actor.default-dispatcher-6 - GET /webjars/jquery-ui/1.11.4/jquery-ui.js took 13ms and returned 304
+2017-02-19 00:38:57,912 [INFO] from application in application-akka.actor.default-dispatcher-7 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css took 13ms and returned 304
+2017-02-19 00:38:57,913 [INFO] from application in application-akka.actor.default-dispatcher-3 - GET /webjars/jquery-ui/1.11.4/jquery-ui.css took 12ms and returned 304
+2017-02-19 00:38:57,914 [INFO] from application in application-akka.actor.default-dispatcher-9 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css took 2ms and returned 304
+2017-02-19 00:38:57,926 [INFO] from application in application-akka.actor.default-dispatcher-9 - GET /webjars/bootstrap/3.3.6/js/bootstrap.min.js took 3ms and returned 304
+2017-02-19 00:38:57,926 [INFO] from application in application-akka.actor.default-dispatcher-6 - GET /assets/javascripts/zxcvbnShim.js took 3ms and returned 304
+2017-02-19 00:38:57,927 [INFO] from application in application-akka.actor.default-dispatcher-7 - GET /assets/styles/editArticle.css took 2ms and returned 304
+2017-02-19 00:38:57,955 [INFO] from application in application-akka.actor.default-dispatcher-7 - GET /assets/javascripts/editArticle.js took 2ms and returned 304
+2017-02-19 00:38:57,972 [INFO] from application in application-akka.actor.default-dispatcher-7 - GET /webjars/bootstrap/3.3.6/css/bootstrap.min.css.map took 2ms and returned 304
+2017-02-19 00:38:57,974 [INFO] from application in application-akka.actor.default-dispatcher-9 - GET /webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css.map took 4ms and returned 304
+2017-02-19 00:38:58,085 [INFO] from application in application-akka.actor.default-dispatcher-2 - GET /webjars/jquery/2.1.4/jquery.min.map took 3ms and returned 304

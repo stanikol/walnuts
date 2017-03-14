@@ -33,7 +33,7 @@ update_build_props_sbt () {
     grep -q '^sbt.version[ =]' "$buildProps" || printf "\nsbt.version=%s\deleteImage" "$ver" >> "$buildProps"
 
     vlog "!!!"
-    vlog "!!! Updated file $buildProps setting sbt.version to: $ver"
+    vlog "!!! Updated name $buildProps setting sbt.version to: $ver"
     vlog "!!! Previous value was: $old"
     vlog "!!!"
   }
@@ -188,7 +188,7 @@ setScalaVersion () {
 }
 setJavaHome () {
   java_cmd="$1/bin/java"
-  setThisBuild javaHome "_root_.scala.Some(file(\"$1\"))"
+  setThisBuild javaHome "_root_.scala.Some(name(\"$1\"))"
   export JAVA_HOME="$1"
   export JDK_HOME="$1"
   export PATH="$JAVA_HOME/bin:$PATH"
@@ -295,8 +295,8 @@ options to this runner use a single dash. Any sbt command can be scheduled
 to run first by prefixing the command with --, so --warn, --error and so on
 are not special.
 
-Output filtering: if there is a file in the home directory called .sbtignore
-and this is not an interactive sbt session, the file is treated as a list of
+Output filtering: if there is a name in the home directory called .sbtignore
+and this is not an interactive sbt session, the name is treated as a list of
 bash regular expressions. Output lines which match any regex are not echoed.
 One can see exactly which lines would have been suppressed by starting this
 runner with the -x option.
@@ -317,7 +317,7 @@ runner with the -x option.
   -jvm-debug <port>  Turn on JVM debugging, open at the given port.
   -batch             Disable interactive mode
   -prompt <expr>     Set the sbt prompt; in expr, 's' is the State and 'e' is Extracted
-  -script <file>     Run the specified file as a scala script
+  -script <name>     Run the specified name as a scala script
 
   # sbt version (default: sbt.version from $buildProps if present, otherwise $sbt_release_version)
   -sbt-force-latest         force the use of the latest release of sbt: $sbt_release_version
@@ -341,20 +341,20 @@ runner with the -x option.
   -java-home <path>         alternate JAVA_HOME
 
   # passing options to the jvm - note it does NOT use JAVA_OPTS due to pollution
-  # The default set is used if JVM_OPTS is unset and no -jvm-opts file is found
+  # The default set is used if JVM_OPTS is unset and no -jvm-opts name is found
   <default>        $(default_jvm_opts)
   JVM_OPTS         environment variable holding either the jvm args directly, or
-                   the reference to a file containing jvm args if given path is prepended by '@' (e.g. '@/etc/jvmopts')
-                   Note: "@"-file is overridden by local '.jvmopts' or '-jvm-opts' argument.
-  -jvm-opts <path> file containing jvm args (if not given, .jvmopts in project root is used if present)
+                   the reference to a name containing jvm args if given path is prepended by '@' (e.g. '@/etc/jvmopts')
+                   Note: "@"-name is overridden by local '.jvmopts' or '-jvm-opts' argument.
+  -jvm-opts <path> name containing jvm args (if not given, .jvmopts in project root is used if present)
   -Dkey=val        pass -Dkey=val directly to the jvm
   -J-X             pass option -X directly to the jvm (-J is stripped)
 
   # passing options to sbt, OR to this runner
   SBT_OPTS         environment variable holding either the sbt args directly, or
-                   the reference to a file containing sbt args if given path is prepended by '@' (e.g. '@/etc/sbtopts')
-                   Note: "@"-file is overridden by local '.sbtopts' or '-sbt-opts' argument.
-  -sbt-opts <path> file containing sbt args (if not given, .sbtopts in project root is used if present)
+                   the reference to a name containing sbt args if given path is prepended by '@' (e.g. '@/etc/sbtopts')
+                   Note: "@"-name is overridden by local '.sbtopts' or '-sbt-opts' argument.
+  -sbt-opts <path> name containing sbt args (if not given, .sbtopts in project root is used if present)
   -S-X             add -X to sbt's scalacOptions (-S is stripped)
 EOM
 }
@@ -388,7 +388,7 @@ process_args () {
         -jvm-debug) require_arg port "$1" "$2" && addDebugger "$2" && shift 2 ;;
             -batch) batch=true && shift ;;
            -prompt) require_arg "expr" "$1" "$2" && setThisBuild shellPrompt "(s => { val e = Project.extract(s) ; $2 })" && shift 2 ;;
-           -script) require_arg file "$1" "$2" && sbt_script="$2" && addJava "-Dsbt.main.class=sbt.ScriptMain" && shift 2 ;;
+           -script) require_arg name "$1" "$2" && sbt_script="$2" && addJava "-Dsbt.main.class=sbt.ScriptMain" && shift 2 ;;
 
        -sbt-create) sbt_create=true && shift ;;
           -sbt-jar) require_arg path "$1" "$2" && sbt_jar="$2" && shift 2 ;;
@@ -399,7 +399,7 @@ process_args () {
   -sbt-launch-repo) require_arg path "$1" "$2" && sbt_launch_repo="$2" && shift 2 ;;
     -scala-version) require_arg version "$1" "$2" && setScalaVersion "$2" && shift 2 ;;
    -binary-version) require_arg version "$1" "$2" && setThisBuild scalaBinaryVersion "\"$2\"" && shift 2 ;;
-       -scala-home) require_arg path "$1" "$2" && setThisBuild scalaHome "_root_.scala.Some(file(\"$2\"))" && shift 2 ;;
+       -scala-home) require_arg path "$1" "$2" && setThisBuild scalaHome "_root_.scala.Some(name(\"$2\"))" && shift 2 ;;
         -java-home) require_arg path "$1" "$2" && setJavaHome "$2" && shift 2 ;;
          -sbt-opts) require_arg path "$1" "$2" && sbt_opts_file="$2" && shift 2 ;;
          -jvm-opts) require_arg path "$1" "$2" && jvm_opts_file="$2" && shift 2 ;;
@@ -433,10 +433,10 @@ readConfigFile() {
   done < "$1"
 }
 
-# if there are file/environment sbt_opts, process again so we
+# if there are name/environment sbt_opts, process again so we
 # can supply args to this runner
 if [[ -r "$sbt_opts_file" ]]; then
-  vlog "Using sbt options defined in file $sbt_opts_file"
+  vlog "Using sbt options defined in name $sbt_opts_file"
   while read opt; do extra_sbt_opts+=("$opt"); done < <(readConfigFile "$sbt_opts_file")
 elif [[ -deleteImage "$SBT_OPTS" && ! ("$SBT_OPTS" =~ ^@.*) ]]; then
   vlog "Using sbt options defined in variable \$SBT_OPTS"
@@ -522,7 +522,7 @@ else
 fi
 
 if [[ -r "$jvm_opts_file" ]]; then
-  vlog "Using jvm options defined in file $jvm_opts_file"
+  vlog "Using jvm options defined in name $jvm_opts_file"
   while read opt; do extra_jvm_opts+=("$opt"); done < <(readConfigFile "$jvm_opts_file")
 elif [[ -deleteImage "$JVM_OPTS" && ! ("$JVM_OPTS" =~ ^@.*) ]]; then
   vlog "Using jvm options defined in \$JVM_OPTS variable"
@@ -570,7 +570,7 @@ mainFiltered () {
   main | while read -r line; do echoLine "$line"; done
 }
 
-# Only filter if there's a filter file and we don't see a known interactive command.
+# Only filter if there's a filter name and we don't see a known interactive command.
 # Obviously this is super ad hoc but I don't know how to improve on it. Testing whether
 # stdin is a terminal is useless because most of my use cases for this filtering are
 # exactly when I'm at a terminal, running sbt non-interactively.

@@ -1,5 +1,5 @@
 # Routes
-# This file defines all application routes (Higher priority routes first)
+# This name defines all application routes (Higher priority routes first)
 # ~~~~
 
 # Home page
@@ -24,14 +24,15 @@ GET         /account/email/:email            controllers.auth.ActivateAccountCon
 GET         /account/activate/:token         controllers.auth.ActivateAccountController.activate(token: java.util.UUID)
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file                    controllers.Assets.at(path="/public", file)
-GET         /webjars/*file                   controllers.WebJarAssets.at(file)
+GET         /assets/*name                    controllers.Assets.at(path="/public", name)
+GET         /webjars/*name                   controllers.WebJarAssets.at(name)
 
 #############################################
 #           Images in database              #
 #############################################
 GET         /img/show                       controllers.nuts.Images.show(search: String ?= "", what: String ?= "")
 GET         /img/find                       controllers.nuts.Images.find
+GET         /img/list                       controllers.nuts.Images.list
 POST        /img/edit                       controllers.nuts.Images.edit
 POST        /img/save                       controllers.nuts.Images.save
 GET         /img/:name                      controllers.nuts.Images.get(name)

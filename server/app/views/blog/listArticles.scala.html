@@ -13,13 +13,13 @@
         <a href='@{if(userOption.isDefined && userOption.get.isAdmin) s"/blog/${article.id.get}/edit" else s"/blog/${article.id.get}"}'>
             <h2>
                 @if(userOption.isDefined && userOption.get.isAdmin){
-                    #@article.id.get @article.title <br> @article.sort_order
+                    @article.title <br> #@article.id.get @article.sort_order
                 } else {
                     @article.title
                 }
             </h2>
         </a><br>
-        @article.description
+        @{article.short_text}
         <br>
     }
 

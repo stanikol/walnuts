@@ -33,7 +33,6 @@ case class WithProvider[A <: Authenticator](provider: String) extends Authorizat
   }
 }
 
-//case class WithRole[A <: Authenticator](roleName: String) extends Authorization[User, A] {
 case class WithRole[A <: Authenticator](roleName: String) extends Authorization[User, A] {
 
   /**
@@ -58,23 +57,23 @@ object Roles {
   val Admin = WithRole[DefaultEnv#A]("admin")
 }
 
+////
+//case class Access[A <: Authenticator](roleName: String) extends Authorization[User, CookieAuthenticator] {
 //
-case class Access[A <: Authenticator](roleName: String) extends Authorization[User, CookieAuthenticator] {
-
-  /**
-   * Indicates if a user is authorized to access an action.
-   *
-   * @param user The usr object.
-   * @param authenticator The authenticator instance.
-   * @param request The current request.
-   * @tparam B The type of the request body.
-   * @return True if the user is authorized, false otherwise.
-   */
-  override def isAuthorized[B](user: User, authenticator: CookieAuthenticator)(
-    implicit
-    request: Request[B]
-  ): Future[Boolean] = {
-
-    Future.successful(user.role.equals(Some(roleName)))
-  }
-}
+//  /**
+//   * Indicates if a user is authorized to access an action.
+//   *
+//   * @param user The usr object.
+//   * @param authenticator The authenticator instance.
+//   * @param request The current request.
+//   * @tparam B The type of the request body.
+//   * @return True if the user is authorized, false otherwise.
+//   */
+//  override def isAuthorized[B](user: User, authenticator: CookieAuthenticator)(
+//    implicit
+//    request: Request[B]
+//  ): Future[Boolean] = {
+//
+//    Future.successful(user.role.equals(Some(roleName)))
+//  }
+//}

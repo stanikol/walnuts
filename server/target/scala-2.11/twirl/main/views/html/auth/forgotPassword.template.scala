@@ -64,7 +64,7 @@ object forgotPassword_Scope0 {
 object forgotPassword extends forgotPassword_Scope0.forgotPassword
 /*
                   -- GENERATED --
-                  DATE: Sat Feb 18 23:36:13 EET 2017
+                  DATE: Sat Mar 11 02:26:18 EET 2017
                   SOURCE: /Users/snc/scala/walnuts/server/app/views/auth/forgotPassword.scala.html
                   HASH: f0de6dca42988338e793cf5c715ca85c19862c1a
                   MATRIX: 649->1|893->116|921->153|948->155|995->194|1034->196|1065->201|1152->262|1199->289|1244->308|1258->314|1364->411|1404->413|1444->426|1487->443|1539->475|1584->493|1599->499|1635->514|1676->528|1687->530|1849->670|1890->683|2076->841|2114->857|2206->918|2238->923|2281->936

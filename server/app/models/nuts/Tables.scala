@@ -4,7 +4,11 @@ package models.nuts
  * Created by stanikol on 1/27/17.
  */
 
+import java.sql.Date
+
+import models.tables.UserTable
 import org.springframework.context.annotation.Description
+import slick.lifted.TableQuery
 //import play.api.http.ContentTypes
 //import play.api.libs.json._
 //import play.api.libs.functional.syntax._
@@ -38,8 +42,9 @@ object Tables {
     def title = column[String]("title")
     def text = column[String]("text")
     def description = column[String]("description")
+    def sort_text = column[String]("short_text")
     //    def * = (id.?, sort_order, keywords, title, text, description) <> (Article.tupled, Article.unapply)
-    def * = (id.?, sort_order, keywords, title, text, description) <> ((Article.apply _).tupled, Article.unapply)
+    def * = (id.?, sort_order, keywords, title, text, description, sort_text) <> ((Article.apply _).tupled, Article.unapply)
   }
   val articles = TableQuery[Articles]
   val insertArticle = articles returning articles.map(_.id) into ((newArticle, id) => newArticle.copy(id = Some(id)))
@@ -52,11 +57,26 @@ object Tables {
     def qnt = column[Int]("qnt", O.Default(0))
     def price = column[BigDecimal]("price", O.Default(0))
     def show = column[Int]("show", O.Default(0))
-    def image = column[String]("image")
+    def image = column[Option[String]]("image")
     def * = (id.?, category, title, description, qnt, price, show, image) <> (GoodsItem.tupled, GoodsItem.unapply)
     def categoryFK = foreignKey("CATEGORY_FK", category, categories)(_.name, onUpdate = ForeignKeyAction.Restrict, onDelete = ForeignKeyAction.Cascade)
   }
   val goods = TableQuery[Goods]
+
+  class Comments(tag: Tag) extends Table[Comment](tag, "comments") {
+    def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
+    def userID = column[String]("user_id")
+    def articleID = column[Long]("article_id")
+    def text = column[String]("text")
+    def added = column[Date]("added")
+    def * = (id.?, userID, articleID, text, added) <> (Comment.tupled, Comment.unapply)
+    def userIDFK = foreignKey("USER_FK", userID, users)(_.fullName.getOrElse(""))
+    def articleiDFK = foreignKey("ARTICLE_ID_FK", articleID, articles)(_.id)
+  }
+
+  val comments = TableQuery[Comments]
+
+  private val users = TableQuery[UserTable]
 
 }
 

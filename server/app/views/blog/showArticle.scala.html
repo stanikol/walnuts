@@ -1,5 +1,5 @@
 
-@(user: Option[models.User], article: models.nuts.Data.Article)(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+@(user: Option[models.User], article: Article, comments: Seq[Comment])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
 
 @import helper.CSRF
 
@@ -35,6 +35,12 @@
                    class="form-control" disabled/>
         </div>
     </div>
+    @for(comment<-comments){
+        <hr>
+        @comment.userID @comment.added<br>
+        @comment.text
+        <hr>
+    }
 }
 
 

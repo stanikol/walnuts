@@ -45,7 +45,7 @@ object signUp_Scope0 {
 object signUp extends signUp_Scope0.signUp
 /*
                   -- GENERATED --
-                  DATE: Sat Feb 18 23:36:13 EET 2017
+                  DATE: Sat Mar 11 02:26:19 EET 2017
                   SOURCE: /Users/snc/scala/walnuts/server/app/views/emails/signUp.scala.txt
                   HASH: f2e6db8a67f84b0db6f5742fa97d9a5e48c0480b
                   MATRIX: 601->1|749->55|776->57|856->117|884->120|943->159

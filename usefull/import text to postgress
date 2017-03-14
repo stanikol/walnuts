@@ -1,0 +1,37 @@
+METHOD#1
+
+-- 1. Create a function to load a doc
+-- DROP FUNCTION get_text_document(CHARACTER VARYING);
+CREATE OR REPLACE FUNCTION get_text_document(p_filename CHARACTER VARYING)
+  RETURNS TEXT AS $$
+  -- Set the end read to some big number because we are too lazy to grab the length
+  -- and it will cut of at the EOF anyway
+  SELECT CAST(pg_read_file(E'mydocuments/' || $1 ,0, 100000000) AS TEXT);
+$$ LANGUAGE sql VOLATILE SECURITY DEFINER;
+ALTER FUNCTION get_text_document(CHARACTER VARYING) OWNER TO postgres;
+
+-- 2. Determine the location of your cluster by running as super user:
+SELECT name, setting FROM pg_settings WHERE name='data_directory';
+
+-- 3. Copy the files you want to import into <data_directory>/mydocuments/
+--    and test it:
+SELECT get_text_document('file1.txt');
+
+-- 4. Now do the import (HINT: File must be UTF-8)
+INSERT INTO mytable(file, content)
+  VALUES ('file1.txt', get_text_document('file1.txt'));
+
+METHOD#2
+
+CREATE FUNCTION gettext(url TEXT) RETURNS TEXT
+AS $$
+import urllib2
+try:
+  f = urllib2.urlopen(url)
+  return ''.join(f.readlines())
+except Exception:
+  return ""
+$$ LANGUAGE plpythonu;
+
+
+select gettext('file:///etc/motd');

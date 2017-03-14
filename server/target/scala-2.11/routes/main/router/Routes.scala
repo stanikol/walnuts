@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/snc/scala/walnuts/server/conf/routes
-// @DATE:Sun Feb 19 00:58:08 EET 2017
+// @DATE:Wed Mar 15 00:23:29 EET 2017
 
 package router
 
@@ -38,7 +38,7 @@ class Routes(
   WebJarAssets_9: controllers.WebJarAssets,
   // @LINE:33
   Images_5: controllers.nuts.Images,
-  // @LINE:42
+  // @LINE:43
   Blog_6: controllers.nuts.Blog,
   val prefix: String
 ) extends GeneratedRouter {
@@ -67,7 +67,7 @@ class Routes(
     WebJarAssets_9: controllers.WebJarAssets,
     // @LINE:33
     Images_5: controllers.nuts.Images,
-    // @LINE:42
+    // @LINE:43
     Blog_6: controllers.nuts.Blog
   ) = this(errorHandler, ApplicationController_2, SocialAuthController_3, SignUpController_7, SignInController_4, ForgotPasswordController_0, ResetPasswordController_11, ChangePasswordController_10, ActivateAccountController_1, Assets_8, WebJarAssets_9, Images_5, Blog_6, "/")
 
@@ -98,10 +98,11 @@ class Routes(
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """password/change""", """controllers.auth.ChangePasswordController.submit"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """account/email/""" + "$" + """email<[^/]+>""", """controllers.auth.ActivateAccountController.send(email:String)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """account/activate/""" + "$" + """token<[^/]+>""", """controllers.auth.ActivateAccountController.activate(token:java.util.UUID)"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.at(path:String = "/public", file:String)"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """webjars/""" + "$" + """file<.+>""", """controllers.WebJarAssets.at(file:String)"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """name<.+>""", """controllers.Assets.at(path:String = "/public", name:String)"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """webjars/""" + "$" + """name<.+>""", """controllers.WebJarAssets.at(name:String)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """img/show""", """controllers.nuts.Images.show(search:String ?= "", what:String ?= "")"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """img/find""", """controllers.nuts.Images.find"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """img/list""", """controllers.nuts.Images.list"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """img/edit""", """controllers.nuts.Images.edit"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """img/save""", """controllers.nuts.Images.save"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """img/""" + "$" + """name<[^/]+>""", """controllers.nuts.Images.get(name:String)"""),
@@ -374,7 +375,7 @@ class Routes(
 
   // @LINE:27
   private[this] lazy val controllers_Assets_at15_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("assets/"), DynamicPart("file", """.+""",false)))
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("assets/"), DynamicPart("name", """.+""",false)))
   )
   private[this] lazy val controllers_Assets_at15_invoker = createInvoker(
     Assets_8.at(fakeValue[String], fakeValue[String]),
@@ -385,13 +386,13 @@ class Routes(
       Seq(classOf[String], classOf[String]),
       "GET",
       """ Map static resources from the /public folder to the /assets URL path""",
-      this.prefix + """assets/""" + "$" + """file<.+>"""
+      this.prefix + """assets/""" + "$" + """name<.+>"""
     )
   )
 
   // @LINE:28
   private[this] lazy val controllers_WebJarAssets_at16_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("webjars/"), DynamicPart("file", """.+""",false)))
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("webjars/"), DynamicPart("name", """.+""",false)))
   )
   private[this] lazy val controllers_WebJarAssets_at16_invoker = createInvoker(
     WebJarAssets_9.at(fakeValue[String]),
@@ -402,7 +403,7 @@ class Routes(
       Seq(classOf[String]),
       "GET",
       """""",
-      this.prefix + """webjars/""" + "$" + """file<.+>"""
+      this.prefix + """webjars/""" + "$" + """name<.+>"""
     )
   )
 
@@ -443,10 +444,27 @@ class Routes(
   )
 
   // @LINE:35
-  private[this] lazy val controllers_nuts_Images_edit19_route = Route("POST",
+  private[this] lazy val controllers_nuts_Images_list19_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("img/list")))
+  )
+  private[this] lazy val controllers_nuts_Images_list19_invoker = createInvoker(
+    Images_5.list,
+    HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.nuts.Images",
+      "list",
+      Nil,
+      "GET",
+      """""",
+      this.prefix + """img/list"""
+    )
+  )
+
+  // @LINE:36
+  private[this] lazy val controllers_nuts_Images_edit20_route = Route("POST",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("img/edit")))
   )
-  private[this] lazy val controllers_nuts_Images_edit19_invoker = createInvoker(
+  private[this] lazy val controllers_nuts_Images_edit20_invoker = createInvoker(
     Images_5.edit,
     HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -459,11 +477,11 @@ class Routes(
     )
   )
 
-  // @LINE:36
-  private[this] lazy val controllers_nuts_Images_save20_route = Route("POST",
+  // @LINE:37
+  private[this] lazy val controllers_nuts_Images_save21_route = Route("POST",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("img/save")))
   )
-  private[this] lazy val controllers_nuts_Images_save20_invoker = createInvoker(
+  private[this] lazy val controllers_nuts_Images_save21_invoker = createInvoker(
     Images_5.save,
     HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -476,11 +494,11 @@ class Routes(
     )
   )
 
-  // @LINE:37
-  private[this] lazy val controllers_nuts_Images_get21_route = Route("GET",
+  // @LINE:38
+  private[this] lazy val controllers_nuts_Images_get22_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("img/"), DynamicPart("name", """[^/]+""",true)))
   )
-  private[this] lazy val controllers_nuts_Images_get21_invoker = createInvoker(
+  private[this] lazy val controllers_nuts_Images_get22_invoker = createInvoker(
     Images_5.get(fakeValue[String]),
     HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -493,11 +511,11 @@ class Routes(
     )
   )
 
-  // @LINE:42
-  private[this] lazy val controllers_nuts_Blog_showAllArticles22_route = Route("GET",
+  // @LINE:43
+  private[this] lazy val controllers_nuts_Blog_showAllArticles23_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("blog")))
   )
-  private[this] lazy val controllers_nuts_Blog_showAllArticles22_invoker = createInvoker(
+  private[this] lazy val controllers_nuts_Blog_showAllArticles23_invoker = createInvoker(
     Blog_6.showAllArticles,
     HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -512,11 +530,11 @@ class Routes(
     )
   )
 
-  // @LINE:43
-  private[this] lazy val controllers_nuts_Blog_create23_route = Route("GET",
+  // @LINE:44
+  private[this] lazy val controllers_nuts_Blog_create24_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("blog/new")))
   )
-  private[this] lazy val controllers_nuts_Blog_create23_invoker = createInvoker(
+  private[this] lazy val controllers_nuts_Blog_create24_invoker = createInvoker(
     Blog_6.create,
     HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -529,11 +547,11 @@ class Routes(
     )
   )
 
-  // @LINE:44
-  private[this] lazy val controllers_nuts_Blog_article24_route = Route("GET",
+  // @LINE:45
+  private[this] lazy val controllers_nuts_Blog_article25_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("blog/"), DynamicPart("id", """[^/]+""",true)))
   )
-  private[this] lazy val controllers_nuts_Blog_article24_invoker = createInvoker(
+  private[this] lazy val controllers_nuts_Blog_article25_invoker = createInvoker(
     Blog_6.article(fakeValue[Long]),
     HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -546,11 +564,11 @@ class Routes(
     )
   )
 
-  // @LINE:45
-  private[this] lazy val controllers_nuts_Blog_edit25_route = Route("GET",
+  // @LINE:46
+  private[this] lazy val controllers_nuts_Blog_edit26_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("blog/"), DynamicPart("id", """[^/]+""",true), StaticPart("/edit")))
   )
-  private[this] lazy val controllers_nuts_Blog_edit25_invoker = createInvoker(
+  private[this] lazy val controllers_nuts_Blog_edit26_invoker = createInvoker(
     Blog_6.edit(fakeValue[Long]),
     HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -563,11 +581,11 @@ class Routes(
     )
   )
 
-  // @LINE:46
-  private[this] lazy val controllers_nuts_Blog_onSubmit26_route = Route("POST",
+  // @LINE:47
+  private[this] lazy val controllers_nuts_Blog_onSubmit27_route = Route("POST",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("blog/submit")))
   )
-  private[this] lazy val controllers_nuts_Blog_onSubmit26_invoker = createInvoker(
+  private[this] lazy val controllers_nuts_Blog_onSubmit27_invoker = createInvoker(
     Blog_6.onSubmit,
     HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -675,14 +693,14 @@ class Routes(
   
     // @LINE:27
     case controllers_Assets_at15_route(params) =>
-      call(Param[String]("path", Right("/public")), params.fromPath[String]("file", None)) { (path, file) =>
-        controllers_Assets_at15_invoker.call(Assets_8.at(path, file))
+      call(Param[String]("path", Right("/public")), params.fromPath[String]("name", None)) { (path, name) =>
+        controllers_Assets_at15_invoker.call(Assets_8.at(path, name))
       }
   
     // @LINE:28
     case controllers_WebJarAssets_at16_route(params) =>
-      call(params.fromPath[String]("file", None)) { (file) =>
-        controllers_WebJarAssets_at16_invoker.call(WebJarAssets_9.at(file))
+      call(params.fromPath[String]("name", None)) { (name) =>
+        controllers_WebJarAssets_at16_invoker.call(WebJarAssets_9.at(name))
       }
   
     // @LINE:33
@@ -698,51 +716,57 @@ class Routes(
       }
   
     // @LINE:35
-    case controllers_nuts_Images_edit19_route(params) =>
+    case controllers_nuts_Images_list19_route(params) =>
       call { 
-        controllers_nuts_Images_edit19_invoker.call(Images_5.edit)
+        controllers_nuts_Images_list19_invoker.call(Images_5.list)
       }
   
     // @LINE:36
-    case controllers_nuts_Images_save20_route(params) =>
+    case controllers_nuts_Images_edit20_route(params) =>
       call { 
-        controllers_nuts_Images_save20_invoker.call(Images_5.save)
+        controllers_nuts_Images_edit20_invoker.call(Images_5.edit)
       }
   
     // @LINE:37
-    case controllers_nuts_Images_get21_route(params) =>
-      call(params.fromPath[String]("name", None)) { (name) =>
-        controllers_nuts_Images_get21_invoker.call(Images_5.get(name))
+    case controllers_nuts_Images_save21_route(params) =>
+      call { 
+        controllers_nuts_Images_save21_invoker.call(Images_5.save)
       }
   
-    // @LINE:42
-    case controllers_nuts_Blog_showAllArticles22_route(params) =>
-      call { 
-        controllers_nuts_Blog_showAllArticles22_invoker.call(Blog_6.showAllArticles)
+    // @LINE:38
+    case controllers_nuts_Images_get22_route(params) =>
+      call(params.fromPath[String]("name", None)) { (name) =>
+        controllers_nuts_Images_get22_invoker.call(Images_5.get(name))
       }
   
     // @LINE:43
-    case controllers_nuts_Blog_create23_route(params) =>
+    case controllers_nuts_Blog_showAllArticles23_route(params) =>
       call { 
-        controllers_nuts_Blog_create23_invoker.call(Blog_6.create)
+        controllers_nuts_Blog_showAllArticles23_invoker.call(Blog_6.showAllArticles)
       }
   
     // @LINE:44
-    case controllers_nuts_Blog_article24_route(params) =>
-      call(params.fromPath[Long]("id", None)) { (id) =>
-        controllers_nuts_Blog_article24_invoker.call(Blog_6.article(id))
+    case controllers_nuts_Blog_create24_route(params) =>
+      call { 
+        controllers_nuts_Blog_create24_invoker.call(Blog_6.create)
       }
   
     // @LINE:45
-    case controllers_nuts_Blog_edit25_route(params) =>
+    case controllers_nuts_Blog_article25_route(params) =>
       call(params.fromPath[Long]("id", None)) { (id) =>
-        controllers_nuts_Blog_edit25_invoker.call(Blog_6.edit(id))
+        controllers_nuts_Blog_article25_invoker.call(Blog_6.article(id))
       }
   
     // @LINE:46
-    case controllers_nuts_Blog_onSubmit26_route(params) =>
+    case controllers_nuts_Blog_edit26_route(params) =>
+      call(params.fromPath[Long]("id", None)) { (id) =>
+        controllers_nuts_Blog_edit26_invoker.call(Blog_6.edit(id))
+      }
+  
+    // @LINE:47
+    case controllers_nuts_Blog_onSubmit27_route(params) =>
       call { 
-        controllers_nuts_Blog_onSubmit26_invoker.call(Blog_6.onSubmit)
+        controllers_nuts_Blog_onSubmit27_invoker.call(Blog_6.onSubmit)
       }
   }
 }

@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/snc/scala/walnuts/server/conf/routes
-// @DATE:Sun Feb 19 00:58:08 EET 2017
+// @DATE:Wed Mar 15 00:23:29 EET 2017
 
 import play.api.mvc.{ QueryStringBindable, PathBindable, Call, JavascriptLiteral }
 import play.core.routing.{ HandlerDef, ReverseRouteContext, queryString, dynamicString }
@@ -21,9 +21,9 @@ package controllers {
 
   
     // @LINE:28
-    def at(file:String): Call = {
+    def at(name:String): Call = {
       import ReverseRouteContext.empty
-      Call("GET", _prefix + { _defaultPrefix } + "webjars/" + implicitly[PathBindable[String]].unbind("file", file))
+      Call("GET", _prefix + { _defaultPrefix } + "webjars/" + implicitly[PathBindable[String]].unbind("name", name))
     }
   
   }
@@ -36,9 +36,9 @@ package controllers {
 
   
     // @LINE:27
-    def at(file:String): Call = {
+    def at(name:String): Call = {
       implicit val _rrc = new ReverseRouteContext(Map(("path", "/public")))
-      Call("GET", _prefix + { _defaultPrefix } + "assets/" + implicitly[PathBindable[String]].unbind("file", file))
+      Call("GET", _prefix + { _defaultPrefix } + "assets/" + implicitly[PathBindable[String]].unbind("name", name))
     }
   
   }

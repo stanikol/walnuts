@@ -1,5 +1,5 @@
-Walnuts shop with Play 2.5 Silhouette 4.0 Slick PostgreSQL seed
-===============================================================
+Walnuts shop with Play 2.5 Silhouette 4.0 Slick PostgreSQL 
+===========================================================
 
 This project is based on [Play Silhouette seed](https://www.lightbend.com/activator/template/play-silhouette-4.0-slick-postgres-seed).
 
@@ -28,6 +28,7 @@ This project is based on [Play Silhouette seed](https://www.lightbend.com/activa
 * Modify `mailer.conf` and fill in your mailer settings
 * Modify `silhouette.conf` and fill in with your silhouette settings
 * Run project `sbt run`
+* NB: First signed up user becomes admin!
 
 # License
 

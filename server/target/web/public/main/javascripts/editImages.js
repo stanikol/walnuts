@@ -10,7 +10,7 @@ document.getElementById("new-image").addEventListener("change", onSelectImage);
 // Set handler for image deletion and rename
 var rename     = document.getElementsByName('rename')[0];
 var checkBoxes  = document.getElementsByName("imageChecked");
-var what  = document.getElementById("what");
+var what  = document.getElementById("what2rename");
 function onCheckImage() {
     if(this.checked){
         if(what.value === 'name'){

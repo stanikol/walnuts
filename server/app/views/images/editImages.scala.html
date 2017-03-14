@@ -11,7 +11,7 @@
                     <div class="well">
                         @b3.file( saveImage("new-image"), '_label -> Messages("images.choose-image"), 'class -> "form-control" )
                         <!--<label for="new-image">@Messages("images.choose-image")</label>-->
-                        <!--<input id="new-image" name="new-image" type="file" />-->
+                        <!--<input id="new-image" name="new-image" type="name" />-->
                         <input type="submit" id='save-btn' value='@Messages("images.save-to-db")' disabled/>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
             <form method="POST" action="@CSRF(controllers.nuts.routes.Images.edit)">
                 <label for="rename">@Messages("images.rename-to")</label>
                 <input id="rename" name="rename" />
-                <select name="what" id="what">
+                <select name="what" id="what2rename">
                     <option>name</option>
                     <option>content</option>
                 </select>

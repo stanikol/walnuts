@@ -14,6 +14,9 @@ version := "1.0.0"
 
 resolvers += Resolver.jcenterRepo
 
+lazy val sassc = taskKey[Unit]("Sass C compile")
+
+
 lazy val serverDependencies = Seq(
   "com.mohiva" %% "play-silhouette" % "4.0.0",
   "com.mohiva" %% "play-silhouette-password-bcrypt" % "4.0.0",
@@ -28,8 +31,10 @@ lazy val serverDependencies = Seq(
   "com.adrianhurt" %% "play-bootstrap" % "1.0-P25-B3",
   //"com.mohiva" %% "play-silhouette-testkit" % "4.0.0" % "test",
   "org.postgresql" % "postgresql" % "9.4.1212",
-  "com.typesafe.play" %% "play-slick" % "2.0.0",
-  "com.typesafe.play" %% "play-slick-evolutions" % "2.0.0",
+//  "com.typesafe.play" %% "play-slick" % "2.0.0",
+//  "com.typesafe.play" %% "play-slick-evolutions" % "2.0.0",
+  "com.typesafe.play" %% "play-slick" % "2.0.2",
+  "com.typesafe.play" %% "play-slick-evolutions" % "2.0.2",
   "com.github.tototoshi" %% "slick-joda-mapper" % "2.2.0",
   "joda-time" % "joda-time" % "2.7",
   "org.joda" % "joda-convert" % "1.7",
@@ -38,9 +43,11 @@ lazy val serverDependencies = Seq(
   filters,
 //  jdbc,
   //
-  "com.sksamuel.scrimage" %% "scrimage-core" % "2.1.8"
+  "com.sksamuel.scrimage" %% "scrimage-core" % "2.1.8",
+  "com.typesafe.play" %% "play-slick" % "2.0.0"
 //  "com.sksamuel.scrimage" %% "scrimage-core" % "2.1.0"
-//  "com.github.tminglei" %% "slick-pg" % "0.15.0-M3"
+//  "com.github.tminglei" %% "slick-pg" % "0.15.0-M4"
+//  "com.github.tminglei" %% "slick-pg" % "0.12.1"
 )
 
 
@@ -106,3 +113,11 @@ lazy val sharedJs = shared.js
 
 // loads the server project at sbt startup
 onLoad in Global := (Command.process("project server", _: State)) compose (onLoad in Global).value
+
+
+sassc in Global := {
+  println("Compiling SASS ...")
+  val root = baseDirectory.in(server).value.getAbsolutePath
+  "sassc --help".!
+  println(root)
+}

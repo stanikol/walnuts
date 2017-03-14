@@ -51,6 +51,10 @@ CREATE TABLE oauth2_info (
   login_info_id INTEGER NOT NULL
 );
 
+--COPY password_info FROM '/Users/snc/scala/walnuts/password_info.csv';
+--COPY user_login_info FROM '/Users/snc/scala/walnuts/user_login_info.csv';
+--COPY users FROM '/Users/snc/scala/walnuts/users.csv';
+--COPY auth_tokens FROM '/Users/snc/scala/walnuts/auth_tokens.csv';
 
 # --- !Downs
 

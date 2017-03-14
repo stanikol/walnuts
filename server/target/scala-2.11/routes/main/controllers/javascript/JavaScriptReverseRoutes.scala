@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/snc/scala/walnuts/server/conf/routes
-// @DATE:Sun Feb 19 00:58:08 EET 2017
+// @DATE:Wed Mar 15 00:23:29 EET 2017
 
 import play.api.routing.JavaScriptReverseRoute
 import play.api.mvc.{ QueryStringBindable, PathBindable, Call, JavascriptLiteral }
@@ -27,8 +27,8 @@ package controllers.javascript {
     def at: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.WebJarAssets.at",
       """
-        function(file0) {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "webjars/" + (""" + implicitly[PathBindable[String]].javascriptUnbind + """)("file", file0)})
+        function(name0) {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "webjars/" + (""" + implicitly[PathBindable[String]].javascriptUnbind + """)("name", name0)})
         }
       """
     )
@@ -47,8 +47,8 @@ package controllers.javascript {
     def at: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.Assets.at",
       """
-        function(file1) {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "assets/" + (""" + implicitly[PathBindable[String]].javascriptUnbind + """)("file", file1)})
+        function(name1) {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "assets/" + (""" + implicitly[PathBindable[String]].javascriptUnbind + """)("name", name1)})
         }
       """
     )

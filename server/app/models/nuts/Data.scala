@@ -1,5 +1,7 @@
 package models.nuts
 
+import java.sql.Date
+
 import play.api.libs.functional.syntax.unlift
 import play.api.libs.json.{ Format, JsPath, Json }
 import play.api.libs.functional.syntax._
@@ -39,11 +41,12 @@ object Data {
     keywords: String,
     title: String,
     text: String,
-    description: String
+    description: String,
+    short_text: String
   )
 
   object Article {
-    def empty: Article = Article(None, "", "", "", "", "")
+    def empty: Article = Article(None, "", "", "", "", "", "")
   }
 
   // Category
@@ -51,7 +54,7 @@ object Data {
 
   // GoodsItem
   case class GoodsItem(id: Option[Long], category: String, title: String, description: String,
-    qnt: Int, price: BigDecimal, show: Int, image: String)
+    qnt: Int, price: BigDecimal, show: Int, image: Option[String])
   //  object GoodsItem {
 
   implicit val goodsItemJson: Format[GoodsItem] = Json.format[GoodsItem]
@@ -66,5 +69,7 @@ object Data {
   //      (JsPath \ "image").format[String]
   //    )(GoodsItem.apply _, unlift(GoodsItem.unapply))
   //  }
+
+  case class Comment(id: Option[Long], userID: String, articleID: Long, text: String, added: Date)
 
 }

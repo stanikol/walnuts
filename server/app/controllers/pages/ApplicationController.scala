@@ -10,6 +10,8 @@ import play.api.mvc.{ Action, AnyContent, Controller }
 import utils.auth.DefaultEnv
 
 import scala.concurrent.Future
+import models.nuts.Tables._
+import slick.driver.PostgresDriver.api._
 
 /**
  * The basic application controller.
@@ -20,6 +22,7 @@ import scala.concurrent.Future
  * @param webJarAssets The webjar assets implementation.
  */
 class ApplicationController @Inject() (
+  blogDAO: models.nuts.BlogDAO,
   val messagesApi: MessagesApi,
   silhouette: Silhouette[DefaultEnv],
   socialProviderRegistry: SocialProviderRegistry,
@@ -32,8 +35,12 @@ class ApplicationController @Inject() (
    *
    * @return The result to display.
    */
-  def index: Action[AnyContent] = silhouette.SecuredAction.async { implicit request =>
-    Future.successful(Ok(views.html.home(request.identity)))
+  def index: Action[AnyContent] = silhouette.UserAwareAction.async { implicit request =>
+    import play.api.libs.concurrent.Execution.Implicits._
+    blogDAO.getAllArticles.map { articles =>
+      Ok(views.html.blog.listArticles(request.identity, articles))
+    }
+    //    Future.successful()
   }
 
   /**

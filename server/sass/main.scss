@@ -1,0 +1,58 @@
+@import "./assets/stylesheets/_bootstrap.scss";
+
+.navbar {
+    padding: 5% 0;
+    background-image: url(/assets/images/header.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: auto;
+    margin-bottom: 0px;
+};
+
+.navbar-nav >li.empty-li>a {
+    width: 15em;
+    //height: 15em;
+}
+
+.navbar-nav >li.empty-li>a:hover {
+    background-color: transparent;
+}
+
+.navbar .navbar-nav {
+    display: inline-block;
+    float: none;
+}
+
+.navbar .navbar-collapse {
+    text-align: center;
+}
+
+.navbar-toggle .icon-bar{
+    background-color: #fff;
+};
+
+@media (min-width: 1200px) {
+    .container{
+        max-width: 1060px;
+    }
+}
+
+#container {
+    box-shadow: 0px 0px 16px #666;
+    padding: 0 10% 0 10%;
+};
+
+html {
+    background: url(/assets/images/bg.jpg);
+}
+
+body {
+    background: url(/assets/images/tree.png) center no-repeat;
+    background-attachment:fixed;
+};
+
+.starter-template{
+    width: 80%;
+}
+
+

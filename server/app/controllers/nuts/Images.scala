@@ -8,7 +8,7 @@ import com.sksamuel.scrimage.{ Image => Img }
 import controllers.WebJarAssets
 import models.nuts.Data.{ Image, ImageInfo }
 import models.nuts.FormsData._
-import models.nuts.Tables._
+//import models.nuts.Tables._
 import net.sf.ehcache.CacheManager
 import play.api.Logger
 import play.api.cache.Cached
@@ -16,14 +16,17 @@ import play.api.data._
 import play.api.i18n.{ I18nSupport, Messages, MessagesApi }
 import play.api.libs.concurrent.Execution.Implicits._
 import play.api.mvc._
-import slick.driver.PostgresDriver.api._
+//import play.api.libs.json._
+//import play.api.libs.functional.syntax._
+//import slick.driver.PostgresDriver.api._
 import utils.auth.{ DefaultEnv, Roles }
 
 import scala.concurrent.Future
 import scala.util.Try
 
 class Images @Inject() (
-  db: models.nuts.DBService,
+  //  db: models.nuts.DBService,
+  imagesDAO: models.nuts.ImagesDAO,
   cached: Cached,
   cacheMan: CacheManager,
   silhouette: Silhouette[DefaultEnv],
@@ -31,9 +34,10 @@ class Images @Inject() (
   implicit val webJarAssets: WebJarAssets
 )
     extends Controller with I18nSupport {
+  import imagesDAO._
 
   /**
-   * Save and resize image file. Uses [[saveImageForm]] as input params.
+   * Save and resize image name. Uses [[saveImageForm]] as input params.
    * @return Redirect with result message
    */
   def save() = silhouette.SecuredAction(Roles.Admin).async(parse.multipartFormData) { implicit request =>
@@ -67,7 +71,7 @@ class Images @Inject() (
                 Stream.continually(bis.read).takeWhile(_ != -1).map(_.toByte).toArray
             }
           )
-          db.runAsync(images += newImage).map { res =>
+          addNewImage(newImage).map { res =>
             val msg: String =
               "%s (%s) was saved to DB%s".format(filename, contentType, resizeTo.map { case (h, w) => s" and resized to $h x $w." }.getOrElse("."))
             Logger.info(msg)
@@ -85,16 +89,17 @@ class Images @Inject() (
 
   /**
    * Download file from DB.
-   * @param file - name of an image to download
+   * @param name - name of an image to download
    * @return Image bytes as [[BINARY]]
    */
-  def get(file: String) = cached(s"img/$file") {
+  def get(name: String) = cached(s"img/$name") {
     Action.async { _ =>
-      db.runAsync(images.filter(_.name === file).result.headOption).map {
+      //      db.runAsync(images.filter(_.name === name).result.headOption).map {
+      getImage(name).map {
         case Some(Image(_, _, bytes)) =>
           Ok(bytes).as(BINARY)
         case _ =>
-          val msq = s"\nError while getting image `$file`.\n"
+          val msq = s"\nError while getting image `$name`.\n"
           Logger.error(msq)
           BadRequest(Array.empty[Byte]).as("image/jpg")
       }
@@ -118,21 +123,20 @@ class Images @Inject() (
       imageEditForm => {
         if (imageEditForm.action == Messages("images.rename") && imageEditForm.rename.nonEmpty) {
           Logger.info(s"Renaming image from ${imageEditForm.imageChecked} to ${imageEditForm.rename} ...")
-          db.runAsync {
-            val shouldChangeName = imageEditForm.what.equals("name")
-            images.filter(_.name === imageEditForm.imageChecked)
-              .map(img => if (shouldChangeName) img.name else img.content)
-              .update(imageEditForm.rename)
-          }.map(result =>
-            Redirect(controllers.nuts.routes.Images.show()).flashing("success" -> s"Image '${imageEditForm.what}' of '${imageEditForm.imageChecked}' was renamed to '${imageEditForm.rename}'."))
+          updateImage(
+            imageEditForm.imageChecked,
+            imageEditForm.rename,
+            imageEditForm.rename
+          ).map(result => Redirect(controllers.nuts.routes.Images.show())
+            .flashing("success" -> s"Image '${imageEditForm.what}' of '${imageEditForm.imageChecked}' was renamed to '${imageEditForm.rename}'."))
         } else if (imageEditForm.action == Messages("images.delete")) {
           cacheMan.clearAll()
-          db.runAsync(images.filter(img => img.name === imageEditForm.imageChecked).delete)
-            .map { result =>
-              val msg = Messages("images.deleteMsg").format(imageEditForm.imageChecked)
-              Logger.info(msg)
-              Redirect(controllers.nuts.routes.Images.show()).flashing("success" -> msg)
-            }
+          //          db.runAsync(images.filter(img => img.name === imageEditForm.imageChecked).delete)
+          deleteImage(imageEditForm.imageChecked).map { result =>
+            val msg = Messages("images.deleteMsg").format(imageEditForm.imageChecked)
+            Logger.info(msg)
+            Redirect(controllers.nuts.routes.Images.show()).flashing("success" -> msg)
+          }
         } else
           badEditImageResult("")
       }
@@ -155,16 +159,7 @@ class Images @Inject() (
         findImagesForm.fill(FindImages.empty)
       )))
     } else {
-      val qry = images.filter { img =>
-        if (search.nonEmpty && what == "name")
-          img.name.like(search)
-        else if (search.nonEmpty && what == "content")
-          img.content.like(search)
-        else
-          LiteralColumn(false)
-      }.sortBy(_.name).result
-      Logger.info(s"Searching images with '$what' == '$search'. SQL: '${qry.statements.mkString("; ")}' ...")
-      db.runAsync(qry).map { images =>
+      findImages(search, what).map { images =>
         val findImages =
           if (search.nonEmpty && what.nonEmpty) FindImages(search, what)
           else FindImages.empty
@@ -193,6 +188,12 @@ class Images @Inject() (
       ))),
       ok => Future(Redirect(routes.Images.show(ok.search, ok.what)))
     )
+  }
+
+  def list = silhouette.SecuredAction(Roles.Admin).async { implicit request =>
+    listAllImageInfo.map { imagesAsJson =>
+      Ok(imagesAsJson)
+    }
   }
 
 }

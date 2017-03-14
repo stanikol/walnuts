@@ -60,3 +60,67 @@ compile
 clean
 compile
 ~ run
+clean
+~ run
+exit
+~ run
+twirlCompileTemplates
+~ run
+exit
+reload 
+sassc
+reload
+sassc
+reload
+sassc
+reload
+sassc
+baseDirectory.in(server).value.getAbsolutePath
+baseDirectory
+baseDirectory.value
+reload
+sassc
+reload
+sassc
+dependencyUpdates
+reload
+clean
+run
+reload
+compile
+dependencyUpdates
+reload
+compile
+~ run
+reload
+~ run
+exit
+~ run
+compile
+~ run
+clean
+twirlCompileTemplates
+compile
+~ run
+:q
+quit
+exit
+~ run
+exit
+~ run
+exit
+~ run
+exit
+~ run
+exit
+~ run
+compile
+reload
+clean
+compile
+exit
+~ run
+exit
+~ run
+exit
+~ run

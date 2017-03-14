@@ -72,6 +72,7 @@ object FormsData {
     "keywords" -> nonEmptyText,
     "title" -> nonEmptyText,
     "blog-text" -> nonEmptyText,
-    "description" -> nonEmptyText
+    "description" -> nonEmptyText,
+    "blog-short-text" -> nonEmptyText
   )(Article.apply)(Article.unapply))
 }

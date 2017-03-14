@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/snc/scala/walnuts/server/conf/routes
-// @DATE:Sun Feb 19 00:58:08 EET 2017
+// @DATE:Wed Mar 15 00:23:29 EET 2017
 
 import play.api.routing.JavaScriptReverseRoute
 import play.api.mvc.{ QueryStringBindable, PathBindable, Call, JavascriptLiteral }
@@ -23,7 +23,7 @@ package controllers.nuts.javascript {
     }
 
   
-    // @LINE:35
+    // @LINE:36
     def edit: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.nuts.Images.edit",
       """
@@ -43,6 +43,16 @@ package controllers.nuts.javascript {
       """
     )
   
+    // @LINE:35
+    def list: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.nuts.Images.list",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "img/list"})
+        }
+      """
+    )
+  
     // @LINE:33
     def show: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.nuts.Images.show",
@@ -53,7 +63,7 @@ package controllers.nuts.javascript {
       """
     )
   
-    // @LINE:36
+    // @LINE:37
     def save: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.nuts.Images.save",
       """
@@ -63,7 +73,7 @@ package controllers.nuts.javascript {
       """
     )
   
-    // @LINE:37
+    // @LINE:38
     def get: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.nuts.Images.get",
       """
@@ -75,7 +85,7 @@ package controllers.nuts.javascript {
   
   }
 
-  // @LINE:42
+  // @LINE:43
   class ReverseBlog(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -83,7 +93,7 @@ package controllers.nuts.javascript {
     }
 
   
-    // @LINE:46
+    // @LINE:47
     def onSubmit: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.nuts.Blog.onSubmit",
       """
@@ -93,7 +103,7 @@ package controllers.nuts.javascript {
       """
     )
   
-    // @LINE:42
+    // @LINE:43
     def showAllArticles: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.nuts.Blog.showAllArticles",
       """
@@ -103,7 +113,7 @@ package controllers.nuts.javascript {
       """
     )
   
-    // @LINE:43
+    // @LINE:44
     def create: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.nuts.Blog.create",
       """
@@ -113,7 +123,7 @@ package controllers.nuts.javascript {
       """
     )
   
-    // @LINE:45
+    // @LINE:46
     def edit: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.nuts.Blog.edit",
       """
@@ -123,7 +133,7 @@ package controllers.nuts.javascript {
       """
     )
   
-    // @LINE:44
+    // @LINE:45
     def article: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.nuts.Blog.article",
       """

@@ -4,65 +4,59 @@ package controllers.nuts
  * Created by stanikol on 1/29/17.
  */
 
-import java.io.{ BufferedInputStream, FileInputStream, FileOutputStream }
 import javax.inject._
 
 import com.mohiva.play.silhouette.api.Silhouette
 import controllers.WebJarAssets
-import models.nuts.Data.Article
-import models.nuts.Tables._
+import models.nuts.{ BlogDAO, CommentsDAO }
+import models.nuts.Data.{ Article, Comment }
 import models.nuts.FormsData._
+import models.nuts.Tables.Comments
 import play.api.i18n.{ I18nSupport, Messages }
-import play.api.libs.json.JsValue
-import slick.driver.PostgresDriver.api._
-import utils.auth.{ Access, WithRole }
-//import models.nuts.MyPostgresDriver.api._
-import play.api.mvc._
+import utils.auth.Roles.Admin
 import play.api.Logger
-import play.api.cache.{ CacheApi, Cached }
-import play.api.data._
-import play.api.data.Forms._
-import play.api.libs.concurrent.Execution.Implicits._
-import com.sksamuel.scrimage.{ Image => Img }
-import models.nuts.Data.{ Image, ImageInfo }
-import net.sf.ehcache.{ CacheManager, Ehcache }
 import play.api.i18n.MessagesApi
-import play.api.libs.json.Json
-import play.filters.csrf.CSRF
-import play.filters.csrf.CSRF.Token
-import play.twirl.api.Html
+import play.api.libs.concurrent.Execution.Implicits._
+import play.api.mvc._
 import utils.auth.DefaultEnv
 
 import scala.concurrent.Future
 
 class Blog @Inject() (
-    db: models.nuts.DBService,
-    //         cached: Cached,
-    //         cacheMan: CacheManager,
+    blogDAO: BlogDAO,
+    commentsDAO: CommentsDAO,
     silhouette: Silhouette[DefaultEnv],
     val messagesApi: MessagesApi,
     implicit val webJarAssets: WebJarAssets
 ) extends Controller with I18nSupport {
 
+  import blogDAO._, commentsDAO._
+
   def showAllArticles = silhouette.UserAwareAction.async { implicit request =>
-    db.runAsync(articles.sortBy(_.sort_order.desc).result).map { articles =>
+    getAllArticles.map { articles =>
       Ok(views.html.blog.listArticles(request.identity, articles))
     }
-    //    Future(Ok(""))
   }
 
   def article(id: Long) = silhouette.UserAwareAction.async { implicit request =>
-    Logger.error(s"Article $id")
-    db.runAsync(articles.filter(_.id === id).result.head).map(article =>
-      Ok(views.html.blog.showArticle(request.identity, article)))
+    Logger.info(Messages("Retrieving article #%d ...".format(id)))
+    val articleWithComments: Future[Tuple2[Option[Article], Seq[Comment]]] =
+      for (
+        a <- getArticle(id);
+        c <- getComments(a.get.id.get) if a.isDefined
+      ) yield (a, c)
+    articleWithComments map {
+      case (Some(article), comments) => Ok(views.html.blog.showArticle(request.identity, article, comments))
+      case _ => BadRequest(Messages(s"Article %d can not be found !".format(id)))
+    }
   }
 
-  def create() = silhouette.SecuredAction(Access("admin")) { implicit request =>
+  def create() = silhouette.SecuredAction(Admin) { implicit request =>
     Ok(views.html.blog.editArticle(request.identity, articleForm.fill(Article.empty)))
   }
 
-  def edit(id: Long) = silhouette.SecuredAction(Access("admin")).async { implicit request =>
-    db.runAsync(articles.filter(_.id === id).result.headOption).map {
+  def edit(id: Long) = silhouette.SecuredAction(Admin).async { implicit request =>
+    getArticle(id).map {
       case someArticle @ Some(article) =>
         Ok(views.html.blog.editArticle(request.identity, articleForm.fill(article)))
       case _ =>
@@ -71,7 +65,7 @@ class Blog @Inject() (
     }
   }
 
-  def onSubmit() = silhouette.SecuredAction(Access("admin")).async { implicit request =>
+  def onSubmit() = silhouette.SecuredAction(Admin).async { implicit request =>
     val action: Seq[String] = request.body.asFormUrlEncoded.get("action")
     articleForm.bindFromRequest().fold(
       errorForm => {
@@ -85,13 +79,13 @@ class Blog @Inject() (
         Logger.info(s"Going to ${action.head} $article ...")
         action match {
           case Seq("new") =>
-            db.runAsync(insertArticle += article).map { newArticle =>
+            addNewArticle(article).map { newArticle =>
               val id = newArticle.id.get //OrElse(newArticle)
               Redirect(controllers.nuts.routes.Blog.article(id))
                 .flashing("success" -> Messages("New article #%s is created.").format(id))
             }
           case Seq("save") if article.id.isDefined =>
-            db.runAsync(articles.filter(_.id === article.id).update(article)).map { updatedRows =>
+            updateArticle(article).map { updatedRows =>
               val id = article.id.get
               if (updatedRows == 1)
                 Redirect(controllers.nuts.routes.Blog.article(id))
@@ -102,7 +96,7 @@ class Blog @Inject() (
             }
           case Seq("delete") if article.id.isDefined =>
             Logger.warn(s"Going to delete article ${article.id.get} ...")
-            db.runAsync(articles.filter(_.id === article.id.get).delete).map { rowsDeleted =>
+            deleteArticle(article.id.get).map { rowsDeleted =>
               if (rowsDeleted >= 1) {
                 val msg = Messages("editArticle.article-deleted").format(rowsDeleted, article.id.get)
                 Logger.warn(msg)

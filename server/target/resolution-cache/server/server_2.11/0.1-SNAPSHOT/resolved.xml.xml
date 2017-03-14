@@ -4,7 +4,7 @@
 		module="server_2.11"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20170218234330"
+		publication="20170311022615"
 	>
 		<description>
 		server
@@ -53,8 +53,8 @@
 		<dependency org="com.enragedginger" name="akka-quartz-scheduler_2.11" rev="1.5.0-akka-2.4.x" conf="compile->default(compile)"/>
 		<dependency org="com.adrianhurt" name="play-bootstrap_2.11" rev="1.0-P25-B3" conf="compile->default(compile)"/>
 		<dependency org="org.postgresql" name="postgresql" rev="9.4.1212" conf="compile->default(compile)"/>
-		<dependency org="com.typesafe.play" name="play-slick_2.11" rev="2.0.0" conf="compile->default(compile)"/>
-		<dependency org="com.typesafe.play" name="play-slick-evolutions_2.11" rev="2.0.0" conf="compile->default(compile)"/>
+		<dependency org="com.typesafe.play" name="play-slick_2.11" rev="2.0.2" conf="compile->default(compile)"/>
+		<dependency org="com.typesafe.play" name="play-slick-evolutions_2.11" rev="2.0.2" conf="compile->default(compile)"/>
 		<dependency org="com.github.tototoshi" name="slick-joda-mapper_2.11" rev="2.2.0" conf="compile->default(compile)"/>
 		<dependency org="joda-time" name="joda-time" rev="2.7" conf="compile->default(compile)"/>
 		<dependency org="org.joda" name="joda-convert" rev="1.7" conf="compile->default(compile)"/>
@@ -62,5 +62,6 @@
 		<dependency org="com.typesafe.play" name="play-cache_2.11" rev="2.5.4" conf="compile->default(compile)"/>
 		<dependency org="com.typesafe.play" name="filters-helpers_2.11" rev="2.5.4" conf="compile->default(compile)"/>
 		<dependency org="com.sksamuel.scrimage" name="scrimage-core_2.11" rev="2.1.8" conf="compile->default(compile)"/>
+		<dependency org="com.typesafe.play" name="play-slick_2.11" rev="2.0.0" conf="compile->default(compile)"/>
 	</dependencies>
 </ivy-module>

@@ -15,15 +15,15 @@ object showArticle_Scope0 {
   import models.nuts.Data._
   import models.nuts.FormsData._
 
-  class showArticle extends BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable, Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with play.twirl.api.Template5[Option[models.User], models.nuts.Data.Article, RequestHeader, Messages, WebJarAssets, play.twirl.api.HtmlFormat.Appendable] {
+  class showArticle extends BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable, Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with play.twirl.api.Template6[Option[models.User], Article, Seq[Comment], RequestHeader, Messages, WebJarAssets, play.twirl.api.HtmlFormat.Appendable] {
 
     /**/
-    def apply /*2.2*/ (user: Option[models.User], article: models.nuts.Data.Article)(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets): play.twirl.api.HtmlFormat.Appendable = {
+    def apply /*2.2*/ (user: Option[models.User], article: Article, comments: Seq[Comment])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets): play.twirl.api.HtmlFormat.Appendable = {
       _display_ {
         {
           import helper.CSRF
 
-          Seq[Any](format.raw /*2.145*/ ("""
+          Seq[Any](format.raw /*2.152*/ ("""
 
 """), format.raw /*5.1*/ ("""
 """), _display_( /*6.2*/ main(article.title, user, article.keywords, article.description) /*6.66*/ {
@@ -54,8 +54,16 @@ object showArticle_Scope0 {
                    class="form-control" disabled/>
         </div>
     </div>
+    """), _display_( /*38.6*/ for (comment <- comments) yield /*38.28*/ {
+              _display_(Seq[Any](format.raw /*38.29*/ ("""
+        """), format.raw /*39.9*/ ("""<hr>
+        """), _display_( /*40.10*/ comment /*40.17*/ .userID), format.raw /*40.24*/ (""" """), _display_( /*40.26*/ comment /*40.33*/ .added), format.raw /*40.39*/ ("""<br>
+        """), _display_( /*41.10*/ comment /*41.17*/ .text), format.raw /*41.22*/ ("""
+        """), format.raw /*42.9*/ ("""<hr>
+    """)))
+            }), format.raw /*43.6*/ ("""
 """)))
-          }), format.raw /*38.2*/ ("""
+          }), format.raw /*44.2*/ ("""
 
 
 
@@ -64,9 +72,9 @@ object showArticle_Scope0 {
       }
     }
 
-    def render(user: Option[models.User], article: models.nuts.Data.Article, request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets): play.twirl.api.HtmlFormat.Appendable = apply(user, article)(request, messages, webJarAssets)
+    def render(user: Option[models.User], article: Article, comments: Seq[Comment], request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets): play.twirl.api.HtmlFormat.Appendable = apply(user, article, comments)(request, messages, webJarAssets)
 
-    def f: ((Option[models.User], models.nuts.Data.Article) => (RequestHeader, Messages, WebJarAssets) => play.twirl.api.HtmlFormat.Appendable) = (user, article) => (request, messages, webJarAssets) => apply(user, article)(request, messages, webJarAssets)
+    def f: ((Option[models.User], Article, Seq[Comment]) => (RequestHeader, Messages, WebJarAssets) => play.twirl.api.HtmlFormat.Appendable) = (user, article, comments) => (request, messages, webJarAssets) => apply(user, article, comments)(request, messages, webJarAssets)
 
     def ref: this.type = this
 
@@ -78,10 +86,10 @@ object showArticle_Scope0 {
 object showArticle extends showArticle_Scope0.showArticle
 /*
                   -- GENERATED --
-                  DATE: Sat Feb 18 23:36:13 EET 2017
+                  DATE: Sat Mar 11 02:26:19 EET 2017
                   SOURCE: /Users/snc/scala/walnuts/server/app/views/blog/showArticle.scala.html
-                  HASH: 342e2b654babc0f8ffb8b08b425d34fdd6e1d2cf
-                  MATRIX: 675->2|932->145|960->167|987->169|1059->233|1097->234|1128->239|1164->249|1183->260|1236->293|1278->309|1314->325|1360->593|1392->598|1462->641|1509->667|1639->770|1689->799|1831->913|1868->928|2015->1048|2071->1083|2209->1193|2252->1214|2347->1282|2386->1300|2510->1397|2563->1429|2668->1507|2707->1525|2894->1685|2949->1719|3058->1801|3099->1821|3209->1901
-                  LINES: 22->2|27->2|29->5|30->6|30->6|30->6|31->7|31->7|31->7|31->7|32->8|32->8|34->15|35->16|36->17|36->17|38->19|38->19|39->20|39->20|42->23|42->23|43->24|43->24|45->26|45->26|47->28|47->28|48->29|48->29|52->33|52->33|53->34|53->34|57->38
+                  HASH: 04ed7fa1bcfdd4802dd0c1b10d507db07d88920a
+                  MATRIX: 671->2|935->152|963->174|990->176|1062->240|1100->241|1131->246|1167->256|1186->267|1239->300|1281->316|1317->332|1363->600|1395->605|1465->648|1512->674|1642->777|1692->806|1834->920|1871->935|2018->1055|2074->1090|2212->1200|2255->1221|2350->1289|2389->1307|2513->1404|2566->1436|2671->1514|2710->1532|2897->1692|2952->1726|3061->1808|3102->1828|3212->1912|3250->1934|3289->1935|3325->1944|3366->1958|3382->1965|3410->1972|3439->1974|3455->1981|3482->1987|3523->2001|3539->2008|3565->2013|3601->2022|3641->2032|3673->2034
+                  LINES: 22->2|27->2|29->5|30->6|30->6|30->6|31->7|31->7|31->7|31->7|32->8|32->8|34->15|35->16|36->17|36->17|38->19|38->19|39->20|39->20|42->23|42->23|43->24|43->24|45->26|45->26|47->28|47->28|48->29|48->29|52->33|52->33|53->34|53->34|57->38|57->38|57->38|58->39|59->40|59->40|59->40|59->40|59->40|59->40|60->41|60->41|60->41|61->42|62->43|63->44
                   -- GENERATED --
               */

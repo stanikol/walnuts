@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/snc/scala/walnuts/server/conf/routes
-// @DATE:Wed Mar 15 00:23:29 EET 2017
+// @DATE:Mon Mar 20 14:43:04 EET 2017
 
 package router
 
@@ -17,65 +17,69 @@ import _root_.utils.route.Binders._
 class Routes(
   override val errorHandler: play.api.http.HttpErrorHandler, 
   // @LINE:6
-  ApplicationController_2: controllers.pages.ApplicationController,
+  ApplicationController_3: controllers.pages.ApplicationController,
   // @LINE:8
-  SocialAuthController_3: controllers.auth.SocialAuthController,
+  SocialAuthController_4: controllers.auth.SocialAuthController,
   // @LINE:10
-  SignUpController_7: controllers.auth.SignUpController,
+  SignUpController_8: controllers.auth.SignUpController,
   // @LINE:13
-  SignInController_4: controllers.auth.SignInController,
+  SignInController_5: controllers.auth.SignInController,
   // @LINE:16
   ForgotPasswordController_0: controllers.auth.ForgotPasswordController,
   // @LINE:18
-  ResetPasswordController_11: controllers.auth.ResetPasswordController,
+  ResetPasswordController_12: controllers.auth.ResetPasswordController,
   // @LINE:20
-  ChangePasswordController_10: controllers.auth.ChangePasswordController,
+  ChangePasswordController_11: controllers.auth.ChangePasswordController,
   // @LINE:23
-  ActivateAccountController_1: controllers.auth.ActivateAccountController,
+  ActivateAccountController_2: controllers.auth.ActivateAccountController,
   // @LINE:27
-  Assets_8: controllers.Assets,
+  Assets_9: controllers.Assets,
   // @LINE:28
-  WebJarAssets_9: controllers.WebJarAssets,
+  WebJarAssets_10: controllers.WebJarAssets,
   // @LINE:33
-  Images_5: controllers.nuts.Images,
+  Images_6: controllers.nuts.Images,
   // @LINE:43
-  Blog_6: controllers.nuts.Blog,
+  Blog_7: controllers.nuts.Blog,
+  // @LINE:52
+  Comments_1: controllers.nuts.Comments,
   val prefix: String
 ) extends GeneratedRouter {
 
    @javax.inject.Inject()
    def this(errorHandler: play.api.http.HttpErrorHandler,
     // @LINE:6
-    ApplicationController_2: controllers.pages.ApplicationController,
+    ApplicationController_3: controllers.pages.ApplicationController,
     // @LINE:8
-    SocialAuthController_3: controllers.auth.SocialAuthController,
+    SocialAuthController_4: controllers.auth.SocialAuthController,
     // @LINE:10
-    SignUpController_7: controllers.auth.SignUpController,
+    SignUpController_8: controllers.auth.SignUpController,
     // @LINE:13
-    SignInController_4: controllers.auth.SignInController,
+    SignInController_5: controllers.auth.SignInController,
     // @LINE:16
     ForgotPasswordController_0: controllers.auth.ForgotPasswordController,
     // @LINE:18
-    ResetPasswordController_11: controllers.auth.ResetPasswordController,
+    ResetPasswordController_12: controllers.auth.ResetPasswordController,
     // @LINE:20
-    ChangePasswordController_10: controllers.auth.ChangePasswordController,
+    ChangePasswordController_11: controllers.auth.ChangePasswordController,
     // @LINE:23
-    ActivateAccountController_1: controllers.auth.ActivateAccountController,
+    ActivateAccountController_2: controllers.auth.ActivateAccountController,
     // @LINE:27
-    Assets_8: controllers.Assets,
+    Assets_9: controllers.Assets,
     // @LINE:28
-    WebJarAssets_9: controllers.WebJarAssets,
+    WebJarAssets_10: controllers.WebJarAssets,
     // @LINE:33
-    Images_5: controllers.nuts.Images,
+    Images_6: controllers.nuts.Images,
     // @LINE:43
-    Blog_6: controllers.nuts.Blog
-  ) = this(errorHandler, ApplicationController_2, SocialAuthController_3, SignUpController_7, SignInController_4, ForgotPasswordController_0, ResetPasswordController_11, ChangePasswordController_10, ActivateAccountController_1, Assets_8, WebJarAssets_9, Images_5, Blog_6, "/")
+    Blog_7: controllers.nuts.Blog,
+    // @LINE:52
+    Comments_1: controllers.nuts.Comments
+  ) = this(errorHandler, ApplicationController_3, SocialAuthController_4, SignUpController_8, SignInController_5, ForgotPasswordController_0, ResetPasswordController_12, ChangePasswordController_11, ActivateAccountController_2, Assets_9, WebJarAssets_10, Images_6, Blog_7, Comments_1, "/")
 
   import ReverseRouteContext.empty
 
   def withPrefix(prefix: String): Routes = {
     router.RoutesPrefix.setPrefix(prefix)
-    new Routes(errorHandler, ApplicationController_2, SocialAuthController_3, SignUpController_7, SignInController_4, ForgotPasswordController_0, ResetPasswordController_11, ChangePasswordController_10, ActivateAccountController_1, Assets_8, WebJarAssets_9, Images_5, Blog_6, prefix)
+    new Routes(errorHandler, ApplicationController_3, SocialAuthController_4, SignUpController_8, SignInController_5, ForgotPasswordController_0, ResetPasswordController_12, ChangePasswordController_11, ActivateAccountController_2, Assets_9, WebJarAssets_10, Images_6, Blog_7, Comments_1, prefix)
   }
 
   private[this] val defaultPrefix: String = {
@@ -106,11 +110,15 @@ class Routes(
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """img/edit""", """controllers.nuts.Images.edit"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """img/save""", """controllers.nuts.Images.save"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """img/""" + "$" + """name<[^/]+>""", """controllers.nuts.Images.get(name:String)"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """blog""", """controllers.nuts.Blog.showAllArticles"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """index.php/article""", """controllers.nuts.Blog.showAllArticles"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """index.php/article/view/id/""" + "$" + """id<[^/]+>""", """controllers.nuts.Blog.article(id:Long)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """blog/new""", """controllers.nuts.Blog.create"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """blog/""" + "$" + """id<[^/]+>""", """controllers.nuts.Blog.article(id:Long)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """blog/""" + "$" + """id<[^/]+>/edit""", """controllers.nuts.Blog.edit(id:Long)"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """blog/submit""", """controllers.nuts.Blog.onSubmit"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """comments/add""", """controllers.nuts.Comments.addComment"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """comments/editComment""", """controllers.nuts.Comments.editComment"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """comments/admin""", """controllers.nuts.Comments.commentsAdmin"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """comments/loginOrSignUp""", """controllers.nuts.Comments.loginOrSignUp"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
     case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
@@ -123,7 +131,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix)))
   )
   private[this] lazy val controllers_pages_ApplicationController_index0_invoker = createInvoker(
-    ApplicationController_2.index,
+    ApplicationController_3.index,
     HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.pages.ApplicationController",
@@ -140,7 +148,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("signOut")))
   )
   private[this] lazy val controllers_pages_ApplicationController_signOut1_invoker = createInvoker(
-    ApplicationController_2.signOut,
+    ApplicationController_3.signOut,
     HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.pages.ApplicationController",
@@ -157,7 +165,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("authenticate/"), DynamicPart("provider", """[^/]+""",true)))
   )
   private[this] lazy val controllers_auth_SocialAuthController_authenticate2_invoker = createInvoker(
-    SocialAuthController_3.authenticate(fakeValue[String]),
+    SocialAuthController_4.authenticate(fakeValue[String]),
     HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.auth.SocialAuthController",
@@ -174,7 +182,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("signUp")))
   )
   private[this] lazy val controllers_auth_SignUpController_view3_invoker = createInvoker(
-    SignUpController_7.view,
+    SignUpController_8.view,
     HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.auth.SignUpController",
@@ -191,7 +199,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("signUp")))
   )
   private[this] lazy val controllers_auth_SignUpController_submit4_invoker = createInvoker(
-    SignUpController_7.submit,
+    SignUpController_8.submit,
     HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.auth.SignUpController",
@@ -208,7 +216,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("signIn")))
   )
   private[this] lazy val controllers_auth_SignInController_view5_invoker = createInvoker(
-    SignInController_4.view,
+    SignInController_5.view,
     HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.auth.SignInController",
@@ -225,7 +233,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("signIn")))
   )
   private[this] lazy val controllers_auth_SignInController_submit6_invoker = createInvoker(
-    SignInController_4.submit,
+    SignInController_5.submit,
     HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.auth.SignInController",
@@ -276,7 +284,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("password/reset/"), DynamicPart("token", """[^/]+""",true)))
   )
   private[this] lazy val controllers_auth_ResetPasswordController_view9_invoker = createInvoker(
-    ResetPasswordController_11.view(fakeValue[java.util.UUID]),
+    ResetPasswordController_12.view(fakeValue[java.util.UUID]),
     HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.auth.ResetPasswordController",
@@ -293,7 +301,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("password/reset/"), DynamicPart("token", """[^/]+""",true)))
   )
   private[this] lazy val controllers_auth_ResetPasswordController_submit10_invoker = createInvoker(
-    ResetPasswordController_11.submit(fakeValue[java.util.UUID]),
+    ResetPasswordController_12.submit(fakeValue[java.util.UUID]),
     HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.auth.ResetPasswordController",
@@ -310,7 +318,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("password/change")))
   )
   private[this] lazy val controllers_auth_ChangePasswordController_view11_invoker = createInvoker(
-    ChangePasswordController_10.view,
+    ChangePasswordController_11.view,
     HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.auth.ChangePasswordController",
@@ -327,7 +335,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("password/change")))
   )
   private[this] lazy val controllers_auth_ChangePasswordController_submit12_invoker = createInvoker(
-    ChangePasswordController_10.submit,
+    ChangePasswordController_11.submit,
     HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.auth.ChangePasswordController",
@@ -344,7 +352,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("account/email/"), DynamicPart("email", """[^/]+""",true)))
   )
   private[this] lazy val controllers_auth_ActivateAccountController_send13_invoker = createInvoker(
-    ActivateAccountController_1.send(fakeValue[String]),
+    ActivateAccountController_2.send(fakeValue[String]),
     HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.auth.ActivateAccountController",
@@ -361,7 +369,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("account/activate/"), DynamicPart("token", """[^/]+""",true)))
   )
   private[this] lazy val controllers_auth_ActivateAccountController_activate14_invoker = createInvoker(
-    ActivateAccountController_1.activate(fakeValue[java.util.UUID]),
+    ActivateAccountController_2.activate(fakeValue[java.util.UUID]),
     HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.auth.ActivateAccountController",
@@ -378,7 +386,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("assets/"), DynamicPart("name", """.+""",false)))
   )
   private[this] lazy val controllers_Assets_at15_invoker = createInvoker(
-    Assets_8.at(fakeValue[String], fakeValue[String]),
+    Assets_9.at(fakeValue[String], fakeValue[String]),
     HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.Assets",
@@ -395,7 +403,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("webjars/"), DynamicPart("name", """.+""",false)))
   )
   private[this] lazy val controllers_WebJarAssets_at16_invoker = createInvoker(
-    WebJarAssets_9.at(fakeValue[String]),
+    WebJarAssets_10.at(fakeValue[String]),
     HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.WebJarAssets",
@@ -412,7 +420,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("img/show")))
   )
   private[this] lazy val controllers_nuts_Images_show17_invoker = createInvoker(
-    Images_5.show(fakeValue[String], fakeValue[String]),
+    Images_6.show(fakeValue[String], fakeValue[String]),
     HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.nuts.Images",
@@ -431,7 +439,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("img/find")))
   )
   private[this] lazy val controllers_nuts_Images_find18_invoker = createInvoker(
-    Images_5.find,
+    Images_6.find,
     HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.nuts.Images",
@@ -448,7 +456,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("img/list")))
   )
   private[this] lazy val controllers_nuts_Images_list19_invoker = createInvoker(
-    Images_5.list,
+    Images_6.list,
     HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.nuts.Images",
@@ -465,7 +473,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("img/edit")))
   )
   private[this] lazy val controllers_nuts_Images_edit20_invoker = createInvoker(
-    Images_5.edit,
+    Images_6.edit,
     HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.nuts.Images",
@@ -482,7 +490,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("img/save")))
   )
   private[this] lazy val controllers_nuts_Images_save21_invoker = createInvoker(
-    Images_5.save,
+    Images_6.save,
     HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.nuts.Images",
@@ -499,7 +507,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("img/"), DynamicPart("name", """[^/]+""",true)))
   )
   private[this] lazy val controllers_nuts_Images_get22_invoker = createInvoker(
-    Images_5.get(fakeValue[String]),
+    Images_6.get(fakeValue[String]),
     HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.nuts.Images",
@@ -513,10 +521,10 @@ class Routes(
 
   // @LINE:43
   private[this] lazy val controllers_nuts_Blog_showAllArticles23_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("blog")))
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("index.php/article")))
   )
   private[this] lazy val controllers_nuts_Blog_showAllArticles23_invoker = createInvoker(
-    Blog_6.showAllArticles,
+    Blog_7.showAllArticles,
     HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.nuts.Blog",
@@ -526,16 +534,33 @@ class Routes(
       """############################################
            Blog                            #
 ############################################""",
-      this.prefix + """blog"""
+      this.prefix + """index.php/article"""
     )
   )
 
   // @LINE:44
-  private[this] lazy val controllers_nuts_Blog_create24_route = Route("GET",
+  private[this] lazy val controllers_nuts_Blog_article24_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("index.php/article/view/id/"), DynamicPart("id", """[^/]+""",true)))
+  )
+  private[this] lazy val controllers_nuts_Blog_article24_invoker = createInvoker(
+    Blog_7.article(fakeValue[Long]),
+    HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.nuts.Blog",
+      "article",
+      Seq(classOf[Long]),
+      "GET",
+      """""",
+      this.prefix + """index.php/article/view/id/""" + "$" + """id<[^/]+>"""
+    )
+  )
+
+  // @LINE:45
+  private[this] lazy val controllers_nuts_Blog_create25_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("blog/new")))
   )
-  private[this] lazy val controllers_nuts_Blog_create24_invoker = createInvoker(
-    Blog_6.create,
+  private[this] lazy val controllers_nuts_Blog_create25_invoker = createInvoker(
+    Blog_7.create,
     HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.nuts.Blog",
@@ -547,29 +572,12 @@ class Routes(
     )
   )
 
-  // @LINE:45
-  private[this] lazy val controllers_nuts_Blog_article25_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("blog/"), DynamicPart("id", """[^/]+""",true)))
-  )
-  private[this] lazy val controllers_nuts_Blog_article25_invoker = createInvoker(
-    Blog_6.article(fakeValue[Long]),
-    HandlerDef(this.getClass.getClassLoader,
-      "router",
-      "controllers.nuts.Blog",
-      "article",
-      Seq(classOf[Long]),
-      "GET",
-      """""",
-      this.prefix + """blog/""" + "$" + """id<[^/]+>"""
-    )
-  )
-
   // @LINE:46
   private[this] lazy val controllers_nuts_Blog_edit26_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("blog/"), DynamicPart("id", """[^/]+""",true), StaticPart("/edit")))
   )
   private[this] lazy val controllers_nuts_Blog_edit26_invoker = createInvoker(
-    Blog_6.edit(fakeValue[Long]),
+    Blog_7.edit(fakeValue[Long]),
     HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.nuts.Blog",
@@ -586,7 +594,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("blog/submit")))
   )
   private[this] lazy val controllers_nuts_Blog_onSubmit27_invoker = createInvoker(
-    Blog_6.onSubmit,
+    Blog_7.onSubmit,
     HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.nuts.Blog",
@@ -598,49 +606,119 @@ class Routes(
     )
   )
 
+  // @LINE:52
+  private[this] lazy val controllers_nuts_Comments_addComment28_route = Route("POST",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("comments/add")))
+  )
+  private[this] lazy val controllers_nuts_Comments_addComment28_invoker = createInvoker(
+    Comments_1.addComment,
+    HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.nuts.Comments",
+      "addComment",
+      Nil,
+      "POST",
+      """############################################
+           Comments                        #
+############################################""",
+      this.prefix + """comments/add"""
+    )
+  )
+
+  // @LINE:53
+  private[this] lazy val controllers_nuts_Comments_editComment29_route = Route("POST",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("comments/editComment")))
+  )
+  private[this] lazy val controllers_nuts_Comments_editComment29_invoker = createInvoker(
+    Comments_1.editComment,
+    HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.nuts.Comments",
+      "editComment",
+      Nil,
+      "POST",
+      """""",
+      this.prefix + """comments/editComment"""
+    )
+  )
+
+  // @LINE:54
+  private[this] lazy val controllers_nuts_Comments_commentsAdmin30_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("comments/admin")))
+  )
+  private[this] lazy val controllers_nuts_Comments_commentsAdmin30_invoker = createInvoker(
+    Comments_1.commentsAdmin,
+    HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.nuts.Comments",
+      "commentsAdmin",
+      Nil,
+      "GET",
+      """""",
+      this.prefix + """comments/admin"""
+    )
+  )
+
+  // @LINE:55
+  private[this] lazy val controllers_nuts_Comments_loginOrSignUp31_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("comments/loginOrSignUp")))
+  )
+  private[this] lazy val controllers_nuts_Comments_loginOrSignUp31_invoker = createInvoker(
+    Comments_1.loginOrSignUp,
+    HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.nuts.Comments",
+      "loginOrSignUp",
+      Nil,
+      "GET",
+      """""",
+      this.prefix + """comments/loginOrSignUp"""
+    )
+  )
+
 
   def routes: PartialFunction[RequestHeader, Handler] = {
   
     // @LINE:6
     case controllers_pages_ApplicationController_index0_route(params) =>
       call { 
-        controllers_pages_ApplicationController_index0_invoker.call(ApplicationController_2.index)
+        controllers_pages_ApplicationController_index0_invoker.call(ApplicationController_3.index)
       }
   
     // @LINE:7
     case controllers_pages_ApplicationController_signOut1_route(params) =>
       call { 
-        controllers_pages_ApplicationController_signOut1_invoker.call(ApplicationController_2.signOut)
+        controllers_pages_ApplicationController_signOut1_invoker.call(ApplicationController_3.signOut)
       }
   
     // @LINE:8
     case controllers_auth_SocialAuthController_authenticate2_route(params) =>
       call(params.fromPath[String]("provider", None)) { (provider) =>
-        controllers_auth_SocialAuthController_authenticate2_invoker.call(SocialAuthController_3.authenticate(provider))
+        controllers_auth_SocialAuthController_authenticate2_invoker.call(SocialAuthController_4.authenticate(provider))
       }
   
     // @LINE:10
     case controllers_auth_SignUpController_view3_route(params) =>
       call { 
-        controllers_auth_SignUpController_view3_invoker.call(SignUpController_7.view)
+        controllers_auth_SignUpController_view3_invoker.call(SignUpController_8.view)
       }
   
     // @LINE:11
     case controllers_auth_SignUpController_submit4_route(params) =>
       call { 
-        controllers_auth_SignUpController_submit4_invoker.call(SignUpController_7.submit)
+        controllers_auth_SignUpController_submit4_invoker.call(SignUpController_8.submit)
       }
   
     // @LINE:13
     case controllers_auth_SignInController_view5_route(params) =>
       call { 
-        controllers_auth_SignInController_view5_invoker.call(SignInController_4.view)
+        controllers_auth_SignInController_view5_invoker.call(SignInController_5.view)
       }
   
     // @LINE:14
     case controllers_auth_SignInController_submit6_route(params) =>
       call { 
-        controllers_auth_SignInController_submit6_invoker.call(SignInController_4.submit)
+        controllers_auth_SignInController_submit6_invoker.call(SignInController_5.submit)
       }
   
     // @LINE:16
@@ -658,115 +736,139 @@ class Routes(
     // @LINE:18
     case controllers_auth_ResetPasswordController_view9_route(params) =>
       call(params.fromPath[java.util.UUID]("token", None)) { (token) =>
-        controllers_auth_ResetPasswordController_view9_invoker.call(ResetPasswordController_11.view(token))
+        controllers_auth_ResetPasswordController_view9_invoker.call(ResetPasswordController_12.view(token))
       }
   
     // @LINE:19
     case controllers_auth_ResetPasswordController_submit10_route(params) =>
       call(params.fromPath[java.util.UUID]("token", None)) { (token) =>
-        controllers_auth_ResetPasswordController_submit10_invoker.call(ResetPasswordController_11.submit(token))
+        controllers_auth_ResetPasswordController_submit10_invoker.call(ResetPasswordController_12.submit(token))
       }
   
     // @LINE:20
     case controllers_auth_ChangePasswordController_view11_route(params) =>
       call { 
-        controllers_auth_ChangePasswordController_view11_invoker.call(ChangePasswordController_10.view)
+        controllers_auth_ChangePasswordController_view11_invoker.call(ChangePasswordController_11.view)
       }
   
     // @LINE:21
     case controllers_auth_ChangePasswordController_submit12_route(params) =>
       call { 
-        controllers_auth_ChangePasswordController_submit12_invoker.call(ChangePasswordController_10.submit)
+        controllers_auth_ChangePasswordController_submit12_invoker.call(ChangePasswordController_11.submit)
       }
   
     // @LINE:23
     case controllers_auth_ActivateAccountController_send13_route(params) =>
       call(params.fromPath[String]("email", None)) { (email) =>
-        controllers_auth_ActivateAccountController_send13_invoker.call(ActivateAccountController_1.send(email))
+        controllers_auth_ActivateAccountController_send13_invoker.call(ActivateAccountController_2.send(email))
       }
   
     // @LINE:24
     case controllers_auth_ActivateAccountController_activate14_route(params) =>
       call(params.fromPath[java.util.UUID]("token", None)) { (token) =>
-        controllers_auth_ActivateAccountController_activate14_invoker.call(ActivateAccountController_1.activate(token))
+        controllers_auth_ActivateAccountController_activate14_invoker.call(ActivateAccountController_2.activate(token))
       }
   
     // @LINE:27
     case controllers_Assets_at15_route(params) =>
       call(Param[String]("path", Right("/public")), params.fromPath[String]("name", None)) { (path, name) =>
-        controllers_Assets_at15_invoker.call(Assets_8.at(path, name))
+        controllers_Assets_at15_invoker.call(Assets_9.at(path, name))
       }
   
     // @LINE:28
     case controllers_WebJarAssets_at16_route(params) =>
       call(params.fromPath[String]("name", None)) { (name) =>
-        controllers_WebJarAssets_at16_invoker.call(WebJarAssets_9.at(name))
+        controllers_WebJarAssets_at16_invoker.call(WebJarAssets_10.at(name))
       }
   
     // @LINE:33
     case controllers_nuts_Images_show17_route(params) =>
       call(params.fromQuery[String]("search", Some("")), params.fromQuery[String]("what", Some(""))) { (search, what) =>
-        controllers_nuts_Images_show17_invoker.call(Images_5.show(search, what))
+        controllers_nuts_Images_show17_invoker.call(Images_6.show(search, what))
       }
   
     // @LINE:34
     case controllers_nuts_Images_find18_route(params) =>
       call { 
-        controllers_nuts_Images_find18_invoker.call(Images_5.find)
+        controllers_nuts_Images_find18_invoker.call(Images_6.find)
       }
   
     // @LINE:35
     case controllers_nuts_Images_list19_route(params) =>
       call { 
-        controllers_nuts_Images_list19_invoker.call(Images_5.list)
+        controllers_nuts_Images_list19_invoker.call(Images_6.list)
       }
   
     // @LINE:36
     case controllers_nuts_Images_edit20_route(params) =>
       call { 
-        controllers_nuts_Images_edit20_invoker.call(Images_5.edit)
+        controllers_nuts_Images_edit20_invoker.call(Images_6.edit)
       }
   
     // @LINE:37
     case controllers_nuts_Images_save21_route(params) =>
       call { 
-        controllers_nuts_Images_save21_invoker.call(Images_5.save)
+        controllers_nuts_Images_save21_invoker.call(Images_6.save)
       }
   
     // @LINE:38
     case controllers_nuts_Images_get22_route(params) =>
       call(params.fromPath[String]("name", None)) { (name) =>
-        controllers_nuts_Images_get22_invoker.call(Images_5.get(name))
+        controllers_nuts_Images_get22_invoker.call(Images_6.get(name))
       }
   
     // @LINE:43
     case controllers_nuts_Blog_showAllArticles23_route(params) =>
       call { 
-        controllers_nuts_Blog_showAllArticles23_invoker.call(Blog_6.showAllArticles)
+        controllers_nuts_Blog_showAllArticles23_invoker.call(Blog_7.showAllArticles)
       }
   
     // @LINE:44
-    case controllers_nuts_Blog_create24_route(params) =>
-      call { 
-        controllers_nuts_Blog_create24_invoker.call(Blog_6.create)
+    case controllers_nuts_Blog_article24_route(params) =>
+      call(params.fromPath[Long]("id", None)) { (id) =>
+        controllers_nuts_Blog_article24_invoker.call(Blog_7.article(id))
       }
   
     // @LINE:45
-    case controllers_nuts_Blog_article25_route(params) =>
-      call(params.fromPath[Long]("id", None)) { (id) =>
-        controllers_nuts_Blog_article25_invoker.call(Blog_6.article(id))
+    case controllers_nuts_Blog_create25_route(params) =>
+      call { 
+        controllers_nuts_Blog_create25_invoker.call(Blog_7.create)
       }
   
     // @LINE:46
     case controllers_nuts_Blog_edit26_route(params) =>
       call(params.fromPath[Long]("id", None)) { (id) =>
-        controllers_nuts_Blog_edit26_invoker.call(Blog_6.edit(id))
+        controllers_nuts_Blog_edit26_invoker.call(Blog_7.edit(id))
       }
   
     // @LINE:47
     case controllers_nuts_Blog_onSubmit27_route(params) =>
       call { 
-        controllers_nuts_Blog_onSubmit27_invoker.call(Blog_6.onSubmit)
+        controllers_nuts_Blog_onSubmit27_invoker.call(Blog_7.onSubmit)
+      }
+  
+    // @LINE:52
+    case controllers_nuts_Comments_addComment28_route(params) =>
+      call { 
+        controllers_nuts_Comments_addComment28_invoker.call(Comments_1.addComment)
+      }
+  
+    // @LINE:53
+    case controllers_nuts_Comments_editComment29_route(params) =>
+      call { 
+        controllers_nuts_Comments_editComment29_invoker.call(Comments_1.editComment)
+      }
+  
+    // @LINE:54
+    case controllers_nuts_Comments_commentsAdmin30_route(params) =>
+      call { 
+        controllers_nuts_Comments_commentsAdmin30_invoker.call(Comments_1.commentsAdmin)
+      }
+  
+    // @LINE:55
+    case controllers_nuts_Comments_loginOrSignUp31_route(params) =>
+      call { 
+        controllers_nuts_Comments_loginOrSignUp31_invoker.call(Comments_1.loginOrSignUp)
       }
   }
 }

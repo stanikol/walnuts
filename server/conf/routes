@@ -40,8 +40,16 @@ GET         /img/:name                      controllers.nuts.Images.get(name)
 #############################################
 #           Blog                            #
 #############################################
-GET         /blog                           controllers.nuts.Blog.showAllArticles
+GET         /index.php/article              controllers.nuts.Blog.showAllArticles
+GET         /index.php/article/view/id/:id  controllers.nuts.Blog.article(id: Long)
 GET         /blog/new                       controllers.nuts.Blog.create
-GET         /blog/:id                       controllers.nuts.Blog.article(id: Long)
 GET         /blog/:id/edit                  controllers.nuts.Blog.edit(id: Long)
 POST        /blog/submit                    controllers.nuts.Blog.onSubmit
+
+#############################################
+#           Comments                        #
+#############################################
+POST        /comments/add                   controllers.nuts.Comments.addComment
+POST        /comments/editComment           controllers.nuts.Comments.editComment
+GET         /comments/admin                 controllers.nuts.Comments.commentsAdmin
+GET         /comments/loginOrSignUp         controllers.nuts.Comments.loginOrSignUp

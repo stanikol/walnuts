@@ -1,0 +1,86 @@
+
+@(user: Option[models.User], article: Article, comments: Seq[CommentInfo])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+
+@import helper.CSRF
+
+@main(article.title, user, article.keywords, article.description){
+    <a href="@controllers.nuts.routes.Blog.showAllArticles">
+        <h1>@Messages("Blog")</h1>
+    </a>
+    <div class="article">
+        <h1>@{article.title}</h1>
+        <div class="article-text" disabled>@Html(article.text)</div>
+    </div>
+    @for(comment<-comments){
+        <hr>
+        <div class="row">
+            <h5 class="col col-xs-3">@comment.fullName </h5> <h6 class="col col-xs-3 col-xs-offset-6">@comment.added</h6>
+        </div>
+        <div class="feedtext">
+            @comment.text
+        </div>
+    }
+    <br>
+    @user.map{ usr =>
+        @if(usr.isAdmin){
+            <form action="@controllers.nuts.routes.Blog.edit(article.id.get)" method="get">
+                @helper.CSRF.formField
+                <button type="submit" class="btn btn-danger">@Messages("Edit")</button>
+            </form>
+        }
+    }
+    <form action="@controllers.nuts.routes.Comments.addComment" method="post" id="addCommentForm">
+        <button type="submit" class="btn btn-warning">@Messages("Add comment")</button>
+        @helper.CSRF.formField
+        <input type="hidden" value="@{article.id}" name="article-id"/>
+        @user.map{ usr =>
+            <textarea name="article-comment" id="article-comment" placeholder="@Messages("Add your comment here ...")" rows="10"></textarea>
+        }
+    </form>
+
+    <script>
+        let dlg = $('<div class="dialog" title="@Messages("Registration or login required!")">\
+            <p class="bg-danger">@Messages("Please signin or signup to leave yor comment. Thank you.")</p> \
+            </div>').dialog({
+                resizable: false,
+                autoOpen: false,
+                //height:140,
+                modal: true,
+                buttons: [{
+                    text: "@Messages("Login")",
+                    click: function() {
+                        //$( this ).dialog( "close" );
+                        window.location.href = '@controllers.auth.routes.SignInController.view';
+                    },
+                    class:"btn btn-danger"
+                }, {
+                    text: "@Messages("SignUp")",
+                    click : function() {
+                        window.location.href = '@controllers.auth.routes.SignUpController.view';
+                    },
+                    class:"btn btn-danger"
+                }, {
+                    text: "@Messages("Cancel")",
+                    click: function() {
+                        $( this ).dialog( "close" );
+                    },
+                    class:"btn btn-danger"
+                }]
+            });
+
+        function onAddCommentFormSubmit(){
+            @if(user.isDefined){
+                return true;
+            } else {
+                dlg.dialog('open');
+                return false;
+            }
+        };
+        $(document).ready(function(){
+            //$('#addCommentForm').on('submit', onAddCommentFormSubmit);
+        });
+    </script>
+}
+
+
+

@@ -25,7 +25,7 @@ object main_Scope0 {
           Seq[Any](format.raw /*1.196*/ ("""
 
 """), format.raw /*3.1*/ ("""<!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="main-html">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -46,7 +46,7 @@ object main_Scope0 {
         <link href="//fonts.googleapis.com/css?family=Roboto|Montserrat:400,700|Open+Sans:400,300,600" rel="stylesheet">
         <link href="//cdnjs.cloudflare.com/ajax/libs/ionicons/1.5.2/css/ionicons.min.css" rel="stylesheet">
         <!--<link rel="stylesheet" href=""""), _display_( /*20.43*/ routes /*20.49*/ .WebJarAssets.at(webJarAssets.locate("bootstrap.min.css"))), format.raw /*20.107*/ ("""">-->
-        <link rel="stylesheet" href=""""), _display_( /*21.39*/ routes /*21.45*/ .Assets.at("styles/styles.css")), format.raw /*21.76*/ ("""">
+        <!--<link rel="stylesheet" href=""""), _display_( /*21.43*/ routes /*21.49*/ .Assets.at("styles/styles.css")), format.raw /*21.80*/ ("""">-->
         <!--<link rel="stylesheet" href=""""), _display_( /*22.43*/ routes /*22.49*/ .WebJarAssets.at(webJarAssets.locate("bootstrap-theme.min.css"))), format.raw /*22.113*/ ("""">-->
         <link rel="stylesheet" href=""""), _display_( /*23.39*/ routes /*23.45*/ .WebJarAssets.at(webJarAssets.locate("jquery-ui.css"))), format.raw /*23.99*/ ("""">
         <link rel="stylesheet" href=""""), _display_( /*24.39*/ routes /*24.45*/ .Assets.at("styles/main.css")), format.raw /*24.74*/ ("""">
@@ -62,8 +62,8 @@ object main_Scope0 {
         <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js"></script>
         <script src=""""), _display_( /*35.23*/ routes /*35.29*/ .Assets.at("javascripts/zxcvbnShim.js")), format.raw /*35.68*/ (""""></script>
     </head>
-    <body>
-        <header class="navbar" id="header" role="navigation">
+    <body class="main-body">
+        <header class="navbar brand" role="navigation">
             <div class="container" >
                 <div class="navbar-header" >
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -74,71 +74,74 @@ object main_Scope0 {
                     </button>
                     <!--<a class="navbar-brand" href=""""), _display_( /*47.56*/ controllers /*47.67*/ .pages.routes.ApplicationController.index), format.raw /*47.108*/ ("""">"""), _display_( /*47.111*/ Messages("main-name")), format.raw /*47.132*/ ("""</a>-->
                 </div>
+
                 <nav class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-upper">
+                            <li><a href=""""), _display_( /*52.43*/ controllers /*52.54*/ .nuts.routes.Blog.showAllArticles), format.raw /*52.87*/ ("""">"""), _display_( /*52.90*/ Messages("Главная")), format.raw /*52.109*/ ("""</a></li>
+                            <li><a href=""""), _display_( /*53.43*/ controllers /*53.54*/ .nuts.routes.Blog.showAllArticles), format.raw /*53.87*/ ("""">"""), _display_( /*53.90*/ Messages("Сорта орехов")), format.raw /*53.114*/ ("""</a></li>
+                            <li class="empty-li"><a href="#"></a></li>
+                            <li><a href=""""), _display_( /*55.43*/ controllers /*55.54*/ .nuts.routes.Blog.showAllArticles), format.raw /*55.87*/ ("""">"""), _display_( /*55.90*/ Messages("Статьи")), format.raw /*55.108*/ ("""</a></li>
+                            <li><a href=""""), _display_( /*56.43*/ controllers /*56.54*/ .nuts.routes.Blog.showAllArticles), format.raw /*56.87*/ ("""">"""), _display_( /*56.90*/ Messages("Контакты")), format.raw /*56.110*/ ("""</a></li>
+                    </ul>
+                </nav>
+                <nav class="collapse navbar-collapse navbar-lower navbar-right">
                     <ul class="nav navbar-nav">
-                        """), _display_( /*51.26*/ user /*51.30*/ .map /*51.34*/ { u =>
-            _display_(Seq[Any](format.raw /*51.41*/ ("""
-                            """), format.raw /*52.29*/ ("""<li><a href=""""), _display_( /*52.43*/ controllers /*52.54*/ .pages.routes.ApplicationController.index), format.raw /*52.95*/ ("""">"""), _display_( /*52.98*/ u /*52.99*/ .name), format.raw /*52.104*/ ("""</a></li>
-                            """), _display_( /*53.30*/ if (u.loginInfo.providerID == com.mohiva.play.silhouette.impl.providers.CredentialsProvider.ID) /*53.124*/ {
-              _display_(Seq[Any](format.raw /*53.126*/ ("""
-                                """), format.raw /*54.33*/ ("""<li><a href=""""), _display_( /*54.47*/ controllers /*54.58*/ .auth.routes.ChangePasswordController.view), format.raw /*54.100*/ ("""">"""), _display_( /*54.103*/ Messages("change.password")), format.raw /*54.130*/ ("""</a></li>
+                        """), _display_( /*61.26*/ user /*61.30*/ .map /*61.34*/ { u =>
+            _display_(Seq[Any](format.raw /*61.41*/ ("""
+                            """), format.raw /*62.29*/ ("""<li><a href=""""), _display_( /*62.43*/ controllers /*62.54*/ .pages.routes.ApplicationController.index), format.raw /*62.95*/ ("""">"""), _display_( /*62.98*/ u /*62.99*/ .name), format.raw /*62.104*/ ("""</a></li>
+                            """), _display_( /*63.30*/ if (u.loginInfo.providerID == com.mohiva.play.silhouette.impl.providers.CredentialsProvider.ID) /*63.124*/ {
+              _display_(Seq[Any](format.raw /*63.126*/ ("""
+                                """), format.raw /*64.33*/ ("""<li><a href=""""), _display_( /*64.47*/ controllers /*64.58*/ .auth.routes.ChangePasswordController.view), format.raw /*64.100*/ ("""">"""), _display_( /*64.103*/ Messages("change.password")), format.raw /*64.130*/ ("""</a></li>
                             """)))
-            }), format.raw /*55.30*/ ("""
-                            """), _display_( /*56.30*/ if (u.isAdmin) /*56.43*/ {
-              _display_(Seq[Any](format.raw /*56.44*/ ("""
-                                """), format.raw /*57.33*/ ("""<li><a href=""""), _display_( /*57.47*/ controllers /*57.58*/ .nuts.routes.Images.show()), format.raw /*57.84*/ ("""">"""), _display_( /*57.87*/ Messages("Edit images")), format.raw /*57.110*/ ("""</a></li>
-                                <li><a href=""""), _display_( /*58.47*/ controllers /*58.58*/ .nuts.routes.Blog.showAllArticles), format.raw /*58.91*/ ("""">"""), _display_( /*58.94*/ Messages("Edit articles")), format.raw /*58.119*/ ("""</a></li>
-                            """)))
-            }), format.raw /*59.30*/ ("""
-                            """), format.raw /*60.29*/ ("""<li><a href=""""), _display_( /*60.43*/ controllers /*60.54*/ .pages.routes.ApplicationController.signOut), format.raw /*60.97*/ ("""">"""), _display_( /*60.100*/ Messages("sign.out")), format.raw /*60.120*/ ("""</a></li>
+            }), format.raw /*65.30*/ ("""
+                            """), format.raw /*66.29*/ ("""<li><a href=""""), _display_( /*66.43*/ controllers /*66.54*/ .pages.routes.ApplicationController.signOut), format.raw /*66.97*/ ("""">"""), _display_( /*66.100*/ Messages("sign.out")), format.raw /*66.120*/ ("""</a></li>
                         """)))
-          } /*61.26*/ .getOrElse /*61.36*/ {
-            _display_(Seq[Any](format.raw /*61.38*/ ("""
-                            """), format.raw /*62.29*/ ("""<li><a href=""""), _display_( /*62.43*/ controllers /*62.54*/ .auth.routes.SignInController.view), format.raw /*62.88*/ ("""">"""), _display_( /*62.91*/ Messages("sign.in")), format.raw /*62.110*/ ("""</a></li>
-                            <li class="empty-li"><a href="/"></a></li>
-                            <li><a href=""""), _display_( /*64.43*/ controllers /*64.54*/ .auth.routes.SignUpController.view), format.raw /*64.88*/ ("""">"""), _display_( /*64.91*/ Messages("sign.up")), format.raw /*64.110*/ ("""</a></li>
+          } /*67.26*/ .getOrElse /*67.36*/ {
+            _display_(Seq[Any](format.raw /*67.38*/ ("""
+                            """), format.raw /*68.29*/ ("""<li><a href=""""), _display_( /*68.43*/ controllers /*68.54*/ .auth.routes.SignInController.view), format.raw /*68.88*/ ("""">"""), _display_( /*68.91*/ Messages("sign.in")), format.raw /*68.110*/ ("""</a></li>
+                            <li><a href=""""), _display_( /*69.43*/ controllers /*69.54*/ .auth.routes.SignUpController.view), format.raw /*69.88*/ ("""">"""), _display_( /*69.91*/ Messages("sign.up")), format.raw /*69.110*/ ("""</a></li>
                         """)))
-          }), format.raw /*65.26*/ ("""
-                    """), format.raw /*66.21*/ ("""</ul>
+          }), format.raw /*70.26*/ ("""
+                    """), format.raw /*71.21*/ ("""</ul>
                 </nav>
             </div>
         </header>
         <main class="container" id="container">
             <div class="row">
-                """), _display_( /*72.18*/ request /*72.25*/ .flash.get("error").map /*72.48*/ { msg =>
-            _display_(Seq[Any](format.raw /*72.57*/ ("""
-                """), format.raw /*73.17*/ ("""<div class="col-md-10 col-md-offset-2 alert alert-danger">
+                """), _display_( /*77.18*/ request /*77.25*/ .flash.get("error").map /*77.48*/ { msg =>
+            _display_(Seq[Any](format.raw /*77.57*/ ("""
+                """), format.raw /*78.17*/ ("""<div class="col-md-10 col-md-offset-2 alert alert-danger">
                     <a href="#" class="close" data-dismiss="alert">&times;</a>
-                    <strong>"""), _display_( /*75.30*/ Messages("error")), format.raw /*75.47*/ ("""</strong> """), _display_( /*75.58*/ msg), format.raw /*75.61*/ ("""
-                """), format.raw /*76.17*/ ("""</div>
+                    <strong>"""), _display_( /*80.30*/ Messages("error")), format.raw /*80.47*/ ("""</strong> """), _display_( /*80.58*/ msg), format.raw /*80.61*/ ("""
+                """), format.raw /*81.17*/ ("""</div>
                 """)))
-          }), format.raw /*77.18*/ ("""
-                """), _display_( /*78.18*/ request /*78.25*/ .flash.get("info").map /*78.47*/ { msg =>
-            _display_(Seq[Any](format.raw /*78.56*/ ("""
-                """), format.raw /*79.17*/ ("""<div class="col-md-6 col-md-offset-3 alert alert-info">
+          }), format.raw /*82.18*/ ("""
+                """), _display_( /*83.18*/ request /*83.25*/ .flash.get("info").map /*83.47*/ { msg =>
+            _display_(Seq[Any](format.raw /*83.56*/ ("""
+                """), format.raw /*84.17*/ ("""<div class="col-md-6 col-md-offset-3 alert alert-info">
                     <a href="#" class="close" data-dismiss="alert">&times;</a>
-                    <strong>"""), _display_( /*81.30*/ Messages("info")), format.raw /*81.46*/ ("""</strong> """), _display_( /*81.57*/ msg), format.raw /*81.60*/ ("""
-                """), format.raw /*82.17*/ ("""</div>
+                    <strong>"""), _display_( /*86.30*/ Messages("info")), format.raw /*86.46*/ ("""</strong> """), _display_( /*86.57*/ msg), format.raw /*86.60*/ ("""
+                """), format.raw /*87.17*/ ("""</div>
                 """)))
-          }), format.raw /*83.18*/ ("""
-                """), _display_( /*84.18*/ request /*84.25*/ .flash.get("success").map /*84.50*/ { msg =>
-            _display_(Seq[Any](format.raw /*84.59*/ ("""
-                """), format.raw /*85.17*/ ("""<div class="col-md-6 col-md-offset-3 alert alert-success">
+          }), format.raw /*88.18*/ ("""
+                """), _display_( /*89.18*/ request /*89.25*/ .flash.get("success").map /*89.50*/ { msg =>
+            _display_(Seq[Any](format.raw /*89.59*/ ("""
+                """), format.raw /*90.17*/ ("""<div class="col-md-6 col-md-offset-3 alert alert-success">
                     <a href="#" class="close" data-dismiss="alert">&times;</a>
-                    <strong>"""), _display_( /*87.30*/ Messages("success")), format.raw /*87.49*/ ("""</strong> """), _display_( /*87.60*/ msg), format.raw /*87.63*/ ("""
-                """), format.raw /*88.17*/ ("""</div>
+                    <strong>"""), _display_( /*92.30*/ Messages("success")), format.raw /*92.49*/ ("""</strong> """), _display_( /*92.60*/ msg), format.raw /*92.63*/ ("""
+                """), format.raw /*93.17*/ ("""</div>
                 """)))
-          }), format.raw /*89.18*/ ("""
-            """), format.raw /*90.13*/ ("""</div>
+          }), format.raw /*94.18*/ ("""
+            """), format.raw /*95.13*/ ("""</div>
             <div class="starter-template row">
-                """), _display_( /*92.18*/ content), format.raw /*92.25*/ ("""
-            """), format.raw /*93.13*/ ("""</div>
+                """), _display_( /*97.18*/ content), format.raw /*97.25*/ ("""
+            """), format.raw /*98.13*/ ("""</div>
         </main>
-        <!--<script type="text/javascript" src=""""), _display_( /*95.50*/ routes /*95.56*/ .WebJarAssets.at(webJarAssets.locate("jquery.min.js"))), format.raw /*95.110*/ (""""></script>-->
-        <!--<script type="text/javascript" src=""""), _display_( /*96.50*/ routes /*96.56*/ .WebJarAssets.at(webJarAssets.locate("jquery-ui.js"))), format.raw /*96.109*/ (""""></script>-->
-        <!--<script type="text/javascript" src=""""), _display_( /*97.50*/ routes /*97.56*/ .WebJarAssets.at(webJarAssets.locate("bootstrap.min.js"))), format.raw /*97.113*/ (""""></script>-->
+        <!--<script type="text/javascript" src=""""), _display_( /*100.50*/ routes /*100.56*/ .WebJarAssets.at(webJarAssets.locate("jquery.min.js"))), format.raw /*100.110*/ (""""></script>-->
+        <!--<script type="text/javascript" src=""""), _display_( /*101.50*/ routes /*101.56*/ .WebJarAssets.at(webJarAssets.locate("jquery-ui.js"))), format.raw /*101.109*/ (""""></script>-->
+        <!--<script type="text/javascript" src=""""), _display_( /*102.50*/ routes /*102.56*/ .WebJarAssets.at(webJarAssets.locate("bootstrap.min.js"))), format.raw /*102.113*/ (""""></script>-->
         <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js"></script>-->
-        <!--<script src=""""), _display_( /*99.27*/ routes /*99.33*/ .Assets.at("javascripts/zxcvbnShim.js")), format.raw /*99.72*/ (""""></script>-->
+        <!--<script src=""""), _display_( /*104.27*/ routes /*104.33*/ .Assets.at("javascripts/zxcvbnShim.js")), format.raw /*104.72*/ (""""></script>-->
     </body>
 </html>
 """))
@@ -160,10 +163,10 @@ object main_Scope0 {
 object main extends main_Scope0.main
 /*
                   -- GENERATED --
-                  DATE: Wed Mar 15 00:14:40 EET 2017
+                  DATE: Mon Mar 20 14:32:37 EET 2017
                   SOURCE: /Users/snc/scala/walnuts/server/app/views/main.scala.html
-                  HASH: a8cd2d376e0dd16963ee63f8f34a64d5132e3dfc
-                  MATRIX: 657->1|947->195|975->197|1224->420|1253->441|1291->442|1332->455|1391->487|1420->495|1463->507|1500->517|1533->541|1572->542|1613->555|1675->590|1707->601|1750->613|1787->623|1864->673|1879->679|1932->711|1978->730|2004->735|2311->1015|2326->1021|2406->1079|2477->1123|2492->1129|2544->1160|2616->1205|2631->1211|2717->1275|2788->1319|2803->1325|2878->1379|2946->1420|2961->1426|3011->1455|3425->1842|3440->1848|3516->1902|3600->1959|3615->1965|3690->2018|3774->2075|3789->2081|3868->2138|3956->2199|3971->2205|4034->2247|4192->2378|4207->2384|4267->2423|4643->2772|4693->2801|4978->3059|4998->3070|5061->3111|5092->3114|5135->3135|5321->3294|5334->3298|5347->3302|5392->3309|5449->3338|5490->3352|5510->3363|5572->3404|5602->3407|5612->3408|5639->3413|5705->3452|5809->3546|5850->3548|5911->3581|5952->3595|5972->3606|6036->3648|6067->3651|6116->3678|6186->3717|6243->3747|6265->3760|6304->3761|6365->3794|6406->3808|6426->3819|6473->3845|6503->3848|6548->3871|6631->3927|6651->3938|6705->3971|6735->3974|6782->3999|6852->4038|6909->4067|6950->4081|6970->4092|7034->4135|7065->4138|7107->4158|7161->4193|7180->4203|7220->4205|7277->4234|7318->4248|7338->4259|7393->4293|7423->4296|7464->4315|7614->4438|7634->4449|7689->4483|7719->4486|7760->4505|7826->4540|7875->4561|8063->4722|8079->4729|8111->4752|8158->4761|8203->4778|8397->4945|8435->4962|8473->4973|8497->4976|8542->4993|8597->5017|8642->5035|8658->5042|8689->5064|8736->5073|8781->5090|8972->5254|9009->5270|9047->5281|9071->5284|9116->5301|9171->5325|9216->5343|9232->5350|9266->5375|9313->5384|9358->5401|9552->5568|9592->5587|9630->5598|9654->5601|9699->5618|9754->5642|9795->5655|9893->5726|9921->5733|9962->5746|10061->5818|10076->5824|10152->5878|10243->5942|10258->5948|10333->6001|10424->6065|10439->6071|10518->6128|10687->6270|10702->6276|10762->6315
-                  LINES: 22->1|27->1|29->3|35->9|35->9|35->9|36->10|36->10|36->10|37->11|38->12|38->12|38->12|39->13|39->13|39->13|40->14|42->16|42->16|42->16|42->16|43->17|43->17|46->20|46->20|46->20|47->21|47->21|47->21|48->22|48->22|48->22|49->23|49->23|49->23|50->24|50->24|50->24|56->30|56->30|56->30|57->31|57->31|57->31|58->32|58->32|58->32|59->33|59->33|59->33|61->35|61->35|61->35|68->42|68->42|73->47|73->47|73->47|73->47|73->47|77->51|77->51|77->51|77->51|78->52|78->52|78->52|78->52|78->52|78->52|78->52|79->53|79->53|79->53|80->54|80->54|80->54|80->54|80->54|80->54|81->55|82->56|82->56|82->56|83->57|83->57|83->57|83->57|83->57|83->57|84->58|84->58|84->58|84->58|84->58|85->59|86->60|86->60|86->60|86->60|86->60|86->60|87->61|87->61|87->61|88->62|88->62|88->62|88->62|88->62|88->62|90->64|90->64|90->64|90->64|90->64|91->65|92->66|98->72|98->72|98->72|98->72|99->73|101->75|101->75|101->75|101->75|102->76|103->77|104->78|104->78|104->78|104->78|105->79|107->81|107->81|107->81|107->81|108->82|109->83|110->84|110->84|110->84|110->84|111->85|113->87|113->87|113->87|113->87|114->88|115->89|116->90|118->92|118->92|119->93|121->95|121->95|121->95|122->96|122->96|122->96|123->97|123->97|123->97|125->99|125->99|125->99
+                  HASH: 47316b1f9cf7ed7d97bdca1beaf6e2176c6773b5
+                  MATRIX: 657->1|947->195|975->197|1242->438|1271->459|1309->460|1350->473|1409->505|1438->513|1481->525|1518->535|1551->559|1590->560|1631->573|1693->608|1725->619|1768->631|1805->641|1882->691|1897->697|1950->729|1996->748|2022->753|2329->1033|2344->1039|2424->1097|2499->1145|2514->1151|2566->1182|2641->1230|2656->1236|2742->1300|2813->1344|2828->1350|2903->1404|2971->1445|2986->1451|3036->1480|3450->1867|3465->1873|3541->1927|3625->1984|3640->1990|3715->2043|3799->2100|3814->2106|3893->2163|3981->2224|3996->2230|4059->2272|4217->2403|4232->2409|4292->2448|4680->2809|4730->2838|5015->3096|5035->3107|5098->3148|5129->3151|5172->3172|5389->3362|5409->3373|5463->3406|5493->3409|5534->3428|5613->3480|5633->3491|5687->3524|5717->3527|5763->3551|5913->3674|5933->3685|5987->3718|6017->3721|6057->3739|6136->3791|6156->3802|6210->3835|6240->3838|6282->3858|6522->4071|6535->4075|6548->4079|6593->4086|6650->4115|6691->4129|6711->4140|6773->4181|6803->4184|6813->4185|6840->4190|6906->4229|7010->4323|7051->4325|7112->4358|7153->4372|7173->4383|7237->4425|7268->4428|7317->4455|7387->4494|7444->4523|7485->4537|7505->4548|7569->4591|7600->4594|7642->4614|7696->4649|7715->4659|7755->4661|7812->4690|7853->4704|7873->4715|7928->4749|7958->4752|7999->4771|8078->4823|8098->4834|8153->4868|8183->4871|8224->4890|8290->4925|8339->4946|8527->5107|8543->5114|8575->5137|8622->5146|8667->5163|8861->5330|8899->5347|8937->5358|8961->5361|9006->5378|9061->5402|9106->5420|9122->5427|9153->5449|9200->5458|9245->5475|9436->5639|9473->5655|9511->5666|9535->5669|9580->5686|9635->5710|9680->5728|9696->5735|9730->5760|9777->5769|9822->5786|10016->5953|10056->5972|10094->5983|10118->5986|10163->6003|10218->6027|10259->6040|10357->6111|10385->6118|10426->6131|10526->6203|10542->6209|10619->6263|10711->6327|10727->6333|10803->6386|10895->6450|10911->6456|10991->6513|11161->6655|11177->6661|11238->6700
+                  LINES: 22->1|27->1|29->3|35->9|35->9|35->9|36->10|36->10|36->10|37->11|38->12|38->12|38->12|39->13|39->13|39->13|40->14|42->16|42->16|42->16|42->16|43->17|43->17|46->20|46->20|46->20|47->21|47->21|47->21|48->22|48->22|48->22|49->23|49->23|49->23|50->24|50->24|50->24|56->30|56->30|56->30|57->31|57->31|57->31|58->32|58->32|58->32|59->33|59->33|59->33|61->35|61->35|61->35|68->42|68->42|73->47|73->47|73->47|73->47|73->47|78->52|78->52|78->52|78->52|78->52|79->53|79->53|79->53|79->53|79->53|81->55|81->55|81->55|81->55|81->55|82->56|82->56|82->56|82->56|82->56|87->61|87->61|87->61|87->61|88->62|88->62|88->62|88->62|88->62|88->62|88->62|89->63|89->63|89->63|90->64|90->64|90->64|90->64|90->64|90->64|91->65|92->66|92->66|92->66|92->66|92->66|92->66|93->67|93->67|93->67|94->68|94->68|94->68|94->68|94->68|94->68|95->69|95->69|95->69|95->69|95->69|96->70|97->71|103->77|103->77|103->77|103->77|104->78|106->80|106->80|106->80|106->80|107->81|108->82|109->83|109->83|109->83|109->83|110->84|112->86|112->86|112->86|112->86|113->87|114->88|115->89|115->89|115->89|115->89|116->90|118->92|118->92|118->92|118->92|119->93|120->94|121->95|123->97|123->97|124->98|126->100|126->100|126->100|127->101|127->101|127->101|128->102|128->102|128->102|130->104|130->104|130->104
                   -- GENERATED --
               */

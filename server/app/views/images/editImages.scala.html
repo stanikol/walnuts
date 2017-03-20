@@ -3,7 +3,7 @@
 @import helper.CSRF
 @import helper._
 @import b3.vertical.fieldConstructor
-@main(Messages("images.title"), Some(user)){
+@admin(Messages("images.title"), Some(user)){
     <div class="image-info-list">
         @b3.formCSRF(action = controllers.nuts.routes.Images.save, 'enctype -> "multipart/form-data") {
             <div class="row">

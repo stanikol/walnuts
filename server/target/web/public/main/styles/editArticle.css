@@ -9,3 +9,7 @@
 #description{
   min-height: 50px;
 }
+
+.ql-image2:after {
+  content: "Ω";
+}

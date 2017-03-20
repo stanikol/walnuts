@@ -1,0 +1,21 @@
+@import "./assets/stylesheets/bootstrap.scss";
+
+/*
+#save-btn{
+    width: 1500px;
+}
+*/
+
+.article-comment{
+    width: 100%;
+    height: auto;
+}
+
+.comments-edit-form{
+    padding: 15px;
+    border: 1px solid #d7d7d7;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    box-shadow: 0px 0px 5px #ececea;
+}

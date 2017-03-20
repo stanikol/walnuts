@@ -4,7 +4,7 @@
 		module="shared$sources_2.11"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20170313135155"
+		publication="20170319133732"
 	/>
 	<configurations>
 		<conf name="compile" visibility="public" description=""/>

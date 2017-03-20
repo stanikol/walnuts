@@ -1,6 +1,8 @@
 package models.nuts
 
-import java.sql.Date
+import java.sql.{ Date, Time, Timestamp }
+import java.time.LocalDateTime
+import java.util.UUID
 
 import play.api.libs.functional.syntax.unlift
 import play.api.libs.json.{ Format, JsPath, Json }
@@ -70,6 +72,7 @@ object Data {
   //    )(GoodsItem.apply _, unlift(GoodsItem.unapply))
   //  }
 
-  case class Comment(id: Option[Long], userID: String, articleID: Long, text: String, added: Date)
+  case class Comment(id: Option[Long], userID: String, articleID: Long, text: String, added: Timestamp)
+  case class CommentInfo(id: Option[Long], userID: String, userEmail: Option[String], articleID: Long, articleTitle: String, text: String, added: Timestamp, fullName: String)
 
 }

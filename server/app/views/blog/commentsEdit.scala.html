@@ -1,0 +1,32 @@
+@(user: models.User, comments: Seq[models.nuts.Data.CommentInfo], errors: Map[String, String]=Map.empty[String, String])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+@import helper.CSRF
+
+@admin(Messages("blogEdit.title"), Some(user)){
+    @{errors.map{ case (key, errorMsg)=>
+    <div class="col-md-10 col-md-offset-2 alert alert-danger">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong>{Messages("error")} {Messages(s"blogEdit.$key")} => {errorMsg}</strong>
+    </div>
+    }}
+    <div class="panel panel-info">
+        <div class="panel-heading">@Messages("Sort order")</div>
+        <div class="panel-body">
+            <form class="form-inline" method="get" action="@controllers.nuts.routes.Comments.commentsAdmin">
+                <button name="comments-order" value="byArticle">@Messages("By article")</button>
+                <button name="comments-order" value="byID">@Messages("By comment ID")</button>
+            </form>
+        </div>
+    </div>
+    @for(comment <- comments){
+        <form class="comments-edit-form" method="POST" action="@controllers.nuts.routes.Comments.editComment">
+            @helper.CSRF.formField
+            <!--<a href="@controllers.nuts.routes.Blog.edit(comment.articleID)" class="form-group">#@comment.articleID @comment.articleTitle</a>-->
+            <a href="@controllers.nuts.routes.Blog.article(comment.articleID)" class="form-group">#@comment.articleID @comment.articleTitle</a>
+            <h5 class="form-group">@comment.fullName @comment.userEmail.map(e=>s"<$e>") (#@comment.id from @comment.added)</h5>
+            <input type="hidden" name="comment-id" value="@comment.id"/>
+            <textarea name="comment-text" rows="5" class="article-comment">@comment.text</textarea>
+            <button type="submit" class="btn btn-danger" name="action" value="del">@Messages("Delete")</button>
+            <button type="submit" class="btn btn-warning" name="action" value="upd">@Messages("Update")</button>
+        </form>
+    }
+}

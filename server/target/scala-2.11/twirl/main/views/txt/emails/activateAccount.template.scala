@@ -45,7 +45,7 @@ object activateAccount_Scope0 {
 object activateAccount extends activateAccount_Scope0.activateAccount
 /*
                   -- GENERATED --
-                  DATE: Sat Mar 11 02:26:19 EET 2017
+                  DATE: Mon Mar 20 14:32:37 EET 2017
                   SOURCE: /Users/snc/scala/walnuts/server/app/views/emails/activateAccount.scala.txt
                   HASH: 8ef6543e58903495bff75a09f9d2a96fd1ed2e01
                   MATRIX: 619->1|767->55|794->57|883->126|911->129|979->177

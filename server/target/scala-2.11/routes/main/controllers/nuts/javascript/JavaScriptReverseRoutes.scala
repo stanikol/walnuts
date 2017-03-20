@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/snc/scala/walnuts/server/conf/routes
-// @DATE:Wed Mar 15 00:23:29 EET 2017
+// @DATE:Mon Mar 20 14:43:04 EET 2017
 
 import play.api.routing.JavaScriptReverseRoute
 import play.api.mvc.{ QueryStringBindable, PathBindable, Call, JavascriptLiteral }
@@ -14,6 +14,56 @@ import _root_.utils.route.Binders._
 // @LINE:33
 package controllers.nuts.javascript {
   import ReverseRouteContext.empty
+
+  // @LINE:52
+  class ReverseComments(_prefix: => String) {
+
+    def _defaultPrefix: String = {
+      if (_prefix.endsWith("/")) "" else "/"
+    }
+
+  
+    // @LINE:55
+    def loginOrSignUp: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.nuts.Comments.loginOrSignUp",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "comments/loginOrSignUp"})
+        }
+      """
+    )
+  
+    // @LINE:52
+    def addComment: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.nuts.Comments.addComment",
+      """
+        function() {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "comments/add"})
+        }
+      """
+    )
+  
+    // @LINE:53
+    def editComment: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.nuts.Comments.editComment",
+      """
+        function() {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "comments/editComment"})
+        }
+      """
+    )
+  
+    // @LINE:54
+    def commentsAdmin: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.nuts.Comments.commentsAdmin",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "comments/admin"})
+        }
+      """
+    )
+  
+  }
 
   // @LINE:33
   class ReverseImages(_prefix: => String) {
@@ -108,12 +158,12 @@ package controllers.nuts.javascript {
       "controllers.nuts.Blog.showAllArticles",
       """
         function() {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "blog"})
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "index.php/article"})
         }
       """
     )
   
-    // @LINE:44
+    // @LINE:45
     def create: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.nuts.Blog.create",
       """
@@ -133,12 +183,12 @@ package controllers.nuts.javascript {
       """
     )
   
-    // @LINE:45
+    // @LINE:44
     def article: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.nuts.Blog.article",
       """
         function(id0) {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "blog/" + (""" + implicitly[PathBindable[Long]].javascriptUnbind + """)("id", id0)})
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "index.php/article/view/id/" + (""" + implicitly[PathBindable[Long]].javascriptUnbind + """)("id", id0)})
         }
       """
     )

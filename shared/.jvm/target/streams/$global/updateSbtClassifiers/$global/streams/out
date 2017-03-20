@@ -1,7 +1,6 @@
 [debug] Other repositories:
 [debug] Default repositories:
 [debug] Using inline dependencies specified in Scala.
-[debug] no default cache defined: set to /Users/snc/.ivy2/cache
 [debug] :: resolving dependencies :: shared#shared$sbt_2.11;0.1-SNAPSHOT
 [debug] 	confs: [default]
 [debug] 	validate = true
@@ -14,6 +13,7 @@
 [debug] sbt-chain: module revision found in cache: org.scala-sbt#sbt;0.13.11
 [debug] 	found org.scala-sbt#sbt;0.13.11 in sbt-chain
 [debug] == resolving dependencies org.scala-sbt#sbt;0.13.11->org.scala-lang#scala-library;2.10.6 [compile->default(compile)]
+[debug] no default cache defined: set to /Users/snc/.ivy2/cache
 [info] Resolving org.scala-lang#scala-library;2.10.6 ...
 [debug] sbt-chain: Checking cache for: dependency: org.scala-lang#scala-library;2.10.6 {compile=[default(compile)]}
 [debug] sbt-chain: module revision found in cache: org.scala-lang#scala-library;2.10.6
@@ -3098,9 +3098,9 @@
 [debug] 	[NOT REQUIRED] jfree#jfreechart;1.0.8a!jfreechart.jar
 [debug] 	[NOT REQUIRED] junit#junit;4.10!junit.jar
 [debug] 	[NOT REQUIRED] org.hamcrest#hamcrest-core;1.1!hamcrest-core.jar
-[debug] :: resolution report :: resolve 2073ms :: artifacts dl 69ms
+[debug] :: resolution report :: resolve 1883ms :: artifacts dl 90ms
 [debug] 	report for shared#shared$sbt_2.11;0.1-SNAPSHOT default produced in /Users/snc/scala/walnuts/shared/.jvm/target/resolution-cache/reports/shared-shared$sbt_2.11-default.xml
-[debug] 	resolve done (2073ms resolve - 69ms download)
+[debug] 	resolve done (1883ms resolve - 90ms download)
 [debug] Using inline dependencies specified in Scala.
 [debug] :: resolving dependencies :: shared#shared$sources_2.11;0.1-SNAPSHOT
 [debug] 	confs: [default]
@@ -5699,6 +5699,6 @@
 [debug] 	[NOT REQUIRED] org.apache.maven#maven-repository-metadata;3.2.2!maven-repository-metadata.jar(src)
 [debug] 	[NOT REQUIRED] com.timushev.sbt#sbt-updates;0.3.0!sbt-updates.jar(src)
 [debug] 	[NOT REQUIRED] org.bouncycastle#bcpg-jdk15on;1.51!bcpg-jdk15on.jar(src)
-[debug] :: resolution report :: resolve 2133ms :: artifacts dl 79ms
+[debug] :: resolution report :: resolve 1096ms :: artifacts dl 69ms
 [debug] 	report for shared#shared$sources_2.11;0.1-SNAPSHOT default produced in /Users/snc/scala/walnuts/shared/.jvm/target/resolution-cache/reports/shared-shared$sources_2.11-default.xml
-[debug] 	resolve done (2133ms resolve - 79ms download)
+[debug] 	resolve done (1096ms resolve - 69ms download)

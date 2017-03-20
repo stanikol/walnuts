@@ -38,7 +38,7 @@ class ApplicationController @Inject() (
   def index: Action[AnyContent] = silhouette.UserAwareAction.async { implicit request =>
     import play.api.libs.concurrent.Execution.Implicits._
     blogDAO.getAllArticles.map { articles =>
-      Ok(views.html.blog.listArticles(request.identity, articles))
+      Ok(views.html.blog.blogList(request.identity, articles))
     }
     //    Future.successful()
   }

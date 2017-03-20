@@ -69,7 +69,13 @@ class SignInController @Inject() (
       data => {
         val credentials = Credentials(data.email, data.password)
         credentialsProvider.authenticate(credentials).flatMap { loginInfo =>
-          val result = Redirect(pages.routes.ApplicationController.index())
+          // 2017-03-16: added ho handle redirect to page which signin/signup process started from.
+          //val result = Redirect(pages.routes.ApplicationController.index())
+          val result = request.session.get("returnUrl") match {
+            case Some(url) => Redirect(url).withSession(request.session - "returnUrl")
+            case None => Redirect(controllers.pages.routes.ApplicationController.index())
+          }
+          //
           userService.retrieve(loginInfo).flatMap {
             case Some(user) if !user.activated =>
               Future.successful(Ok(views.html.auth.activateAccount(data.email)))

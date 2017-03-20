@@ -1,0 +1,195 @@
+@(user: models.User, article: Form[models.nuts.Data.Article], errors: Map[String, String]=Map.empty[String, String])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+@import helper.CSRF
+
+@admin(Messages("blogEdit.title"), Some(user)){
+    @{errors.map{ case (key, errorMsg)=>
+    <div class="col-md-10 col-md-offset-2 alert alert-danger">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong>{Messages("error")} {Messages(s"blogEdit.$key")} => {errorMsg}</strong>
+    </div>
+    }}
+    <input type="file" id="filepicker" style="display: none"/>
+    <form id="article-edit-form" method="POST" action="@CSRF(controllers.nuts.routes.Blog.onSubmit)">
+        <strong>ID #@{article("id").value}</strong>
+        <input type="hidden" id="id" name="id" value="@{article("id").value}"/>
+        <input type="hidden" id="blog-text" name="blog-text" />
+        <input type="hidden" id="blog-short-text" name="blog-short-text" />
+        <!--<input type="hidden" id="action" name="action" />-->
+        <div class="form-group">
+            <label for="title" class="control-label">@Messages("blogEdit.title")</label>
+            <input type="text" id="title" name="title" value='@{article("title").value}'
+                   class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="description" class="control-label">@Messages("blogEdit.description")</label>
+            <textarea type="text" id="description" name="description" class="form-control">@{article("description").value}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="blog-edit" class="control-label">@Messages("blogEdit.article-text")</label>
+            <div id="blog-edit" class="form-control">
+                @{Html(article("blog-text").value.getOrElse(""))}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="keywords" class="control-label">@Messages("blogEdit.keywords")</label>
+            <input type="text" id="keywords" name="keywords" value='@{article("keywords").value}'
+                   class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="sort-order" class="control-label">@Messages("blogEdit.sort-order")</label>
+            <input type="text" id="sort-order" name="sort-order" value='@{article("sort-order").value}'
+                   class="form-control"/>
+        </div>
+        <!--BUTTONS-->
+        <div class="btn-group btn-group-lg">
+            <button type="submit" id="new-btn" name="action" value="new" class="btn btn-warning">@Messages("blogEdit.save-as-new")</button>
+            @if(article("id").value.isDefined){
+                <button type="submit" id="save-btn" name="action" value="save" class="btn btn-primary">@Messages("blogEdit.save-article")</button>
+                <button type="submit" id="delete-btn" name="action" value="delete" class="btn btn-danger">@Messages("blogEdit.delete-article")</button>
+            }
+        </div>
+    </form>
+
+    <!-- Include the Quill library -->
+    <link href="https://cdn.quilljs.com/1.2.0/quill.snow.css" rel="stylesheet"/>
+    <link href="/assets/styles/blogEdit.css" rel="stylesheet"/>
+    <script src="https://cdn.quilljs.com/1.2.0/quill.js"></script>
+    <!--<script src="/assets/javascripts/blogEdit.js"></script>-->
+    <script>
+        @***********
+        @Html(views.js.blog.blogEdit.render().toString())
+        ***********@
+        // QuillJS editor. Will be initiated later.
+        var quill;
+        var Delta =  Quill.import('delta');
+
+        /**
+            Handle image insertion from database.
+            First query `/img/list` for list of image available in database.
+            Then, after data is received, create dialog (with jQuery) and append
+            to it all the image references received from DB.
+        */
+        function image2Handler() {
+            $.get('@controllers.nuts.routes.Images.list', function(listOfImages, status){
+               let imagesDialog = $('<div />', {id: "imagesDialog", class: "row"}).dialog({
+                        autoOpen: false,
+                        modal:    true,
+                        width:    $(window).width() - $(window).width() * 0.2,
+                        height:   $(window).height() - $(window).height() * 0.2,
+               });
+               listOfImages.map((image) => {
+                    const imageHref = '/img/'+image.name;
+                    $('<img />', {
+                        src:   imageHref,
+                        alt:   image.content,
+                        class: "col col-sm-2",
+                        click: function(){
+                            quill.updateContents(
+                                new Delta()
+                                  .retain(quill.getSelection().index)
+                                  .insert({
+                                    image: imageHref
+                                  },
+                                  {
+                                // link: imageHref,
+                                    alt: prompt('@Messages("Enter image description")', image.content)
+                                  }));
+                            imagesDialog.dialog('destroy').remove(); // dialog has to be destroyed, otherwise next time there will be 2 or more dialogs with the same id #imagesDialog
+                        }
+                   }).appendTo(imagesDialog);
+               });
+               imagesDialog.dialog('open');
+            });
+        };
+
+        /**
+            Handle image insertion from filesystem as base64 data.
+            Used as default image handler.
+        */
+        let filepicker = document.getElementById("filepicker");
+
+        function insertImageInQuillJSAsBase64(){
+            let reader = new FileReader();
+            reader.onloadend = function() {
+                let alt = prompt('@Messages("Enter image description")', file);
+                let base64 = reader.result;
+                quill.updateContents(
+                new Delta()
+                  .retain(quill.getSelection().index)
+                  .insert({
+                        image: base64
+                    },
+                    {
+                // link: imageHref,
+                        alt: alt
+                    })
+                );
+            };
+            let file = filepicker.files[0];
+            reader.readAsDataURL(file);
+        };
+
+        function imageBase64Handler() {
+            $('#filepicker').trigger('click');
+        };
+
+        var deleteButtonPressed = false;
+
+        $(document).ready(function(){
+            // Init QuillJS.com editor
+            const toolbarOptions = [
+                ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+                ['blockquote', 'code-block'],
+
+                [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+                [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+                [{ 'direction': 'rtl' }],                         // text direction
+
+                [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+                [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                [ 'link', 'image', 'image2', 'video', 'formula' ],          // add's image support
+                [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+                [{ 'font': [] }],
+                [{ 'align': [] }],
+
+                ['clean']                                         // remove formatting button
+            ];
+            quill = new Quill('#blog-edit', {
+                modules: {
+                    toolbar: {
+                      container: toolbarOptions,
+                      handlers: {
+                        image: imageBase64Handler,
+                        image2: image2Handler
+                      }
+                    }
+                },
+                theme: 'snow'
+            });
+
+            $('#filepicker').change(insertImageInQuillJSAsBase64);
+
+            $('#article-edit-form').on('submit', function(){
+                if( deleteButtonPressed ){
+                    let id = document.getElementById('id').value;
+                    deleteButtonPressed = false;
+                    return confirm('Delete article #'+id);
+                } else {
+                    document.getElementById('blog-text').value = document.getElementsByClassName('ql-editor')[0].innerHTML;
+                    document.getElementById('blog-short-text').value = quill.getText(0, 222);
+                    return true;
+                }
+            });
+
+            if(document.getElementById("delete-btn")){
+                document.getElementById("delete-btn").addEventListener('click', (event) => {
+                    deleteButtonPressed = true;
+                });
+            };
+
+
+        });
+    </script>
+}

@@ -1,0 +1,13 @@
+
+@(user: Option[models.User])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets){
+    @main("", user){
+        <div class="alert alert-warning" role="alert">
+            @Messages("You should be logged in to leave comments.")
+            <a href="@controllers.auth.routes.SignInController.view" class="btn btn-primary">@Messages("Login")</a>
+            <a href="@controllers.auth.routes.SignUpController.view" class="btn btn-success">@Messages("SignUp")</a>
+        </div>
+    }
+}
+
+
+

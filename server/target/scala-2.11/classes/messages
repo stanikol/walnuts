@@ -122,17 +122,17 @@ images.delete = Delete
 images.invalidForm = Invalid form data specified: %s !
 
 # New Article
-editArticle.title = Title
-editArticle.keywords = Keywords
-editArticle.sort-order = Sort order
-editArticle.description = Description
-editArticle.article-text = Article text
-editArticle.save-article = Save to DB
-editArticle.delete-article = Delete article
-editArticle.save-as-new = Save as new blog
-editArticle.not-found = Article %d not found!
-editArticle.article-deleted = %d article with #%d was deleted from DB.
-editArticle.article-delete-failed = Failed to delete record with #%d!
+blogEdit.title = Title
+blogEdit.keywords = Keywords
+blogEdit.sort-order = Sort order
+blogEdit.description = Description
+blogEdit.article-text = Article text
+blogEdit.save-article = Save to DB
+blogEdit.delete-article = Delete article
+blogEdit.save-as-new = Save as new blog
+blogEdit.not-found = Article %d not found!
+blogEdit.article-deleted = %d article with #%d was deleted from DB.
+blogEdit.article-delete-failed = Failed to delete record with #%d!
 
 # Blog
 blog.title = SNC blog. Something about everything!

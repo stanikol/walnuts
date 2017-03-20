@@ -1,6 +1,7 @@
 [debug] Other repositories:
 [debug] Default repositories:
 [debug] Using inline dependencies specified in Scala.
+[debug] no default cache defined: set to /Users/snc/.ivy2/cache
 [debug] :: resolving dependencies :: client#client$sbt_sjs0.6_2.11;0.1-SNAPSHOT
 [debug] 	confs: [default]
 [debug] 	validate = true
@@ -3097,9 +3098,9 @@
 [debug] 	[NOT REQUIRED] jfree#jfreechart;1.0.8a!jfreechart.jar
 [debug] 	[NOT REQUIRED] junit#junit;4.10!junit.jar
 [debug] 	[NOT REQUIRED] org.hamcrest#hamcrest-core;1.1!hamcrest-core.jar
-[debug] :: resolution report :: resolve 11435ms :: artifacts dl 482ms
+[debug] :: resolution report :: resolve 3339ms :: artifacts dl 121ms
 [debug] 	report for client#client$sbt_sjs0.6_2.11;0.1-SNAPSHOT default produced in /Users/snc/scala/walnuts/client/target/resolution-cache/reports/client-client$sbt_sjs0.6_2.11-default.xml
-[debug] 	resolve done (11435ms resolve - 482ms download)
+[debug] 	resolve done (3339ms resolve - 121ms download)
 [debug] Using inline dependencies specified in Scala.
 [debug] :: resolving dependencies :: client#client$sources_sjs0.6_2.11;0.1-SNAPSHOT
 [debug] 	confs: [default]
@@ -5698,6 +5699,6 @@
 [debug] 	[NOT REQUIRED] org.apache.maven#maven-repository-metadata;3.2.2!maven-repository-metadata.jar(src)
 [debug] 	[NOT REQUIRED] com.timushev.sbt#sbt-updates;0.3.0!sbt-updates.jar(src)
 [debug] 	[NOT REQUIRED] org.bouncycastle#bcpg-jdk15on;1.51!bcpg-jdk15on.jar(src)
-[debug] :: resolution report :: resolve 5374ms :: artifacts dl 255ms
+[debug] :: resolution report :: resolve 1290ms :: artifacts dl 49ms
 [debug] 	report for client#client$sources_sjs0.6_2.11;0.1-SNAPSHOT default produced in /Users/snc/scala/walnuts/client/target/resolution-cache/reports/client-client$sources_sjs0.6_2.11-default.xml
-[debug] 	resolve done (5374ms resolve - 255ms download)
+[debug] 	resolve done (1290ms resolve - 49ms download)

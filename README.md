@@ -2,6 +2,7 @@ Walnuts shop with Play 2.5 Silhouette 4.0 Slick PostgreSQL
 ===========================================================
 
 This project is based on [Play Silhouette seed](https://www.lightbend.com/activator/template/play-silhouette-4.0-slick-postgres-seed).
+Git repo - https://github.com/dpitkevics/play-silhouette-4.0-slick-postgres-seed#master
 
 ## Features
 

@@ -26,11 +26,21 @@ class PasswordInfoDAO @Inject() (
 
   import dbConfig.driver.api._
 
+  //  def passwordInfoQuery(loginInfo: LoginInfo): Query[PasswordInfoTable, DbPasswordInfo, Seq] = {
+  //    for {
+  //      dbLoginInfo <- userDAO.loginInfoQuery(loginInfo)
+  //      dbPasswordInfo <- passwordInfos.filter(_.loginInfoId === dbLoginInfo.id)
+  //    } yield dbPasswordInfo
+  //  }
+
   def passwordInfoQuery(loginInfo: LoginInfo): Query[PasswordInfoTable, DbPasswordInfo, Seq] = {
-    for {
-      dbLoginInfo <- userDAO.loginInfoQuery(loginInfo)
-      dbPasswordInfo <- passwordInfos.filter(_.loginInfoId === dbLoginInfo.id)
-    } yield dbPasswordInfo
+    userDAO.loginInfoQuery(loginInfo).flatMap { dbLoginInfo =>
+      passwordInfos.filter(_.loginInfoId === dbLoginInfo.id)
+    }
+    //    for {
+    //      dbLoginInfo <- userDAO.loginInfoQuery(loginInfo)
+    //      dbPasswordInfo <- passwordInfos.filter(_.loginInfoId === dbLoginInfo.id)
+    //    } yield dbPasswordInfo
   }
 
   def find(loginInfo: LoginInfo): Future[Option[PasswordInfo]] = {
@@ -55,19 +65,34 @@ class PasswordInfoDAO @Inject() (
     }
   }
 
+  // SNC: updated due to error "Execution exception[[SlickException: A query for an UPDATE statement must resolve to a comprehension with a single table -- Unsupported shape: Comprehension s2, None, None, ConstArray(), None, None, None, None]]"
+  // Changing `passwordInfoQuery` to its implementation without for comprehension solved the issue!
   def update(loginInfo: LoginInfo, authInfo: PasswordInfo): Future[PasswordInfo] = {
     db.run(userDAO.loginInfoQuery(loginInfo).result.headOption.map { dbLoginInfoOption =>
-      dbLoginInfoOption.map {
-        dbLoginInfo =>
-          {
-            val dbPasswordInfo = DbPasswordInfo(authInfo.hasher, authInfo.password, authInfo.salt, dbLoginInfo.id.get)
-            db.run(passwordInfoQuery(loginInfo).update(dbPasswordInfo).transactionally)
-          }
+      dbLoginInfoOption.map { dbLoginInfo =>
+        val dbPasswordInfo: DbPasswordInfo = DbPasswordInfo(authInfo.hasher, authInfo.password, authInfo.salt, dbLoginInfo.id.get)
+        db.run(userDAO.loginInfoQuery(loginInfo).result.head).flatMap { dbLoginInfo =>
+          db.run(passwordInfos.filter(_.loginInfoId === dbLoginInfo.id).update(dbPasswordInfo).transactionally)
+        }
       }
     }).map { _ =>
       authInfo
     }
   }
+  // Original
+  //  def update(loginInfo: LoginInfo, authInfo: PasswordInfo): Future[PasswordInfo] = {
+  //    db.run(userDAO.loginInfoQuery(loginInfo).result.headOption.map { dbLoginInfoOption =>
+  //      dbLoginInfoOption.map {
+  //        dbLoginInfo =>
+  //          {
+  //            val dbPasswordInfo = DbPasswordInfo(authInfo.hasher, authInfo.password, authInfo.salt, dbLoginInfo.id.get)
+  //            db.run(passwordInfoQuery(loginInfo).update(dbPasswordInfo).transactionally)
+  //          }
+  //      }
+  //    }).map { _ =>
+  //      authInfo
+  //    }
+  //  }
 
   def save(loginInfo: LoginInfo, authInfo: PasswordInfo): Future[PasswordInfo] = {
     db.run(userDAO.loginInfoQuery(loginInfo).result.headOption.map { dbLoginInfoOption =>
@@ -91,6 +116,7 @@ class PasswordInfoDAO @Inject() (
 object PasswordInfoDAO {
 
   private val passwordInfos = TableQuery[PasswordInfoTable]
+  //  private val passwordInfosUpdate = passwordInfos returning passwordInfos.map(_.*)
 
 }
 

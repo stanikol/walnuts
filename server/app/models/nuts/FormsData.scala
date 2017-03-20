@@ -43,17 +43,6 @@ object FormsData {
     )(FindImages.apply)(FindImages.unapply)
   )
 
-  //  case class RenameImage(oldName: String, newName: String)
-  //
-  //  //  val renameImageForm: Form[RenameImage] = Form(
-  //  //    mapping(
-  //  //      "oldName" -> nonEmptyText,
-  //  //      "newName" -> nonEmptyText
-  //  //    )(RenameImage.apply)(RenameImage.unapply)
-  //  //  )
-  //  //
-  //  //  val deleteImageForm = Form(single("deleteImage" -> nonEmptyText))
-
   case class ImageEdit(rename: String, what: String, imageChecked: String, action: String)
 
   val imageEditForm = Form(mapping(
@@ -75,4 +64,21 @@ object FormsData {
     "description" -> nonEmptyText,
     "blog-short-text" -> nonEmptyText
   )(Article.apply)(Article.unapply))
+
+  val actionForm = Form(single("action" -> optional(text)))
+
+  case class AddComment(articleID: Long, comment: Option[String])
+  val addCommentForm = Form(mapping(
+    "article-id" -> longNumber,
+    "article-comment" -> optional(text)
+  )(AddComment.apply)(AddComment.unapply))
+
+  case class EditComment(commentID: Long, commentText: String, action: String)
+  val editCommentForm = Form(mapping(
+    "comment-id" -> longNumber,
+    "comment-text" -> text,
+    "action" -> text
+  )(EditComment.apply)(EditComment.unapply))
+
+  val commentsOrderForm = Form(single[Option[String]]("comments-order" -> optional(text)))
 }

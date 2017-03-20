@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/snc/scala/walnuts/server/conf/routes
-// @DATE:Wed Mar 15 00:23:29 EET 2017
+// @DATE:Mon Mar 20 14:43:04 EET 2017
 
 import play.api.mvc.{ QueryStringBindable, PathBindable, Call, JavascriptLiteral }
 import play.core.routing.{ HandlerDef, ReverseRouteContext, queryString, dynamicString }
@@ -12,6 +12,39 @@ import _root_.utils.route.Binders._
 
 // @LINE:33
 package controllers.nuts {
+
+  // @LINE:52
+  class ReverseComments(_prefix: => String) {
+    def _defaultPrefix: String = {
+      if (_prefix.endsWith("/")) "" else "/"
+    }
+
+  
+    // @LINE:55
+    def loginOrSignUp(): Call = {
+      import ReverseRouteContext.empty
+      Call("GET", _prefix + { _defaultPrefix } + "comments/loginOrSignUp")
+    }
+  
+    // @LINE:52
+    def addComment(): Call = {
+      import ReverseRouteContext.empty
+      Call("POST", _prefix + { _defaultPrefix } + "comments/add")
+    }
+  
+    // @LINE:53
+    def editComment(): Call = {
+      import ReverseRouteContext.empty
+      Call("POST", _prefix + { _defaultPrefix } + "comments/editComment")
+    }
+  
+    // @LINE:54
+    def commentsAdmin(): Call = {
+      import ReverseRouteContext.empty
+      Call("GET", _prefix + { _defaultPrefix } + "comments/admin")
+    }
+  
+  }
 
   // @LINE:33
   class ReverseImages(_prefix: => String) {
@@ -74,10 +107,10 @@ package controllers.nuts {
     // @LINE:43
     def showAllArticles(): Call = {
       import ReverseRouteContext.empty
-      Call("GET", _prefix + { _defaultPrefix } + "blog")
+      Call("GET", _prefix + { _defaultPrefix } + "index.php/article")
     }
   
-    // @LINE:44
+    // @LINE:45
     def create(): Call = {
       import ReverseRouteContext.empty
       Call("GET", _prefix + { _defaultPrefix } + "blog/new")
@@ -89,10 +122,10 @@ package controllers.nuts {
       Call("GET", _prefix + { _defaultPrefix } + "blog/" + implicitly[PathBindable[Long]].unbind("id", id) + "/edit")
     }
   
-    // @LINE:45
+    // @LINE:44
     def article(id:Long): Call = {
       import ReverseRouteContext.empty
-      Call("GET", _prefix + { _defaultPrefix } + "blog/" + implicitly[PathBindable[Long]].unbind("id", id))
+      Call("GET", _prefix + { _defaultPrefix } + "index.php/article/view/id/" + implicitly[PathBindable[Long]].unbind("id", id))
     }
   
   }

@@ -124,3 +124,56 @@ exit
 ~ run
 exit
 ~ run
+exit
+~ run
+exit
+~run 
+exir
+exit
+~run
+exit
+~run
+exit
+~run
+exit
+~run
+exit
+~run
+exit
+~run
+exit
+~run
+clean
+~run
+clean
+~run
+clean 
+compile
+twirlCompileTemplates
+~run
+twirlCompileTemplates
+~run
+twirlCompileTemplates
+clean
+~run
+exit
+~run
+twirlCompileTemplates
+~run
+clean
+~run
+; clean ; ~run
+~run
+exit
+~run
+exit
+~run
+; clean ; ~run
+clean
+twirlCompileTemplates
+; clean ; ~run
+exit
+; clean ; ~run
+clean-all
+clean
+; clean ; ~run

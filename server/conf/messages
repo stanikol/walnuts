@@ -1,10 +1,10 @@
-error.email = Valid email required
-error.required = This field is required
-invalid.credentials = Invalid credentials!
-access.denied = Access denied!
+error.email = Требуется валидный email
+error.required = Это поле обязательно
+invalid.credentials = Инвалидные данные!
+access.denied = Доступ запрещен!
 could.not.authenticate = Could not authenticate with social provider! Please try again!
 
-home.title = Silhouette - Home
+home.title = ООО «Тимирязевское»
 sign.up.title = Silhouette - Sign Up
 sign.in.title = Silhouette - Sign In
 forgot.password.title = Silhouette - Forgot Password
@@ -97,44 +97,44 @@ email.reset.password.html.text = Please follow <a href="{0}">this link</a> to re
 email.reset.password.txt.text = Please follow the link to reset your password: {0}
 
 # Activate Account
-email.activate.account.subject = Activate account
-email.activate.account.hello = Hello {0},
-email.activate.account.html.text = Please follow <a href="{0}">this link</a> to confirm and activate your new account.
-email.activate.account.txt.text = Please follow the link to confirm and activate your new account: {0}
+email.activate.account.subject = Активировать аккаунт
+email.activate.account.hello = Здравствуйте {0},
+email.activate.account.html.text = Пожалуйста следуйте по <a href="{0}">этой ссылке</a> для подтверждения активации аккаутнта.
+email.activate.account.txt.text = Пожалуйста следуйте по ссылке для подтверждения активции аккаутнта: {0}
 ####################################
-# Main
-main-name = SNC Blog
+# SNC
 
 # Images
-images.title = Edit images in DB
-images.deleteMsg = Image `%s` was deleted from DB.
-# images.deleteNoImage = Received request to delete image from DB, but no image specified!
-images.upload-new-image = Upload new image
-images.choose-image = Choose filename with picture
-images.save-to-db = Save to DB
-images.alt-group = Alternative
-images.alt-name = Name
-images.height = Height
-images.width = Width
-images.rename-to = Rename to
-images.rename = Rename
-images.delete = Delete
-images.invalidForm = Invalid form data specified: %s !
-
-# New Article
-blogEdit.title = Title
-blogEdit.keywords = Keywords
-blogEdit.sort-order = Sort order
-blogEdit.description = Description
-blogEdit.article-text = Article text
-blogEdit.save-article = Save to DB
-blogEdit.delete-article = Delete article
-blogEdit.save-as-new = Save as new blog
-blogEdit.not-found = Article %d not found!
-blogEdit.article-deleted = %d article with #%d was deleted from DB.
-blogEdit.article-delete-failed = Failed to delete record with #%d!
+images.title = Изображения
+images.deleteMsg = Изображение `{0}` удалено из БД.
+images.upload-new-image = Загрузить новое изображение
+images.choose-image = Выбрать файл изображения
+images.save-to-db = Сохранить в БД
+images.alt-group = Наименование
+images.alt-name = Файл
+images.height = Высота
+images.width = Ширина
+images.rename-to = Переименовать
+images.rename = Переименовать
+images.delete = Удалить
+images.invalidForm = Форма с инвалидными данными: {0} !
+images.errors-in-form = Ошибки в данных формы !
 
 # Blog
-blog.title = SNC blog. Something about everything!
-blog.unknown-command = Unknown command %s for article #%s
+blog.title = Заголовок
+blog.keywords = Keywords/Ключевые слова (SEO)
+blog.sort-order = Порядок отображения
+blog.description = Description/Описание (SEO)
+blog.article-text = Текст статьи
+blog.save-article = Сохранить/Обновить
+blog.delete-article = Удалить статью
+blog.save-as-new = Сохранить как новую статью
+blog.not-found = Статья №{0} не найдена!
+blog.article-deleted = {0} статья с ID #{1} удалена из БД.
+blog.article-created = Создана новая статья №{0}.
+blog.article-updated = Статья №{0} обновлена.
+blog.article-update-error = Ошибка при обновлении статья №{0} !
+blog.article-delete-failed = Ошибка при удалении статьи #{0} !
+blog.unknown-command = Комманда {0} для статьи #{1} не распознана системой !
+blog.title = ООО «Тимирязевское»
 

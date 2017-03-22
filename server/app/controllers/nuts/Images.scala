@@ -51,7 +51,7 @@ class Images @Inject() (
     )).toOption
     Logger.info(s"Received request to save image to DB with params: ${request.body.asFormUrlEncoded}")
     Try {
-      if (saveImageFormData.hasErrors) throw new Exception(Messages("Errors in form!"))
+      if (saveImageFormData.hasErrors) throw new Exception(Messages("images.errors-in-form"))
       val result: Future[Result] =
         request.body.file("new-image").map { picture =>
           //        val filename = if (saveImageFormData("name").value.isDefined) saveImageFormData("name").value.get else picture.filename
@@ -107,7 +107,7 @@ class Images @Inject() (
   }
 
   private val badEditImageResult = { badData: String =>
-    Future(Redirect(controllers.nuts.routes.Images.show()).flashing("error" -> Messages("images.invalidForm").format(badData)))
+    Future(Redirect(controllers.nuts.routes.Images.show()).flashing("error" -> Messages("images.invalidForm", badData)))
   }
 
   /**
@@ -117,7 +117,7 @@ class Images @Inject() (
   def edit() = silhouette.SecuredAction(Roles.Admin).async { implicit request =>
     imageEditForm.bindFromRequest().fold(
       errorForm => {
-        Logger.error(Messages("images.invalidForm") + s"$errorForm")
+        Logger.error(Messages("images.invalidForm", errorForm))
         badEditImageResult(errorForm.data.toString)
       },
       imageEditForm => {
@@ -133,7 +133,7 @@ class Images @Inject() (
           cacheMan.clearAll()
           //          db.runAsync(images.filter(img => img.name === imageEditForm.imageChecked).delete)
           deleteImage(imageEditForm.imageChecked).map { result =>
-            val msg = Messages("images.deleteMsg").format(imageEditForm.imageChecked)
+            val msg = Messages("images.deleteMsg", imageEditForm.imageChecked)
             Logger.info(msg)
             Redirect(controllers.nuts.routes.Images.show()).flashing("success" -> msg)
           }

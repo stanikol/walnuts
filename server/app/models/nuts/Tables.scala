@@ -58,12 +58,13 @@ object Tables {
     def description = column[String]("description")
     def qnt = column[Int]("qnt", O.Default(0))
     def price = column[BigDecimal]("price", O.Default(0))
-    def show = column[Int]("show", O.Default(0))
+    def showOrder = column[Int]("show_order", O.Default(0))
     def image = column[Option[String]]("image")
-    def * = (id.?, category, title, description, qnt, price, show, image) <> (GoodsItem.tupled, GoodsItem.unapply)
+    def * = (id.?, category, title, description, qnt, price, showOrder, image) <> ((GoodsItem.apply _).tupled, GoodsItem.unapply)
     def categoryFK = foreignKey("CATEGORY_FK", category, categories)(_.name, onUpdate = ForeignKeyAction.Restrict, onDelete = ForeignKeyAction.Cascade)
   }
   val goods = TableQuery[Goods]
+  val goodsReturning = goods returning (goods.map(_.id)) into ((goodsItem, newID) => goodsItem.copy(id = Some(newID)))
 
   class Comments(tag: Tag) extends Table[Comment](tag, "comments") {
     def id = column[Long]("id", O.PrimaryKey, O.AutoInc)

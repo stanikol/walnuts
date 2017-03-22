@@ -5855,7 +5855,7 @@ button.close {
   .container {
     max-width: 1060px; } }
 
-#container {
+#container-main {
   box-shadow: 0px 0px 16px #666;
   padding: 0 3% 0 3%; }
 
@@ -5899,3 +5899,37 @@ button.close {
   -webkit-border-radius: 5px;
   box-shadow: 0px 0px 5px #ececea;
   font-size: 12px; }
+
+.cat_img {
+  border-radius: 100px;
+  -moz-border-radius: 100px;
+  /* Firefox */
+  -webkit-border-radius: 100px;
+  /* Safari, Chrome */
+  background: #fff;
+  width: 162px;
+  height: 162px;
+  background: url(/assets/images/imgmask.png) center no-repeat;
+  z-index: 9999;
+  background-size: 162px 162px;
+  display: block;
+  margin: 0 auto; }
+
+.cat_img img {
+  margin: 0 auto; }
+
+.someitem {
+  width: 292px;
+  border-radius: 300px;
+  -moz-border-radius: 300px;
+  /* Firefox */
+  -webkit-border-radius: 300px;
+  /* Safari, Chrome */
+  behavior: url(/PIE.htc); }
+
+.title {
+  color: #975c22;
+  font-size: 17px;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center; }

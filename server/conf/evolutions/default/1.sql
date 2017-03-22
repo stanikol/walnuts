@@ -29,7 +29,7 @@ CREATE TABLE user_login_info (
 );
 
 CREATE TABLE password_info (
-  user_id CHARACTER VARYING NOT NULL,
+  hasher CHARACTER VARYING NOT NULL,
   password CHARACTER VARYING NOT NULL,
   salt CHARACTER VARYING,
   login_info_id INTEGER NOT NULL
@@ -55,6 +55,8 @@ CREATE TABLE oauth2_info (
 --COPY user_login_info FROM '/Users/snc/scala/walnuts/user_login_info.csv';
 --COPY users FROM '/Users/snc/scala/walnuts/users.csv';
 --COPY auth_tokens FROM '/Users/snc/scala/walnuts/auth_tokens.csv';
+
+--ALTER TABLE password_info RENAME COLUMN user_id TO hasher;
 
 # --- !Downs
 

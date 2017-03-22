@@ -1,51 +1,48 @@
-@(user: models.User, article: Form[models.nuts.Data.Article], errors: Map[String, String]=Map.empty[String, String])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+@(user: models.User, item: Form[GoodsItem], errors: Map[String, String]=Map.empty[String, String])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
 @import helper.CSRF
 
-@admin(Messages("blogEdit.title"), Some(user)){
-    @{errors.map{ case (key, errorMsg)=>
-    <div class="col-md-10 col-md-offset-2 alert alert-danger">
-        <a href="#" class="close" data-dismiss="alert">&times;</a>
-        <strong>{Messages("error")} {Messages(s"blogEdit.$key")} => {errorMsg}</strong>
-    </div>
+@admin(Messages("itemEdit.title"), Some(user)){
+    @{if(item.hasErrors){
+        item.errors.map{ case play.api.data.FormError(key, errorMsgs, _)=>
+            <div class="col-md-10 col-md-offset-2 alert alert-danger">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong>{Messages("error")} {Messages(key)} => {errorMsgs.mkString("; ")}</strong>
+            </div>
+        }
     }}
     <input type="file" id="filepicker" style="display: none"/>
-    <form id="article-edit-form" method="POST" action="@CSRF(controllers.nuts.routes.Blog.onSubmit)">
-        <strong>ID #@{article("id").value}</strong>
-        <input type="hidden" id="id" name="id" value="@{article("id").value}"/>
-        <input type="hidden" id="blog-text" name="blog-text" />
-        <input type="hidden" id="blog-short-text" name="blog-short-text" />
+    <form id="item-edit-form" method="POST" action="@CSRF(controllers.nuts.routes.Goods.updateOrCreateOrDelete)">
+        <strong>ID #@{item("id").value}</strong>
+        <input type="hidden" id="id" name="id" value="@{item("id").value}"/>
+        <input type="hidden" id="description" name="description" />
         <!--<input type="hidden" id="action" name="action" />-->
         <div class="form-group">
-            <label for="title" class="control-label">@Messages("blogEdit.title")</label>
-            <input type="text" id="title" name="title" value='@{article("title").value}'
+            <label for="category" class="control-label">@Messages("Category")</label>
+            <input type="text" id="category" name="category" value='@{item("category").value}'
                    class="form-control"/>
         </div>
         <div class="form-group">
-            <label for="description" class="control-label">@Messages("blogEdit.description")</label>
-            <textarea type="text" id="description" name="description" class="form-control">@{article("description").value}</textarea>
-        </div>
-        <div class="form-group">
-            <label for="blog-edit" class="control-label">@Messages("blogEdit.article-text")</label>
-            <div id="blog-edit" class="form-control">
-                @{Html(article("blog-text").value.getOrElse(""))}
+            <label for="description-edit" class="control-label">@Messages("description")</label>
+            <div id="description-edit" class="form-control" rows="11">
+                @{Html(item("description").value.getOrElse(""))}
             </div>
         </div>
         <div class="form-group">
-            <label for="keywords" class="control-label">@Messages("blogEdit.keywords")</label>
-            <input type="text" id="keywords" name="keywords" value='@{article("keywords").value}'
+            <label for="title" class="control-label">@Messages("title")</label>
+            <input type="text" id="title" name="title" value='@{item("title").value}'
                    class="form-control"/>
         </div>
         <div class="form-group">
-            <label for="sort-order" class="control-label">@Messages("blogEdit.sort-order")</label>
-            <input type="text" id="sort-order" name="sort-order" value='@{article("sort-order").value}'
+            <label for="show-order" class="control-label">@Messages("show-order")</label>
+            <input type="text" id="show-order" name="show-order" value='@{item("show-order").value}'
                    class="form-control"/>
         </div>
         <!--BUTTONS-->
         <div class="btn-group btn-group-lg">
-            <button type="submit" id="new-btn" name="action" value="new" class="btn btn-warning">@Messages("blogEdit.save-as-new")</button>
-            @if(article("id").value.isDefined){
-                <button type="submit" id="save-btn" name="action" value="save" class="btn btn-primary">@Messages("blogEdit.save-article")</button>
-                <button type="submit" id="delete-btn" name="action" value="delete" class="btn btn-danger">@Messages("blogEdit.delete-article")</button>
+            <button type="submit" id="new-btn" name="action" value="new" class="btn btn-warning">@Messages("Save as new")</button>
+            @if(item("id").value.isDefined){
+                <button type="submit" id="save-btn" name="action" value="save" class="btn btn-primary">@Messages("Update")</button>
+                <button type="submit" id="delete-btn" name="action" value="delete" class="btn btn-danger">@Messages("Delete")</button>
             }
         </div>
     </form>
@@ -56,9 +53,6 @@
     <script src="https://cdn.quilljs.com/1.2.0/quill.js"></script>
     <!--<script src="/assets/javascripts/blogEdit.js"></script>-->
     <script>
-        @***********
-        @Html(views.js.blog.blogEdit.render().toString())
-        ***********@
         // QuillJS editor. Will be initiated later.
         var quill;
         var Delta =  Quill.import('delta');
@@ -156,7 +150,7 @@
 
                 ['clean']                                         // remove formatting button
             ];
-            quill = new Quill('#blog-edit', {
+            quill = new Quill('#description-edit', {
                 modules: {
                     toolbar: {
                       container: toolbarOptions,
@@ -171,13 +165,12 @@
 
             $('#filepicker').change(insertImageInQuillJSAsBase64);
 
-            $('#article-edit-form').on('submit', function(){
-                document.getElementById('blog-text').value = document.getElementsByClassName('ql-editor')[0].innerHTML;
-                document.getElementById('blog-short-text').value = quill.getText(0, 222);
+            $('#item-edit-form').on('submit', function(){
+                document.getElementById('description').value = document.getElementsByClassName('ql-editor')[0].innerHTML;
                 if( deleteButtonPressed ){
                     let id = document.getElementById('id').value;
                     deleteButtonPressed = false;
-                    return confirm('Delete article #'+id);
+                    return confirm('Delete item #'+id);
                 } else {
                     return true;
                 }
@@ -192,4 +185,17 @@
 
         });
     </script>
+    <style>
+    #description-edit{
+        min-height: 500px;
+        max-height: 400px;
+        overflow: hidden;
+        overflow-y: scroll;
+        overflow-x: scroll;
+    }
+
+    .ql-image2:after {
+        content: "Ω";
+    }
+    </style>
 }

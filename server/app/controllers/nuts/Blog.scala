@@ -43,7 +43,7 @@ class Blog @Inject() (
   }
 
   def article(id: Long) = silhouette.UserAwareAction.async { implicit request =>
-    Logger.info(Messages("Retrieving article #%d ...".format(id)))
+    Logger.debug("Retrieving article #%d ...".format(id))
     val articleWithComments: Future[Tuple2[Option[Article], Seq[CommentInfo]]] =
       for (
         a <- getArticle(id);
@@ -51,9 +51,8 @@ class Blog @Inject() (
       ) yield (a, c)
     articleWithComments map {
       case (Some(article), comments) =>
-        //Logger.info(s"Comments for $article are $comments")
-        Ok(views.html.blog.blogShow(request.identity, article, comments)) //.withSession("returnUrl" -> "/blog/3")
-      case _ => BadRequest(Messages(s"Article %d can not be found !".format(id)))
+        Ok(views.html.blog.blogShow(request.identity, article, comments))
+      case _ => BadRequest(Messages("blog.not-found", id))
     }
   }
 
@@ -67,7 +66,7 @@ class Blog @Inject() (
         Ok(views.html.blog.blogEdit(request.identity, articleForm.fill(article)))
       case _ =>
         Ok(views.html.blog.blogEdit(request.identity, articleForm.fill(Article.empty),
-          Map("id" -> Messages("blogEdit.not-found").format(id))))
+          Map("id" -> Messages("blog.not-found", id))))
     }
   }
 
@@ -91,32 +90,32 @@ class Blog @Inject() (
             addNewArticle(article).map { newArticle =>
               val id = newArticle.id.get //OrElse(newArticle)
               Redirect(controllers.nuts.routes.Blog.article(id))
-                .flashing("success" -> Messages("New article #%s is created.").format(id))
+                .flashing("success" -> Messages("blog.article-created", id))
             }
           case Some("save") if article.id.isDefined =>
             updateArticle(article).map { updatedRows =>
               val id = article.id.get
               if (updatedRows == 1)
                 Redirect(controllers.nuts.routes.Blog.article(id))
-                  .flashing("success" -> Messages("New article #%s is updated.").format(id))
+                  .flashing("success" -> Messages("blog.article-updated", id))
               else
                 Redirect(controllers.nuts.routes.Blog.article(id))
-                  .flashing("error" -> Messages("Error while updating article #%s!").format(id))
+                  .flashing("error" -> Messages("blog.article-update-error", id))
             }
           case Some("delete") if article.id.isDefined =>
             Logger.warn(s"Going to delete article ${article.id.get} ...")
             deleteArticle(article.id.get).map { rowsDeleted =>
               if (rowsDeleted >= 1) {
-                val msg = Messages("blogEdit.article-deleted").format(rowsDeleted, article.id.get)
+                val msg = Messages("blog.article-deleted").format(rowsDeleted, article.id.get)
                 Logger.warn(msg)
                 Redirect(controllers.nuts.routes.Blog.showAllArticles).flashing("success" -> msg)
               } else {
-                val errorMsg = Messages("blogEdit.article-delete-failed").format(article.id.get)
+                val errorMsg = Messages("blog.article-delete-failed", article.id.get)
                 Redirect(controllers.nuts.routes.Blog.showAllArticles).flashing("error" -> errorMsg)
               }
             }
           case unknown =>
-            val errorMsg = Messages("blog.unknown-command").format(unknown.toString(), article.id.getOrElse("None"))
+            val errorMsg = Messages("blog.unknown-command", unknown.toString(), article.id.getOrElse("None"))
             Logger.error(errorMsg)
             Future(Redirect(controllers.nuts.routes.Blog.edit(article.id.get)).flashing("error" -> errorMsg))
         }

@@ -1,1 +1,2 @@
-2017-03-20 14:32:35,985 [INFO] from play.core.server.NettyServer in pool-141-thread-5 - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+2017-03-22 01:53:04,345 [INFO] from play.core.server.NettyServer in pool-8317-thread-4 - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+2017-03-22 01:53:08,730 [INFO] from play.core.server.NettyServer in pool-8317-thread-4 - Stopping server...

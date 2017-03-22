@@ -53,3 +53,11 @@ POST        /comments/add                   controllers.nuts.Comments.addComment
 POST        /comments/editComment           controllers.nuts.Comments.editComment
 GET         /comments/admin                 controllers.nuts.Comments.commentsAdmin
 GET         /comments/loginOrSignUp         controllers.nuts.Comments.loginOrSignUp
+
+#############################################
+#           Goods                           #
+#############################################
+GET         /items                          controllers.nuts.Goods.listAllGoods
+GET         /index.php/items/view/id/:id    controllers.nuts.Goods.get(id: Long)
+GET         /admin/items                    controllers.nuts.Goods.viewEditForm(id: Option[Long])
+POST        /admin/items                    controllers.nuts.Goods.updateOrCreateOrDelete

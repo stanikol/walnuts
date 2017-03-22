@@ -177,3 +177,14 @@ exit
 clean-all
 clean
 ; clean ; ~run
+exit
+; clean ; ~run
+exit
+~run
+twirlCompileTemplates
+~run
+twirlCompileTemplates
+~run
+clean
+~run
+clean

@@ -56,7 +56,11 @@ object Data {
 
   // GoodsItem
   case class GoodsItem(id: Option[Long], category: String, title: String, description: String,
-    qnt: Int, price: BigDecimal, show: Int, image: Option[String])
+    qnt: Int, price: BigDecimal, showOrder: Int, image: Option[String])
+
+  object GoodsItem {
+    def empty = GoodsItem(None, "", "", "", 0, 0, 1, None)
+  }
   //  object GoodsItem {
 
   implicit val goodsItemJson: Format[GoodsItem] = Json.format[GoodsItem]

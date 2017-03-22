@@ -1,0 +1,34 @@
+
+@(user: Option[models.User], goodsItem: GoodsItem)(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+
+@import helper.CSRF
+
+@main(goodsItem.title, user){
+    <div class="row">
+        @if(goodsItem.image.isDefined){
+            <div id="item_img" class="col col-xm-6 col-sm-6 col-md-6 col-ld-6">
+                <img class="someitem" src="@controllers.nuts.routes.Images.get(goodsItem.image.get)" alt="@goodsItem.title">
+            </div>
+        }
+        <div class="col col-xm-6 col-sm-6 col-md-6 col-ld-6">
+            <h1>@{goodsItem.title}</h1>
+            <h2>@{goodsItem.category}</h2>
+        </div>
+
+    </div>
+    <div class="goodsItem">
+        <div class="goodsItem-text" disabled>@Html(goodsItem.description)</div>
+    </div>
+    <br>
+    @user.map{ usr =>
+        @if(usr.isAdmin){
+            <form action="#" method="get">
+                @helper.CSRF.formField
+                <button type="submit" class="btn btn-danger">@Messages("Edit")</button>
+            </form>
+        }
+    }
+}
+
+
+

@@ -16,7 +16,7 @@
                 <a href="@controllers.nuts.routes.Goods.get(item.id.get)">
                     @if(item.image.isDefined){
                         <!--<img class="img-responsive" src="@controllers.nuts.routes.Images.get(item.image.get)"/>-->
-                        <div style="background: url(@controllers.nuts.routes.Images.get(item.image.get)) center no-repeat; " class="cat_img">
+                        <div style="background: url(@controllers.nuts.routes.Images.get(item.image.get)) center no-repeat; background-size:162px 162px;" class="cat_img">
                             <img width="162px" src="/assets/images/imgmaskt.png" alt="">
                         </div>
                         <div class="title">@item.title</div>

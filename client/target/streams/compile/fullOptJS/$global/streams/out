@@ -1,0 +1,19 @@
+[0m[[0minfo[0m] [0mFull optimizing /Users/snc/scala/walnuts/client/target/scala-2.11/client-opt.js[0m
+[0m[[0mdebug[0m] [0mLinker: Compute reachability: 332322 us[0m
+[0m[[0mdebug[0m] [0mLinker: Assemble LinkedClasses: 477611 us[0m
+[0m[[0mdebug[0m] [0mBasic Linking: 829101 us[0m
+[0m[[0mdebug[0m] [0mInc. optimizer: Batch mode: true[0m
+[0m[[0mdebug[0m] [0mInc. optimizer: Incremental part: 271534 us[0m
+[0m[[0mdebug[0m] [0mInc. optimizer: Optimizing 777 methods.[0m
+[0m[[0mdebug[0m] [0mInc. optimizer: Optimizer part: 501622 us[0m
+[0m[[0mdebug[0m] [0mInc. optimizer: 803344 us[0m
+[0m[[0mdebug[0m] [0mRefiner: Compute reachability: 53065 us[0m
+[0m[[0mdebug[0m] [0mRefiner: Assemble LinkedClasses: 13427 us[0m
+[0m[[0mdebug[0m] [0mRefiner: 69172 us[0m
+[0m[[0mdebug[0m] [0mEmitter: Class tree cache stats: reused: 0 -- invalidated: 37[0m
+[0m[[0mdebug[0m] [0mEmitter: Method tree cache stats: resued: 0 -- invalidated: 95[0m
+[0m[[0mdebug[0m] [0mEmitter (create Closure trees): 400250 us[0m
+[0m[[0minfo[0m] [0mClosure: 0 error(s), 0 warning(s)[0m
+[0m[[0mdebug[0m] [0mClosure: Compiler pass: 2938027 us[0m
+[0m[[0mdebug[0m] [0mClosure: Write result: 33119 us[0m
+[0m[[0mdebug[0m] [0mGlobal IR cache stats: reused: 4 -- invalidated: 0 -- trees read: 246[0m

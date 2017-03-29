@@ -10,6 +10,7 @@
     }}
     @for(article<-articles){
         <br>
+        @*********
         <a href='@if(userOption.isDefined && userOption.get.isAdmin){
                     @controllers.nuts.routes.Blog.edit(article.id.get)
                 } else {
@@ -21,6 +22,14 @@
                 } else {
                     @article.title
                 }
+        </a>
+        *********@
+        <a href='@controllers.nuts.routes.Blog.article(article.id.get)' class="article-title-href">
+            @if(userOption.isDefined && userOption.get.isAdmin){
+                @article.title <br> #@article.id.get @article.sort_order
+            } else {
+                @article.title
+            }
         </a>
         <div class="article-short-text">@{article.short_text}</div>
     }

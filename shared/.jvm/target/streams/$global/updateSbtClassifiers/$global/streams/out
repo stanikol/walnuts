@@ -1,6 +1,7 @@
 [debug] Other repositories:
 [debug] Default repositories:
 [debug] Using inline dependencies specified in Scala.
+[debug] no default cache defined: set to /Users/snc/.ivy2/cache
 [debug] :: resolving dependencies :: shared#shared$sbt_2.11;0.1-SNAPSHOT
 [debug] 	confs: [default]
 [debug] 	validate = true
@@ -13,7 +14,6 @@
 [debug] sbt-chain: module revision found in cache: org.scala-sbt#sbt;0.13.11
 [debug] 	found org.scala-sbt#sbt;0.13.11 in sbt-chain
 [debug] == resolving dependencies org.scala-sbt#sbt;0.13.11->org.scala-lang#scala-library;2.10.6 [compile->default(compile)]
-[debug] no default cache defined: set to /Users/snc/.ivy2/cache
 [info] Resolving org.scala-lang#scala-library;2.10.6 ...
 [debug] sbt-chain: Checking cache for: dependency: org.scala-lang#scala-library;2.10.6 {compile=[default(compile)]}
 [debug] sbt-chain: module revision found in cache: org.scala-lang#scala-library;2.10.6
@@ -314,13 +314,6 @@
 [debug] == resolving dependencies org.scala-sbt#ivy;0.13.11->org.scala-sbt.ivy#ivy;2.3.0-sbt-2cc8d2761242b072cedb0a04cb39435c4fa24f9a [compile->compile]
 [debug] == resolving dependencies org.scala-sbt#ivy;0.13.11->org.scala-sbt.ivy#ivy;2.3.0-sbt-2cc8d2761242b072cedb0a04cb39435c4fa24f9a [compile->master]
 [debug] == resolving dependencies org.scala-sbt#ivy;0.13.11->com.jcraft#jsch;0.1.46 [compile->default(compile)]
-[info] Resolving com.jcraft#jsch;0.1.46 ...
-[debug] sbt-chain: Checking cache for: dependency: com.jcraft#jsch;0.1.46 {compile=[default(compile)]}
-[debug] sbt-chain: module revision found in cache: com.jcraft#jsch;0.1.46
-[debug] 	found com.jcraft#jsch;0.1.46 in sbt-chain
-[debug] == resolving dependencies org.scala-sbt#ivy;0.13.11->com.jcraft#jsch;0.1.46 [compile->runtime]
-[debug] == resolving dependencies org.scala-sbt#ivy;0.13.11->com.jcraft#jsch;0.1.46 [compile->compile]
-[debug] == resolving dependencies org.scala-sbt#ivy;0.13.11->com.jcraft#jsch;0.1.46 [compile->master]
 [debug] == resolving dependencies org.scala-sbt#ivy;0.13.11->org.scala-sbt#serialization_2.10;0.1.2 [compile->default(compile)]
 [info] Resolving org.scala-sbt#serialization_2.10;0.1.2 ...
 [debug] sbt-chain: Checking cache for: dependency: org.scala-sbt#serialization_2.10;0.1.2 {compile=[default(compile)]}
@@ -1747,17 +1740,7 @@
 [debug] == resolving dependencies org.webjars#webjars-locator-core;0.26->org.apache.commons#commons-lang3;3.1 [compile->compile(*)]
 [debug] == resolving dependencies org.webjars#webjars-locator-core;0.26->org.apache.commons#commons-lang3;3.4 [compile->compile(*)]
 [debug] == resolving dependencies org.webjars#webjars-locator-core;0.26->org.apache.commons#commons-compress;1.9 [compile->master(compile)]
-[info] Resolving org.apache.commons#commons-compress;1.9 ...
-[debug] sbt-chain: Checking cache for: dependency: org.apache.commons#commons-compress;1.9 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
-[debug] sbt-chain: module revision found in cache: org.apache.commons#commons-compress;1.9
-[debug] 	found org.apache.commons#commons-compress;1.9 in sbt-chain
 [debug] == resolving dependencies org.webjars#webjars-locator-core;0.26->org.apache.commons#commons-compress;1.9 [compile->compile(*)]
-[debug] == resolving dependencies org.webjars#webjars-locator-core;0.26->org.apache.commons#commons-compress;1.9 [compile->runtime(*)]
-[debug] == resolving dependencies org.webjars#webjars-locator-core;0.26->org.apache.commons#commons-compress;1.9 [compile->compile]
-[debug] == resolving dependencies org.webjars#webjars-locator-core;0.26->org.apache.commons#commons-compress;1.9 [compile->default(compile)]
-[debug] == resolving dependencies org.webjars#webjars-locator-core;0.26->org.apache.commons#commons-compress;1.9 [compile->runtime]
-[debug] == resolving dependencies org.webjars#webjars-locator-core;0.26->org.apache.commons#commons-compress;1.9 [compile->compile]
-[debug] == resolving dependencies org.webjars#webjars-locator-core;0.26->org.apache.commons#commons-compress;1.9 [compile->master]
 [debug] == resolving dependencies org.webjars#webjars-locator;0.26->org.webjars#webjars-locator-core;0.26 [compile->runtime(*)]
 [debug] == resolving dependencies org.webjars#webjars-locator;0.26->org.webjars#webjars-locator-core;0.26 [compile->compile]
 [debug] == resolving dependencies org.webjars#webjars-locator-core;0.26->org.slf4j#slf4j-api;1.7.7 [runtime->runtime(*)]
@@ -1765,7 +1748,6 @@
 [debug] == resolving dependencies org.webjars#webjars-locator-core;0.26->org.apache.commons#commons-lang3;3.4 [runtime->runtime(*)]
 [debug] == resolving dependencies org.webjars#webjars-locator-core;0.26->org.apache.commons#commons-lang3;3.4 [runtime->compile]
 [debug] == resolving dependencies org.webjars#webjars-locator-core;0.26->org.apache.commons#commons-compress;1.9 [runtime->runtime(*)]
-[debug] == resolving dependencies org.webjars#webjars-locator-core;0.26->org.apache.commons#commons-compress;1.9 [runtime->compile]
 [debug] == resolving dependencies org.webjars#webjars-locator;0.26->org.webjars#webjars-locator-core;0.26 [compile->default(compile)]
 [debug] == resolving dependencies org.webjars#webjars-locator;0.26->org.webjars#webjars-locator-core;0.26 [compile->runtime]
 [debug] == resolving dependencies org.webjars#webjars-locator;0.26->org.webjars#webjars-locator-core;0.26 [compile->compile]
@@ -2511,10 +2493,6 @@
 [debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->org.webjars#webjars-locator-core;0.26 [default->runtime]
 [debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->org.webjars#webjars-locator-core;0.26 [default->compile]
 [debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->org.webjars#webjars-locator-core;0.26 [default->master]
-[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.9 [default->default(compile)]
-[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.9 [default->runtime]
-[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.9 [default->compile]
-[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.9 [default->master]
 [debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->com.fasterxml.jackson.core#jackson-databind;2.3.3 [default->default(compile)]
 [debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->com.fasterxml.jackson.core#jackson-databind;2.3.3 [default->runtime]
 [debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->com.fasterxml.jackson.core#jackson-databind;2.3.3 [default->compile]
@@ -2925,6 +2903,186 @@
 [debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->org.scala-sbt#test-interface;1.0 [default->runtime]
 [debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->org.scala-sbt#test-interface;1.0 [default->compile]
 [debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->org.scala-sbt#test-interface;1.0 [default->master]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->com.heroku#sbt-heroku;1.0.1 [default->default(compile)]
+[info] Resolving com.heroku#sbt-heroku;1.0.1 ...
+[debug] sbt-chain: Checking cache for: dependency: com.heroku#sbt-heroku;1.0.1 {default=[default(compile)]}
+[debug] sbt-chain: module revision found in cache: com.heroku#sbt-heroku;1.0.1
+[debug] 	found com.heroku#sbt-heroku;1.0.1 in sbt-chain
+[debug] 	[1.0.1] com.heroku#sbt-heroku;1.0.1
+[debug] == resolving dependencies com.heroku#sbt-heroku;1.0.1->com.heroku.sdk#heroku-deploy;1.0.0 [compile->default(compile)]
+[info] Resolving com.heroku.sdk#heroku-deploy;1.0.0 ...
+[debug] sbt-chain: Checking cache for: dependency: com.heroku.sdk#heroku-deploy;1.0.0 {compile=[default(compile)]}
+[debug] sbt-chain: module revision found in cache: com.heroku.sdk#heroku-deploy;1.0.0
+[debug] 	found com.heroku.sdk#heroku-deploy;1.0.0 in sbt-chain
+[debug] == resolving dependencies com.heroku#sbt-heroku;1.0.1->com.heroku.sdk#heroku-deploy;1.0.0 [compile->runtime]
+[debug] == resolving dependencies com.heroku#sbt-heroku;1.0.1->com.heroku.sdk#heroku-deploy;1.0.0 [compile->compile]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->com.fasterxml.jackson.core#jackson-core;2.3.0 [compile->master(compile)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->com.fasterxml.jackson.core#jackson-core;2.3.3 [compile->master(compile)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->com.fasterxml.jackson.core#jackson-core;2.3.0 [compile->compile(*)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->com.fasterxml.jackson.core#jackson-core;2.3.3 [compile->compile(*)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->com.fasterxml.jackson.core#jackson-databind;2.3.0 [compile->master(compile)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->com.fasterxml.jackson.core#jackson-databind;2.3.3 [compile->master(compile)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->com.fasterxml.jackson.core#jackson-databind;2.3.0 [compile->compile(*)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->com.fasterxml.jackson.core#jackson-databind;2.3.3 [compile->compile(*)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.apache.commons#commons-compress;1.10 [compile->master(compile)]
+[info] Resolving org.apache.commons#commons-compress;1.10 ...
+[debug] sbt-chain: Checking cache for: dependency: org.apache.commons#commons-compress;1.10 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] sbt-chain: module revision found in cache: org.apache.commons#commons-compress;1.10
+[debug] 	found org.apache.commons#commons-compress;1.10 in sbt-chain
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.apache.commons#commons-compress;1.10 [compile->compile(*)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.apache.commons#commons-compress;1.10 [compile->runtime(*)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.apache.commons#commons-compress;1.10 [compile->compile]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.apache.commons#commons-compress;1.10 [compile->default(compile)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.apache.commons#commons-compress;1.10 [compile->runtime]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.apache.commons#commons-compress;1.10 [compile->compile]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.apache.commons#commons-compress;1.10 [compile->master]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->commons-io#commons-io;2.4 [compile->master(compile)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->commons-io#commons-io;2.4 [compile->compile(*)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.apache.commons#commons-lang3;3.3.2 [compile->master(compile)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.apache.commons#commons-lang3;3.4 [compile->master(compile)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.apache.commons#commons-lang3;3.3.2 [compile->compile(*)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.apache.commons#commons-lang3;3.4 [compile->compile(*)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [compile->master(compile)]
+[info] Resolving org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r ...
+[debug] sbt-chain: Checking cache for: dependency: org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] sbt-chain: module revision found in cache: org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r
+[debug] 	found org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r in sbt-chain
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [compile->compile(*)]
+[debug] == resolving dependencies org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r->com.jcraft#jsch;0.1.50 [compile->master(compile)]
+[info] Resolving com.jcraft#jsch;0.1.50 ...
+[debug] sbt-chain: Checking cache for: dependency: com.jcraft#jsch;0.1.50 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] sbt-chain: module revision found in cache: com.jcraft#jsch;0.1.50
+[debug] 	found com.jcraft#jsch;0.1.50 in sbt-chain
+[debug] == resolving dependencies org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r->com.jcraft#jsch;0.1.50 [compile->compile(*)]
+[debug] == resolving dependencies org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r->com.jcraft#jsch;0.1.50 [compile->default(compile)]
+[debug] == resolving dependencies org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r->com.jcraft#jsch;0.1.50 [compile->runtime]
+[debug] == resolving dependencies org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r->com.jcraft#jsch;0.1.50 [compile->compile]
+[debug] == resolving dependencies org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r->com.jcraft#jsch;0.1.50 [compile->master]
+[debug] == resolving dependencies org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r->com.googlecode.javaewah#JavaEWAH;0.7.9 [compile->master(compile)]
+[info] Resolving com.googlecode.javaewah#JavaEWAH;0.7.9 ...
+[debug] sbt-chain: Checking cache for: dependency: com.googlecode.javaewah#JavaEWAH;0.7.9 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] sbt-chain: module revision found in cache: com.googlecode.javaewah#JavaEWAH;0.7.9
+[debug] 	found com.googlecode.javaewah#JavaEWAH;0.7.9 in sbt-chain
+[debug] == resolving dependencies org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r->com.googlecode.javaewah#JavaEWAH;0.7.9 [compile->compile(*)]
+[debug] == resolving dependencies org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r->com.googlecode.javaewah#JavaEWAH;0.7.9 [compile->default(compile)]
+[debug] == resolving dependencies org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r->com.googlecode.javaewah#JavaEWAH;0.7.9 [compile->runtime]
+[debug] == resolving dependencies org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r->com.googlecode.javaewah#JavaEWAH;0.7.9 [compile->compile]
+[debug] == resolving dependencies org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r->com.googlecode.javaewah#JavaEWAH;0.7.9 [compile->master]
+[debug] == resolving dependencies org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r->org.apache.httpcomponents#httpclient;4.1.3 [compile->master(compile)]
+[debug] == resolving dependencies org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r->org.apache.httpcomponents#httpclient;4.1.3 [compile->compile(*)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [compile->runtime(*)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [compile->compile]
+[debug] == resolving dependencies org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r->com.jcraft#jsch;0.1.50 [runtime->runtime(*)]
+[debug] == resolving dependencies org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r->com.jcraft#jsch;0.1.50 [runtime->compile]
+[debug] == resolving dependencies org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r->com.googlecode.javaewah#JavaEWAH;0.7.9 [runtime->runtime(*)]
+[debug] == resolving dependencies org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r->com.googlecode.javaewah#JavaEWAH;0.7.9 [runtime->compile]
+[debug] == resolving dependencies org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r->org.apache.httpcomponents#httpclient;4.1.3 [runtime->runtime(*)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [compile->default(compile)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [compile->runtime]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [compile->compile]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [compile->master]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.apache.httpcomponents#httpclient;4.4 [compile->master(compile)]
+[info] Resolving org.apache.httpcomponents#httpclient;4.4 ...
+[debug] sbt-chain: Checking cache for: dependency: org.apache.httpcomponents#httpclient;4.4 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] sbt-chain: module revision found in cache: org.apache.httpcomponents#httpclient;4.4
+[debug] 	found org.apache.httpcomponents#httpclient;4.4 in sbt-chain
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.apache.httpcomponents#httpclient;4.4 [compile->compile(*)]
+[debug] == resolving dependencies org.apache.httpcomponents#httpclient;4.4->org.apache.httpcomponents#httpcore;4.4 [compile->master(compile)]
+[info] Resolving org.apache.httpcomponents#httpcore;4.4 ...
+[debug] sbt-chain: Checking cache for: dependency: org.apache.httpcomponents#httpcore;4.4 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] sbt-chain: module revision found in cache: org.apache.httpcomponents#httpcore;4.4
+[debug] 	found org.apache.httpcomponents#httpcore;4.4 in sbt-chain
+[debug] == resolving dependencies org.apache.httpcomponents#httpclient;4.4->org.apache.httpcomponents#httpcore;4.4 [compile->compile(*)]
+[debug] == resolving dependencies org.apache.httpcomponents#httpclient;4.4->org.apache.httpcomponents#httpcore;4.4 [compile->default(compile)]
+[debug] == resolving dependencies org.apache.httpcomponents#httpclient;4.4->org.apache.httpcomponents#httpcore;4.4 [compile->runtime]
+[debug] == resolving dependencies org.apache.httpcomponents#httpclient;4.4->org.apache.httpcomponents#httpcore;4.4 [compile->compile]
+[debug] == resolving dependencies org.apache.httpcomponents#httpclient;4.4->org.apache.httpcomponents#httpcore;4.4 [compile->master]
+[debug] == resolving dependencies org.apache.httpcomponents#httpclient;4.4->commons-logging#commons-logging;1.2 [compile->master(compile)]
+[info] Resolving commons-logging#commons-logging;1.2 ...
+[debug] sbt-chain: Checking cache for: dependency: commons-logging#commons-logging;1.2 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] sbt-chain: module revision found in cache: commons-logging#commons-logging;1.2
+[debug] 	found commons-logging#commons-logging;1.2 in sbt-chain
+[debug] == resolving dependencies org.apache.httpcomponents#httpclient;4.4->commons-logging#commons-logging;1.2 [compile->compile(*)]
+[debug] == resolving dependencies org.apache.httpcomponents#httpclient;4.4->commons-logging#commons-logging;1.2 [compile->default(compile)]
+[debug] == resolving dependencies org.apache.httpcomponents#httpclient;4.4->commons-logging#commons-logging;1.2 [compile->runtime]
+[debug] == resolving dependencies org.apache.httpcomponents#httpclient;4.4->commons-logging#commons-logging;1.2 [compile->compile]
+[debug] == resolving dependencies org.apache.httpcomponents#httpclient;4.4->commons-logging#commons-logging;1.2 [compile->master]
+[debug] == resolving dependencies org.apache.httpcomponents#httpclient;4.4->commons-codec#commons-codec;1.9 [compile->master(compile)]
+[info] Resolving commons-codec#commons-codec;1.9 ...
+[debug] sbt-chain: Checking cache for: dependency: commons-codec#commons-codec;1.9 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] sbt-chain: module revision found in cache: commons-codec#commons-codec;1.9
+[debug] 	found commons-codec#commons-codec;1.9 in sbt-chain
+[debug] == resolving dependencies org.apache.httpcomponents#httpclient;4.4->commons-codec#commons-codec;1.9 [compile->compile(*)]
+[debug] == resolving dependencies org.apache.httpcomponents#httpclient;4.4->commons-codec#commons-codec;1.9 [compile->default(compile)]
+[debug] == resolving dependencies org.apache.httpcomponents#httpclient;4.4->commons-codec#commons-codec;1.9 [compile->runtime]
+[debug] == resolving dependencies org.apache.httpcomponents#httpclient;4.4->commons-codec#commons-codec;1.9 [compile->compile]
+[debug] == resolving dependencies org.apache.httpcomponents#httpclient;4.4->commons-codec#commons-codec;1.9 [compile->master]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.apache.httpcomponents#httpclient;4.4 [compile->runtime(*)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.apache.httpcomponents#httpclient;4.4 [compile->compile]
+[debug] == resolving dependencies org.apache.httpcomponents#httpclient;4.4->org.apache.httpcomponents#httpcore;4.4 [runtime->runtime(*)]
+[debug] == resolving dependencies org.apache.httpcomponents#httpclient;4.4->org.apache.httpcomponents#httpcore;4.4 [runtime->compile]
+[debug] == resolving dependencies org.apache.httpcomponents#httpclient;4.4->commons-logging#commons-logging;1.2 [runtime->runtime(*)]
+[debug] == resolving dependencies org.apache.httpcomponents#httpclient;4.4->commons-logging#commons-logging;1.2 [runtime->compile]
+[debug] == resolving dependencies org.apache.httpcomponents#httpclient;4.4->commons-codec#commons-codec;1.9 [runtime->runtime(*)]
+[debug] == resolving dependencies org.apache.httpcomponents#httpclient;4.4->commons-codec#commons-codec;1.9 [runtime->compile]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.apache.httpcomponents#httpclient;4.4 [compile->default(compile)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.apache.httpcomponents#httpclient;4.4 [compile->runtime]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.apache.httpcomponents#httpclient;4.4 [compile->compile]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.apache.httpcomponents#httpclient;4.4 [compile->master]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->com.fasterxml.jackson.core#jackson-core;2.3.0 [runtime->runtime(*)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->com.fasterxml.jackson.core#jackson-core;2.3.3 [runtime->runtime(*)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->com.fasterxml.jackson.core#jackson-core;2.3.3 [runtime->compile]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->com.fasterxml.jackson.core#jackson-databind;2.3.0 [runtime->runtime(*)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->com.fasterxml.jackson.core#jackson-databind;2.3.3 [runtime->runtime(*)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->com.fasterxml.jackson.core#jackson-databind;2.3.3 [runtime->compile]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.apache.commons#commons-compress;1.10 [runtime->runtime(*)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.apache.commons#commons-compress;1.10 [runtime->compile]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->commons-io#commons-io;2.4 [runtime->runtime(*)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->commons-io#commons-io;2.4 [runtime->compile]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.apache.commons#commons-lang3;3.3.2 [runtime->runtime(*)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.apache.commons#commons-lang3;3.4 [runtime->runtime(*)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.apache.commons#commons-lang3;3.4 [runtime->compile]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [runtime->runtime(*)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [runtime->compile]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.apache.httpcomponents#httpclient;4.4 [runtime->runtime(*)]
+[debug] == resolving dependencies com.heroku.sdk#heroku-deploy;1.0.0->org.apache.httpcomponents#httpclient;4.4 [runtime->compile]
+[debug] == resolving dependencies com.heroku#sbt-heroku;1.0.1->com.heroku.sdk#heroku-deploy;1.0.0 [compile->master]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->com.heroku.sdk#heroku-deploy;1.0.0 [default->default(compile)]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->com.heroku.sdk#heroku-deploy;1.0.0 [default->runtime]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->com.heroku.sdk#heroku-deploy;1.0.0 [default->compile]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->com.heroku.sdk#heroku-deploy;1.0.0 [default->master]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.10 [default->default(compile)]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.10 [default->runtime]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.10 [default->compile]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.10 [default->master]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [default->default(compile)]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [default->runtime]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [default->compile]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [default->master]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.50 [default->default(compile)]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.50 [default->runtime]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.50 [default->compile]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.50 [default->master]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->com.googlecode.javaewah#JavaEWAH;0.7.9 [default->default(compile)]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->com.googlecode.javaewah#JavaEWAH;0.7.9 [default->runtime]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->com.googlecode.javaewah#JavaEWAH;0.7.9 [default->compile]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->com.googlecode.javaewah#JavaEWAH;0.7.9 [default->master]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpclient;4.4 [default->default(compile)]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpclient;4.4 [default->runtime]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpclient;4.4 [default->compile]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpclient;4.4 [default->master]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpcore;4.4 [default->default(compile)]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpcore;4.4 [default->runtime]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpcore;4.4 [default->compile]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpcore;4.4 [default->master]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->commons-logging#commons-logging;1.2 [default->default(compile)]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->commons-logging#commons-logging;1.2 [default->runtime]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->commons-logging#commons-logging;1.2 [default->compile]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->commons-logging#commons-logging;1.2 [default->master]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->commons-codec#commons-codec;1.9 [default->default(compile)]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->commons-codec#commons-codec;1.9 [default->runtime]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->commons-codec#commons-codec;1.9 [default->compile]
+[debug] == resolving dependencies shared#shared$sbt_2.11;0.1-SNAPSHOT->commons-codec#commons-codec;1.9 [default->master]
 [debug] 	resolved ivy file produced in cache
 [debug] :: downloading artifacts ::
 [debug] 	[NOT REQUIRED] org.scala-sbt#sbt;0.13.11!sbt.jar
@@ -2996,7 +3154,6 @@
 [debug] 	[NOT REQUIRED] com.typesafe.sbt#sbt-web;1.3.0!sbt-web.jar
 [debug] 	[NOT REQUIRED] org.webjars#webjars-locator;0.26!webjars-locator.jar
 [debug] 	[NOT REQUIRED] org.webjars#webjars-locator-core;0.26!webjars-locator-core.jar
-[debug] 	[NOT REQUIRED] org.apache.commons#commons-compress;1.9!commons-compress.jar
 [debug] 	[NOT REQUIRED] com.fasterxml.jackson.core#jackson-databind;2.3.3!jackson-databind.jar(bundle)
 [debug] 	[NOT REQUIRED] com.fasterxml.jackson.core#jackson-annotations;2.3.0!jackson-annotations.jar(bundle)
 [debug] 	[NOT REQUIRED] com.fasterxml.jackson.core#jackson-core;2.3.3!jackson-core.jar(bundle)
@@ -3044,6 +3201,16 @@
 [debug] 	[NOT REQUIRED] org.webjars#envjs;1.2!envjs.jar
 [debug] 	[NOT REQUIRED] org.scala-js#scalajs-sbt-test-adapter_2.10;0.6.14!scalajs-sbt-test-adapter_2.10.jar
 [debug] 	[NOT REQUIRED] org.scala-sbt#test-interface;1.0!test-interface.jar
+[debug] 	[NOT REQUIRED] com.heroku#sbt-heroku;1.0.1!sbt-heroku.jar
+[debug] 	[NOT REQUIRED] com.heroku.sdk#heroku-deploy;1.0.0!heroku-deploy.jar
+[debug] 	[NOT REQUIRED] org.apache.commons#commons-compress;1.10!commons-compress.jar
+[debug] 	[NOT REQUIRED] org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r!org.eclipse.jgit.jar
+[debug] 	[NOT REQUIRED] com.jcraft#jsch;0.1.50!jsch.jar
+[debug] 	[NOT REQUIRED] com.googlecode.javaewah#JavaEWAH;0.7.9!JavaEWAH.jar(bundle)
+[debug] 	[NOT REQUIRED] org.apache.httpcomponents#httpclient;4.4!httpclient.jar
+[debug] 	[NOT REQUIRED] org.apache.httpcomponents#httpcore;4.4!httpcore.jar
+[debug] 	[NOT REQUIRED] commons-logging#commons-logging;1.2!commons-logging.jar
+[debug] 	[NOT REQUIRED] commons-codec#commons-codec;1.9!commons-codec.jar
 [debug] 	[NOT REQUIRED] org.scala-sbt#main;0.13.11!main.jar
 [debug] 	[NOT REQUIRED] org.scala-sbt#compiler-interface;0.13.11!compiler-interface.jar
 [debug] 	[NOT REQUIRED] org.scala-sbt#actions;0.13.11!actions.jar
@@ -3078,7 +3245,6 @@
 [debug] 	[NOT REQUIRED] org.scala-tools.sbinary#sbinary_2.10;0.4.2!sbinary_2.10.jar
 [debug] 	[NOT REQUIRED] org.scala-sbt#cross;0.13.11!cross.jar
 [debug] 	[NOT REQUIRED] org.scala-sbt.ivy#ivy;2.3.0-sbt-2cc8d2761242b072cedb0a04cb39435c4fa24f9a!ivy.jar
-[debug] 	[NOT REQUIRED] com.jcraft#jsch;0.1.46!jsch.jar
 [debug] 	[NOT REQUIRED] org.scala-sbt#serialization_2.10;0.1.2!serialization_2.10.jar
 [debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-pickling_2.10;0.10.1!scala-pickling_2.10.jar
 [debug] 	[NOT REQUIRED] org.json4s#json4s-core_2.10;3.2.10!json4s-core_2.10.jar
@@ -3098,9 +3264,9 @@
 [debug] 	[NOT REQUIRED] jfree#jfreechart;1.0.8a!jfreechart.jar
 [debug] 	[NOT REQUIRED] junit#junit;4.10!junit.jar
 [debug] 	[NOT REQUIRED] org.hamcrest#hamcrest-core;1.1!hamcrest-core.jar
-[debug] :: resolution report :: resolve 1883ms :: artifacts dl 90ms
+[debug] :: resolution report :: resolve 4238ms :: artifacts dl 130ms
 [debug] 	report for shared#shared$sbt_2.11;0.1-SNAPSHOT default produced in /Users/snc/scala/walnuts/shared/.jvm/target/resolution-cache/reports/shared-shared$sbt_2.11-default.xml
-[debug] 	resolve done (1883ms resolve - 90ms download)
+[debug] 	resolve done (4238ms resolve - 130ms download)
 [debug] Using inline dependencies specified in Scala.
 [debug] :: resolving dependencies :: shared#shared$sources_2.11;0.1-SNAPSHOT
 [debug] 	confs: [default]
@@ -3160,6 +3326,46 @@
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->javax.enterprise#cdi-api;1.0 [default->master]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->javax.enterprise#cdi-api;1.0 [default->compile(*)]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->javax.enterprise#cdi-api;1.0 [default->master]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.10 [default->default]
+[info] Resolving org.apache.commons#commons-compress;1.10 ...
+[debug] sbt-chain: Checking cache for: dependency: org.apache.commons#commons-compress;1.10 {default=[default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master]}
+[debug] sbt-chain: module revision found in cache: org.apache.commons#commons-compress;1.10
+[debug] 	found org.apache.commons#commons-compress;1.10 in sbt-chain
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.10 [default->runtime]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.10 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.10 [default->master]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.10 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.10 [default->runtime(*)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.10 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.10 [default->master(compile)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.10 [default->runtime]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.10 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.10 [default->default(compile)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.10 [default->runtime]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.10 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.10 [default->master]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.10 [default->compile(*)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.10 [default->master]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.googlecode.javaewah#JavaEWAH;0.7.9 [default->default]
+[info] Resolving com.googlecode.javaewah#JavaEWAH;0.7.9 ...
+[debug] sbt-chain: Checking cache for: dependency: com.googlecode.javaewah#JavaEWAH;0.7.9 {default=[default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master]}
+[debug] sbt-chain: module revision found in cache: com.googlecode.javaewah#JavaEWAH;0.7.9
+[debug] 	found com.googlecode.javaewah#JavaEWAH;0.7.9 in sbt-chain
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.googlecode.javaewah#JavaEWAH;0.7.9 [default->runtime]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.googlecode.javaewah#JavaEWAH;0.7.9 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.googlecode.javaewah#JavaEWAH;0.7.9 [default->master]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.googlecode.javaewah#JavaEWAH;0.7.9 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.googlecode.javaewah#JavaEWAH;0.7.9 [default->runtime(*)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.googlecode.javaewah#JavaEWAH;0.7.9 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.googlecode.javaewah#JavaEWAH;0.7.9 [default->master(compile)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.googlecode.javaewah#JavaEWAH;0.7.9 [default->runtime]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.googlecode.javaewah#JavaEWAH;0.7.9 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.googlecode.javaewah#JavaEWAH;0.7.9 [default->default(compile)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.googlecode.javaewah#JavaEWAH;0.7.9 [default->runtime]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.googlecode.javaewah#JavaEWAH;0.7.9 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.googlecode.javaewah#JavaEWAH;0.7.9 [default->master]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.googlecode.javaewah#JavaEWAH;0.7.9 [default->compile(*)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.googlecode.javaewah#JavaEWAH;0.7.9 [default->master]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.sonatype.sisu#sisu-guice;3.1.0 [default->default]
 [info] Resolving org.sonatype.sisu#sisu-guice;3.1.0 ...
 [debug] sbt-chain: Checking cache for: dependency: org.sonatype.sisu#sisu-guice;3.1.0 {default=[default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master]}
@@ -3180,6 +3386,26 @@
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.sonatype.sisu#sisu-guice;3.1.0 [default->master]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.sonatype.sisu#sisu-guice;3.1.0 [default->compile(*)]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.sonatype.sisu#sisu-guice;3.1.0 [default->master]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-codec#commons-codec;1.9 [default->default]
+[info] Resolving commons-codec#commons-codec;1.9 ...
+[debug] sbt-chain: Checking cache for: dependency: commons-codec#commons-codec;1.9 {default=[default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master]}
+[debug] sbt-chain: module revision found in cache: commons-codec#commons-codec;1.9
+[debug] 	found commons-codec#commons-codec;1.9 in sbt-chain
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-codec#commons-codec;1.9 [default->runtime]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-codec#commons-codec;1.9 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-codec#commons-codec;1.9 [default->master]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-codec#commons-codec;1.9 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-codec#commons-codec;1.9 [default->runtime(*)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-codec#commons-codec;1.9 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-codec#commons-codec;1.9 [default->master(compile)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-codec#commons-codec;1.9 [default->runtime]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-codec#commons-codec;1.9 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-codec#commons-codec;1.9 [default->default(compile)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-codec#commons-codec;1.9 [default->runtime]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-codec#commons-codec;1.9 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-codec#commons-codec;1.9 [default->master]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-codec#commons-codec;1.9 [default->compile(*)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-codec#commons-codec;1.9 [default->master]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->args4j#args4j;2.0.26 [default->default]
 [info] Resolving args4j#args4j;2.0.26 ...
 [debug] sbt-chain: Checking cache for: dependency: args4j#args4j;2.0.26 {default=[default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master]}
@@ -3346,26 +3572,6 @@
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->junit#junit;4.10 [default->compile]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->junit#junit;4.10 [default->compile(*)]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->junit#junit;4.10 [default->master]
-[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.9 [default->default]
-[info] Resolving org.apache.commons#commons-compress;1.9 ...
-[debug] sbt-chain: Checking cache for: dependency: org.apache.commons#commons-compress;1.9 {default=[default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master]}
-[debug] sbt-chain: module revision found in cache: org.apache.commons#commons-compress;1.9
-[debug] 	found org.apache.commons#commons-compress;1.9 in sbt-chain
-[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.9 [default->runtime]
-[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.9 [default->compile]
-[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.9 [default->master]
-[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.9 [default->compile]
-[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.9 [default->runtime(*)]
-[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.9 [default->compile]
-[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.9 [default->master(compile)]
-[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.9 [default->runtime]
-[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.9 [default->compile]
-[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.9 [default->default(compile)]
-[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.9 [default->runtime]
-[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.9 [default->compile]
-[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.9 [default->master]
-[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.9 [default->compile(*)]
-[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.commons#commons-compress;1.9 [default->master]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.fusesource.jansi#jansi;1.11 [default->compile]
 [info] Resolving org.fusesource.jansi#jansi;1.11 ...
 [debug] sbt-chain: Checking cache for: dependency: org.fusesource.jansi#jansi;1.11 {default=[compile, runtime(*), master(compile), runtime, compile(*), master]}
@@ -3398,22 +3604,6 @@
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.eclipse.aether#aether-spi;0.9.0.M2 [default->master]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.eclipse.aether#aether-spi;0.9.0.M2 [default->compile(*)]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.eclipse.aether#aether-spi;0.9.0.M2 [default->master]
-[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.46 [default->default]
-[info] Resolving com.jcraft#jsch;0.1.46 ...
-[debug] sbt-chain: Checking cache for: dependency: com.jcraft#jsch;0.1.46 {default=[default, compile, runtime, default(compile), master]}
-[debug] sbt-chain: module revision found in cache: com.jcraft#jsch;0.1.46
-[debug] 	found com.jcraft#jsch;0.1.46 in sbt-chain
-[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.46 [default->runtime]
-[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.46 [default->compile]
-[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.46 [default->master]
-[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.46 [default->compile]
-[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.46 [default->runtime]
-[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.46 [default->compile]
-[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.46 [default->default(compile)]
-[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.46 [default->runtime]
-[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.46 [default->compile]
-[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.46 [default->master]
-[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.46 [default->master]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.typesafe.akka#akka-actor_2.10;2.3.11 [default->default]
 [info] Resolving com.typesafe.akka#akka-actor_2.10;2.3.11 ...
 [debug] sbt-chain: Checking cache for: dependency: com.typesafe.akka#akka-actor_2.10;2.3.11 {default=[default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master]}
@@ -3535,6 +3725,22 @@
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.eclipse.aether#aether-impl;0.9.0.M2 [default->master]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.eclipse.aether#aether-impl;0.9.0.M2 [default->compile(*)]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.eclipse.aether#aether-impl;0.9.0.M2 [default->master]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.heroku.sdk#heroku-deploy;1.0.0 [default->default]
+[info] Resolving com.heroku.sdk#heroku-deploy;1.0.0 ...
+[debug] sbt-chain: Checking cache for: dependency: com.heroku.sdk#heroku-deploy;1.0.0 {default=[default, compile, runtime, default(compile), master]}
+[debug] sbt-chain: module revision found in cache: com.heroku.sdk#heroku-deploy;1.0.0
+[debug] 	found com.heroku.sdk#heroku-deploy;1.0.0 in sbt-chain
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.heroku.sdk#heroku-deploy;1.0.0 [default->runtime]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.heroku.sdk#heroku-deploy;1.0.0 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.heroku.sdk#heroku-deploy;1.0.0 [default->master]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.heroku.sdk#heroku-deploy;1.0.0 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.heroku.sdk#heroku-deploy;1.0.0 [default->runtime]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.heroku.sdk#heroku-deploy;1.0.0 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.heroku.sdk#heroku-deploy;1.0.0 [default->default(compile)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.heroku.sdk#heroku-deploy;1.0.0 [default->runtime]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.heroku.sdk#heroku-deploy;1.0.0 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.heroku.sdk#heroku-deploy;1.0.0 [default->master]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.heroku.sdk#heroku-deploy;1.0.0 [default->master]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->io.spray#spray-json_2.10;1.3.2 [default->default]
 [info] Resolving io.spray#spray-json_2.10;1.3.2 ...
 [debug] sbt-chain: Checking cache for: dependency: io.spray#spray-json_2.10;1.3.2 {default=[default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master]}
@@ -3821,6 +4027,26 @@
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.webjars#webjars-locator-core;0.26 [default->master]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.webjars#webjars-locator-core;0.26 [default->compile(*)]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.webjars#webjars-locator-core;0.26 [default->master]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-logging#commons-logging;1.2 [default->default]
+[info] Resolving commons-logging#commons-logging;1.2 ...
+[debug] sbt-chain: Checking cache for: dependency: commons-logging#commons-logging;1.2 {default=[default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master]}
+[debug] sbt-chain: module revision found in cache: commons-logging#commons-logging;1.2
+[debug] 	found commons-logging#commons-logging;1.2 in sbt-chain
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-logging#commons-logging;1.2 [default->runtime]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-logging#commons-logging;1.2 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-logging#commons-logging;1.2 [default->master]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-logging#commons-logging;1.2 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-logging#commons-logging;1.2 [default->runtime(*)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-logging#commons-logging;1.2 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-logging#commons-logging;1.2 [default->master(compile)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-logging#commons-logging;1.2 [default->runtime]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-logging#commons-logging;1.2 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-logging#commons-logging;1.2 [default->default(compile)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-logging#commons-logging;1.2 [default->runtime]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-logging#commons-logging;1.2 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-logging#commons-logging;1.2 [default->master]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-logging#commons-logging;1.2 [default->compile(*)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->commons-logging#commons-logging;1.2 [default->master]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.googlecode.json-simple#json-simple;1.1.1 [default->default]
 [info] Resolving com.googlecode.json-simple#json-simple;1.1.1 ...
 [debug] sbt-chain: Checking cache for: dependency: com.googlecode.json-simple#json-simple;1.1.1 {default=[default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master]}
@@ -3952,6 +4178,26 @@
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.fasterxml.jackson.core#jackson-annotations;2.3.0 [default->master]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.fasterxml.jackson.core#jackson-annotations;2.3.0 [default->compile(*)]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.fasterxml.jackson.core#jackson-annotations;2.3.0 [default->master]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpclient;4.4 [default->default]
+[info] Resolving org.apache.httpcomponents#httpclient;4.4 ...
+[debug] sbt-chain: Checking cache for: dependency: org.apache.httpcomponents#httpclient;4.4 {default=[default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master]}
+[debug] sbt-chain: module revision found in cache: org.apache.httpcomponents#httpclient;4.4
+[debug] 	found org.apache.httpcomponents#httpclient;4.4 in sbt-chain
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpclient;4.4 [default->runtime]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpclient;4.4 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpclient;4.4 [default->master]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpclient;4.4 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpclient;4.4 [default->runtime(*)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpclient;4.4 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpclient;4.4 [default->master(compile)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpclient;4.4 [default->runtime]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpclient;4.4 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpclient;4.4 [default->default(compile)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpclient;4.4 [default->runtime]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpclient;4.4 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpclient;4.4 [default->master]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpclient;4.4 [default->compile(*)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpclient;4.4 [default->master]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.typesafe.sbt#sbt-native-packager;1.0.3 [default->compile]
 [info] Resolving com.typesafe.sbt#sbt-native-packager;1.0.3 ...
 [debug] sbt-chain: Checking cache for: dependency: com.typesafe.sbt#sbt-native-packager;1.0.3 {default=[compile, default(compile)]}
@@ -3979,6 +4225,13 @@
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->io.get-coursier#coursier_2.10;1.0.0-M15-1 [default->master]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->io.get-coursier#coursier_2.10;1.0.0-M15-1 [default->compile(*)]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->io.get-coursier#coursier_2.10;1.0.0-M15-1 [default->master]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.heroku#sbt-heroku;1.0.1 [default->compile]
+[info] Resolving com.heroku#sbt-heroku;1.0.1 ...
+[debug] sbt-chain: Checking cache for: dependency: com.heroku#sbt-heroku;1.0.1 {default=[compile, default(compile)]}
+[debug] sbt-chain: module revision found in cache: com.heroku#sbt-heroku;1.0.1
+[debug] 	found com.heroku#sbt-heroku;1.0.1 in sbt-chain
+[debug] 	[1.0.1] com.heroku#sbt-heroku;1.0.1
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.heroku#sbt-heroku;1.0.1 [default->default(compile)]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.ant#ant-launcher;1.9.3 [default->default]
 [info] Resolving org.apache.ant#ant-launcher;1.9.3 ...
 [debug] sbt-chain: Checking cache for: dependency: org.apache.ant#ant-launcher;1.9.3 {default=[default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master]}
@@ -5020,6 +5273,26 @@
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.scala-js#scalajs-sbt-test-adapter_2.10;0.6.14 [default->compile]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.scala-js#scalajs-sbt-test-adapter_2.10;0.6.14 [default->master]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.scala-js#scalajs-sbt-test-adapter_2.10;0.6.14 [default->master]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [default->default]
+[info] Resolving org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r ...
+[debug] sbt-chain: Checking cache for: dependency: org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r {default=[default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master]}
+[debug] sbt-chain: module revision found in cache: org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r
+[debug] 	found org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r in sbt-chain
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [default->runtime]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [default->master]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [default->runtime(*)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [default->master(compile)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [default->runtime]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [default->default(compile)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [default->runtime]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [default->master]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [default->compile(*)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r [default->master]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.typesafe#npm_2.10;1.1.1 [default->default]
 [info] Resolving com.typesafe#npm_2.10;1.1.1 ...
 [debug] sbt-chain: Checking cache for: dependency: com.typesafe#npm_2.10;1.1.1 {default=[default, compile, runtime, default(compile), master]}
@@ -5313,6 +5586,26 @@
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.scala-sbt#test-interface;1.0 [default->master]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.scala-sbt#test-interface;1.0 [default->compile(*)]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.scala-sbt#test-interface;1.0 [default->master]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.50 [default->default]
+[info] Resolving com.jcraft#jsch;0.1.50 ...
+[debug] sbt-chain: Checking cache for: dependency: com.jcraft#jsch;0.1.50 {default=[default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master]}
+[debug] sbt-chain: module revision found in cache: com.jcraft#jsch;0.1.50
+[debug] 	found com.jcraft#jsch;0.1.50 in sbt-chain
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.50 [default->runtime]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.50 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.50 [default->master]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.50 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.50 [default->runtime(*)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.50 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.50 [default->master(compile)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.50 [default->runtime]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.50 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.50 [default->default(compile)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.50 [default->runtime]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.50 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.50 [default->master]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.50 [default->compile(*)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.jcraft#jsch;0.1.50 [default->master]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.scala-lang#scala-compiler;2.10.6 [default->default]
 [info] Resolving org.scala-lang#scala-compiler;2.10.6 ...
 [debug] sbt-chain: Checking cache for: dependency: org.scala-lang#scala-compiler;2.10.6 {default=[default, compile, runtime, default(compile), master, runtime(*), master(compile), compile(*)]}
@@ -5511,6 +5804,26 @@
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.maven#maven-repository-metadata;3.2.2 [default->master]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.maven#maven-repository-metadata;3.2.2 [default->compile(*)]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.maven#maven-repository-metadata;3.2.2 [default->master]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpcore;4.4 [default->default]
+[info] Resolving org.apache.httpcomponents#httpcore;4.4 ...
+[debug] sbt-chain: Checking cache for: dependency: org.apache.httpcomponents#httpcore;4.4 {default=[default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master]}
+[debug] sbt-chain: module revision found in cache: org.apache.httpcomponents#httpcore;4.4
+[debug] 	found org.apache.httpcomponents#httpcore;4.4 in sbt-chain
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpcore;4.4 [default->runtime]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpcore;4.4 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpcore;4.4 [default->master]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpcore;4.4 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpcore;4.4 [default->runtime(*)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpcore;4.4 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpcore;4.4 [default->master(compile)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpcore;4.4 [default->runtime]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpcore;4.4 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpcore;4.4 [default->default(compile)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpcore;4.4 [default->runtime]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpcore;4.4 [default->compile]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpcore;4.4 [default->master]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpcore;4.4 [default->compile(*)]
+[debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->org.apache.httpcomponents#httpcore;4.4 [default->master]
 [debug] == resolving dependencies shared#shared$sources_2.11;0.1-SNAPSHOT->com.timushev.sbt#sbt-updates;0.3.0 [default->compile]
 [info] Resolving com.timushev.sbt#sbt-updates;0.3.0 ...
 [debug] sbt-chain: Checking cache for: dependency: com.timushev.sbt#sbt-updates;0.3.0 {default=[compile, default(compile)]}
@@ -5544,7 +5857,10 @@
 [debug] 	[NOT REQUIRED] org.slf4j#slf4j-simple;1.7.12!slf4j-simple.jar(src)
 [debug] 	[NOT REQUIRED] org.scala-sbt#api;0.13.11!api.jar(src)
 [debug] 	[NOT REQUIRED] javax.enterprise#cdi-api;1.0!cdi-api.jar(src)
+[debug] 	[NOT REQUIRED] org.apache.commons#commons-compress;1.10!commons-compress.jar(src)
+[debug] 	[NOT REQUIRED] com.googlecode.javaewah#JavaEWAH;0.7.9!JavaEWAH.jar(src)
 [debug] 	[NOT REQUIRED] org.sonatype.sisu#sisu-guice;3.1.0!sisu-guice.jar(src)
+[debug] 	[NOT REQUIRED] commons-codec#commons-codec;1.9!commons-codec.jar(src)
 [debug] 	[NOT REQUIRED] args4j#args4j;2.0.26!args4j.jar(src)
 [debug] 	[NOT REQUIRED] com.lihaoyi#fastparse-utils_2.10;0.4.2!fastparse-utils_2.10.jar(src)
 [debug] 	[NOT REQUIRED] org.ensime#sbt-ensime;1.12.5!sbt-ensime.jar(src)
@@ -5554,10 +5870,8 @@
 [debug] 	[NOT REQUIRED] org.apache.maven#maven-settings-builder;3.2.2!maven-settings-builder.jar(src)
 [debug] 	[NOT REQUIRED] net.virtual-void#sbt-dependency-graph;0.8.2!sbt-dependency-graph.jar(src)
 [debug] 	[NOT REQUIRED] junit#junit;4.10!junit.jar(src)
-[debug] 	[NOT REQUIRED] org.apache.commons#commons-compress;1.9!commons-compress.jar(src)
 [debug] 	[NOT REQUIRED] org.fusesource.jansi#jansi;1.11!jansi.jar(src)
 [debug] 	[NOT REQUIRED] org.eclipse.aether#aether-spi;0.9.0.M2!aether-spi.jar(src)
-[debug] 	[NOT REQUIRED] com.jcraft#jsch;0.1.46!jsch.jar(src)
 [debug] 	[NOT REQUIRED] com.typesafe.akka#akka-actor_2.10;2.3.11!akka-actor_2.10.jar(src)
 [debug] 	[NOT REQUIRED] com.vmunier#sbt-web-scalajs;1.0.3!sbt-web-scalajs.jar(src)
 [debug] 	[NOT REQUIRED] org.apache.commons#commons-lang3;3.4!commons-lang3.jar(src)
@@ -5566,6 +5880,7 @@
 [debug] 	[NOT REQUIRED] org.scala-sbt#classfile;0.13.11!classfile.jar(src)
 [debug] 	[NOT REQUIRED] org.eclipse.aether#aether-util;0.9.0.M2!aether-util.jar(src)
 [debug] 	[NOT REQUIRED] org.eclipse.aether#aether-impl;0.9.0.M2!aether-impl.jar(src)
+[debug] 	[NOT REQUIRED] com.heroku.sdk#heroku-deploy;1.0.0!heroku-deploy.jar(src)
 [debug] 	[NOT REQUIRED] io.spray#spray-json_2.10;1.3.2!spray-json_2.10.jar(src)
 [debug] 	[NOT REQUIRED] org.scala-js#scalajs-ir_2.10;0.6.14!scalajs-ir_2.10.jar(src)
 [debug] 	[NOT REQUIRED] org.scala-sbt#logic;0.13.11!logic.jar(src)
@@ -5586,6 +5901,7 @@
 [debug] 	[NOT REQUIRED] org.scalaz#scalaz-core_2.10;7.2.7!scalaz-core_2.10.jar(src)
 [debug] 	[NOT REQUIRED] org.scala-sbt#persist;0.13.11!persist.jar(src)
 [debug] 	[NOT REQUIRED] org.webjars#webjars-locator-core;0.26!webjars-locator-core.jar(src)
+[debug] 	[NOT REQUIRED] commons-logging#commons-logging;1.2!commons-logging.jar(src)
 [debug] 	[NOT REQUIRED] com.googlecode.json-simple#json-simple;1.1.1!json-simple.jar(src)
 [debug] 	[NOT REQUIRED] org.scala-sbt#classpath;0.13.11!classpath.jar(src)
 [debug] 	[NOT REQUIRED] org.scala-sbt#sbt;0.13.11!sbt.jar(src)
@@ -5595,8 +5911,10 @@
 [debug] 	[NOT REQUIRED] jline#jline;2.13!jline.jar(src)
 [debug] 	[NOT REQUIRED] com.lihaoyi#sourcecode_2.10;0.1.3!sourcecode_2.10.jar(src)
 [debug] 	[NOT REQUIRED] com.fasterxml.jackson.core#jackson-annotations;2.3.0!jackson-annotations.jar(src)
+[debug] 	[NOT REQUIRED] org.apache.httpcomponents#httpclient;4.4!httpclient.jar(src)
 [debug] 	[NOT REQUIRED] com.typesafe.sbt#sbt-native-packager;1.0.3!sbt-native-packager.jar(src)
 [debug] 	[NOT REQUIRED] io.get-coursier#coursier_2.10;1.0.0-M15-1!coursier_2.10.jar(src)
+[debug] 	[NOT REQUIRED] com.heroku#sbt-heroku;1.0.1!sbt-heroku.jar(src)
 [debug] 	[NOT REQUIRED] org.apache.ant#ant-launcher;1.9.3!ant-launcher.jar(src)
 [debug] 	[NOT REQUIRED] com.typesafe.sbt#sbt-js-engine;1.1.3!sbt-js-engine.jar(src)
 [debug] 	[NOT REQUIRED] org.scala-sbt#command;0.13.11!command.jar(src)
@@ -5667,6 +5985,7 @@
 [debug] 	[NOT REQUIRED] org.scala-sbt#compiler-ivy-integration;0.13.11!compiler-ivy-integration.jar(src)
 [debug] 	[NOT REQUIRED] com.thoughtworks.paranamer#paranamer;2.6!paranamer.jar(src)
 [debug] 	[NOT REQUIRED] org.scala-js#scalajs-sbt-test-adapter_2.10;0.6.14!scalajs-sbt-test-adapter_2.10.jar(src)
+[debug] 	[NOT REQUIRED] org.eclipse.jgit#org.eclipse.jgit;3.6.2.201501210735-r!org.eclipse.jgit.jar(src)
 [debug] 	[NOT REQUIRED] com.typesafe#npm_2.10;1.1.1!npm_2.10.jar(src)
 [debug] 	[NOT REQUIRED] org.scala-sbt#process;0.13.11!process.jar(src)
 [debug] 	[NOT REQUIRED] com.typesafe.akka#akka-contrib_2.10;2.3.11!akka-contrib_2.10.jar(src)
@@ -5685,6 +6004,7 @@
 [debug] 	[NOT REQUIRED] com.typesafe.play#sbt-plugin;2.5.4!sbt-plugin.jar(src)
 [debug] 	[NOT REQUIRED] io.apigee#rhino;1.7R5pre4!rhino.jar(src)
 [debug] 	[NOT REQUIRED] org.scala-sbt#test-interface;1.0!test-interface.jar(src)
+[debug] 	[NOT REQUIRED] com.jcraft#jsch;0.1.50!jsch.jar(src)
 [debug] 	[NOT REQUIRED] org.scala-lang#scala-compiler;2.10.6!scala-compiler.jar(src)
 [debug] 	[NOT REQUIRED] com.typesafe.play#build-link;2.5.4!build-link.jar(src)
 [debug] 	[NOT REQUIRED] com.typesafe#config;1.3.0!config.jar(src)
@@ -5697,8 +6017,9 @@
 [debug] 	[NOT REQUIRED] com.fasterxml.jackson.core#jackson-databind;2.3.3!jackson-databind.jar(src)
 [debug] 	[NOT REQUIRED] org.scala-sbt#control;0.13.11!control.jar(src)
 [debug] 	[NOT REQUIRED] org.apache.maven#maven-repository-metadata;3.2.2!maven-repository-metadata.jar(src)
+[debug] 	[NOT REQUIRED] org.apache.httpcomponents#httpcore;4.4!httpcore.jar(src)
 [debug] 	[NOT REQUIRED] com.timushev.sbt#sbt-updates;0.3.0!sbt-updates.jar(src)
 [debug] 	[NOT REQUIRED] org.bouncycastle#bcpg-jdk15on;1.51!bcpg-jdk15on.jar(src)
-[debug] :: resolution report :: resolve 1096ms :: artifacts dl 69ms
+[debug] :: resolution report :: resolve 2144ms :: artifacts dl 104ms
 [debug] 	report for shared#shared$sources_2.11;0.1-SNAPSHOT default produced in /Users/snc/scala/walnuts/shared/.jvm/target/resolution-cache/reports/shared-shared$sources_2.11-default.xml
-[debug] 	resolve done (1096ms resolve - 69ms download)
+[debug] 	resolve done (2144ms resolve - 104ms download)

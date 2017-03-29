@@ -4,7 +4,7 @@
 		module="shared_2.11"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20170204011054"
+		publication="20170329162806"
 	>
 		<description>
 		shared
@@ -32,7 +32,7 @@
 		<artifact name="shared_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
 	</publications>
 	<dependencies>
-		<dependency org="org.scala-lang" name="scala-compiler" rev="2.11.8" conf="scala-tool->default,optional(default)"/>
+		<dependency org="org.scala-lang" name="scala-compiler" rev="2.11.8" conf="scala-tool->default,optional(default);runtime->default(compile)"/>
 		<dependency org="org.scala-lang" name="scala-library" rev="2.11.8" conf="scala-tool->default,optional(default);compile->default(compile)"/>
 	</dependencies>
 </ivy-module>

@@ -50,6 +50,8 @@ lazy val serverDependencies = Seq(
 //  "com.github.tminglei" %% "slick-pg" % "0.12.1"
 )
 
+herokuAppName in Compile := "walnuts"
+
 
 lazy val server = (project in file("server"))
     .settings(

@@ -4,7 +4,7 @@
 		module="shared_sjs0.6_2.11"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20170204011148"
+		publication="20170329162814"
 	>
 		<description>
 		shared
@@ -33,7 +33,7 @@
 		<artifact name="shared_sjs0.6_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
 	</publications>
 	<dependencies>
-		<dependency org="org.scala-lang" name="scala-compiler" rev="2.11.8" conf="scala-tool->default,optional(default)"/>
+		<dependency org="org.scala-lang" name="scala-compiler" rev="2.11.8" conf="scala-tool->default,optional(default);runtime->default(compile)"/>
 		<dependency org="org.scala-lang" name="scala-library" rev="2.11.8" conf="scala-tool->default,optional(default);compile->default(compile)"/>
 		<dependency org="org.eclipse.jetty" name="jetty-websocket" rev="8.1.16.v20140903" conf="phantom-js-jetty->default(compile)"/>
 		<dependency org="org.eclipse.jetty" name="jetty-server" rev="8.1.16.v20140903" conf="phantom-js-jetty->default(compile)"/>

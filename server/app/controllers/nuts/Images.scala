@@ -37,7 +37,7 @@ class Images @Inject() (
   import imagesDAO._
 
   /**
-   * Save and resize image name. Uses [[saveImageForm]] as input params.
+   * Save and resize image name. Uses `saveImageForm` as input params.
    * @return Redirect with result message
    */
   def save() = silhouette.SecuredAction(Roles.Admin).async(parse.multipartFormData) { implicit request =>
@@ -90,7 +90,7 @@ class Images @Inject() (
   /**
    * Download file from DB.
    * @param name - name of an image to download
-   * @return Image bytes as [[BINARY]]
+   * @return Image bytes as `BINARY`
    */
   def get(name: String) = cached(s"img/$name") {
     Action.async { _ =>
@@ -111,8 +111,8 @@ class Images @Inject() (
   }
 
   /**
-   * Edit image in DB. What image to change is defined in [[imageEditForm]]
-   * @return Redirect to [[Images.show]]
+   * Edit image in DB. What image to change is defined in `imageEditForm`
+   * @return Redirect to `Images.show`
    */
   def edit() = silhouette.SecuredAction(Roles.Admin).async { implicit request =>
     imageEditForm.bindFromRequest().fold(
@@ -144,11 +144,11 @@ class Images @Inject() (
   }
 
   /**
-   * Shows form for image downloading [[saveImageForm]] along with search images form [[findImagesForm]]
-   * and form for altering images [[imageEditForm]]. Shortly displays [[views.html.images.editImages]].
+   * Shows form for image downloading `saveImageForm` along with search images form `findImagesForm`
+   * and form for altering images `imageEditForm`. Shortly displays `views.html.images.editImages`.
    * @param search  Search string.
    * @param what Criteria for search. Must be either `name` or `content`.
-   * @return displays [[views.html.images.editImages]]
+   * @return displays `views.html.images.editImages`
    */
   def show(search: String = "", what: String = "") = silhouette.SecuredAction(Roles.Admin).async { implicit request =>
     if (search.isEmpty && what.isEmpty) {
@@ -174,9 +174,9 @@ class Images @Inject() (
   }
 
   /**
-   * Binds [[findImagesForm]] from request and redirects to [[show]].
-   * Used as action handler for [[findImagesForm]] which displayed by [[show]].
-   * @return Redirect to [[show]] or displays [[views.html.images.editImages]] with errors.
+   * Binds `findImagesForm` from request and redirects to `show`.
+   * Used as action handler for `findImagesForm` which displayed by `show`.
+   * @return Redirect to `show` or displays `views.html.images.editImages` with errors.
    */
   def find = silhouette.SecuredAction(Roles.Admin).async { implicit request =>
     findImagesForm.bindFromRequest().fold(

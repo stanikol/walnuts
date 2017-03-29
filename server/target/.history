@@ -188,3 +188,29 @@ twirlCompileTemplates
 clean
 ~run
 clean
+exit
+~run
+exit
+~run
+exit
+~run
+\q
+exit
+clean
+~ run
+exit
+~ run
+stage deployHeroku
+stage
+stage deployHeroku
+stage
+stage deployHeroku
+deployHeroku
+exit
+stage deployHeroku
+server stage
+reload
+stage deployHeroku
+deployHeroku
+stage server
+exit 

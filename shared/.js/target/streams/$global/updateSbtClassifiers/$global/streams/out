@@ -24,6 +24,7 @@
 [debug] == resolving dependencies org.scala-sbt#sbt;0.13.11->org.scala-sbt#main;0.13.11 [compile->default(compile)]
 [info] Resolving org.scala-sbt#main;0.13.11 ...
 [debug] sbt-chain: Checking cache for: dependency: org.scala-sbt#main;0.13.11 {compile=[default(compile)]}
+[debug] no default cache defined: set to /Users/snc/.ivy2/cache
 [debug] sbt-chain: module revision found in cache: org.scala-sbt#main;0.13.11
 [debug] 	found org.scala-sbt#main;0.13.11 in sbt-chain
 [debug] == resolving dependencies org.scala-sbt#main;0.13.11->org.scala-lang#scala-library;2.10.6 [compile->default(compile)]
@@ -3263,9 +3264,9 @@
 [debug] 	[NOT REQUIRED] jfree#jfreechart;1.0.8a!jfreechart.jar
 [debug] 	[NOT REQUIRED] junit#junit;4.10!junit.jar
 [debug] 	[NOT REQUIRED] org.hamcrest#hamcrest-core;1.1!hamcrest-core.jar
-[debug] :: resolution report :: resolve 2225ms :: artifacts dl 106ms
+[debug] :: resolution report :: resolve 4077ms :: artifacts dl 216ms
 [debug] 	report for shared#shared$sbt_sjs0.6_2.11;0.1-SNAPSHOT default produced in /Users/snc/scala/walnuts/shared/.js/target/resolution-cache/reports/shared-shared$sbt_sjs0.6_2.11-default.xml
-[debug] 	resolve done (2225ms resolve - 106ms download)
+[debug] 	resolve done (4077ms resolve - 216ms download)
 [debug] Using inline dependencies specified in Scala.
 [debug] :: resolving dependencies :: shared#shared$sources_sjs0.6_2.11;0.1-SNAPSHOT
 [debug] 	confs: [default]
@@ -6019,6 +6020,6 @@
 [debug] 	[NOT REQUIRED] org.apache.httpcomponents#httpcore;4.4!httpcore.jar(src)
 [debug] 	[NOT REQUIRED] com.timushev.sbt#sbt-updates;0.3.0!sbt-updates.jar(src)
 [debug] 	[NOT REQUIRED] org.bouncycastle#bcpg-jdk15on;1.51!bcpg-jdk15on.jar(src)
-[debug] :: resolution report :: resolve 1690ms :: artifacts dl 110ms
+[debug] :: resolution report :: resolve 3170ms :: artifacts dl 154ms
 [debug] 	report for shared#shared$sources_sjs0.6_2.11;0.1-SNAPSHOT default produced in /Users/snc/scala/walnuts/shared/.js/target/resolution-cache/reports/shared-shared$sources_sjs0.6_2.11-default.xml
-[debug] 	resolve done (1690ms resolve - 110ms download)
+[debug] 	resolve done (3170ms resolve - 154ms download)

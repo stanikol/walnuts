@@ -14,6 +14,10 @@ version := "1.0.0"
 
 resolvers += Resolver.jcenterRepo
 
+resolvers += "Atlassian Releases" at "https://maven.atlassian.com/public/"
+
+resolvers += Resolver.bintrayRepo("iheartradio", "maven")
+
 lazy val sassc = taskKey[Unit]("Sass C compile")
 
 

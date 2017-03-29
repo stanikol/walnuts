@@ -4,7 +4,7 @@
 		module="shared$sbt_sjs0.6_2.11"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20170329172053"
+		publication="20170329180737"
 	/>
 	<configurations>
 		<conf name="default" visibility="public"/>

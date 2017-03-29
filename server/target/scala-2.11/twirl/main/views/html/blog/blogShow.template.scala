@@ -28,96 +28,94 @@ object blogShow_Scope0 {
 """), format.raw /*5.1*/ ("""
 """), _display_( /*6.2*/ main(article.title, user, article.keywords, article.description) /*6.66*/ {
             _display_(Seq[Any](format.raw /*6.67*/ ("""
-    """), format.raw /*7.5*/ ("""<a href=""""), _display_( /*7.15*/ controllers /*7.26*/ .nuts.routes.Blog.showAllArticles), format.raw /*7.59*/ ("""">
-        <h1>"""), _display_( /*8.14*/ Messages("Blog")), format.raw /*8.30*/ ("""</h1>
-    </a>
-    <div class="article">
-        <h1>"""), _display_( /*11.14*/ { article.title }), format.raw /*11.29*/ ("""</h1>
-        <div class="article-text" disabled>"""), _display_( /*12.45*/ Html(article.text)), format.raw /*12.63*/ ("""</div>
+    """), format.raw /*7.5*/ ("""<div class="article">
+        <h1>"""), _display_( /*8.14*/ { article.title }), format.raw /*8.29*/ ("""</h1>
+        <div class="article-text" disabled>"""), _display_( /*9.45*/ Html(article.text)), format.raw /*9.63*/ ("""</div>
     </div>
-    """), _display_( /*14.6*/ for (comment <- comments) yield /*14.28*/ {
-              _display_(Seq[Any](format.raw /*14.29*/ ("""
-        """), format.raw /*15.9*/ ("""<hr>
+    """), _display_( /*11.6*/ for (comment <- comments) yield /*11.28*/ {
+              _display_(Seq[Any](format.raw /*11.29*/ ("""
+        """), format.raw /*12.9*/ ("""<hr>
         <div class="row">
-            <h5 class="col col-xs-3">"""), _display_( /*17.39*/ comment /*17.46*/ .fullName), format.raw /*17.55*/ (""" """), format.raw /*17.56*/ ("""</h5> <h6 class="col col-xs-3 col-xs-offset-6">"""), _display_( /*17.104*/ comment /*17.111*/ .added), format.raw /*17.117*/ ("""</h6>
+            <h5 class="col col-xs-3">"""), _display_( /*14.39*/ comment /*14.46*/ .fullName), format.raw /*14.55*/ (""" """), format.raw /*14.56*/ ("""</h5> <h6 class="col col-xs-3 col-xs-offset-6">"""), _display_( /*14.104*/ comment /*14.111*/ .added), format.raw /*14.117*/ ("""</h6>
         </div>
         <div class="feedtext">
-            """), _display_( /*20.14*/ comment /*20.21*/ .text), format.raw /*20.26*/ ("""
-        """), format.raw /*21.9*/ ("""</div>
+            """), _display_( /*17.14*/ comment /*17.21*/ .text), format.raw /*17.26*/ ("""
+        """), format.raw /*18.9*/ ("""</div>
     """)))
-            }), format.raw /*22.6*/ ("""
-    """), format.raw /*23.5*/ ("""<br>
-    """), _display_( /*24.6*/ user /*24.10*/ .map /*24.14*/ { usr =>
-              _display_(Seq[Any](format.raw /*24.22*/ ("""
-        """), _display_( /*25.10*/ if (usr.isAdmin) /*25.25*/ {
-                _display_(Seq[Any](format.raw /*25.26*/ ("""
-            """), format.raw /*26.13*/ ("""<form action=""""), _display_( /*26.28*/ controllers /*26.39*/ .nuts.routes.Blog.edit(article.id.get)), format.raw /*26.77*/ ("""" method="get">
-                """), _display_( /*27.18*/ helper /*27.24*/ .CSRF.formField), format.raw /*27.39*/ ("""
-                """), format.raw /*28.17*/ ("""<button type="submit" class="btn btn-danger">"""), _display_( /*28.63*/ Messages("Edit")), format.raw /*28.79*/ ("""</button>
+            }), format.raw /*19.6*/ ("""
+    """), format.raw /*20.5*/ ("""<br>
+    """), _display_( /*21.6*/ user /*21.10*/ .map /*21.14*/ { usr =>
+              _display_(Seq[Any](format.raw /*21.22*/ ("""
+        """), _display_( /*22.10*/ if (usr.isAdmin) /*22.25*/ {
+                _display_(Seq[Any](format.raw /*22.26*/ ("""
+            """), format.raw /*23.13*/ ("""<form action=""""), _display_( /*23.28*/ controllers /*23.39*/ .nuts.routes.Blog.edit(article.id.get)), format.raw /*23.77*/ ("""" method="get" class="form-inline">
+                """), _display_( /*24.18*/ helper /*24.24*/ .CSRF.formField), format.raw /*24.39*/ ("""
+                """), format.raw /*25.17*/ ("""<button type="submit" class="btn btn-danger">"""), _display_( /*25.63*/ Messages("Edit")), format.raw /*25.79*/ ("""</button>
+                <a href=""""), _display_( /*26.27*/ controllers /*26.38*/ .nuts.routes.Comments.commentsAdmin), format.raw /*26.73*/ ("""" class="btn btn-primary">Редактировать комментарии</a>
             </form>
         """)))
-              }), format.raw /*30.10*/ ("""
+              }), format.raw /*28.10*/ ("""
     """)))
-            }), format.raw /*31.6*/ ("""
-    """), format.raw /*32.5*/ ("""<form action=""""), _display_( /*32.20*/ controllers /*32.31*/ .nuts.routes.Comments.addComment), format.raw /*32.63*/ ("""" method="post" id="addCommentForm">
-        <button type="submit" class="btn btn-warning">"""), _display_( /*33.56*/ Messages("Add comment")), format.raw /*33.79*/ ("""</button>
-        """), _display_( /*34.10*/ helper /*34.16*/ .CSRF.formField), format.raw /*34.31*/ ("""
-        """), format.raw /*35.9*/ ("""<input type="hidden" value=""""), _display_( /*35.38*/ { article.id }), format.raw /*35.50*/ ("""" name="article-id"/>
-        """), _display_( /*36.10*/ user /*36.14*/ .map /*36.18*/ { usr =>
-              _display_(Seq[Any](format.raw /*36.26*/ ("""
-            """), format.raw /*37.13*/ ("""<textarea name="article-comment" id="article-comment" placeholder=""""), _display_( /*37.81*/ Messages("Add your comment here ...")), format.raw /*37.118*/ ("""" rows="10"></textarea>
+            }), format.raw /*29.6*/ ("""
+    """), format.raw /*30.5*/ ("""<form action=""""), _display_( /*30.20*/ controllers /*30.31*/ .nuts.routes.Comments.addComment), format.raw /*30.63*/ ("""" method="post" id="addCommentForm">
+        <button type="submit" class="btn btn-warning">"""), _display_( /*31.56*/ Messages("Add comment")), format.raw /*31.79*/ ("""</button>
+        """), _display_( /*32.10*/ helper /*32.16*/ .CSRF.formField), format.raw /*32.31*/ ("""
+        """), format.raw /*33.9*/ ("""<input type="hidden" value=""""), _display_( /*33.38*/ { article.id }), format.raw /*33.50*/ ("""" name="article-id"/>
+        """), _display_( /*34.10*/ user /*34.14*/ .map /*34.18*/ { usr =>
+              _display_(Seq[Any](format.raw /*34.26*/ ("""
+            """), format.raw /*35.13*/ ("""<textarea name="article-comment" id="article-comment" placeholder=""""), _display_( /*35.81*/ Messages("Add your comment here ...")), format.raw /*35.118*/ ("""" rows="10"></textarea>
         """)))
-            }), format.raw /*38.10*/ ("""
-    """), format.raw /*39.5*/ ("""</form>
+            }), format.raw /*36.10*/ ("""
+    """), format.raw /*37.5*/ ("""</form>
 
     <script>
-        let dlg = $('<div class="dialog" title=""""), _display_( /*42.50*/ Messages("Registration or login required!")), format.raw /*42.93*/ ("""">\
-            <p class="bg-danger">"""), _display_( /*43.35*/ Messages("Please signin or signup to leave yor comment. Thank you.")), format.raw /*43.103*/ ("""</p> \
-            </div>').dialog("""), format.raw /*44.29*/ ("""{"""), format.raw /*44.30*/ ("""
-                """), format.raw /*45.17*/ ("""resizable: false,
+        let dlg = $('<div class="dialog" title=""""), _display_( /*40.50*/ Messages("Registration or login required!")), format.raw /*40.93*/ ("""">\
+            <p class="bg-danger">"""), _display_( /*41.35*/ Messages("Please signin or signup to leave yor comment. Thank you.")), format.raw /*41.103*/ ("""</p> \
+            </div>').dialog("""), format.raw /*42.29*/ ("""{"""), format.raw /*42.30*/ ("""
+                """), format.raw /*43.17*/ ("""resizable: false,
                 autoOpen: false,
                 //height:140,
                 modal: true,
-                buttons: ["""), format.raw /*49.27*/ ("""{"""), format.raw /*49.28*/ ("""
-                    """), format.raw /*50.21*/ ("""text: """"), _display_( /*50.29*/ Messages("Login")), format.raw /*50.46*/ ("""",
-                    click: function() """), format.raw /*51.39*/ ("""{"""), format.raw /*51.40*/ ("""
-                        """), format.raw /*52.25*/ ("""//$( this ).dialog( "close" );
-                        window.location.href = '"""), _display_( /*53.50*/ controllers /*53.61*/ .auth.routes.SignInController.view), format.raw /*53.95*/ ("""';
-                    """), format.raw /*54.21*/ ("""}"""), format.raw /*54.22*/ (""",
+                buttons: ["""), format.raw /*47.27*/ ("""{"""), format.raw /*47.28*/ ("""
+                    """), format.raw /*48.21*/ ("""text: """"), _display_( /*48.29*/ Messages("Login")), format.raw /*48.46*/ ("""",
+                    click: function() """), format.raw /*49.39*/ ("""{"""), format.raw /*49.40*/ ("""
+                        """), format.raw /*50.25*/ ("""//$( this ).dialog( "close" );
+                        window.location.href = '"""), _display_( /*51.50*/ controllers /*51.61*/ .auth.routes.SignInController.view), format.raw /*51.95*/ ("""';
+                    """), format.raw /*52.21*/ ("""}"""), format.raw /*52.22*/ (""",
                     class:"btn btn-danger"
-                """), format.raw /*56.17*/ ("""}"""), format.raw /*56.18*/ (""", """), format.raw /*56.20*/ ("""{"""), format.raw /*56.21*/ ("""
-                    """), format.raw /*57.21*/ ("""text: """"), _display_( /*57.29*/ Messages("SignUp")), format.raw /*57.47*/ ("""",
-                    click : function() """), format.raw /*58.40*/ ("""{"""), format.raw /*58.41*/ ("""
-                        """), format.raw /*59.25*/ ("""window.location.href = '"""), _display_( /*59.50*/ controllers /*59.61*/ .auth.routes.SignUpController.view), format.raw /*59.95*/ ("""';
-                    """), format.raw /*60.21*/ ("""}"""), format.raw /*60.22*/ (""",
+                """), format.raw /*54.17*/ ("""}"""), format.raw /*54.18*/ (""", """), format.raw /*54.20*/ ("""{"""), format.raw /*54.21*/ ("""
+                    """), format.raw /*55.21*/ ("""text: """"), _display_( /*55.29*/ Messages("SignUp")), format.raw /*55.47*/ ("""",
+                    click : function() """), format.raw /*56.40*/ ("""{"""), format.raw /*56.41*/ ("""
+                        """), format.raw /*57.25*/ ("""window.location.href = '"""), _display_( /*57.50*/ controllers /*57.61*/ .auth.routes.SignUpController.view), format.raw /*57.95*/ ("""';
+                    """), format.raw /*58.21*/ ("""}"""), format.raw /*58.22*/ (""",
                     class:"btn btn-danger"
-                """), format.raw /*62.17*/ ("""}"""), format.raw /*62.18*/ (""", """), format.raw /*62.20*/ ("""{"""), format.raw /*62.21*/ ("""
-                    """), format.raw /*63.21*/ ("""text: """"), _display_( /*63.29*/ Messages("Cancel")), format.raw /*63.47*/ ("""",
-                    click: function() """), format.raw /*64.39*/ ("""{"""), format.raw /*64.40*/ ("""
-                        """), format.raw /*65.25*/ ("""$( this ).dialog( "close" );
-                    """), format.raw /*66.21*/ ("""}"""), format.raw /*66.22*/ (""",
+                """), format.raw /*60.17*/ ("""}"""), format.raw /*60.18*/ (""", """), format.raw /*60.20*/ ("""{"""), format.raw /*60.21*/ ("""
+                    """), format.raw /*61.21*/ ("""text: """"), _display_( /*61.29*/ Messages("Cancel")), format.raw /*61.47*/ ("""",
+                    click: function() """), format.raw /*62.39*/ ("""{"""), format.raw /*62.40*/ ("""
+                        """), format.raw /*63.25*/ ("""$( this ).dialog( "close" );
+                    """), format.raw /*64.21*/ ("""}"""), format.raw /*64.22*/ (""",
                     class:"btn btn-danger"
-                """), format.raw /*68.17*/ ("""}"""), format.raw /*68.18*/ ("""]
-            """), format.raw /*69.13*/ ("""}"""), format.raw /*69.14*/ (""");
+                """), format.raw /*66.17*/ ("""}"""), format.raw /*66.18*/ ("""]
+            """), format.raw /*67.13*/ ("""}"""), format.raw /*67.14*/ (""");
 
-        function onAddCommentFormSubmit()"""), format.raw /*71.42*/ ("""{"""), format.raw /*71.43*/ ("""
-            """), _display_( /*72.14*/ if (user.isDefined) /*72.32*/ {
-              _display_(Seq[Any](format.raw /*72.33*/ ("""
-                """), format.raw /*73.17*/ ("""return true;
+        function onAddCommentFormSubmit()"""), format.raw /*69.42*/ ("""{"""), format.raw /*69.43*/ ("""
+            """), _display_( /*70.14*/ if (user.isDefined) /*70.32*/ {
+              _display_(Seq[Any](format.raw /*70.33*/ ("""
+                """), format.raw /*71.17*/ ("""return true;
             """)))
-            } /*74.15*/ else /*74.20*/ {
-              _display_(Seq[Any](format.raw /*74.21*/ ("""
-                """), format.raw /*75.17*/ ("""dlg.dialog('open');
+            } /*72.15*/ else /*72.20*/ {
+              _display_(Seq[Any](format.raw /*72.21*/ ("""
+                """), format.raw /*73.17*/ ("""dlg.dialog('open');
                 return false;
             """)))
-            }), format.raw /*77.14*/ ("""
-        """), format.raw /*78.9*/ ("""}"""), format.raw /*78.10*/ (""";
-        $(document).ready(function()"""), format.raw /*79.37*/ ("""{"""), format.raw /*79.38*/ ("""
-            """), format.raw /*80.13*/ ("""//$('#addCommentForm').on('submit', onAddCommentFormSubmit);
-        """), format.raw /*81.9*/ ("""}"""), format.raw /*81.10*/ (""");
+            }), format.raw /*75.14*/ ("""
+        """), format.raw /*76.9*/ ("""}"""), format.raw /*76.10*/ (""";
+        $(document).ready(function()"""), format.raw /*77.37*/ ("""{"""), format.raw /*77.38*/ ("""
+            """), format.raw /*78.13*/ ("""//$('#addCommentForm').on('submit', onAddCommentFormSubmit);
+        """), format.raw /*79.9*/ ("""}"""), format.raw /*79.10*/ (""");
     </script>
 """)))
-          }), format.raw /*83.2*/ ("""
+          }), format.raw /*81.2*/ ("""
 
 
 
@@ -140,10 +138,10 @@ object blogShow_Scope0 {
 object blogShow extends blogShow_Scope0.blogShow
 /*
                   -- GENERATED --
-                  DATE: Fri Mar 24 12:14:57 EET 2017
+                  DATE: Thu Mar 30 01:41:00 EEST 2017
                   SOURCE: /Users/snc/scala/walnuts/server/app/views/blog/blogShow.scala.html
-                  HASH: 2febb8e8e92be0559865cfc3a3e4c28dbf831e4c
-                  MATRIX: 669->2|937->156|965->178|992->180|1064->244|1102->245|1133->250|1169->260|1188->271|1241->304|1283->320|1319->336|1400->390|1436->405|1513->455|1552->473|1601->496|1639->518|1678->519|1714->528|1810->597|1826->604|1856->613|1885->614|1961->662|1978->669|2006->675|2098->740|2114->747|2140->752|2176->761|2218->773|2250->778|2286->788|2299->792|2312->796|2358->804|2395->814|2419->829|2458->830|2499->843|2541->858|2561->869|2620->907|2680->940|2695->946|2731->961|2776->978|2849->1024|2886->1040|2956->1079|2992->1085|3024->1090|3066->1105|3086->1116|3139->1148|3258->1240|3302->1263|3348->1282|3363->1288|3399->1303|3435->1312|3491->1341|3524->1353|3582->1384|3595->1388|3608->1392|3654->1400|3695->1413|3790->1481|3849->1518|3913->1551|3945->1556|4043->1627|4107->1670|4172->1708|4262->1776|4325->1811|4354->1812|4399->1829|4563->1965|4592->1966|4641->1987|4676->1995|4714->2012|4783->2053|4812->2054|4865->2079|4972->2159|4992->2170|5047->2204|5098->2227|5127->2228|5216->2289|5245->2290|5275->2292|5304->2293|5353->2314|5388->2322|5427->2340|5497->2382|5526->2383|5579->2408|5631->2433|5651->2444|5706->2478|5757->2501|5786->2502|5875->2563|5904->2564|5934->2566|5963->2567|6012->2588|6047->2596|6086->2614|6155->2655|6184->2656|6237->2681|6314->2730|6343->2731|6432->2792|6461->2793|6503->2807|6532->2808|6605->2853|6634->2854|6675->2868|6702->2886|6741->2887|6786->2904|6831->2931|6844->2936|6883->2937|6928->2954|7022->3017|7058->3026|7087->3027|7153->3065|7182->3066|7223->3079|7319->3148|7348->3149|7396->3167
-                  LINES: 22->2|27->2|29->5|30->6|30->6|30->6|31->7|31->7|31->7|31->7|32->8|32->8|35->11|35->11|36->12|36->12|38->14|38->14|38->14|39->15|41->17|41->17|41->17|41->17|41->17|41->17|41->17|44->20|44->20|44->20|45->21|46->22|47->23|48->24|48->24|48->24|48->24|49->25|49->25|49->25|50->26|50->26|50->26|50->26|51->27|51->27|51->27|52->28|52->28|52->28|54->30|55->31|56->32|56->32|56->32|56->32|57->33|57->33|58->34|58->34|58->34|59->35|59->35|59->35|60->36|60->36|60->36|60->36|61->37|61->37|61->37|62->38|63->39|66->42|66->42|67->43|67->43|68->44|68->44|69->45|73->49|73->49|74->50|74->50|74->50|75->51|75->51|76->52|77->53|77->53|77->53|78->54|78->54|80->56|80->56|80->56|80->56|81->57|81->57|81->57|82->58|82->58|83->59|83->59|83->59|83->59|84->60|84->60|86->62|86->62|86->62|86->62|87->63|87->63|87->63|88->64|88->64|89->65|90->66|90->66|92->68|92->68|93->69|93->69|95->71|95->71|96->72|96->72|96->72|97->73|98->74|98->74|98->74|99->75|101->77|102->78|102->78|103->79|103->79|104->80|105->81|105->81|107->83
+                  HASH: c70360612dabc54626d7baacd8a72ac1f57579db
+                  MATRIX: 669->2|937->156|965->178|992->180|1064->244|1102->245|1133->250|1194->285|1229->300|1305->350|1343->368|1392->391|1430->413|1469->414|1505->423|1601->492|1617->499|1647->508|1676->509|1752->557|1769->564|1797->570|1889->635|1905->642|1931->647|1967->656|2009->668|2041->673|2077->683|2090->687|2103->691|2149->699|2186->709|2210->724|2249->725|2290->738|2332->753|2352->764|2411->802|2491->855|2506->861|2542->876|2587->893|2660->939|2697->955|2760->991|2780->1002|2836->1037|2952->1122|2988->1128|3020->1133|3062->1148|3082->1159|3135->1191|3254->1283|3298->1306|3344->1325|3359->1331|3395->1346|3431->1355|3487->1384|3520->1396|3578->1427|3591->1431|3604->1435|3650->1443|3691->1456|3786->1524|3845->1561|3909->1594|3941->1599|4039->1670|4103->1713|4168->1751|4258->1819|4321->1854|4350->1855|4395->1872|4559->2008|4588->2009|4637->2030|4672->2038|4710->2055|4779->2096|4808->2097|4861->2122|4968->2202|4988->2213|5043->2247|5094->2270|5123->2271|5212->2332|5241->2333|5271->2335|5300->2336|5349->2357|5384->2365|5423->2383|5493->2425|5522->2426|5575->2451|5627->2476|5647->2487|5702->2521|5753->2544|5782->2545|5871->2606|5900->2607|5930->2609|5959->2610|6008->2631|6043->2639|6082->2657|6151->2698|6180->2699|6233->2724|6310->2773|6339->2774|6428->2835|6457->2836|6499->2850|6528->2851|6601->2896|6630->2897|6671->2911|6698->2929|6737->2930|6782->2947|6827->2974|6840->2979|6879->2980|6924->2997|7018->3060|7054->3069|7083->3070|7149->3108|7178->3109|7219->3122|7315->3191|7344->3192|7392->3210
+                  LINES: 22->2|27->2|29->5|30->6|30->6|30->6|31->7|32->8|32->8|33->9|33->9|35->11|35->11|35->11|36->12|38->14|38->14|38->14|38->14|38->14|38->14|38->14|41->17|41->17|41->17|42->18|43->19|44->20|45->21|45->21|45->21|45->21|46->22|46->22|46->22|47->23|47->23|47->23|47->23|48->24|48->24|48->24|49->25|49->25|49->25|50->26|50->26|50->26|52->28|53->29|54->30|54->30|54->30|54->30|55->31|55->31|56->32|56->32|56->32|57->33|57->33|57->33|58->34|58->34|58->34|58->34|59->35|59->35|59->35|60->36|61->37|64->40|64->40|65->41|65->41|66->42|66->42|67->43|71->47|71->47|72->48|72->48|72->48|73->49|73->49|74->50|75->51|75->51|75->51|76->52|76->52|78->54|78->54|78->54|78->54|79->55|79->55|79->55|80->56|80->56|81->57|81->57|81->57|81->57|82->58|82->58|84->60|84->60|84->60|84->60|85->61|85->61|85->61|86->62|86->62|87->63|88->64|88->64|90->66|90->66|91->67|91->67|93->69|93->69|94->70|94->70|94->70|95->71|96->72|96->72|96->72|97->73|99->75|100->76|100->76|101->77|101->77|102->78|103->79|103->79|105->81
                   -- GENERATED --
               */

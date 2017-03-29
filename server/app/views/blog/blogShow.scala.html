@@ -4,9 +4,6 @@
 @import helper.CSRF
 
 @main(article.title, user, article.keywords, article.description){
-    <a href="@controllers.nuts.routes.Blog.showAllArticles">
-        <h1>@Messages("Blog")</h1>
-    </a>
     <div class="article">
         <h1>@{article.title}</h1>
         <div class="article-text" disabled>@Html(article.text)</div>
@@ -23,9 +20,10 @@
     <br>
     @user.map{ usr =>
         @if(usr.isAdmin){
-            <form action="@controllers.nuts.routes.Blog.edit(article.id.get)" method="get">
+            <form action="@controllers.nuts.routes.Blog.edit(article.id.get)" method="get" class="form-inline">
                 @helper.CSRF.formField
                 <button type="submit" class="btn btn-danger">@Messages("Edit")</button>
+                <a href="@controllers.nuts.routes.Comments.commentsAdmin" class="btn btn-primary">Редактировать комментарии</a>
             </form>
         }
     }

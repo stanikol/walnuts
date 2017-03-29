@@ -79,4 +79,5 @@ object Data {
   case class Comment(id: Option[Long], userID: String, articleID: Long, text: String, added: Timestamp)
   case class CommentInfo(id: Option[Long], userID: String, userEmail: Option[String], articleID: Long, articleTitle: String, text: String, added: Timestamp, fullName: String)
 
+  case class CommentsShow(order: Option[String], articleID: Option[String])
 }

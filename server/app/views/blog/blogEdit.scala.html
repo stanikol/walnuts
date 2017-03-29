@@ -1,11 +1,11 @@
 @(user: models.User, article: Form[models.nuts.Data.Article], errors: Map[String, String]=Map.empty[String, String])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
 @import helper.CSRF
 
-@admin(Messages("blogEdit.title"), Some(user)){
+@admin(Messages("title"), Some(user)){
     @{errors.map{ case (key, errorMsg)=>
     <div class="col-md-10 col-md-offset-2 alert alert-danger">
         <a href="#" class="close" data-dismiss="alert">&times;</a>
-        <strong>{Messages("error")} {Messages(s"blogEdit.$key")} => {errorMsg}</strong>
+        <strong>{Messages("error")} {Messages(s"blog.$key")} => {errorMsg}</strong>
     </div>
     }}
     <input type="file" id="filepicker" style="display: none"/>
@@ -16,36 +16,36 @@
         <input type="hidden" id="blog-short-text" name="blog-short-text" />
         <!--<input type="hidden" id="action" name="action" />-->
         <div class="form-group">
-            <label for="title" class="control-label">@Messages("blogEdit.title")</label>
+            <label for="title" class="control-label">@Messages("blog.title")</label>
             <input type="text" id="title" name="title" value='@{article("title").value}'
                    class="form-control"/>
         </div>
         <div class="form-group">
-            <label for="description" class="control-label">@Messages("blogEdit.description")</label>
+            <label for="description" class="control-label">@Messages("blog.description")</label>
             <textarea type="text" id="description" name="description" class="form-control">@{article("description").value}</textarea>
         </div>
         <div class="form-group">
-            <label for="blog-edit" class="control-label">@Messages("blogEdit.article-text")</label>
+            <label for="blog-edit" class="control-label">@Messages("blog.article-text")</label>
             <div id="blog-edit" class="form-control">
                 @{Html(article("blog-text").value.getOrElse(""))}
             </div>
         </div>
         <div class="form-group">
-            <label for="keywords" class="control-label">@Messages("blogEdit.keywords")</label>
+            <label for="keywords" class="control-label">@Messages("blog.keywords")</label>
             <input type="text" id="keywords" name="keywords" value='@{article("keywords").value}'
                    class="form-control"/>
         </div>
         <div class="form-group">
-            <label for="sort-order" class="control-label">@Messages("blogEdit.sort-order")</label>
+            <label for="sort-order" class="control-label">@Messages("blog.sort-order")</label>
             <input type="text" id="sort-order" name="sort-order" value='@{article("sort-order").value}'
                    class="form-control"/>
         </div>
         <!--BUTTONS-->
         <div class="btn-group btn-group-lg">
-            <button type="submit" id="new-btn" name="action" value="new" class="btn btn-warning">@Messages("blogEdit.save-as-new")</button>
+            <button type="submit" id="new-btn" name="action" value="new" class="btn btn-warning">@Messages("blog.save-as-new")</button>
             @if(article("id").value.isDefined){
-                <button type="submit" id="save-btn" name="action" value="save" class="btn btn-primary">@Messages("blogEdit.save-article")</button>
-                <button type="submit" id="delete-btn" name="action" value="delete" class="btn btn-danger">@Messages("blogEdit.delete-article")</button>
+                <button type="submit" id="save-btn" name="action" value="save" class="btn btn-primary">@Messages("blog.save-article")</button>
+                <button type="submit" id="delete-btn" name="action" value="delete" class="btn btn-danger">@Messages("blog.delete-article")</button>
             }
         </div>
     </form>

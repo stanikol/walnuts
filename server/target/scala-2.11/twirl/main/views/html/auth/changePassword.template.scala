@@ -65,7 +65,7 @@ object changePassword_Scope0 {
 object changePassword extends changePassword_Scope0.changePassword
 /*
                   -- GENERATED --
-                  DATE: Fri Mar 24 12:14:57 EET 2017
+                  DATE: Thu Mar 30 01:07:17 EEST 2017
                   SOURCE: /Users/snc/scala/walnuts/server/app/views/auth/changePassword.scala.html
                   HASH: f3743f0279d3fcb5b2d799e9c5a153e84b8ce3e3
                   MATRIX: 683->1|956->145|984->182|1011->184|1070->235|1109->237|1140->242|1227->303|1274->330|1319->349|1333->355|1437->450|1477->452|1517->465|1560->482|1612->514|1657->532|1672->538|1708->553|1749->567|1760->569|1959->746|2000->760|2194->932|2235->945|2421->1103|2461->1121|2553->1182|2585->1187|2628->1200

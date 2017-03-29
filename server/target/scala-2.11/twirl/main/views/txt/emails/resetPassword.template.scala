@@ -45,7 +45,7 @@ object resetPassword_Scope0 {
 object resetPassword extends resetPassword_Scope0.resetPassword
 /*
                   -- GENERATED --
-                  DATE: Fri Mar 24 12:14:57 EET 2017
+                  DATE: Thu Mar 30 01:07:17 EEST 2017
                   SOURCE: /Users/snc/scala/walnuts/server/app/views/emails/resetPassword.scala.txt
                   HASH: 8918632af7a943164409c082379ffebdf26a8e3f
                   MATRIX: 615->1|763->55|790->57|877->124|905->127|971->173

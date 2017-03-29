@@ -2,7 +2,7 @@ package models.nuts
 
 import java.util.Calendar
 
-import models.nuts.Data.{ Article, GoodsItem }
+import models.nuts.Data.{ Article, CommentsShow, GoodsItem }
 import play.api.data.Form
 import play.api.data.Forms.{ mapping, _ }
 
@@ -80,7 +80,11 @@ object FormsData {
     "action" -> text
   )(EditComment.apply)(EditComment.unapply))
 
-  val commentsOrderForm = Form(single[Option[String]]("comments-order" -> optional(text)))
+  //  case class CommentsShow(order: Option[String], articleID: Option[String])
+  val commentsShowForm = Form(mapping(
+    "comments-order" -> optional(text),
+    "article-id" -> optional(text)
+  )(CommentsShow.apply)(CommentsShow.unapply))
 
   val goodsItemForm = Form(mapping(
     "id" -> optional(longNumber),

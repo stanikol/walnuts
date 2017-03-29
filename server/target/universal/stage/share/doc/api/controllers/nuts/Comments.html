@@ -89,7 +89,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="controllers.nuts.Comments#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(blogDAO:models.nuts.BlogDAO,commentsDAO:models.nuts.CommentsDAO,silhouette:com.mohiva.play.silhouette.api.Silhouette[utils.auth.DefaultEnv],messagesApi:play.api.i18n.MessagesApi,implicitwebJarAssets:controllers.WebJarAssets):controllers.nuts.Comments"></a>
+      <a id="&lt;init&gt;(blogDAO:models.nuts.BlogDAO,commentsDAO:models.nuts.CommentsDAO,silhouette:com.mohiva.play.silhouette.api.Silhouette[utils.auth.DefaultEnv],messagesApi:play.api.i18n.MessagesApi,mailerClient:play.api.libs.mailer.MailerClient,configuration:play.api.Configuration,implicitwebJarAssets:controllers.WebJarAssets):controllers.nuts.Comments"></a>
       <a id="&lt;init&gt;:Comments"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -97,10 +97,10 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">Comments</span><span class="params">(<span name="blogDAO">blogDAO: <a href="../../models/nuts/BlogDAO.html" class="extype" name="models.nuts.BlogDAO">BlogDAO</a></span>, <span name="commentsDAO">commentsDAO: <a href="../../models/nuts/CommentsDAO.html" class="extype" name="models.nuts.CommentsDAO">CommentsDAO</a></span>, <span name="silhouette">silhouette: <span class="extype" name="com.mohiva.play.silhouette.api.Silhouette">Silhouette</span>[<a href="../../utils/auth/DefaultEnv.html" class="extype" name="utils.auth.DefaultEnv">DefaultEnv</a>]</span>, <span name="messagesApi">messagesApi: <span class="extype" name="play.api.i18n.MessagesApi">MessagesApi</span></span>, <span name="webJarAssets">webJarAssets: <span class="extype" name="controllers.WebJarAssets">WebJarAssets</span></span>)</span>
+        <span class="name">Comments</span><span class="params">(<span name="blogDAO">blogDAO: <a href="../../models/nuts/BlogDAO.html" class="extype" name="models.nuts.BlogDAO">BlogDAO</a></span>, <span name="commentsDAO">commentsDAO: <a href="../../models/nuts/CommentsDAO.html" class="extype" name="models.nuts.CommentsDAO">CommentsDAO</a></span>, <span name="silhouette">silhouette: <span class="extype" name="com.mohiva.play.silhouette.api.Silhouette">Silhouette</span>[<a href="../../utils/auth/DefaultEnv.html" class="extype" name="utils.auth.DefaultEnv">DefaultEnv</a>]</span>, <span name="messagesApi">messagesApi: <span class="extype" name="play.api.i18n.MessagesApi">MessagesApi</span></span>, <span name="mailerClient">mailerClient: <span class="extype" name="play.api.libs.mailer.MailerClient">MailerClient</span></span>, <span name="configuration">configuration: <span class="extype" name="play.api.Configuration">Configuration</span></span>, <span name="webJarAssets">webJarAssets: <span class="extype" name="controllers.WebJarAssets">WebJarAssets</span></span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#controllers.nuts.Comments@&lt;init&gt;(blogDAO:models.nuts.BlogDAO,commentsDAO:models.nuts.CommentsDAO,silhouette:com.mohiva.play.silhouette.api.Silhouette[utils.auth.DefaultEnv],messagesApi:play.api.i18n.MessagesApi,implicitwebJarAssets:controllers.WebJarAssets):controllers.nuts.Comments" title="Permalink" target="_top">
+      <a href="../../index.html#controllers.nuts.Comments@&lt;init&gt;(blogDAO:models.nuts.BlogDAO,commentsDAO:models.nuts.CommentsDAO,silhouette:com.mohiva.play.silhouette.api.Silhouette[utils.auth.DefaultEnv],messagesApi:play.api.i18n.MessagesApi,mailerClient:play.api.libs.mailer.MailerClient,configuration:play.api.Configuration,implicitwebJarAssets:controllers.WebJarAssets):controllers.nuts.Comments" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -3550,6 +3550,23 @@ so that after signin (signup) process, user could be redirected to the url.</p><
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Controller</dd></dl></div>
+    </li><li name="controllers.nuts.Comments#sendCommentsToEmail" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="sendCommentsToEmail:String"></a>
+      <a id="sendCommentsToEmail:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sendCommentsToEmail</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#controllers.nuts.Comments@sendCommentsToEmail:String" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>

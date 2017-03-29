@@ -55,7 +55,7 @@ object loginOrSignUp_Scope0 {
 object loginOrSignUp extends loginOrSignUp_Scope0.loginOrSignUp
 /*
                   -- GENERATED --
-                  DATE: Fri Mar 24 12:14:57 EET 2017
+                  DATE: Thu Mar 30 01:07:17 EEST 2017
                   SOURCE: /Users/snc/scala/walnuts/server/app/views/blog/loginOrSignUp.scala.html
                   HASH: 497e4ef205a41bb37057b7bced6292531fce6764
                   MATRIX: 654->2|858->110|887->111|918->117|940->131|978->132|1013->141|1099->201|1173->255|1213->268|1249->278|1268->289|1322->323|1375->350|1413->367|1466->394|1485->405|1539->439|1592->466|1631->484|1685->509|1713->510|1741->511

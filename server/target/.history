@@ -214,3 +214,37 @@ stage deployHeroku
 deployHeroku
 stage server
 exit 
+deployHeroku
+stage deployHeroku
+server:stage deployHeroku
+server:"stage deployHeroku"
+exit
+version
+sbtVersion
+appResolvers
+externalResolvers
+externalResolvers --help
+help externalResolvers
+externalResolvers
+clean 
+compile
+update
+externalResolvers
+externalResolvers := externalResolvers.value.filter(! _.toString.contains("https://repo.typesafe.com/typesafe/releases"))
+version
+sbtVersion
+exit
+sbtVersion
+compile
+exit
+compile
+exit
+~ run
+clean
+~ run
+stage
+deployHeroku
+stage deployHeroku
+reload
+stage deployHeroku
+exit

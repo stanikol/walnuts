@@ -45,7 +45,7 @@ object alreadySignedUp_Scope0 {
 object alreadySignedUp extends alreadySignedUp_Scope0.alreadySignedUp
 /*
                   -- GENERATED --
-                  DATE: Fri Mar 24 12:14:57 EET 2017
+                  DATE: Thu Mar 30 01:07:17 EEST 2017
                   SOURCE: /Users/snc/scala/walnuts/server/app/views/emails/alreadySignedUp.scala.txt
                   HASH: a9976e52ff3b28f9457de5b53c249163d5364588
                   MATRIX: 619->1|767->55|794->57|884->127|912->130|981->179

@@ -4,7 +4,7 @@
 		module="server_2.11"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20170329162807"
+		publication="20170330010709"
 	>
 		<description>
 		server
@@ -62,6 +62,5 @@
 		<dependency org="com.typesafe.play" name="play-cache_2.11" rev="2.5.4" conf="compile->default(compile)"/>
 		<dependency org="com.typesafe.play" name="filters-helpers_2.11" rev="2.5.4" conf="compile->default(compile)"/>
 		<dependency org="com.sksamuel.scrimage" name="scrimage-core_2.11" rev="2.1.8" conf="compile->default(compile)"/>
-		<dependency org="com.typesafe.play" name="play-slick_2.11" rev="2.0.0" conf="compile->default(compile)"/>
 	</dependencies>
 </ivy-module>

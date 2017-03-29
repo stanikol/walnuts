@@ -1,7 +1,7 @@
-@(user: models.User, comments: Seq[models.nuts.Data.CommentInfo], errors: Map[String, String]=Map.empty[String, String])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+@(user: models.User, comments: Seq[models.nuts.Data.CommentInfo], commentsShowForm: Form[CommentsShow], errors: Map[String, String]=Map.empty[String, String])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
 @import helper.CSRF
 
-@admin(Messages("blogEdit.title"), Some(user)){
+@admin(Messages("title"), Some(user)){
     @{errors.map{ case (key, errorMsg)=>
     <div class="col-md-10 col-md-offset-2 alert alert-danger">
         <a href="#" class="close" data-dismiss="alert">&times;</a>
@@ -9,11 +9,23 @@
     </div>
     }}
     <div class="panel panel-info">
-        <div class="panel-heading">@Messages("Sort order")</div>
+        <div class="panel-heading">Фильтр & сортировка</div>
         <div class="panel-body">
             <form class="form-inline" method="get" action="@controllers.nuts.routes.Comments.commentsAdmin">
-                <button name="comments-order" value="byArticle">@Messages("By article")</button>
-                <button name="comments-order" value="byID">@Messages("By comment ID")</button>
+                @helper.select(
+                    field = commentsShowForm("article-id"),
+                    options = comments.groupBy(a => (a.articleID.toString, a.articleTitle)).keys.toSeq,
+                    '_label -> "Фильтр",
+                    '_default -> "Все статьи",
+                    '_class -> "form-group"
+                )
+                @helper.select(
+                    field = commentsShowForm("comments-order"),
+                    options = Seq("byArticle" -> Messages("By article"), "byID" -> Messages("By comment ID")),
+                    '_label -> "Сортировка",
+                    '_class -> "form-group"
+                )
+                <button type="submit" class="btn btn-primary">Применить</button>
             </form>
         </div>
     </div>

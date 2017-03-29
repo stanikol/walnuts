@@ -74,8 +74,6 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/forms/auth/SignUpForm.class[0m
 [0m[[0mdebug[0m] [0m	evolutions/default/5.sql[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/evolutions/default/5.sql[0m
-[0m[[0mdebug[0m] [0m	controllers/nuts/Comments$$anonfun$commentsAdmin$1$$anonfun$apply$12.class[0m
-[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Comments$$anonfun$commentsAdmin$1$$anonfun$apply$12.class[0m
 [0m[[0mdebug[0m] [0m	models/nuts/FormsData$$anonfun$7.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/nuts/FormsData$$anonfun$7.class[0m
 [0m[[0mdebug[0m] [0m	controllers/auth/ChangePasswordController$$anonfun$submit$1$$anonfun$apply$3$$anonfun$apply$4.class[0m
@@ -102,8 +100,6 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/daos/UserDAOImpl$$anonfun$find$1$$anonfun$apply$6.class[0m
 [0m[[0mdebug[0m] [0m	models/nuts/ImagesDAO$$anonfun$findImages$1.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/nuts/ImagesDAO$$anonfun$findImages$1.class[0m
-[0m[[0mdebug[0m] [0m	controllers/nuts/Comments$$anonfun$loginOrSignUp$1$$anonfun$apply$5.class[0m
-[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Comments$$anonfun$loginOrSignUp$1$$anonfun$apply$5.class[0m
 [0m[[0mdebug[0m] [0m	models/daos/PasswordInfoDAO$$anonfun$add$2.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/daos/PasswordInfoDAO$$anonfun$add$2.class[0m
 [0m[[0mdebug[0m] [0m	modules/SilhouetteModule$$anon$9$$anonfun$read$28.class[0m
@@ -122,8 +118,6 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/auth/ReverseActivateAccountController.class[0m
 [0m[[0mdebug[0m] [0m	views/html/admin_Scope0$admin$$anonfun$f$1$$anonfun$apply$6$$anonfun$apply$7.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/admin_Scope0$admin$$anonfun$f$1$$anonfun$apply$6$$anonfun$apply$7.class[0m
-[0m[[0mdebug[0m] [0m	controllers/nuts/Comments$$anonfun$commentsAdmin$1$$anonfun$apply$14$$anonfun$apply$15.class[0m
-[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Comments$$anonfun$commentsAdmin$1$$anonfun$apply$14$$anonfun$apply$15.class[0m
 [0m[[0mdebug[0m] [0m	router/Routes$$anonfun$router$Routes$$controllers_nuts_Images_save21_invoker$1.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/router/Routes$$anonfun$router$Routes$$controllers_nuts_Images_save21_invoker$1.class[0m
 [0m[[0mdebug[0m] [0m	router/Routes$$anonfun$routes$1$$anonfun$applyOrElse$1$$anonfun$apply$1.class[0m
@@ -140,6 +134,8 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/modules/SilhouetteModule$$anon$8$$anonfun$read$24.class[0m
 [0m[[0mdebug[0m] [0m	views/html/main.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/main.class[0m
+[0m[[0mdebug[0m] [0m	controllers/nuts/Comments$$anonfun$editComment$1$$anonfun$apply$9$$anonfun$apply$11.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Comments$$anonfun$editComment$1$$anonfun$apply$9$$anonfun$apply$11.class[0m
 [0m[[0mdebug[0m] [0m	router/Routes$$anonfun$router$Routes$$controllers_nuts_Goods_updateOrCreateOrDelete35_invoker$1.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/router/Routes$$anonfun$router$Routes$$controllers_nuts_Goods_updateOrCreateOrDelete35_invoker$1.class[0m
 [0m[[0mdebug[0m] [0m	models/daos/UserDAOImpl$$anonfun$9.class[0m
@@ -184,8 +180,6 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/forms/auth/SignUpForm$$anonfun$2.class[0m
 [0m[[0mdebug[0m] [0m	models/daos/UserDAOImpl$$anonfun$7$$anonfun$apply$14.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/daos/UserDAOImpl$$anonfun$7$$anonfun$apply$14.class[0m
-[0m[[0mdebug[0m] [0m	controllers/nuts/Comments$$anonfun$addComment$1$$anonfun$apply$2$$anonfun$apply$4.class[0m
-[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Comments$$anonfun$addComment$1$$anonfun$apply$2$$anonfun$apply$4.class[0m
 [0m[[0mdebug[0m] [0m	models/services/UserServiceImpl$$anonfun$save$2.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/services/UserServiceImpl$$anonfun$save$2.class[0m
 [0m[[0mdebug[0m] [0m	views/html/blog/blogShow_Scope0$blogShow$$anonfun$f$1$$anonfun$apply$4.class[0m
@@ -220,6 +214,10 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/forms/auth/SignInForm.class[0m
 [0m[[0mdebug[0m] [0m	utils/auth/WithRole.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/utils/auth/WithRole.class[0m
+[0m[[0mdebug[0m] [0m	models/nuts/CommentsDAO$$anonfun$listAll$4.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/nuts/CommentsDAO$$anonfun$listAll$4.class[0m
+[0m[[0mdebug[0m] [0m	controllers/nuts/Comments$$anonfun$editComment$1$$anonfun$apply$9$$anonfun$apply$12.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Comments$$anonfun$editComment$1$$anonfun$apply$9$$anonfun$apply$12.class[0m
 [0m[[0mdebug[0m] [0m	models/nuts/ImagesDAO$$anonfun$listAllImageInfo$3.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/nuts/ImagesDAO$$anonfun$listAllImageInfo$3.class[0m
 [0m[[0mdebug[0m] [0m	models/nuts/GoodsDAO$$anonfun$update$1.class[0m
@@ -372,6 +370,8 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/nuts/Data$$anonfun$1.class[0m
 [0m[[0mdebug[0m] [0m	models/nuts/ImagesDAO$$anonfun$listAllImageInfo$3$$anonfun$apply$1.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/nuts/ImagesDAO$$anonfun$listAllImageInfo$3$$anonfun$apply$1.class[0m
+[0m[[0mdebug[0m] [0m	controllers/nuts/Comments$$anonfun$addComment$1$$anonfun$apply$2$$anonfun$apply$5.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Comments$$anonfun$addComment$1$$anonfun$apply$2$$anonfun$apply$5.class[0m
 [0m[[0mdebug[0m] [0m	views/html/auth/resetPassword_Scope0$resetPassword.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/auth/resetPassword_Scope0$resetPassword.class[0m
 [0m[[0mdebug[0m] [0m	views/html/blog/blogEdit.class[0m
@@ -424,6 +424,8 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/auth/SocialAuthController$$anonfun$authenticate$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$apply$4$$anonfun$apply$5$$anonfun$apply$6.class[0m
 [0m[[0mdebug[0m] [0m	views/html/blog/commentsEdit_Scope0$commentsEdit$$anonfun$apply$1.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/blog/commentsEdit_Scope0$commentsEdit$$anonfun$apply$1.class[0m
+[0m[[0mdebug[0m] [0m	models/nuts/CommentsDAO$$anonfun$listAll$2.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/nuts/CommentsDAO$$anonfun$listAll$2.class[0m
 [0m[[0mdebug[0m] [0m	controllers/nuts/Images$$anonfun$show$1$$anonfun$apply$16.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Images$$anonfun$show$1$$anonfun$apply$16.class[0m
 [0m[[0mdebug[0m] [0m	modules/SilhouetteModule$$anon$14$$anonfun$read$50.class[0m
@@ -482,6 +484,8 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Goods$$anonfun$get$1.class[0m
 [0m[[0mdebug[0m] [0m	views/html/blog/commentsEdit_Scope0$commentsEdit.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/blog/commentsEdit_Scope0$commentsEdit.class[0m
+[0m[[0mdebug[0m] [0m	models/nuts/Data$CommentsShow$.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/nuts/Data$CommentsShow$.class[0m
 [0m[[0mdebug[0m] [0m	models/services/UserServiceImpl$$anonfun$save$1.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/services/UserServiceImpl$$anonfun$save$1.class[0m
 [0m[[0mdebug[0m] [0m	models/daos/UserDAOImpl.class[0m
@@ -606,6 +610,8 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/modules/SilhouetteModule$$anon$1.class[0m
 [0m[[0mdebug[0m] [0m	models/daos/AuthTokenDAOImpl$$anonfun$find$1.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/daos/AuthTokenDAOImpl$$anonfun$find$1.class[0m
+[0m[[0mdebug[0m] [0m	controllers/nuts/Comments$$anonfun$editComment$1$$anonfun$apply$9$$anonfun$apply$10.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Comments$$anonfun$editComment$1$$anonfun$apply$9$$anonfun$apply$10.class[0m
 [0m[[0mdebug[0m] [0m	models/daos/PasswordInfoDAO$$anonfun$add$1$$anonfun$apply$3.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/daos/PasswordInfoDAO$$anonfun$add$1$$anonfun$apply$3.class[0m
 [0m[[0mdebug[0m] [0m	utils/Logger$class.class[0m
@@ -698,6 +704,8 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/admin_Scope0$admin$$anonfun$apply$5.class[0m
 [0m[[0mdebug[0m] [0m	models/nuts/FormsData$SaveImage$.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/nuts/FormsData$SaveImage$.class[0m
+[0m[[0mdebug[0m] [0m	controllers/nuts/Comments$$anonfun$commentsAdmin$1$$anonfun$apply$13$$anonfun$apply$14.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Comments$$anonfun$commentsAdmin$1$$anonfun$apply$13$$anonfun$apply$14.class[0m
 [0m[[0mdebug[0m] [0m	forms/auth/SignUpForm$.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/forms/auth/SignUpForm$.class[0m
 [0m[[0mdebug[0m] [0m	database.conf[0m
@@ -720,6 +728,8 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Images$$anonfun$edit$1$$anonfun$apply$11$$anonfun$apply$14.class[0m
 [0m[[0mdebug[0m] [0m	router/Routes$$anonfun$router$Routes$$controllers_nuts_Comments_commentsAdmin30_invoker$1.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/router/Routes$$anonfun$router$Routes$$controllers_nuts_Comments_commentsAdmin30_invoker$1.class[0m
+[0m[[0mdebug[0m] [0m	views/html/blog/commentsEdit_Scope0$commentsEdit$$anonfun$f$1$$anonfun$apply$5.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/blog/commentsEdit_Scope0$commentsEdit$$anonfun$f$1$$anonfun$apply$5.class[0m
 [0m[[0mdebug[0m] [0m	views/html/images/editImages_Scope0$.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/images/editImages_Scope0$.class[0m
 [0m[[0mdebug[0m] [0m	META-INF/resources/webjars/server/0.1-SNAPSHOT/styles/editArticle.css[0m
@@ -792,8 +802,6 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/auth/ChangePasswordController$$anonfun$view$1.class[0m
 [0m[[0mdebug[0m] [0m	models/nuts/FormsData$$anonfun$3.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/nuts/FormsData$$anonfun$3.class[0m
-[0m[[0mdebug[0m] [0m	views/html/blog/commentsEdit_Scope0$commentsEdit$$anonfun$apply$2$$anonfun$apply$3.class[0m
-[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/blog/commentsEdit_Scope0$commentsEdit$$anonfun$apply$2$$anonfun$apply$3.class[0m
 [0m[[0mdebug[0m] [0m	modules/SilhouetteModule$$anon$6$$anonfun$read$2.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/modules/SilhouetteModule$$anon$6$$anonfun$read$2.class[0m
 [0m[[0mdebug[0m] [0m	models/services[0m
@@ -848,6 +856,8 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Images$$anonfun$save$1$$anonfun$apply$3$$anonfun$6$$anonfun$apply$4$$anonfun$11.class[0m
 [0m[[0mdebug[0m] [0m	jobs/AuthTokenCleaner$$anonfun$receive$1.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/jobs/AuthTokenCleaner$$anonfun$receive$1.class[0m
+[0m[[0mdebug[0m] [0m	models/nuts/FormsData$$anonfun$17.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/nuts/FormsData$$anonfun$17.class[0m
 [0m[[0mdebug[0m] [0m	controllers/auth/SignUpController$$anonfun$submit$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$apply$4$$anonfun$apply$5.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/auth/SignUpController$$anonfun$submit$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$apply$4$$anonfun$apply$5.class[0m
 [0m[[0mdebug[0m] [0m	controllers/auth/javascript/ReverseChangePasswordController.class[0m
@@ -900,6 +910,8 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/services/UserServiceImpl$$anonfun$save$3.class[0m
 [0m[[0mdebug[0m] [0m	views/html/goods/itemEditForm.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/goods/itemEditForm.class[0m
+[0m[[0mdebug[0m] [0m	models/nuts/CommentsDAO$$anonfun$listAll$1.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/nuts/CommentsDAO$$anonfun$listAll$1.class[0m
 [0m[[0mdebug[0m] [0m	controllers/nuts/Images$$anonfun$edit$1$$anonfun$apply$11.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Images$$anonfun$edit$1$$anonfun$apply$11.class[0m
 [0m[[0mdebug[0m] [0m	controllers/auth/SignUpController$$anonfun$submit$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$apply$4$$anonfun$apply$5$$anonfun$apply$6.class[0m
@@ -930,6 +942,8 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/router/Routes$$anonfun$routes$1$$anonfun$applyOrElse$22$$anonfun$apply$22.class[0m
 [0m[[0mdebug[0m] [0m	views/html/main_Scope0$main$$anonfun$f$1$$anonfun$apply$6$$anonfun$apply$7.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/main_Scope0$main$$anonfun$f$1$$anonfun$apply$6$$anonfun$apply$7.class[0m
+[0m[[0mdebug[0m] [0m	models/nuts/FormsData$$anonfun$18.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/nuts/FormsData$$anonfun$18.class[0m
 [0m[[0mdebug[0m] [0m	controllers/nuts/routes.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/routes.class[0m
 [0m[[0mdebug[0m] [0m	router/Routes$$anonfun$routes$1$$anonfun$applyOrElse$16.class[0m
@@ -938,8 +952,6 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/daos/UserDAOImpl$$anonfun$save$1.class[0m
 [0m[[0mdebug[0m] [0m	views/html/auth/signIn_Scope0$signIn_Scope1$signIn.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/auth/signIn_Scope0$signIn_Scope1$signIn.class[0m
-[0m[[0mdebug[0m] [0m	controllers/nuts/Comments$$anonfun$editComment$1$$anonfun$apply$6$$anonfun$apply$7.class[0m
-[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Comments$$anonfun$editComment$1$$anonfun$apply$6$$anonfun$apply$7.class[0m
 [0m[[0mdebug[0m] [0m	views/html/auth/activateAccount_Scope0.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/auth/activateAccount_Scope0.class[0m
 [0m[[0mdebug[0m] [0m	views/html/auth/activateAccount$.class[0m
@@ -964,8 +976,6 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/nuts/FormsData$$anonfun$8.class[0m
 [0m[[0mdebug[0m] [0m	views/html/auth/passwordStrength_Scope0$passwordStrength_Scope1$passwordStrength.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/auth/passwordStrength_Scope0$passwordStrength_Scope1$passwordStrength.class[0m
-[0m[[0mdebug[0m] [0m	controllers/nuts/Comments$$anonfun$commentsAdmin$1$$anonfun$apply$12$$anonfun$apply$13.class[0m
-[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Comments$$anonfun$commentsAdmin$1$$anonfun$apply$12$$anonfun$apply$13.class[0m
 [0m[[0mdebug[0m] [0m	controllers/nuts/Comments$$anonfun$commentsAdmin$1.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Comments$$anonfun$commentsAdmin$1.class[0m
 [0m[[0mdebug[0m] [0m	models/nuts/FormsData$$anonfun$1.class[0m
@@ -1000,8 +1010,6 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/daos/AuthTokenDAOImpl$.class[0m
 [0m[[0mdebug[0m] [0m	views/txt/emails/signUp_Scope0$signUp$$anonfun$f$1.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/txt/emails/signUp_Scope0$signUp$$anonfun$f$1.class[0m
-[0m[[0mdebug[0m] [0m	views/html/blog/commentsEdit_Scope0$commentsEdit$$anonfun$f$1$$anonfun$apply$4.class[0m
-[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/blog/commentsEdit_Scope0$commentsEdit$$anonfun$f$1$$anonfun$apply$4.class[0m
 [0m[[0mdebug[0m] [0m	controllers/nuts/Goods$$anonfun$listAllGoods$1.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Goods$$anonfun$listAllGoods$1.class[0m
 [0m[[0mdebug[0m] [0m	views/txt/emails/signUp.class[0m
@@ -1086,20 +1094,18 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/daos/AuthTokenDAOImpl$$anonfun$find$2$$anonfun$apply$1.class[0m
 [0m[[0mdebug[0m] [0m	views/html/goods/listAll_Scope0$listAll$$anonfun$apply$3$$anonfun$apply$4.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/goods/listAll_Scope0$listAll$$anonfun$apply$3$$anonfun$apply$4.class[0m
-[0m[[0mdebug[0m] [0m	controllers/nuts/Comments$$anonfun$editComment$1$$anonfun$apply$8$$anonfun$apply$9.class[0m
-[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Comments$$anonfun$editComment$1$$anonfun$apply$8$$anonfun$apply$9.class[0m
 [0m[[0mdebug[0m] [0m	views/html/auth/signIn_Scope0$signIn_Scope1$signIn$$anonfun$apply$4.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/auth/signIn_Scope0$signIn_Scope1$signIn$$anonfun$apply$4.class[0m
 [0m[[0mdebug[0m] [0m	models/nuts/FormsData$ImageEdit.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/nuts/FormsData$ImageEdit.class[0m
-[0m[[0mdebug[0m] [0m	controllers/nuts/Comments$$anonfun$editComment$1$$anonfun$apply$6.class[0m
-[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Comments$$anonfun$editComment$1$$anonfun$apply$6.class[0m
 [0m[[0mdebug[0m] [0m	router/Routes$$anonfun$routes$1$$anonfun$applyOrElse$11$$anonfun$apply$11.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/router/Routes$$anonfun$routes$1$$anonfun$applyOrElse$11$$anonfun$apply$11.class[0m
 [0m[[0mdebug[0m] [0m	utils/route/Binders$UUIDPathBindable$.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/utils/route/Binders$UUIDPathBindable$.class[0m
 [0m[[0mdebug[0m] [0m	views/txt/emails[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/txt/emails[0m
+[0m[[0mdebug[0m] [0m	controllers/nuts/Comments$$anonfun$editComment$1$$anonfun$apply$9.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Comments$$anonfun$editComment$1$$anonfun$apply$9.class[0m
 [0m[[0mdebug[0m] [0m	META-INF/resources/webjars/server/0.1-SNAPSHOT/client-opt.js[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/client/target/scala-2.11/client-opt.js[0m
 [0m[[0mdebug[0m] [0m	router/Routes$$anonfun$routes$1$$anonfun$applyOrElse$35.class[0m
@@ -1174,8 +1180,6 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/modules/SilhouetteModule$$anon$13.class[0m
 [0m[[0mdebug[0m] [0m	router/Routes$$anonfun$routes$1$$anonfun$applyOrElse$3.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/router/Routes$$anonfun$routes$1$$anonfun$applyOrElse$3.class[0m
-[0m[[0mdebug[0m] [0m	controllers/nuts/Comments$$anonfun$editComment$1$$anonfun$apply$8$$anonfun$apply$10.class[0m
-[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Comments$$anonfun$editComment$1$$anonfun$apply$8$$anonfun$apply$10.class[0m
 [0m[[0mdebug[0m] [0m	views/html/home.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/home.class[0m
 [0m[[0mdebug[0m] [0m	modules/SilhouetteModule$$anon$4$$anonfun$read$10.class[0m
@@ -1282,8 +1286,12 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/forms/auth[0m
 [0m[[0mdebug[0m] [0m	META-INF/resources/webjars/server/0.1-SNAPSHOT/images/providers/xing.png[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/public/images/providers/xing.png[0m
+[0m[[0mdebug[0m] [0m	views/html/blog/commentsEdit_Scope0$commentsEdit$$anonfun$apply$3$$anonfun$apply$4.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/blog/commentsEdit_Scope0$commentsEdit$$anonfun$apply$3$$anonfun$apply$4.class[0m
 [0m[[0mdebug[0m] [0m	controllers/auth/ChangePasswordController.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/auth/ChangePasswordController.class[0m
+[0m[[0mdebug[0m] [0m	views/html/blog/commentsEdit_Scope0$commentsEdit$$anonfun$apply$3.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/blog/commentsEdit_Scope0$commentsEdit$$anonfun$apply$3.class[0m
 [0m[[0mdebug[0m] [0m	router/Routes$$anonfun$router$Routes$$controllers_nuts_Goods_get33_invoker$1.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/router/Routes$$anonfun$router$Routes$$controllers_nuts_Goods_get33_invoker$1.class[0m
 [0m[[0mdebug[0m] [0m	controllers/nuts/Images$$anonfun$find$1$$anonfun$apply$21.class[0m
@@ -1376,8 +1384,6 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/forms/auth/SignUpForm$Data$.class[0m
 [0m[[0mdebug[0m] [0m	controllers/nuts/Images$$anonfun$list$1.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Images$$anonfun$list$1.class[0m
-[0m[[0mdebug[0m] [0m	controllers/nuts/Comments$$anonfun$editComment$1$$anonfun$apply$8.class[0m
-[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Comments$$anonfun$editComment$1$$anonfun$apply$8.class[0m
 [0m[[0mdebug[0m] [0m	models/nuts/Tables$Articles$$anonfun$$times$5.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/nuts/Tables$Articles$$anonfun$$times$5.class[0m
 [0m[[0mdebug[0m] [0m	views/txt/emails/signUp_Scope0$signUp.class[0m
@@ -1400,14 +1406,14 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/router/Routes$$anonfun$routes$1$$anonfun$applyOrElse$25.class[0m
 [0m[[0mdebug[0m] [0m	router/Routes$$anonfun$router$Routes$$controllers_auth_SignUpController_submit4_invoker$1.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/router/Routes$$anonfun$router$Routes$$controllers_auth_SignUpController_submit4_invoker$1.class[0m
-[0m[[0mdebug[0m] [0m	models/nuts/CommentsDAO$$anonfun$2.class[0m
-[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/nuts/CommentsDAO$$anonfun$2.class[0m
 [0m[[0mdebug[0m] [0m	models/nuts/Tables$$anonfun$7.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/nuts/Tables$$anonfun$7.class[0m
 [0m[[0mdebug[0m] [0m	router/Routes$$anonfun$routes$1$$anonfun$applyOrElse$21$$anonfun$apply$21.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/router/Routes$$anonfun$routes$1$$anonfun$applyOrElse$21$$anonfun$apply$21.class[0m
 [0m[[0mdebug[0m] [0m	controllers/pages/ReverseApplicationController.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/pages/ReverseApplicationController.class[0m
+[0m[[0mdebug[0m] [0m	models/nuts/Data$CommentsShow.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/nuts/Data$CommentsShow.class[0m
 [0m[[0mdebug[0m] [0m	modules/SilhouetteModule$$anon$6$$anonfun$read$1.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/modules/SilhouetteModule$$anon$6$$anonfun$read$1.class[0m
 [0m[[0mdebug[0m] [0m	views/html/home_Scope0$home$$anonfun$apply$4.class[0m
@@ -1418,6 +1424,8 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/auth/SocialAuthController$$anonfun$authenticate$1$$anonfun$apply$2.class[0m
 [0m[[0mdebug[0m] [0m	models/daos/UserDAOImpl$$anonfun$5.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/daos/UserDAOImpl$$anonfun$5.class[0m
+[0m[[0mdebug[0m] [0m	models/nuts/CommentsDAO$$anonfun$listAll$3.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/nuts/CommentsDAO$$anonfun$listAll$3.class[0m
 [0m[[0mdebug[0m] [0m	modules/SilhouetteModule$$anon$6$$anonfun$read$3.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/modules/SilhouetteModule$$anon$6$$anonfun$read$3.class[0m
 [0m[[0mdebug[0m] [0m	views/html/emails/signUp_Scope0.class[0m
@@ -1444,6 +1452,8 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/emails/signUp_Scope0$signUp$$anonfun$apply$1.class[0m
 [0m[[0mdebug[0m] [0m	views/html/auth/passwordStrength.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/auth/passwordStrength.class[0m
+[0m[[0mdebug[0m] [0m	controllers/nuts/Comments$$anonfun$editComment$1$$anonfun$apply$7$$anonfun$apply$8.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Comments$$anonfun$editComment$1$$anonfun$apply$7$$anonfun$apply$8.class[0m
 [0m[[0mdebug[0m] [0m	modules/JobModule.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/modules/JobModule.class[0m
 [0m[[0mdebug[0m] [0m	views/html/auth/signUp_Scope0$.class[0m
@@ -1468,6 +1478,8 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/router/Routes$$anonfun$routes$1$$anonfun$applyOrElse$32.class[0m
 [0m[[0mdebug[0m] [0m	controllers/nuts/Blog$$anonfun$edit$1.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Blog$$anonfun$edit$1.class[0m
+[0m[[0mdebug[0m] [0m	controllers/nuts/Comments$$anonfun$addComment$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$apply$4.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Comments$$anonfun$addComment$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$apply$4.class[0m
 [0m[[0mdebug[0m] [0m	router/Routes$$anonfun$routes$1$$anonfun$applyOrElse$17$$anonfun$apply$17.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/router/Routes$$anonfun$routes$1$$anonfun$applyOrElse$17$$anonfun$apply$17.class[0m
 [0m[[0mdebug[0m] [0m	modules/BaseModule.class[0m
@@ -1486,6 +1498,8 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/goods/listAll_Scope0$listAll$$anonfun$f$1.class[0m
 [0m[[0mdebug[0m] [0m	views/html/images/editImages.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/images/editImages.class[0m
+[0m[[0mdebug[0m] [0m	controllers/nuts/Comments$$anonfun$commentsAdmin$1$$anonfun$apply$15.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Comments$$anonfun$commentsAdmin$1$$anonfun$apply$15.class[0m
 [0m[[0mdebug[0m] [0m	models/nuts/FormsData$$anonfun$6.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/nuts/FormsData$$anonfun$6.class[0m
 [0m[[0mdebug[0m] [0m	models/nuts/Tables$.class[0m
@@ -1588,8 +1602,6 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/blog[0m
 [0m[[0mdebug[0m] [0m	router/Routes$$anonfun$router$Routes$$controllers_auth_ChangePasswordController_submit12_invoker$1.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/router/Routes$$anonfun$router$Routes$$controllers_auth_ChangePasswordController_submit12_invoker$1.class[0m
-[0m[[0mdebug[0m] [0m	controllers/nuts/Comments$$anonfun$commentsAdmin$1$$anonfun$apply$14.class[0m
-[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Comments$$anonfun$commentsAdmin$1$$anonfun$apply$14.class[0m
 [0m[[0mdebug[0m] [0m	models/daos/AuthTokenDAOImpl$$anonfun$find$2.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/daos/AuthTokenDAOImpl$$anonfun$find$2.class[0m
 [0m[[0mdebug[0m] [0m	models/daos/AuthTokenDAOImpl$$anonfun$remove$1.class[0m
@@ -1606,6 +1618,8 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/pages/routes$javascript.class[0m
 [0m[[0mdebug[0m] [0m	views/html/emails/resetPassword_Scope0$resetPassword$$anonfun$apply$1.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/emails/resetPassword_Scope0$resetPassword$$anonfun$apply$1.class[0m
+[0m[[0mdebug[0m] [0m	controllers/nuts/Comments$$anonfun$editComment$1$$anonfun$apply$7.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Comments$$anonfun$editComment$1$$anonfun$apply$7.class[0m
 [0m[[0mdebug[0m] [0m	models/nuts/Data$$anonfun$6.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/nuts/Data$$anonfun$6.class[0m
 [0m[[0mdebug[0m] [0m	views/txt/emails/activateAccount$.class[0m
@@ -1640,6 +1654,8 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/router/Routes$$anonfun$routes$1$$anonfun$applyOrElse$19$$anonfun$apply$19.class[0m
 [0m[[0mdebug[0m] [0m	router/Routes$$anonfun$routes$1$$anonfun$applyOrElse$34.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/router/Routes$$anonfun$routes$1$$anonfun$applyOrElse$34.class[0m
+[0m[[0mdebug[0m] [0m	controllers/nuts/Comments$$anonfun$commentsAdmin$1$$anonfun$apply$15$$anonfun$apply$16.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Comments$$anonfun$commentsAdmin$1$$anonfun$apply$15$$anonfun$apply$16.class[0m
 [0m[[0mdebug[0m] [0m	views/txt/emails/resetPassword.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/txt/emails/resetPassword.class[0m
 [0m[[0mdebug[0m] [0m	controllers/auth/SocialAuthController$$anonfun$authenticate$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$apply$4$$anonfun$apply$5$$anonfun$apply$6$$anonfun$apply$7$$anonfun$apply$8.class[0m
@@ -1752,6 +1768,8 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/modules/SilhouetteModule$$anon$10$$anonfun$read$32.class[0m
 [0m[[0mdebug[0m] [0m	router/Routes$$anonfun$routes$1$$anonfun$applyOrElse$28$$anonfun$apply$28.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/router/Routes$$anonfun$routes$1$$anonfun$applyOrElse$28$$anonfun$apply$28.class[0m
+[0m[[0mdebug[0m] [0m	controllers/nuts/Comments$$anonfun$loginOrSignUp$1$$anonfun$apply$6.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Comments$$anonfun$loginOrSignUp$1$$anonfun$apply$6.class[0m
 [0m[[0mdebug[0m] [0m	modules/SilhouetteModule$$anon$3$$anonfun$read$9.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/modules/SilhouetteModule$$anon$3$$anonfun$read$9.class[0m
 [0m[[0mdebug[0m] [0m	modules/SilhouetteModule$$anon$9$$anonfun$read$30.class[0m
@@ -1802,6 +1820,8 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/blog/commentsEdit_Scope0$commentsEdit$$anonfun$f$1.class[0m
 [0m[[0mdebug[0m] [0m	views/txt/emails/activateAccount_Scope0$activateAccount$$anonfun$apply$1.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/txt/emails/activateAccount_Scope0$activateAccount$$anonfun$apply$1.class[0m
+[0m[[0mdebug[0m] [0m	controllers/nuts/Comments$$anonfun$commentsAdmin$1$$anonfun$apply$13.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Comments$$anonfun$commentsAdmin$1$$anonfun$apply$13.class[0m
 [0m[[0mdebug[0m] [0m	modules/SilhouetteModule$$anon$5.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/modules/SilhouetteModule$$anon$5.class[0m
 [0m[[0mdebug[0m] [0m	models/tables/AuthTokenTable$$anonfun$$times$1.class[0m
@@ -1820,8 +1840,6 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/blog/blogList_Scope0$.class[0m
 [0m[[0mdebug[0m] [0m	modules/SilhouetteModule$$anon$8.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/modules/SilhouetteModule$$anon$8.class[0m
-[0m[[0mdebug[0m] [0m	models/nuts/CommentsDAO$$anonfun$4.class[0m
-[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/nuts/CommentsDAO$$anonfun$4.class[0m
 [0m[[0mdebug[0m] [0m	views/html/blog/blogList_Scope0.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/blog/blogList_Scope0.class[0m
 [0m[[0mdebug[0m] [0m	modules/SilhouetteModule$$anon$8$$anonfun$read$7.class[0m
@@ -1890,8 +1908,6 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/nuts/Tables$Comments$$anonfun$10.class[0m
 [0m[[0mdebug[0m] [0m	views/html/auth/forgotPassword_Scope0$.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/auth/forgotPassword_Scope0$.class[0m
-[0m[[0mdebug[0m] [0m	models/nuts/CommentsDAO$$anonfun$3.class[0m
-[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/nuts/CommentsDAO$$anonfun$3.class[0m
 [0m[[0mdebug[0m] [0m	models/nuts/Data$.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/models/nuts/Data$.class[0m
 [0m[[0mdebug[0m] [0m	controllers/nuts/Blog$$anonfun$article$1$$anonfun$apply$5.class[0m
@@ -1902,8 +1918,6 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/txt/emails/activateAccount.class[0m
 [0m[[0mdebug[0m] [0m	controllers/nuts/Images$$anonfun$list$1$$anonfun$apply$23.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Images$$anonfun$list$1$$anonfun$apply$23.class[0m
-[0m[[0mdebug[0m] [0m	controllers/nuts/Comments$$anonfun$editComment$1$$anonfun$apply$8$$anonfun$apply$11.class[0m
-[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/controllers/nuts/Comments$$anonfun$editComment$1$$anonfun$apply$8$$anonfun$apply$11.class[0m
 [0m[[0mdebug[0m] [0m	views/html/auth/signIn_Scope0$signIn_Scope1$signIn$$anonfun$apply$3.class[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/classes/views/html/auth/signIn_Scope0$signIn_Scope1$signIn$$anonfun$apply$3.class[0m
 [0m[[0mdebug[0m] [0m	views/html/images/editImages_Scope0$editImages$$anonfun$apply$1.class[0m

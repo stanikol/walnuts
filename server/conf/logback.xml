@@ -25,7 +25,7 @@
   </appender>
 
   <logger name="slick" level="INFO" />
-  <logger name="slick.jdbc" level="DEBUG" />
+  <logger name="slick.jdbc" level="INFO" />
 
   <logger name="play" level="INFO" />
   <logger name="application" level="INFO" />

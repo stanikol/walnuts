@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/snc/scala/walnuts/server/conf/routes
-// @DATE:Wed Mar 29 17:21:32 EEST 2017
+// @DATE:Thu Mar 30 01:46:36 EEST 2017
 
 package controllers.auth;
 

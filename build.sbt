@@ -12,11 +12,17 @@ lazy val scalaV = "2.11.8"
 
 version := "1.0.0"
 
-resolvers += Resolver.jcenterRepo
+//resolvers := ("Atlassian Releases" at "https://maven.atlassian.com/public/") +: resolvers.value
 
-resolvers += "Atlassian Releases" at "https://maven.atlassian.com/public/"
+//resolvers += Resolver.jcenterRepo
 
-resolvers += Resolver.bintrayRepo("iheartradio", "maven")
+// resolvers += "Atlassian Releases" at "https://maven.atlassian.com/public/"
+//
+// resolvers += "Atlassian" at "https://maven.atlassian.com/content/repositories/"
+//
+// resolvers += "iHeartRadio" at "https://dl.bintray.com/iheartradio/maven/"
+//
+// resolvers += Resolver.bintrayRepo("iheartradio", "maven")
 
 lazy val sassc = taskKey[Unit]("Sass C compile")
 
@@ -47,14 +53,14 @@ lazy val serverDependencies = Seq(
   filters,
 //  jdbc,
   //
-  "com.sksamuel.scrimage" %% "scrimage-core" % "2.1.8",
-  "com.typesafe.play" %% "play-slick" % "2.0.0"
+  "com.sksamuel.scrimage" %% "scrimage-core" % "2.1.8"
+  // "com.typesafe.play" %% "play-slick" % "2.0.0"
 //  "com.sksamuel.scrimage" %% "scrimage-core" % "2.1.0"
 //  "com.github.tminglei" %% "slick-pg" % "0.15.0-M4"
 //  "com.github.tminglei" %% "slick-pg" % "0.12.1"
 )
 
-herokuAppName in Compile := "walnuts"
+
 
 
 lazy val server = (project in file("server"))
@@ -127,3 +133,17 @@ sassc in Global := {
   "sassc --help".!
   println(root)
 }
+
+
+//resolvers ++= Seq(Resolver.jcenterRepo)
+
+//resolvers += "Atlassian Releases" at "https://maven.atlassian.com/public/"
+
+//externalResolvers := externalResolvers.value.filter(! _.toString.contains("https://repo.typesafe.com/typesafe/releases"))
+//
+//externalResolvers ++= Seq(
+//  Resolver.jcenterRepo,
+//  Resolver.typesafeRepo("releases")
+//)
+//
+herokuAppName in Compile := "walnuts"

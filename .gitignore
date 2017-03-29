@@ -18,9 +18,24 @@ server.pid
 
 .idea
 .github
-conf/database.conf
-conf/mailer.conf
-conf/silhouette.conf
+#conf/database.conf
+#conf/mailer.conf
+#conf/silhouette.conf
 project/project
 project/artifact
 devnet.iml
+
+/shared/.jvm
+/shared/.js
+
+/pg_upgrade_internal.log
+/pg_upgrade_server.log
+/pg_upgrade_utility.log
+/server/target
+/client/target
+/.idea
+/articles
+/goods
+/images
+/logs
+

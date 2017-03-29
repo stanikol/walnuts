@@ -618,6 +618,8 @@
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/api/controllers/ReverseWebJarAssets.html[0m
 [0m[[0mdebug[0m] [0m	views/txt[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/api/views/txt[0m
+[0m[[0mdebug[0m] [0m	models/nuts/Data$$CommentsShow.html[0m
+[0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/api/models/nuts/Data$$CommentsShow.html[0m
 [0m[[0mdebug[0m] [0m	lib/defbg-blue.gif[0m
 [0m[[0mdebug[0m] [0m	  /Users/snc/scala/walnuts/server/target/scala-2.11/api/lib/defbg-blue.gif[0m
 [0m[[0mdebug[0m] [0m	views/html/blog/commentsEdit_Scope0$.html[0m

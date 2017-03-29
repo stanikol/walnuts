@@ -5,13 +5,13 @@ import java.util.Date
 import javax.inject.Inject
 
 import models.User
-import models.nuts.Data.{ Article, Comment, CommentInfo }
+import models.nuts.Data.{ Article, Comment, CommentInfo, CommentsShow }
 import models.nuts.Tables._
 import play.api.db.slick.DatabaseConfigProvider
 import slick.backend.DatabaseConfig
 import slick.driver.JdbcProfile
 import slick.jdbc.JdbcBackend
-import slick.model.Table
+import slick.model.Column
 
 import scala.concurrent.Future
 
@@ -37,12 +37,17 @@ class CommentsDAO @Inject() (dbConfigProvider: DatabaseConfigProvider) {
     comments.filter(_.id === commentID).map(_.text).update(commentText)
   )
 
-  def listAll(commentsOrder: Option[String]): Future[Seq[CommentInfo]] = {
-    val qry = commentsOrder match {
-      case Some("byArticle") => commentsWithUsername.sortBy(c => (c.articleID.desc, c.added.desc, c.id.desc)).result
-      case _ => commentsWithUsername.sortBy(c => (c.added.desc, c.id.desc)).result
+  def listAll(commentsShow: CommentsShow): Future[Seq[CommentInfo]] = {
+    val qry = commentsWithUsername.filter { c =>
+      commentsShow.articleID match {
+        case None => true: Rep[Boolean]
+        case Some(id) => c.articleID === id.toLong
+      }
     }
-    db.run(qry)
+    db.run(commentsShow.order match {
+      case Some("byArticle") => qry.sortBy(c => (c.articleID.desc, c.added.desc, c.id.desc)).result
+      case _ => qry.sortBy(c => (c.added.desc, c.id.desc)).result
+    })
   }
 
 }

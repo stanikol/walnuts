@@ -25,25 +25,21 @@ project/project
 project/artifact
 devnet.iml
 
-/shared/.jvm
-/shared/.js
+shared/.jvm
+shared/.js
 
-/pg_upgrade_internal.log
-/pg_upgrade_server.log
-/pg_upgrade_utility.log
-/server/target
-/client/target
-/.idea
-/articles
-/goods
-/images
-/logs
-
-target
+pg_upgrade_internal.log
+pg_upgrade_server.log
+pg_upgrade_utility.log
 server/target
-
-shared/.jvm/
-shared/.js/
+client/target
+articles
+goods
+images
+logs
+articles
+goods
+target
 
 server/app-2.11/
 server/test-2.11/

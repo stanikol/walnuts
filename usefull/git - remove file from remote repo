@@ -1,0 +1,13 @@
+Remove a file from a Git repository without deleting it from the local filesystem
+
+    git rm --cached mylogfile.log
+
+For a directory:
+
+    git rm --cached -r mydirectory
+
+=====================
+
+You can also remove files from the repository based on your .gitignore without deleting them from the local file system :
+
+    git rm --cached `git ls-files -i -X .gitignore`

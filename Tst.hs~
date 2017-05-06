@@ -1,4 +1,0 @@
-sign:: (Num a, Eq a) => a -> a
-sign x | x > 0 = 1
-sign x | x == 0 = 0
-sugn x | x < 0 = -1

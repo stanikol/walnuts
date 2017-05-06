@@ -12,8 +12,12 @@ object loginOrSignUp_Scope0 {
   import play.api.templates.PlayMagic._
   import play.api.mvc._
   import play.api.data._
-  import models.nuts.Data._
-  import models.nuts.FormsData._
+  import models.blog.Data._
+  import models.blog.FormsData._
+  import models.goods._
+  import controllers.goods.FormsData._
+  import models.images._
+  import controllers.images.FormsData._
 
   class loginOrSignUp extends BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable, Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with play.twirl.api.Template4[Option[models.User], RequestHeader, Messages, WebJarAssets, play.twirl.api.HtmlFormat.Appendable] {
 
@@ -55,10 +59,10 @@ object loginOrSignUp_Scope0 {
 object loginOrSignUp extends loginOrSignUp_Scope0.loginOrSignUp
 /*
                   -- GENERATED --
-                  DATE: Thu Mar 30 01:07:17 EEST 2017
+                  DATE: Sun May 07 01:06:03 EEST 2017
                   SOURCE: /Users/snc/scala/walnuts/server/app/views/blog/loginOrSignUp.scala.html
-                  HASH: 497e4ef205a41bb37057b7bced6292531fce6764
-                  MATRIX: 654->2|858->110|887->111|918->117|940->131|978->132|1013->141|1099->201|1173->255|1213->268|1249->278|1268->289|1322->323|1375->350|1413->367|1466->394|1485->405|1539->439|1592->466|1631->484|1685->509|1713->510|1741->511
-                  LINES: 22->2|27->2|27->2|28->3|28->3|28->3|29->4|30->5|30->5|31->6|31->6|31->6|31->6|31->6|31->6|32->7|32->7|32->7|32->7|32->7|34->9|35->10|35->10
+                  HASH: bd0ac6771d89007965ee730dff3a2e6b118e0f26
+                  MATRIX: 774->2|978->110|1007->111|1038->117|1060->131|1098->132|1133->141|1219->201|1293->255|1333->268|1369->278|1388->289|1442->323|1495->350|1533->367|1586->394|1605->405|1659->439|1712->466|1751->484|1805->509|1833->510|1861->511
+                  LINES: 26->2|31->2|31->2|32->3|32->3|32->3|33->4|34->5|34->5|35->6|35->6|35->6|35->6|35->6|35->6|36->7|36->7|36->7|36->7|36->7|38->9|39->10|39->10
                   -- GENERATED --
               */

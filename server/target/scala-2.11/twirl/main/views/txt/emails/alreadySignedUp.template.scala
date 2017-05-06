@@ -12,8 +12,12 @@ object alreadySignedUp_Scope0 {
   import play.api.templates.PlayMagic._
   import play.api.mvc._
   import play.api.data._
-  import models.nuts.Data._
-  import models.nuts.FormsData._
+  import models.blog.Data._
+  import models.blog.FormsData._
+  import models.goods._
+  import controllers.goods.FormsData._
+  import models.images._
+  import controllers.images.FormsData._
 
   class alreadySignedUp extends BaseScalaTemplate[play.twirl.api.TxtFormat.Appendable, Format[play.twirl.api.TxtFormat.Appendable]](play.twirl.api.TxtFormat) with play.twirl.api.Template3[User, String, Messages, play.twirl.api.TxtFormat.Appendable] {
 
@@ -45,10 +49,10 @@ object alreadySignedUp_Scope0 {
 object alreadySignedUp extends alreadySignedUp_Scope0.alreadySignedUp
 /*
                   -- GENERATED --
-                  DATE: Thu Mar 30 01:07:17 EEST 2017
+                  DATE: Sun May 07 01:06:03 EEST 2017
                   SOURCE: /Users/snc/scala/walnuts/server/app/views/emails/alreadySignedUp.scala.txt
-                  HASH: a9976e52ff3b28f9457de5b53c249163d5364588
-                  MATRIX: 619->1|767->55|794->57|884->127|912->130|981->179
-                  LINES: 22->1|27->1|28->2|28->2|30->4|30->4
+                  HASH: 4f8a3d7071509630b79950847b884516e4912e7b
+                  MATRIX: 739->1|887->55|914->57|1004->127|1032->130|1101->179
+                  LINES: 26->1|31->1|32->2|32->2|34->4|34->4
                   -- GENERATED --
               */

@@ -1,0 +1,93 @@
+@(user: models.User, imageInfoList: Seq[ImageInfo], adminImageForm: Form[AdminImage], albums: Seq[Category])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+
+@import helper.CSRF
+@import helper._
+@import b3.vertical.fieldConstructor
+@admin(Messages("images.title"), Some(user)){
+    <div>
+        @adminImageForm.errors.map{ case FormError(key, error, args) =>
+            @key -> @error
+        }
+    </div>
+    <div class="image-info-list">
+        @b3.formCSRF(action = controllers.images.routes.Images.handleAdminImageForm, 'enctype -> "multipart/form-data") {
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="well">
+                        @b3.file( adminImageForm("new-image"), '_label -> Messages("images.choose-image"), 'class -> "form-control" )
+                        <button type='submit' id='save' name='action' value='save'>@Messages("images.save-to-db")</button>
+                        <button type='submit' id='delete' name='action' value='delete'>Удалить</button>
+                        <a href="@controllers.images.routes.Images.showAdminImageForm("")" id="add">Добавить</a>
+                    </div>
+                    @adminImageForm("name").value.map{ image =>
+                        <img class="img-responsive" src='@controllers.images.routes.Images.getImage(image)'/>
+                    }
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="well">
+                                @b3.text(adminImageForm("name"),
+                                    '_label -> Messages("images.alt-name"),
+                                    '_id    -> "name"
+                                )
+                                @b3.text(adminImageForm("content"),
+                                    '_label -> Messages("Content"),
+                                    '_id    -> "content"
+                                )
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="well form-inline">
+                                @b3.select(
+                                    adminImageForm("albums"),
+                                    options = albums.filter(_.id.isDefined).map(c => c.id.get.toString -> c.name),
+                                    '_label -> "Альбомы",
+                                    'multiple -> true
+                                )
+                                <button type="button" id="clear-selected-albums">Очистить выбранные альбомы</button>
+                                <a href="@CSRF(controllers.nuts.routes.AdminCategories.adminAlbumsCategories)" class="btn btn-primary">Радактировать альбомы</a>
+                                <!--@b3.text(adminImageForm("new-tag"))-->
+                                <!--<button type="submit" name="action" value="new-tag" id="new-tag-btn"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>-->
+                            </div>
+                            <div class="well form-inline">
+                                @defining(b3.inline.fieldConstructorSpecific) { implicit ifc =>
+                                    @b3.number(adminImageForm("resizeTo.height"),
+                                        '_label -> Messages("images.height"),
+                                        '_id    -> "height"
+                                    )
+                                    @b3.number(adminImageForm("resizeTo.width"),
+                                        '_label -> Messages("images.width"),
+                                        '_id    -> "width"
+                                    )
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!--</form>-->
+        <hr/>
+            <div id="search-form">
+                @b3.text( adminImageForm("find.search"), '_id -> "search-image", '_label->"Искать" )
+                @defining( Seq("name"->"name", "content"->"content") ){ opts =>
+                    @b3.select( adminImageForm("find.what"),  options = opts,
+                        '_id -> "search-what-image", '_label -> "Где" )
+                }
+                <button type="submit" name="action" value="search" id="search-btn">@Messages("Search")</button>
+            </div>
+        }
+        <hr/>
+        @imageInfoList.map{ imageInfo =>
+            <a href="@controllers.images.routes.Images.showAdminImageForm(imageInfo.name)" class="col-md-3">
+                @imageInfo.name
+                <img src="@controllers.images.routes.Images.getThumbnail(imageInfo.name)" class="img-responsive"/>
+            </a>
+        }
+    </div>
+}
+<script src="/assets/javascripts/adminImages.js"></script>
+
+

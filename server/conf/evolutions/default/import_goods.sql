@@ -1,13 +1,13 @@
 create or replace  function import_goods_item(file_name text, image_name text) returns void as $$
     #variable_conflict use_variable
     declare
-        filename text := './nuts-photos/' || file_name;
+        filename text := './blog-photos/' || file_name;
         txt text := pg_read_file(filename);
         lines text[] := regexp_split_to_array(txt, '\n');
         item_text text:= array_to_string(lines[5:array_upper(lines, 1)], '<br/>');
 --        article_short text:= substring(array_to_string(lines[5:4], ' ') from 1 for 111);
     begin
-        insert into goods(title, category, description, show_order, image)
+        insert into goods(title, category, description, sort_order, image)
             values( lines[1],
                     'Селекция Приднестровской опытной станции, г. Черновцы',
                     item_text,

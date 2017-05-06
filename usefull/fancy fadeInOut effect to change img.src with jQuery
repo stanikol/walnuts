@@ -1,0 +1,3 @@
+$('#image-displayed').fadeTo(1000,0.30, function() {
+      $("#image-displayed").attr("src",'/img/150x150/300_2017.jpg');
+  }).fadeTo(500,1);

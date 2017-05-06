@@ -1,0 +1,50 @@
+@(user: models.User, categories: Seq[Category], getSubmitHandler: Call)(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+@import helper.CSRF
+
+@admin(Messages("itemEdit.title"), Some(user)){
+<div class="row">
+    @request.flash.get("error").map { msg =>
+    <div class="col-md-10 col-md-offset-2 alert alert-danger">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong>@Messages("error")</strong> @msg
+    </div>
+    }
+    @request.flash.get("info").map { msg =>
+    <div class="col-md-6 col-md-offset-3 alert alert-info">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong>@Messages("info")</strong> @msg
+    </div>
+    }
+    @request.flash.get("ok").map { msg =>
+    <div class="col-md-6 col-md-offset-3 alert alert-success">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong>@Messages("success")</strong> @msg
+    </div>
+    }
+</div>
+<div id="categories-edit-table">
+    <div class="row">
+        <h2 class="col-md-5">Наименование категории</h2>
+        <h2 class="col-md-5">Порядок соротировки</h2>
+    </div>
+        <form class="row" action="@CSRF(getSubmitHandler)" method="POST">
+            <input name="id" type="hidden" />
+            <input class="col-md-5" name="category.name" type="text" value=""/>
+            <input class="col-md-5" name="category.sort-order" type="text" value=""/>
+            <button  name="action" value="save" class="col-md-1 btn danger" type="submit">Добавить</button>
+        </form>
+        @categories.map{ category =>
+            <form class="row" action="@CSRF(getSubmitHandler)" method="POST">
+                <input name="category.id" type="hidden" value="@{category.id.map(_.toString).getOrElse("")}" />
+                <input class="col-md-5" name="category.name" type="text" value="@{category.name}"/>
+                <input class="col-md-5" name="category.sort-order" type="text" value="@{category.sortOrder}"/>
+                <button name="action" value="save" class="col-md-1 btn danger" type="submit">Сохранить</button>
+                <button name="action" value="del" class="col-md-1 btn danger" type="submit">Удалить</button>
+            </form>
+        }
+    </>
+</div>
+<button type="button" id='save'>Save</button>
+
+
+}

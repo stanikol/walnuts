@@ -12,8 +12,12 @@ object forgotPassword_Scope0 {
   import play.api.templates.PlayMagic._
   import play.api.mvc._
   import play.api.data._
-  import models.nuts.Data._
-  import models.nuts.FormsData._
+  import models.blog.Data._
+  import models.blog.FormsData._
+  import models.goods._
+  import controllers.goods.FormsData._
+  import models.images._
+  import controllers.images.FormsData._
 
   class forgotPassword extends BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable, Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with play.twirl.api.Template4[Form[String], RequestHeader, Messages, WebJarAssets, play.twirl.api.HtmlFormat.Appendable] {
 
@@ -64,10 +68,10 @@ object forgotPassword_Scope0 {
 object forgotPassword extends forgotPassword_Scope0.forgotPassword
 /*
                   -- GENERATED --
-                  DATE: Thu Mar 30 01:07:17 EEST 2017
+                  DATE: Sun May 07 01:06:03 EEST 2017
                   SOURCE: /Users/snc/scala/walnuts/server/app/views/auth/forgotPassword.scala.html
-                  HASH: f0de6dca42988338e793cf5c715ca85c19862c1a
-                  MATRIX: 649->1|893->116|921->153|948->155|995->194|1034->196|1065->201|1152->262|1199->289|1244->308|1258->314|1364->411|1404->413|1444->426|1487->443|1539->475|1584->493|1599->499|1635->514|1676->528|1687->530|1849->670|1890->683|2076->841|2114->857|2206->918|2238->923|2281->936
-                  LINES: 22->1|27->1|29->4|30->5|30->5|30->5|31->6|32->7|32->7|33->8|33->8|33->8|33->8|34->9|34->9|34->9|35->10|35->10|35->10|36->11|36->11|36->11|37->12|39->14|39->14|42->17|43->18|44->19
+                  HASH: 27ec5e7ec35c899344123358b317deb05ec7b3f9
+                  MATRIX: 769->1|1013->116|1041->153|1068->155|1115->194|1154->196|1185->201|1272->262|1319->289|1364->308|1378->314|1484->411|1524->413|1564->426|1607->443|1659->475|1704->493|1719->499|1755->514|1796->528|1807->530|1969->670|2010->683|2196->841|2234->857|2326->918|2358->923|2401->936
+                  LINES: 26->1|31->1|33->4|34->5|34->5|34->5|35->6|36->7|36->7|37->8|37->8|37->8|37->8|38->9|38->9|38->9|39->10|39->10|39->10|40->11|40->11|40->11|41->12|43->14|43->14|46->17|47->18|48->19
                   -- GENERATED --
               */

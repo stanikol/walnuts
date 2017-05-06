@@ -1,49 +1,38 @@
-@(user: models.User, item: Form[GoodsItem], errors: Map[String, String]=Map.empty[String, String])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+@(user: models.User, goodsItemForm: Form[GoodsItem], categories: Seq[Category])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
 @import helper.CSRF
+@import b3.vertical.fieldConstructor
 
 @admin(Messages("itemEdit.title"), Some(user)){
-    @{if(item.hasErrors){
-        item.errors.map{ case play.api.data.FormError(key, errorMsgs, _)=>
-            <div class="col-md-10 col-md-offset-2 alert alert-danger">
-                <a href="#" class="close" data-dismiss="alert">&times;</a>
-                <strong>{Messages("error")} {Messages(key)} => {errorMsgs.mkString("; ")}</strong>
-            </div>
-        }
-    }}
-    <input type="file" id="filepicker" style="display: none"/>
-    <form id="item-edit-form" method="POST" action="@CSRF(controllers.nuts.routes.Goods.updateOrCreateOrDelete)">
-        <strong>ID #@{item("id").value}</strong>
-        <input type="hidden" id="id" name="id" value="@{item("id").value}"/>
+    <input type="file" id="filepickuper" style="display: none"/>
+    <form id="item-edit-form" method="POST" action="@CSRF(controllers.goods.routes.Goods.itemEditFormHandle)">
+        <strong>ID #@{goodsItemForm("id").value}</strong>
+        <input type="hidden" id="id" name="id" value="@{goodsItemForm("id").value}"/>
         <input type="hidden" id="description" name="description" />
-        <!--<input type="hidden" id="action" name="action" />-->
+        @b3.select(goodsItemForm("category"),
+            options = categories.map(c=>c.id.map(_.toString).getOrElse("")->c.name),
+            '_label -> "Категория"
+        )
+        @b3.text(goodsItemForm("title"), '_label -> "Наименование")
         <div class="form-group">
-            <label for="category" class="control-label">@Messages("Category")</label>
-            <input type="text" id="category" name="category" value='@{item("category").value}'
-                   class="form-control"/>
-        </div>
-        <div class="form-group">
-            <label for="description-edit" class="control-label">@Messages("description")</label>
-            <div id="description-edit" class="form-control" rows="11">
-                @{Html(item("description").value.getOrElse(""))}
+            <label for="description-edit" class="control-label">Описание</label>
+            <div id="description-edit" class="form-control">
+                @{Html(goodsItemForm("description").value.getOrElse(""))}
             </div>
         </div>
-        <div class="form-group">
-            <label for="title" class="control-label">@Messages("title")</label>
-            <input type="text" id="title" name="title" value='@{item("title").value}'
-                   class="form-control"/>
-        </div>
-        <div class="form-group">
-            <label for="show-order" class="control-label">@Messages("show-order")</label>
-            <input type="text" id="show-order" name="show-order" value='@{item("show-order").value}'
-                   class="form-control"/>
-        </div>
+        @b3.text(goodsItemForm("show-order"), '_label -> "Порядок сортировки")
+        <img id="image-displayed" src="@controllers.images.routes.Images.getThumbnail(goodsItemForm("image").value.getOrElse(""))">
+        @b3.text(goodsItemForm("image"), '_label -> "Картинка")
+        <button type="button" id="search-images-btn">Поиск фото</button>
+        <div id="search-images" class="row"></div>
         <!--BUTTONS-->
         <div class="btn-group btn-group-lg">
-            <button type="submit" id="new-btn" name="action" value="new" class="btn btn-warning">@Messages("Save as new")</button>
-            @if(item("id").value.isDefined){
-                <button type="submit" id="save-btn" name="action" value="save" class="btn btn-primary">@Messages("Update")</button>
-                <button type="submit" id="delete-btn" name="action" value="delete" class="btn btn-danger">@Messages("Delete")</button>
+            <a href="@CSRF(controllers.goods.routes.Goods.showItemEditForm(goodsItemForm("id").value.map(_.toLong)))"
+                class="btn btn-success">Обновить</a>
+            @if(goodsItemForm("id").value.isDefined){
+                <button type="submit" id="save-btn" name="action" value="save" class="btn btn-primary">Сохранить</button>
+                <button type="submit" id="delete-btn" name="action" value="delete" class="btn btn-danger">Удалить</button>
             }
+            <button type="submit" id="new-btn" name="action" value="new" class="btn btn-warning">Сохранить как новый сорт</button>
         </div>
     </form>
 
@@ -64,7 +53,7 @@
             to it all the image references received from DB.
         */
         function image2Handler() {
-            $.get('@controllers.nuts.routes.Images.list', function(listOfImages, status){
+            $.get('@controllers.images.routes.Images.jsonAllImageInfo', function(listOfImages, status){
                let imagesDialog = $('<div />', {id: "imagesDialog", class: "row"}).dialog({
                         autoOpen: false,
                         modal:    true,
@@ -72,11 +61,12 @@
                         height:   $(window).height() - $(window).height() * 0.2,
                });
                listOfImages.map((image) => {
-                    const imageHref = '/img/'+image.name;
+                    //const imageHref = '/img/'+image.name;
+                    const imageHref = '/img/150x150/'+image.name;
                     $('<img />', {
                         src:   imageHref,
                         alt:   image.content,
-                        class: "col col-sm-2",
+                        class: "col col-sm-2 image-responsive",
                         click: function(){
                             quill.updateContents(
                                 new Delta()
@@ -100,7 +90,7 @@
             Handle image insertion from filesystem as base64 data.
             Used as default image handler.
         */
-        let filepicker = document.getElementById("filepicker");
+        var filepickuper = document.getElementById("filepickuper");
 
         function insertImageInQuillJSAsBase64(){
             let reader = new FileReader();
@@ -119,16 +109,17 @@
                     })
                 );
             };
-            let file = filepicker.files[0];
+            var file = filepickuper.files[0];
             reader.readAsDataURL(file);
         };
 
         function imageBase64Handler() {
-            $('#filepicker').trigger('click');
+            $('#filepickuper').trigger('click');
         };
 
         var deleteButtonPressed = false;
 
+        ////
         $(document).ready(function(){
             // Init QuillJS.com editor
             const toolbarOptions = [
@@ -163,12 +154,12 @@
                 theme: 'snow'
             });
 
-            $('#filepicker').change(insertImageInQuillJSAsBase64);
+            $('#filepickuper').change(insertImageInQuillJSAsBase64);
 
             $('#item-edit-form').on('submit', function(){
                 document.getElementById('description').value = document.getElementsByClassName('ql-editor')[0].innerHTML;
                 if( deleteButtonPressed ){
-                    let id = document.getElementById('id').value;
+                    var id = document.getElementById('id').value;
                     deleteButtonPressed = false;
                     return confirm('Delete item #'+id);
                 } else {
@@ -181,6 +172,32 @@
                     deleteButtonPressed = true;
                 });
             };
+
+            // SEARCH IMAGES
+            $('#search-images-btn').click(function() {
+                $.get('@controllers.images.routes.Images.jsonAllImageInfo', function(listOfImages, status){
+                   var searchImagesDiv = $('#search-images');
+                   listOfImages.map((image) => {
+                        const imageHref = '/img/150x150/'+image.name;
+                        const img = $('<img />', {
+                            src:   imageHref,
+                            alt:   image.content,
+                            click: function(){
+                                $('#image').val(image.name);
+                                $('#image-displayed').attr('src', imageHref);
+                                $('#search-images').empty();
+                            }
+                        });
+                        const div = $('<div />', {
+                            class: "col col-sm-2",
+                        });
+                        div.append(img).append(
+                            $('<span />', { text: image.content.slice(0, 22)})
+                        ).appendTo(searchImagesDiv);
+                    });
+                });
+            });
+
 
 
         });

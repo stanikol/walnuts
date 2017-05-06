@@ -80,13 +80,13 @@ class PasswordInfoDAO @Inject() (
     }
   }
   // Original
-  //  def update(loginInfo: LoginInfo, authInfo: PasswordInfo): Future[PasswordInfo] = {
+  //  def updateGoodsItem(loginInfo: LoginInfo, authInfo: PasswordInfo): Future[PasswordInfo] = {
   //    db.run(userDAO.loginInfoQuery(loginInfo).result.headOption.map { dbLoginInfoOption =>
   //      dbLoginInfoOption.map {
   //        dbLoginInfo =>
   //          {
-  //            val dbPasswordInfo = DbPasswordInfo(authInfo.hasher, authInfo.password, authInfo.salt, dbLoginInfo.id.get)
-  //            db.run(passwordInfoQuery(loginInfo).update(dbPasswordInfo).transactionally)
+  //            val dbPasswordInfo = DbPasswordInfo(authInfo.hasher, authInfo.password, authInfo.salt, dbLoginInfo.id.getGoodsItem)
+  //            db.run(passwordInfoQuery(loginInfo).updateGoodsItem(dbPasswordInfo).transactionally)
   //          }
   //      }
   //    }).map { _ =>

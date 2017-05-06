@@ -1,7 +1,8 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/snc/scala/walnuts/server/conf/routes
-// @DATE:Thu Mar 30 01:46:36 EEST 2017
+// @DATE:Sun May 07 01:48:52 EEST 2017
+
 
 package router {
   object RoutesPrefix {

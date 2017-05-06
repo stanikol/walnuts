@@ -16,5 +16,9 @@
 [0m[[0mdebug[0m] [0m	(/Users/snc/scala/walnuts/server/conf/evolutions/default/3.sql,/Users/snc/scala/walnuts/server/target/scala-2.11/classes/evolutions/default/3.sql)[0m
 [0m[[0mdebug[0m] [0m	(/Users/snc/scala/walnuts/server/conf/evolutions/default/4.sql,/Users/snc/scala/walnuts/server/target/scala-2.11/classes/evolutions/default/4.sql)[0m
 [0m[[0mdebug[0m] [0m	(/Users/snc/scala/walnuts/server/conf/evolutions/default/5.sql,/Users/snc/scala/walnuts/server/target/scala-2.11/classes/evolutions/default/5.sql)[0m
+[0m[[0mdebug[0m] [0m	(/Users/snc/scala/walnuts/server/conf/evolutions/default/6.sql,/Users/snc/scala/walnuts/server/target/scala-2.11/classes/evolutions/default/6.sql)[0m
+[0m[[0mdebug[0m] [0m	(/Users/snc/scala/walnuts/server/conf/evolutions/default/7_contacts.sql,/Users/snc/scala/walnuts/server/target/scala-2.11/classes/evolutions/default/7_contacts.sql)[0m
+[0m[[0mdebug[0m] [0m	(/Users/snc/scala/walnuts/server/conf/evolutions/default/import_articles.sql,/Users/snc/scala/walnuts/server/target/scala-2.11/classes/evolutions/default/import_articles.sql)[0m
 [0m[[0mdebug[0m] [0m	(/Users/snc/scala/walnuts/server/conf/evolutions/default/import_goods.sql,/Users/snc/scala/walnuts/server/target/scala-2.11/classes/evolutions/default/import_goods.sql)[0m
 [0m[[0mdebug[0m] [0m	(/Users/snc/scala/walnuts/server/conf/evolutions/default/import_goods_photos.sql,/Users/snc/scala/walnuts/server/target/scala-2.11/classes/evolutions/default/import_goods_photos.sql)[0m
+[0m[[0mdebug[0m] [0m	(/Users/snc/scala/walnuts/server/conf/evolutions/default/import_images.sql,/Users/snc/scala/walnuts/server/target/scala-2.11/classes/evolutions/default/import_images.sql)[0m

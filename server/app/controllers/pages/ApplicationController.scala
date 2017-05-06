@@ -10,7 +10,7 @@ import play.api.mvc.{ Action, AnyContent, Controller }
 import utils.auth.DefaultEnv
 
 import scala.concurrent.Future
-import models.nuts.Tables._
+import models.blog.BlogTablesDef._
 import slick.driver.PostgresDriver.api._
 
 /**
@@ -22,7 +22,7 @@ import slick.driver.PostgresDriver.api._
  * @param webJarAssets The webjar assets implementation.
  */
 class ApplicationController @Inject() (
-  blogDAO: models.nuts.BlogDAO,
+  blogDAO: models.blog.BlogDAO,
   val messagesApi: MessagesApi,
   silhouette: Silhouette[DefaultEnv],
   socialProviderRegistry: SocialProviderRegistry,

@@ -71,7 +71,7 @@ class AuthTokenDAOImpl @Inject() (protected val dbConfigProvider: DatabaseConfig
 object AuthTokenDAOImpl {
 
   /**
-   * The list of tokens.
+   * The jsonAllImageInfo of tokens.
    */
   private val tokens = TableQuery[AuthTokenTable]
 

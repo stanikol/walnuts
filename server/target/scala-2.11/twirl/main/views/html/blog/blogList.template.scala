@@ -12,13 +12,17 @@ object blogList_Scope0 {
   import play.api.templates.PlayMagic._
   import play.api.mvc._
   import play.api.data._
-  import models.nuts.Data._
-  import models.nuts.FormsData._
+  import models.blog.Data._
+  import models.blog.FormsData._
+  import models.goods._
+  import controllers.goods.FormsData._
+  import models.images._
+  import controllers.images.FormsData._
 
-  class blogList extends BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable, Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with play.twirl.api.Template5[Option[models.User], Seq[models.nuts.Data.Article], RequestHeader, Messages, WebJarAssets, play.twirl.api.HtmlFormat.Appendable] {
+  class blogList extends BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable, Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with play.twirl.api.Template5[Option[models.User], Seq[models.blog.Data.Article], RequestHeader, Messages, WebJarAssets, play.twirl.api.HtmlFormat.Appendable] {
 
     /**/
-    def apply /*1.2*/ (userOption: Option[models.User], articles: Seq[models.nuts.Data.Article])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets): play.twirl.api.HtmlFormat.Appendable = {
+    def apply /*1.2*/ (userOption: Option[models.User], articles: Seq[models.blog.Data.Article])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets): play.twirl.api.HtmlFormat.Appendable = {
       _display_ {
         {
 
@@ -65,9 +69,9 @@ object blogList_Scope0 {
       }
     }
 
-    def render(userOption: Option[models.User], articles: Seq[models.nuts.Data.Article], request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets): play.twirl.api.HtmlFormat.Appendable = apply(userOption, articles)(request, messages, webJarAssets)
+    def render(userOption: Option[models.User], articles: Seq[models.blog.Data.Article], request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets): play.twirl.api.HtmlFormat.Appendable = apply(userOption, articles)(request, messages, webJarAssets)
 
-    def f: ((Option[models.User], Seq[models.nuts.Data.Article]) => (RequestHeader, Messages, WebJarAssets) => play.twirl.api.HtmlFormat.Appendable) = (userOption, articles) => (request, messages, webJarAssets) => apply(userOption, articles)(request, messages, webJarAssets)
+    def f: ((Option[models.User], Seq[models.blog.Data.Article]) => (RequestHeader, Messages, WebJarAssets) => play.twirl.api.HtmlFormat.Appendable) = (userOption, articles) => (request, messages, webJarAssets) => apply(userOption, articles)(request, messages, webJarAssets)
 
     def ref: this.type = this
 
@@ -79,10 +83,10 @@ object blogList_Scope0 {
 object blogList extends blogList_Scope0.blogList
 /*
                   -- GENERATED --
-                  DATE: Thu Mar 30 01:07:17 EEST 2017
+                  DATE: Sun May 07 01:06:03 EEST 2017
                   SOURCE: /Users/snc/scala/walnuts/server/app/views/blog/blogList.scala.html
-                  HASH: 6eb8b3690b3dd39095c41c223351f9ca9beafc12
-                  MATRIX: 674->1|925->156|953->182|981->185|1029->225|1067->226|1098->232|1413->527|1445->533|1483->555|1522->556|1558->565|1599->1143|1635->1152|1672->1162|1692->1173|1754->1214|1824->1257|1883->1307|1922->1308|1967->1326|1983->1333|2010->1339|2039->1340|2073->1347|2089->1354|2117->1361|2146->1363|2162->1370|2194->1381|2227->1396|2240->1401|2279->1402|2324->1420|2340->1427|2367->1433|2412->1447|2448->1456|2521->1502|2562->1522|2604->1534|2633->1536|2913->1786
-                  LINES: 22->1|27->1|28->2|30->4|30->4|30->4|31->5|36->10|37->11|37->11|37->11|38->12|39->26|40->27|40->27|40->27|40->27|41->28|41->28|41->28|42->29|42->29|42->29|42->29|42->29|42->29|42->29|42->29|42->29|42->29|43->30|43->30|43->30|44->31|44->31|44->31|45->32|46->33|47->34|47->34|48->35|50->37|54->41
+                  HASH: bee8efcecca8611d55b004f16bb1acb410c89015
+                  MATRIX: 794->1|1045->156|1073->182|1101->185|1149->225|1187->226|1218->232|1533->527|1565->533|1603->555|1642->556|1678->565|1719->1143|1755->1152|1792->1162|1812->1173|1874->1214|1944->1257|2003->1307|2042->1308|2087->1326|2103->1333|2130->1339|2159->1340|2193->1347|2209->1354|2237->1361|2266->1363|2282->1370|2314->1381|2347->1396|2360->1401|2399->1402|2444->1420|2460->1427|2487->1433|2532->1447|2568->1456|2641->1502|2682->1522|2724->1534|2753->1536|3033->1786
+                  LINES: 26->1|31->1|32->2|34->4|34->4|34->4|35->5|40->10|41->11|41->11|41->11|42->12|43->26|44->27|44->27|44->27|44->27|45->28|45->28|45->28|46->29|46->29|46->29|46->29|46->29|46->29|46->29|46->29|46->29|46->29|47->30|47->30|47->30|48->31|48->31|48->31|49->32|50->33|51->34|51->34|52->35|54->37|58->41
                   -- GENERATED --
               */

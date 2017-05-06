@@ -12,8 +12,12 @@ object home_Scope0 {
   import play.api.templates.PlayMagic._
   import play.api.mvc._
   import play.api.data._
-  import models.nuts.Data._
-  import models.nuts.FormsData._
+  import models.blog.Data._
+  import models.blog.FormsData._
+  import models.goods._
+  import controllers.goods.FormsData._
+  import models.images._
+  import controllers.images.FormsData._
 
   class home extends BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable, Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with play.twirl.api.Template4[models.User, RequestHeader, Messages, WebJarAssets, play.twirl.api.HtmlFormat.Appendable] {
 
@@ -76,10 +80,10 @@ object home_Scope0 {
 object home extends home_Scope0.home
 /*
                   -- GENERATED --
-                  DATE: Thu Mar 30 01:07:17 EEST 2017
+                  DATE: Sun May 07 01:06:03 EEST 2017
                   SOURCE: /Users/snc/scala/walnuts/server/app/views/home.scala.html
-                  HASH: 51d3020496933581e5f0f5bb9f5051e673506f9f
-                  MATRIX: 623->1|819->101|847->104|895->144|934->146|965->151|1132->292|1181->321|1286->400|1298->404|1381->467|1648->707|1691->729|1754->764|1768->768|1818->796|1956->907|1998->928|2061->963|2075->967|2124->994|2262->1105|2304->1126|2367->1161|2381->1165|2430->1192|2568->1303|2606->1320|2669->1355|2683->1359|2729->1383|2905->1532|2918->1536|2963->1559|3067->1633
-                  LINES: 22->1|27->1|29->3|29->3|29->3|30->4|33->7|33->7|35->9|35->9|35->9|42->16|42->16|42->16|42->16|42->16|45->19|45->19|45->19|45->19|45->19|48->22|48->22|48->22|48->22|48->22|51->25|51->25|51->25|51->25|51->25|54->28|54->28|54->28|59->33
+                  HASH: 75d77db2fec4a6506e60715a88de5053cfdc730d
+                  MATRIX: 743->1|939->101|967->104|1015->144|1054->146|1085->151|1252->292|1301->321|1406->400|1418->404|1501->467|1768->707|1811->729|1874->764|1888->768|1938->796|2076->907|2118->928|2181->963|2195->967|2244->994|2382->1105|2424->1126|2487->1161|2501->1165|2550->1192|2688->1303|2726->1320|2789->1355|2803->1359|2849->1383|3025->1532|3038->1536|3083->1559|3187->1633
+                  LINES: 26->1|31->1|33->3|33->3|33->3|34->4|37->7|37->7|39->9|39->9|39->9|46->16|46->16|46->16|46->16|46->16|49->19|49->19|49->19|49->19|49->19|52->22|52->22|52->22|52->22|52->22|55->25|55->25|55->25|55->25|55->25|58->28|58->28|58->28|63->33
                   -- GENERATED --
               */

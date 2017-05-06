@@ -19,3 +19,40 @@
     -webkit-border-radius: 5px;
     box-shadow: 0px 0px 5px #ececea;
 }
+
+
+#search-form {
+    @include make-row();
+
+    #search-image {
+         @include make-md-column(4);
+    }
+
+    #search-what-image {
+        @include make-md-column(2);
+    }
+
+    #search-btn{
+        @include make-md-column(1);
+        @extand .btn;
+        @extand .btn-primary;
+        @extand .align-middle;
+        //background-color: green;
+
+    }
+}
+
+button#delete {
+    @extend .btn-danger;
+}
+
+button#save {
+    @extend .btn-primary;
+}
+
+a#add {
+    @extend .btn;
+    @extend .btn-default;
+}
+
+

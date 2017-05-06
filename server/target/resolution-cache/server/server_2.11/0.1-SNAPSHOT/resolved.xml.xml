@@ -4,7 +4,7 @@
 		module="server_2.11"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20170330010709"
+		publication="20170507004504"
 	>
 		<description>
 		server
@@ -47,6 +47,7 @@
 		<dependency org="com.mohiva" name="play-silhouette-crypto-jca_2.11" rev="4.0.0" conf="compile->default(compile)"/>
 		<dependency org="org.webjars" name="webjars-play_2.11" rev="2.5.0-2" conf="compile->default(compile)"/>
 		<dependency org="org.webjars" name="jquery-ui" rev="1.11.4" conf="compile->default(compile)"/>
+		<dependency org="org.webjars" name="datatables" rev="1.9.4-2" conf="compile->default(compile)"/>
 		<dependency org="net.codingwell" name="scala-guice_2.11" rev="4.0.1" conf="compile->default(compile)"/>
 		<dependency org="com.iheart" name="ficus_2.11" rev="1.2.6" conf="compile->default(compile)"/>
 		<dependency org="com.typesafe.play" name="play-mailer_2.11" rev="5.0.0" conf="compile->default(compile)"/>
@@ -61,6 +62,7 @@
 		<dependency org="com.typesafe.play" name="play-specs2_2.11" rev="2.5.4" conf="test->default(compile)"/>
 		<dependency org="com.typesafe.play" name="play-cache_2.11" rev="2.5.4" conf="compile->default(compile)"/>
 		<dependency org="com.typesafe.play" name="filters-helpers_2.11" rev="2.5.4" conf="compile->default(compile)"/>
+		<dependency org="org.jsoup" name="jsoup" rev="1.10.2" conf="compile->default(compile)"/>
 		<dependency org="com.sksamuel.scrimage" name="scrimage-core_2.11" rev="2.1.8" conf="compile->default(compile)"/>
 	</dependencies>
 </ivy-module>

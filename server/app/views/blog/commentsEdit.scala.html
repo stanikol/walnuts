@@ -1,4 +1,4 @@
-@(user: models.User, comments: Seq[models.nuts.Data.CommentInfo], commentsShowForm: Form[CommentsShow], errors: Map[String, String]=Map.empty[String, String])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+@(user: models.User, comments: Seq[models.blog.Data.CommentInfo], commentsShowForm: Form[CommentsShow], errors: Map[String, String]=Map.empty[String, String])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
 @import helper.CSRF
 
 @admin(Messages("title"), Some(user)){
@@ -30,9 +30,8 @@
         </div>
     </div>
     @for(comment <- comments){
-        <form class="comments-edit-form" method="POST" action="@controllers.nuts.routes.Comments.editComment">
-            @helper.CSRF.formField
-            <!--<a href="@controllers.nuts.routes.Blog.edit(comment.articleID)" class="form-group">#@comment.articleID @comment.articleTitle</a>-->
+        <form class="comments-edit-form" method="POST" action="@CSRF(controllers.nuts.routes.Comments.editComment)">
+            <!--@helper.CSRF.formField-->
             <a href="@controllers.nuts.routes.Blog.article(comment.articleID)" class="form-group">#@comment.articleID @comment.articleTitle</a>
             <h5 class="form-group">@comment.fullName @comment.userEmail.map(e=>s"<$e>") (#@comment.id from @comment.added)</h5>
             <input type="hidden" name="comment-id" value="@comment.id"/>

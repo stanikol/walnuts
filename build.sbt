@@ -24,7 +24,7 @@ version := "1.0.0"
 //
 // resolvers += Resolver.bintrayRepo("iheartradio", "maven")
 
-lazy val sassc = taskKey[Unit]("Sass C compile")
+lazy val sassCompile = taskKey[Unit]("Sass C compile")
 
 
 lazy val serverDependencies = Seq(
@@ -34,6 +34,7 @@ lazy val serverDependencies = Seq(
   "com.mohiva" %% "play-silhouette-crypto-jca" % "4.0.0",
   "org.webjars" %% "webjars-play" % "2.5.0-2",
   "org.webjars" % "jquery-ui" % "1.11.4",
+  "org.webjars" % "datatables" % "1.9.4-2",
   "net.codingwell" %% "scala-guice" % "4.0.1",
   "com.iheart" %% "ficus" % "1.2.6",
   "com.typesafe.play" %% "play-mailer" % "5.0.0",
@@ -52,6 +53,7 @@ lazy val serverDependencies = Seq(
   cache,
   filters,
 //  jdbc,
+  "org.jsoup" % "jsoup" % "1.10.2", // https://mvnrepository.com/artifact/org.jsoup/jsoup
   //
   "com.sksamuel.scrimage" %% "scrimage-core" % "2.1.8"
   // "com.typesafe.play" %% "play-slick" % "2.0.0"
@@ -74,7 +76,14 @@ lazy val server = (project in file("server"))
       //pipelineStages := Seq(digest, gzip),
       // triggers scalaJSPipeline when using compile or continuous compilation
       compile in Compile := ((compile in Compile) dependsOn scalaJSPipeline).value,
-      TwirlKeys.templateImports ++= Seq("models.nuts.Data._", "models.nuts.FormsData._"),
+      TwirlKeys.templateImports ++= Seq(
+        "models.blog.Data._",
+        "models.blog.FormsData._",
+        "models.goods._",
+        "controllers.goods.FormsData._",
+        "models.images._",
+        "controllers.images.FormsData._"
+      ),
       scalaVersion in ThisBuild := scalaV,
       scalacOptions ++= Seq(
         "-deprecation", // Emit warning and location for usages of deprecated APIs.
@@ -126,12 +135,16 @@ lazy val sharedJs = shared.js
 // loads the server project at sbt startup
 onLoad in Global := (Command.process("project server", _: State)) compose (onLoad in Global).value
 
+watchSources += baseDirectory.value / "sass" / "main.scss"
 
-sassc in Global := {
-  println("Compiling SASS ...")
+watchSources += baseDirectory.value / "sass" / "admin.scss"
+
+sassCompile in Global := {
+  println("Compiling SASS: ...")
   val root = baseDirectory.in(server).value.getAbsolutePath
-  "sassc --help".!
-  println(root)
+  val main = "sassc server/sass/main.scss server/public/styles/main.css".!
+  val admin = "sassc server/sass/admin.scss server/public/styles/admin.css".!
+  println(s"Compiling SASS: \n$main \n$admin")
 }
 
 

@@ -12,8 +12,12 @@ object admin_Scope0 {
   import play.api.templates.PlayMagic._
   import play.api.mvc._
   import play.api.data._
-  import models.nuts.Data._
-  import models.nuts.FormsData._
+  import models.blog.Data._
+  import models.blog.FormsData._
+  import models.goods._
+  import controllers.goods.FormsData._
+  import models.images._
+  import controllers.images.FormsData._
 
   class admin extends BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable, Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with play.twirl.api.Template8[String, Option[models.User], String, String, Html, RequestHeader, Messages, WebJarAssets, play.twirl.api.HtmlFormat.Appendable] {
 
@@ -83,60 +87,86 @@ object admin_Scope0 {
             }), format.raw /*52.30*/ ("""
                             """), _display_( /*53.30*/ if (u.isAdmin) /*53.43*/ {
               _display_(Seq[Any](format.raw /*53.44*/ ("""
-                                """), format.raw /*54.33*/ ("""<li><a href=""""), _display_( /*54.47*/ controllers /*54.58*/ .nuts.routes.Images.show()), format.raw /*54.84*/ ("""">"""), _display_( /*54.87*/ Messages("Edit images")), format.raw /*54.110*/ ("""</a></li>
-                                <li><a href=""""), _display_( /*55.47*/ controllers /*55.58*/ .nuts.routes.Blog.showAllArticles), format.raw /*55.91*/ ("""">"""), _display_( /*55.94*/ Messages("Edit articles")), format.raw /*55.119*/ ("""</a></li>
-                                <li><a href=""""), _display_( /*56.47*/ controllers /*56.58*/ .nuts.routes.Comments.commentsAdmin), format.raw /*56.93*/ ("""">"""), _display_( /*56.96*/ Messages("Edit comments")), format.raw /*56.121*/ ("""</a></li>
+                                """), format.raw /*54.33*/ ("""<li class="dropdown">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">"""), _display_( /*55.152*/ Messages("Фото")), format.raw /*55.168*/ ("""<span class="caret"></span></a>
+                                  <ul class="dropdown-menu">
+                                    <li><a href=""""), _display_( /*57.51*/ controllers /*57.62*/ .images.routes.Images.showAdminImageForm("")), format.raw /*57.106*/ ("""">"""), _display_( /*57.109*/ Messages("Редактировать")), format.raw /*57.134*/ ("""</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href=""""), _display_( /*59.51*/ controllers /*59.62*/ .images.routes.Images.showGallery), format.raw /*59.95*/ ("""">"""), _display_( /*59.98*/ Messages("Галлерея")), format.raw /*59.118*/ ("""</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href=""""), _display_( /*61.51*/ controllers /*61.62*/ .nuts.routes.AdminCategories.adminAlbumsCategories), format.raw /*61.112*/ ("""">"""), _display_( /*61.115*/ Messages("Редактировать альбомы")), format.raw /*61.148*/ ("""</a></li>
+                                  </ul>
+                                </li>
+                                <li class="dropdown">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">"""), _display_( /*65.152*/ Messages("Орехи")), format.raw /*65.169*/ ("""<span class="caret"></span></a>
+                                  <ul class="dropdown-menu">
+                                    <li><a href=""""), _display_( /*67.51*/ controllers /*67.62*/ .goods.routes.Goods.showItemEditForm(None)), format.raw /*67.104*/ ("""">Новый</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href=""""), _display_( /*69.51*/ controllers /*69.62*/ .goods.routes.Goods.listAllGoods), format.raw /*69.94*/ ("""">Перечень орехов</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href=""""), _display_( /*71.51*/ controllers /*71.62*/ .nuts.routes.AdminCategories.adminGoodsCategoriesHandle), format.raw /*71.117*/ ("""">Радактировать категории</a></li>
+                                  </ul>
+                                </li>
+                                <li class="dropdown">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">"""), _display_( /*75.152*/ Messages("Статьи")), format.raw /*75.170*/ ("""<span class="caret"></span></a>
+                                  <ul class="dropdown-menu">
+                                    <li><a href=""""), _display_( /*77.51*/ controllers /*77.62*/ .nuts.routes.Blog.create), format.raw /*77.86*/ ("""">"""), _display_( /*77.89*/ Messages("Новая статья")), format.raw /*77.113*/ ("""</a>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href=""""), _display_( /*79.51*/ controllers /*79.62*/ .nuts.routes.Blog.showAllArticles), format.raw /*79.95*/ ("""">"""), _display_( /*79.98*/ Messages("Список статей")), format.raw /*79.123*/ ("""</a></li>
+                                  </ul>
+                                </li>
+                                <li><a href=""""), _display_( /*82.47*/ controllers /*82.58*/ .nuts.routes.Comments.commentsAdmin), format.raw /*82.93*/ ("""">"""), _display_( /*82.96*/ Messages("Комментарии")), format.raw /*82.119*/ ("""</a></li>
                             """)))
-            }), format.raw /*57.30*/ ("""
-                            """), format.raw /*58.29*/ ("""<li><a href=""""), _display_( /*58.43*/ controllers /*58.54*/ .pages.routes.ApplicationController.signOut), format.raw /*58.97*/ ("""">"""), _display_( /*58.100*/ Messages("sign.out")), format.raw /*58.120*/ ("""</a></li>
+            }), format.raw /*83.30*/ ("""
+                            """), format.raw /*84.29*/ ("""<li><a href=""""), _display_( /*84.43*/ controllers /*84.54*/ .pages.routes.ApplicationController.signOut), format.raw /*84.97*/ ("""">"""), _display_( /*84.100*/ Messages("sign.out")), format.raw /*84.120*/ ("""</a></li>
                         """)))
-          } /*59.26*/ .getOrElse /*59.36*/ {
-            _display_(Seq[Any](format.raw /*59.38*/ ("""
-                            """), format.raw /*60.29*/ ("""<li><a href=""""), _display_( /*60.43*/ controllers /*60.54*/ .auth.routes.SignInController.view), format.raw /*60.88*/ ("""">"""), _display_( /*60.91*/ Messages("sign.in")), format.raw /*60.110*/ ("""</a></li>
+          } /*85.26*/ .getOrElse /*85.36*/ {
+            _display_(Seq[Any](format.raw /*85.38*/ ("""
+                            """), format.raw /*86.29*/ ("""<li><a href=""""), _display_( /*86.43*/ controllers /*86.54*/ .auth.routes.SignInController.view), format.raw /*86.88*/ ("""">"""), _display_( /*86.91*/ Messages("sign.in")), format.raw /*86.110*/ ("""</a></li>
                             <li class="empty-li"><a href="/"></a></li>
-                            <li><a href=""""), _display_( /*62.43*/ controllers /*62.54*/ .auth.routes.SignUpController.view), format.raw /*62.88*/ ("""">"""), _display_( /*62.91*/ Messages("sign.up")), format.raw /*62.110*/ ("""</a></li>
+                            <li><a href=""""), _display_( /*88.43*/ controllers /*88.54*/ .auth.routes.SignUpController.view), format.raw /*88.88*/ ("""">"""), _display_( /*88.91*/ Messages("sign.up")), format.raw /*88.110*/ ("""</a></li>
                         """)))
-          }), format.raw /*63.26*/ ("""
-                    """), format.raw /*64.21*/ ("""</ul>
+          }), format.raw /*89.26*/ ("""
+                    """), format.raw /*90.21*/ ("""</ul>
                 </nav>
             </div>
         </header>
         <main class="container" id="container">
             <div class="row">
-                """), _display_( /*70.18*/ request /*70.25*/ .flash.get("error").map /*70.48*/ { msg =>
-            _display_(Seq[Any](format.raw /*70.57*/ ("""
-                """), format.raw /*71.17*/ ("""<div class="col-md-10 col-md-offset-2 alert alert-danger">
+                """), _display_( /*96.18*/ request /*96.25*/ .flash.get("error").map /*96.48*/ { msg =>
+            _display_(Seq[Any](format.raw /*96.57*/ ("""
+                """), format.raw /*97.17*/ ("""<div class="col-md-10 col-md-offset-2 alert alert-danger">
                     <a href="#" class="close" data-dismiss="alert">&times;</a>
-                    <strong>"""), _display_( /*73.30*/ Messages("error")), format.raw /*73.47*/ ("""</strong> """), _display_( /*73.58*/ msg), format.raw /*73.61*/ ("""
-                """), format.raw /*74.17*/ ("""</div>
+                    <strong>"""), _display_( /*99.30*/ Messages("error")), format.raw /*99.47*/ ("""</strong> """), _display_( /*99.58*/ msg), format.raw /*99.61*/ ("""
+                """), format.raw /*100.17*/ ("""</div>
                 """)))
-          }), format.raw /*75.18*/ ("""
-                """), _display_( /*76.18*/ request /*76.25*/ .flash.get("info").map /*76.47*/ { msg =>
-            _display_(Seq[Any](format.raw /*76.56*/ ("""
-                """), format.raw /*77.17*/ ("""<div class="col-md-6 col-md-offset-3 alert alert-info">
+          }), format.raw /*101.18*/ ("""
+                """), _display_( /*102.18*/ request /*102.25*/ .flash.get("info").map /*102.47*/ { msg =>
+            _display_(Seq[Any](format.raw /*102.56*/ ("""
+                """), format.raw /*103.17*/ ("""<div class="col-md-6 col-md-offset-3 alert alert-info">
                     <a href="#" class="close" data-dismiss="alert">&times;</a>
-                    <strong>"""), _display_( /*79.30*/ Messages("info")), format.raw /*79.46*/ ("""</strong> """), _display_( /*79.57*/ msg), format.raw /*79.60*/ ("""
-                """), format.raw /*80.17*/ ("""</div>
+                    <strong>"""), _display_( /*105.30*/ Messages("info")), format.raw /*105.46*/ ("""</strong> """), _display_( /*105.57*/ msg), format.raw /*105.60*/ ("""
+                """), format.raw /*106.17*/ ("""</div>
                 """)))
-          }), format.raw /*81.18*/ ("""
-                """), _display_( /*82.18*/ request /*82.25*/ .flash.get("success").map /*82.50*/ { msg =>
-            _display_(Seq[Any](format.raw /*82.59*/ ("""
-                """), format.raw /*83.17*/ ("""<div class="col-md-6 col-md-offset-3 alert alert-success">
+          }), format.raw /*107.18*/ ("""
+                """), _display_( /*108.18*/ request /*108.25*/ .flash.get("success").map /*108.50*/ { msg =>
+            _display_(Seq[Any](format.raw /*108.59*/ ("""
+                """), format.raw /*109.17*/ ("""<div class="col-md-6 col-md-offset-3 alert alert-success">
                     <a href="#" class="close" data-dismiss="alert">&times;</a>
-                    <strong>"""), _display_( /*85.30*/ Messages("success")), format.raw /*85.49*/ ("""</strong> """), _display_( /*85.60*/ msg), format.raw /*85.63*/ ("""
-                """), format.raw /*86.17*/ ("""</div>
+                    <strong>"""), _display_( /*111.30*/ Messages("success")), format.raw /*111.49*/ ("""</strong> """), _display_( /*111.60*/ msg), format.raw /*111.63*/ ("""
+                """), format.raw /*112.17*/ ("""</div>
                 """)))
-          }), format.raw /*87.18*/ ("""
-            """), format.raw /*88.13*/ ("""</div>
+          }), format.raw /*113.18*/ ("""
+            """), format.raw /*114.13*/ ("""</div>
             <div class="starter-template row">
-                """), _display_( /*90.18*/ content), format.raw /*90.25*/ ("""
-            """), format.raw /*91.13*/ ("""</div>
+                """), _display_( /*116.18*/ content), format.raw /*116.25*/ ("""
+            """), format.raw /*117.13*/ ("""</div>
         </main>
-        <!--<script type="text/javascript" src=""""), _display_( /*93.50*/ routes /*93.56*/ .WebJarAssets.at(webJarAssets.locate("jquery.min.js"))), format.raw /*93.110*/ (""""></script>-->
-        <!--<script type="text/javascript" src=""""), _display_( /*94.50*/ routes /*94.56*/ .WebJarAssets.at(webJarAssets.locate("jquery-ui.js"))), format.raw /*94.109*/ (""""></script>-->
-        <!--<script type="text/javascript" src=""""), _display_( /*95.50*/ routes /*95.56*/ .WebJarAssets.at(webJarAssets.locate("bootstrap.min.js"))), format.raw /*95.113*/ (""""></script>-->
+        <!--<script type="text/javascript" src=""""), _display_( /*119.50*/ routes /*119.56*/ .WebJarAssets.at(webJarAssets.locate("jquery.min.js"))), format.raw /*119.110*/ (""""></script>-->
+        <!--<script type="text/javascript" src=""""), _display_( /*120.50*/ routes /*120.56*/ .WebJarAssets.at(webJarAssets.locate("jquery-ui.js"))), format.raw /*120.109*/ (""""></script>-->
+        <!--<script type="text/javascript" src=""""), _display_( /*121.50*/ routes /*121.56*/ .WebJarAssets.at(webJarAssets.locate("bootstrap.min.js"))), format.raw /*121.113*/ (""""></script>-->
         <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js"></script>-->
-        <!--<script src=""""), _display_( /*97.27*/ routes /*97.33*/ .Assets.at("javascripts/zxcvbnShim.js")), format.raw /*97.72*/ (""""></script>-->
+        <!--<script src=""""), _display_( /*123.27*/ routes /*123.33*/ .Assets.at("javascripts/zxcvbnShim.js")), format.raw /*123.72*/ (""""></script>-->
     </body>
 </html>
 """))
@@ -158,10 +188,10 @@ object admin_Scope0 {
 object admin extends admin_Scope0.admin
 /*
                   -- GENERATED --
-                  DATE: Thu Mar 30 01:07:17 EEST 2017
+                  DATE: Sun May 07 01:06:03 EEST 2017
                   SOURCE: /Users/snc/scala/walnuts/server/app/views/admin.scala.html
-                  HASH: a807d699854cb1694b916ed22df06831890d7646
-                  MATRIX: 659->1|949->195|977->197|1226->420|1255->441|1293->442|1334->455|1393->487|1422->495|1465->507|1502->517|1535->541|1574->542|1615->555|1677->590|1709->601|1752->613|1789->623|1866->673|1881->679|1934->711|1980->730|2006->735|2309->1011|2324->1017|2399->1071|2467->1112|2482->1118|2533->1148|2605->1193|2620->1199|2670->1228|3087->1618|3102->1624|3178->1678|3262->1735|3277->1741|3352->1794|3436->1851|3451->1857|3530->1914|3618->1975|3633->1981|3696->2023|3854->2154|3869->2160|3929->2199|4293->2536|4343->2565|4724->2919|4737->2923|4750->2927|4795->2934|4852->2963|4893->2977|4913->2988|4975->3029|5005->3032|5015->3033|5042->3038|5108->3077|5212->3171|5253->3173|5314->3206|5355->3220|5375->3231|5439->3273|5470->3276|5519->3303|5589->3342|5646->3372|5668->3385|5707->3386|5768->3419|5809->3433|5829->3444|5876->3470|5906->3473|5951->3496|6034->3552|6054->3563|6108->3596|6138->3599|6185->3624|6268->3680|6288->3691|6344->3726|6374->3729|6421->3754|6491->3793|6548->3822|6589->3836|6609->3847|6673->3890|6704->3893|6746->3913|6800->3948|6819->3958|6859->3960|6916->3989|6957->4003|6977->4014|7032->4048|7062->4051|7103->4070|7253->4193|7273->4204|7328->4238|7358->4241|7399->4260|7465->4295|7514->4316|7702->4477|7718->4484|7750->4507|7797->4516|7842->4533|8036->4700|8074->4717|8112->4728|8136->4731|8181->4748|8236->4772|8281->4790|8297->4797|8328->4819|8375->4828|8420->4845|8611->5009|8648->5025|8686->5036|8710->5039|8755->5056|8810->5080|8855->5098|8871->5105|8905->5130|8952->5139|8997->5156|9191->5323|9231->5342|9269->5353|9293->5356|9338->5373|9393->5397|9434->5410|9532->5481|9560->5488|9601->5501|9700->5573|9715->5579|9791->5633|9882->5697|9897->5703|9972->5756|10063->5820|10078->5826|10157->5883|10326->6025|10341->6031|10401->6070
-                  LINES: 22->1|27->1|29->3|35->9|35->9|35->9|36->10|36->10|36->10|37->11|38->12|38->12|38->12|39->13|39->13|39->13|40->14|42->16|42->16|42->16|42->16|43->17|43->17|46->20|46->20|46->20|47->21|47->21|47->21|48->22|48->22|48->22|54->28|54->28|54->28|55->29|55->29|55->29|56->30|56->30|56->30|57->31|57->31|57->31|59->33|59->33|59->33|66->40|66->40|74->48|74->48|74->48|74->48|75->49|75->49|75->49|75->49|75->49|75->49|75->49|76->50|76->50|76->50|77->51|77->51|77->51|77->51|77->51|77->51|78->52|79->53|79->53|79->53|80->54|80->54|80->54|80->54|80->54|80->54|81->55|81->55|81->55|81->55|81->55|82->56|82->56|82->56|82->56|82->56|83->57|84->58|84->58|84->58|84->58|84->58|84->58|85->59|85->59|85->59|86->60|86->60|86->60|86->60|86->60|86->60|88->62|88->62|88->62|88->62|88->62|89->63|90->64|96->70|96->70|96->70|96->70|97->71|99->73|99->73|99->73|99->73|100->74|101->75|102->76|102->76|102->76|102->76|103->77|105->79|105->79|105->79|105->79|106->80|107->81|108->82|108->82|108->82|108->82|109->83|111->85|111->85|111->85|111->85|112->86|113->87|114->88|116->90|116->90|117->91|119->93|119->93|119->93|120->94|120->94|120->94|121->95|121->95|121->95|123->97|123->97|123->97
+                  HASH: bcb6f2a4c5841d543ef1504362dbb55a07182f00
+                  MATRIX: 779->1|1069->195|1097->197|1346->420|1375->441|1413->442|1454->455|1513->487|1542->495|1585->507|1622->517|1655->541|1694->542|1735->555|1797->590|1829->601|1872->613|1909->623|1986->673|2001->679|2054->711|2100->730|2126->735|2429->1011|2444->1017|2519->1071|2587->1112|2602->1118|2653->1148|2725->1193|2740->1199|2790->1228|3207->1618|3222->1624|3298->1678|3382->1735|3397->1741|3472->1794|3556->1851|3571->1857|3650->1914|3738->1975|3753->1981|3816->2023|3974->2154|3989->2160|4049->2199|4413->2536|4463->2565|4844->2919|4857->2923|4870->2927|4915->2934|4972->2963|5013->2977|5033->2988|5095->3029|5125->3032|5135->3033|5162->3038|5228->3077|5332->3171|5373->3173|5434->3206|5475->3220|5495->3231|5559->3273|5590->3276|5639->3303|5709->3342|5766->3372|5788->3385|5827->3386|5888->3419|6089->3592|6127->3608|6297->3751|6317->3762|6383->3806|6414->3809|6461->3834|6627->3973|6647->3984|6701->4017|6731->4020|6773->4040|6939->4179|6959->4190|7031->4240|7062->4243|7117->4276|7438->4569|7477->4586|7647->4729|7667->4740|7731->4782|7904->4928|7924->4939|7977->4971|8160->5127|8180->5138|8257->5193|8603->5511|8643->5529|8813->5672|8833->5683|8878->5707|8908->5710|8954->5734|9115->5868|9135->5879|9189->5912|9219->5915|9266->5940|9427->6074|9447->6085|9503->6120|9533->6123|9578->6146|9648->6185|9705->6214|9746->6228|9766->6239|9830->6282|9861->6285|9903->6305|9957->6340|9976->6350|10016->6352|10073->6381|10114->6395|10134->6406|10189->6440|10219->6443|10260->6462|10410->6585|10430->6596|10485->6630|10515->6633|10556->6652|10622->6687|10671->6708|10859->6869|10875->6876|10907->6899|10954->6908|10999->6925|11193->7092|11231->7109|11269->7120|11293->7123|11339->7140|11395->7164|11441->7182|11458->7189|11490->7211|11538->7220|11584->7237|11776->7401|11814->7417|11853->7428|11878->7431|11924->7448|11980->7472|12026->7490|12043->7497|12078->7522|12126->7531|12172->7548|12367->7715|12408->7734|12447->7745|12472->7748|12518->7765|12574->7789|12616->7802|12715->7873|12744->7880|12786->7893|12886->7965|12902->7971|12979->8025|13071->8089|13087->8095|13163->8148|13255->8212|13271->8218|13351->8275|13521->8417|13537->8423|13598->8462
+                  LINES: 26->1|31->1|33->3|39->9|39->9|39->9|40->10|40->10|40->10|41->11|42->12|42->12|42->12|43->13|43->13|43->13|44->14|46->16|46->16|46->16|46->16|47->17|47->17|50->20|50->20|50->20|51->21|51->21|51->21|52->22|52->22|52->22|58->28|58->28|58->28|59->29|59->29|59->29|60->30|60->30|60->30|61->31|61->31|61->31|63->33|63->33|63->33|70->40|70->40|78->48|78->48|78->48|78->48|79->49|79->49|79->49|79->49|79->49|79->49|79->49|80->50|80->50|80->50|81->51|81->51|81->51|81->51|81->51|81->51|82->52|83->53|83->53|83->53|84->54|85->55|85->55|87->57|87->57|87->57|87->57|87->57|89->59|89->59|89->59|89->59|89->59|91->61|91->61|91->61|91->61|91->61|95->65|95->65|97->67|97->67|97->67|99->69|99->69|99->69|101->71|101->71|101->71|105->75|105->75|107->77|107->77|107->77|107->77|107->77|109->79|109->79|109->79|109->79|109->79|112->82|112->82|112->82|112->82|112->82|113->83|114->84|114->84|114->84|114->84|114->84|114->84|115->85|115->85|115->85|116->86|116->86|116->86|116->86|116->86|116->86|118->88|118->88|118->88|118->88|118->88|119->89|120->90|126->96|126->96|126->96|126->96|127->97|129->99|129->99|129->99|129->99|130->100|131->101|132->102|132->102|132->102|132->102|133->103|135->105|135->105|135->105|135->105|136->106|137->107|138->108|138->108|138->108|138->108|139->109|141->111|141->111|141->111|141->111|142->112|143->113|144->114|146->116|146->116|147->117|149->119|149->119|149->119|150->120|150->120|150->120|151->121|151->121|151->121|153->123|153->123|153->123
                   -- GENERATED --
               */

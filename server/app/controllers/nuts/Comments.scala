@@ -8,9 +8,9 @@ import javax.inject._
 
 import com.mohiva.play.silhouette.api.Silhouette
 import controllers.WebJarAssets
-import models.nuts.{ BlogDAO, CommentsDAO }
-import models.nuts.Data.{ Article, Comment, CommentInfo, CommentsShow }
-import models.nuts.FormsData._
+import models.blog.{ BlogDAO, CommentsDAO }
+import models.blog.Data.{ Article, Comment, CommentInfo, CommentsShow }
+import models.blog.FormsData._
 import play.api.i18n.{ I18nSupport, Messages }
 import utils.auth.Roles.Admin
 import play.api.{ Configuration, Logger }

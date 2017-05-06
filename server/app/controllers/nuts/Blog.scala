@@ -9,14 +9,15 @@ import javax.inject._
 import akka.stream.Materializer
 import com.mohiva.play.silhouette.api.Silhouette
 import controllers.WebJarAssets
-import models.nuts.{ BlogDAO, CommentsDAO }
-import models.nuts.Data.{ Article, Comment, CommentInfo }
-import models.nuts.FormsData._
+import models.blog.{ BlogDAO, CommentsDAO }
+import models.blog.Data.{ Article, Comment, CommentInfo }
+import models.blog.FormsData._
 import play.api.i18n.{ I18nSupport, Messages }
 import utils.auth.Roles.Admin
 import play.api.{ Configuration, Logger }
 import play.api.i18n.MessagesApi
 import play.api.libs.concurrent.Execution.Implicits._
+import play.api.libs.mailer.MailerClient
 import play.api.mvc._
 import utils.auth.DefaultEnv
 
@@ -25,6 +26,7 @@ import scala.concurrent.Future
 class Blog @Inject() (
     blogDAO: BlogDAO,
     commentsDAO: CommentsDAO,
+    mailerClient: MailerClient,
     silhouette: Silhouette[DefaultEnv],
     config: Configuration,
     val messagesApi: MessagesApi,
@@ -57,21 +59,21 @@ class Blog @Inject() (
   }
 
   def create() = silhouette.SecuredAction(Admin) { implicit request =>
-    Ok(views.html.blog.blogEdit(request.identity, articleForm.fill(Article.empty)))
+    Ok(views.html.blog.adminBlog(request.identity, articleForm.fill(Article.empty)))
   }
 
   def edit(id: Long) = silhouette.SecuredAction(Admin).async { implicit request =>
     getArticle(id).map {
       case someArticle @ Some(article) =>
-        Ok(views.html.blog.blogEdit(request.identity, articleForm.fill(article)))
+        Ok(views.html.blog.adminBlog(request.identity, articleForm.fill(article)))
       case _ =>
-        Ok(views.html.blog.blogEdit(request.identity, articleForm.fill(Article.empty),
+        Ok(views.html.blog.adminBlog(request.identity, articleForm.fill(Article.empty),
           Map("id" -> Messages("blog.not-found", id))))
     }
   }
 
   def onSubmit() = silhouette.SecuredAction(Admin).async(parse.urlFormEncoded(onSubmitMaxMemoryBuffer)) { implicit request =>
-    //    val action: Seq[String] = request.body.asFormUrlEncoded.get("action")
+    //    val action: Seq[String] = request.body.asFormUrlEncoded.getGoodsItem("action")
     val action: Option[String] = actionForm.bindFromRequest().fold(
       _ => None, ok => ok
     )
@@ -81,7 +83,7 @@ class Blog @Inject() (
         val errors: Map[String, String] = errorForm.errors.map(formError => formError.key -> formError.messages.map(Messages(_)).mkString(",")).toMap
         //        var errorMsg = "Invalid data %s action=%s ! %s".format(error.data, action, errors)
         //        Logger.error(errorMsg)
-        Future(Ok(views.html.blog.blogEdit(request.identity, errorForm, errors)))
+        Future(Ok(views.html.blog.adminBlog(request.identity, errorForm, errors)))
       },
       article => {
         Logger.info(s"Going to ${action.head} $article ...")
@@ -100,17 +102,17 @@ class Blog @Inject() (
                   .flashing("success" -> Messages("blog.article-updated", id))
               else
                 Redirect(controllers.nuts.routes.Blog.article(id))
-                  .flashing("error" -> Messages("blog.article-update-error", id))
+                  .flashing("error" -> Messages("blog.article-updateGoodsItem-error", id))
             }
           case Some("delete") if article.id.isDefined =>
-            Logger.warn(s"Going to delete article ${article.id.get} ...")
+            Logger.warn(s"Going to deleteGoodsItem article ${article.id.get} ...")
             deleteArticle(article.id.get).map { rowsDeleted =>
               if (rowsDeleted >= 1) {
                 val msg = Messages("blog.article-deleted").format(rowsDeleted, article.id.get)
                 Logger.warn(msg)
                 Redirect(controllers.nuts.routes.Blog.showAllArticles).flashing("success" -> msg)
               } else {
-                val errorMsg = Messages("blog.article-delete-failed", article.id.get)
+                val errorMsg = Messages("blog.article-deleteGoodsItem-failed", article.id.get)
                 Redirect(controllers.nuts.routes.Blog.showAllArticles).flashing("error" -> errorMsg)
               }
             }

@@ -1,7 +1,6 @@
 [debug] Other repositories:
 [debug] Default repositories:
 [debug] Using inline dependencies specified in Scala.
-[debug] no default cache defined: set to /Users/snc/.ivy2/cache
 [debug] :: resolving dependencies :: shared#shared$sbt_sjs0.6_2.10;0.1-SNAPSHOT
 [debug] 	confs: [default]
 [debug] 	validate = true
@@ -6600,9 +6599,9 @@
 [debug] 	[NOT REQUIRED] jfree#jfreechart;1.0.8a!jfreechart.jar
 [debug] 	[NOT REQUIRED] junit#junit;4.10!junit.jar
 [debug] 	[NOT REQUIRED] org.hamcrest#hamcrest-core;1.1!hamcrest-core.jar
-[debug] :: resolution report :: resolve 3305ms :: artifacts dl 119ms
+[debug] :: resolution report :: resolve 1819ms :: artifacts dl 86ms
 [debug] 	report for shared#shared$sbt_sjs0.6_2.10;0.1-SNAPSHOT default produced in /Users/snc/scala/walnuts/shared/.js/target/resolution-cache/reports/shared-shared$sbt_sjs0.6_2.10-default.xml
-[debug] 	resolve done (3305ms resolve - 119ms download)
+[debug] 	resolve done (1819ms resolve - 86ms download)
 [debug] Using inline dependencies specified in Scala.
 [debug] :: resolving dependencies :: shared#shared$sources_sjs0.6_2.10;0.1-SNAPSHOT
 [debug] 	confs: [default]
@@ -9878,6 +9877,6 @@
 [debug] 	[NOT REQUIRED] org.apache.httpcomponents#httpcore;4.4!httpcore.jar(src)
 [debug] 	[NOT REQUIRED] com.timushev.sbt#sbt-updates;0.3.0!sbt-updates.jar(src)
 [debug] 	[NOT REQUIRED] org.bouncycastle#bcpg-jdk15on;1.51!bcpg-jdk15on.jar(src)
-[debug] :: resolution report :: resolve 2423ms :: artifacts dl 57ms
+[debug] :: resolution report :: resolve 1303ms :: artifacts dl 60ms
 [debug] 	report for shared#shared$sources_sjs0.6_2.10;0.1-SNAPSHOT default produced in /Users/snc/scala/walnuts/shared/.js/target/resolution-cache/reports/shared-shared$sources_sjs0.6_2.10-default.xml
-[debug] 	resolve done (2423ms resolve - 57ms download)
+[debug] 	resolve done (1303ms resolve - 60ms download)

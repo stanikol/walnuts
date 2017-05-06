@@ -1,4 +1,4 @@
-@(userOption: Option[models.User], articles: Seq[models.nuts.Data.Article])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+@(userOption: Option[models.User], articles: Seq[models.blog.Data.Article])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
 @* @import helper.CSRF *@
 
 @main(Messages("blog.title"), userOption){

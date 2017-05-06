@@ -1,11 +1,12 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/snc/scala/walnuts/server/conf/routes
-// @DATE:Thu Mar 30 01:46:36 EEST 2017
+// @DATE:Sun May 07 01:48:52 EEST 2017
 
 import play.api.routing.JavaScriptReverseRoute
 import play.api.mvc.{ QueryStringBindable, PathBindable, Call, JavascriptLiteral }
 import play.core.routing.{ HandlerDef, ReverseRouteContext, queryString, dynamicString }
+
 
 import _root_.controllers.Assets.Asset
 import _root_.utils.route.Binders._
@@ -21,6 +22,7 @@ package controllers.auth.javascript {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
+  
     // @LINE:13
     def view: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.auth.SignInController.view",
@@ -30,7 +32,7 @@ package controllers.auth.javascript {
         }
       """
     )
-
+  
     // @LINE:14
     def submit: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.auth.SignInController.submit",
@@ -40,7 +42,7 @@ package controllers.auth.javascript {
         }
       """
     )
-
+  
   }
 
   // @LINE:8
@@ -50,6 +52,7 @@ package controllers.auth.javascript {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
+  
     // @LINE:8
     def authenticate: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.auth.SocialAuthController.authenticate",
@@ -59,7 +62,7 @@ package controllers.auth.javascript {
         }
       """
     )
-
+  
   }
 
   // @LINE:18
@@ -69,6 +72,7 @@ package controllers.auth.javascript {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
+  
     // @LINE:19
     def submit: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.auth.ResetPasswordController.submit",
@@ -78,7 +82,7 @@ package controllers.auth.javascript {
         }
       """
     )
-
+  
     // @LINE:18
     def view: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.auth.ResetPasswordController.view",
@@ -88,7 +92,7 @@ package controllers.auth.javascript {
         }
       """
     )
-
+  
   }
 
   // @LINE:23
@@ -98,6 +102,7 @@ package controllers.auth.javascript {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
+  
     // @LINE:24
     def activate: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.auth.ActivateAccountController.activate",
@@ -107,7 +112,7 @@ package controllers.auth.javascript {
         }
       """
     )
-
+  
     // @LINE:23
     def send: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.auth.ActivateAccountController.send",
@@ -117,7 +122,7 @@ package controllers.auth.javascript {
         }
       """
     )
-
+  
   }
 
   // @LINE:16
@@ -127,6 +132,7 @@ package controllers.auth.javascript {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
+  
     // @LINE:16
     def view: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.auth.ForgotPasswordController.view",
@@ -136,7 +142,7 @@ package controllers.auth.javascript {
         }
       """
     )
-
+  
     // @LINE:17
     def submit: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.auth.ForgotPasswordController.submit",
@@ -146,7 +152,7 @@ package controllers.auth.javascript {
         }
       """
     )
-
+  
   }
 
   // @LINE:20
@@ -156,6 +162,7 @@ package controllers.auth.javascript {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
+  
     // @LINE:20
     def view: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.auth.ChangePasswordController.view",
@@ -165,7 +172,7 @@ package controllers.auth.javascript {
         }
       """
     )
-
+  
     // @LINE:21
     def submit: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.auth.ChangePasswordController.submit",
@@ -175,7 +182,7 @@ package controllers.auth.javascript {
         }
       """
     )
-
+  
   }
 
   // @LINE:10
@@ -185,6 +192,7 @@ package controllers.auth.javascript {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
+  
     // @LINE:10
     def view: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.auth.SignUpController.view",
@@ -194,7 +202,7 @@ package controllers.auth.javascript {
         }
       """
     )
-
+  
     // @LINE:11
     def submit: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.auth.SignUpController.submit",
@@ -204,7 +212,8 @@ package controllers.auth.javascript {
         }
       """
     )
-
+  
   }
+
 
 }

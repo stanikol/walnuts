@@ -2,30 +2,33 @@
 
 # --- !Ups
 create table categories (
-    name        varchar primary key
+    id          serial primary key,
+    name        varchar unique,
+    sort_order  varchar default(to_char(now(), 'YYYY-MM-DD HH:SS:MS'))
 );
 
-insert into categories values ('Саженцы');
+--insert into categories(name) values ('Саженцы');
 
 create table goods (
     id          serial         primary key,
-    category    varchar        references categories(name),
+    category    int            references categories(id),
     title       varchar        not null,
     description varchar        not null,
     qnt         int            not null default(0),
     price       decimal(19, 2) not null default(0),
-    show_order  int            not null default(1),
+    sort_order  varchar        default(to_char(now(), 'YYYY-MM-DD HH:SS:MS')),
     image       varchar,
     changed     timestamp      default(now()::timestamp)
 );
 
-insert into goods(category, title, description , qnt, price, show_order, image)
-    values('Саженцы', 'Саженец №1', 'Описание товвра', 100, 10.10, 1, '/img/cat');
+create view goods_view as
+    select g.id, c.name as category, c.id as category_id, g.title, g.description, g.qnt, g.price,
+            c.sort_order as category_sort_order, g.sort_order, g.image, g.changed
+        from goods g left join categories c on c.id = g.category
+        order by c.sort_order, g.sort_order;
 
 
 # --- !Downs
 drop table goods CASCADE;
 
 drop table categories CASCADE;
-
---drop table orders;

@@ -12,8 +12,12 @@ object resetPassword_Scope0 {
   import play.api.templates.PlayMagic._
   import play.api.mvc._
   import play.api.data._
-  import models.nuts.Data._
-  import models.nuts.FormsData._
+  import models.blog.Data._
+  import models.blog.FormsData._
+  import models.goods._
+  import controllers.goods.FormsData._
+  import models.images._
+  import controllers.images.FormsData._
 
   class resetPassword extends BaseScalaTemplate[play.twirl.api.TxtFormat.Appendable, Format[play.twirl.api.TxtFormat.Appendable]](play.twirl.api.TxtFormat) with play.twirl.api.Template3[User, String, Messages, play.twirl.api.TxtFormat.Appendable] {
 
@@ -45,10 +49,10 @@ object resetPassword_Scope0 {
 object resetPassword extends resetPassword_Scope0.resetPassword
 /*
                   -- GENERATED --
-                  DATE: Thu Mar 30 01:07:17 EEST 2017
+                  DATE: Sun May 07 01:06:03 EEST 2017
                   SOURCE: /Users/snc/scala/walnuts/server/app/views/emails/resetPassword.scala.txt
-                  HASH: 8918632af7a943164409c082379ffebdf26a8e3f
-                  MATRIX: 615->1|763->55|790->57|877->124|905->127|971->173
-                  LINES: 22->1|27->1|28->2|28->2|30->4|30->4
+                  HASH: 2ad4564acac7062c60a3f318c0ccc7b0fb886f2a
+                  MATRIX: 735->1|883->55|910->57|997->124|1025->127|1091->173
+                  LINES: 26->1|31->1|32->2|32->2|34->4|34->4
                   -- GENERATED --
               */

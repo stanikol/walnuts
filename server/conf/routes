@@ -24,18 +24,26 @@ GET         /account/email/:email            controllers.auth.ActivateAccountCon
 GET         /account/activate/:token         controllers.auth.ActivateAccountController.activate(token: java.util.UUID)
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*name                    controllers.Assets.at(path="/public", name)
+#GET         /assets/*name                    controllers.Assets.at(path="/public", name)
 GET         /webjars/*name                   controllers.WebJarAssets.at(name)
 
 #############################################
 #           Images in database              #
 #############################################
-GET         /img/show                       controllers.nuts.Images.show(search: String ?= "", what: String ?= "")
-GET         /img/find                       controllers.nuts.Images.find
-GET         /img/list                       controllers.nuts.Images.list
-POST        /img/edit                       controllers.nuts.Images.edit
-POST        /img/save                       controllers.nuts.Images.save
-GET         /img/:name                      controllers.nuts.Images.get(name)
+GET         /admin/img                      controllers.images.Images.showAdminImageForm(name: String ?= "")
+POST        /admin/img                      controllers.images.Images.handleAdminImageForm
+GET         /img/list                       controllers.images.Images.jsonAllImageInfo
+GET         /gallery                        controllers.images.Images.showGallery
+GET         /img/:name                      controllers.images.Images.getImage(name)
+GET         /img/150x150/:name              controllers.images.Images.getThumbnail(name)
+GET         /admin/albums                   controllers.nuts.AdminCategories.adminAlbumsCategories
+POST        /admin/albums                   controllers.nuts.AdminCategories.adminAlbumsCategoriesHandle
+
+#GET         /img/find                       controllers.images.Images.find
+#POST        /img/edit                       controllers.images.Images.edit
+#POST        /img/save                       controllers.images.Images.save
+
+
 
 #############################################
 #           Blog                            #
@@ -49,15 +57,27 @@ POST        /blog/submit                    controllers.nuts.Blog.onSubmit
 #############################################
 #           Comments                        #
 #############################################
-POST        /comments/add                   controllers.nuts.Comments.addComment
-POST        /comments/editComment           controllers.nuts.Comments.editComment
-GET         /comments/admin                 controllers.nuts.Comments.commentsAdmin
+GET         /admin/comments                 controllers.nuts.Comments.commentsAdmin
+POST        /admin/comments/add             controllers.nuts.Comments.addComment
+POST        /admin/comments/editComment     controllers.nuts.Comments.editComment
 GET         /comments/loginOrSignUp         controllers.nuts.Comments.loginOrSignUp
 
 #############################################
 #           Goods                           #
 #############################################
-GET         /items                          controllers.nuts.Goods.listAllGoods
-GET         /index.php/items/view/id/:id    controllers.nuts.Goods.get(id: Long)
-GET         /admin/items                    controllers.nuts.Goods.viewEditForm(id: Option[Long])
-POST        /admin/items                    controllers.nuts.Goods.updateOrCreateOrDelete
+GET         /items                          controllers.goods.Goods.listAllGoods
+GET         /index.php/items/view/id/:id    controllers.goods.Goods.getGoodsItem(id: Long)
+GET         /admin/item                     controllers.goods.Goods.showItemEditForm(id: Option[Long])
+POST        /admin/item                     controllers.goods.Goods.itemEditFormHandle
+
+GET         /admin/import-images            controllers.nuts.ImportData.importImages
+GET         /admin/import-articles          controllers.nuts.ImportData.importArticles
+GET         /admin/import-nuts              controllers.nuts.ImportData.importNuts
+GET         /admin/import-all               controllers.nuts.ImportData.importAll
+
+GET         /admin/cats                     controllers.nuts.AdminCategories.adminGoodsCategories
+POST        /admin/cats                     controllers.nuts.AdminCategories.adminGoodsCategoriesHandle
+
+
+
+GET         /assets/*name                    controllers.Assets.at(path="/public", name)

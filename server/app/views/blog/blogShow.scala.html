@@ -7,34 +7,34 @@
     <div class="article">
         <h1>@{article.title}</h1>
         <div class="article-text" disabled>@Html(article.text)</div>
-    </div>
-    @for(comment<-comments){
-        <hr>
-        <div class="row">
-            <h5 class="col col-xs-3">@comment.fullName </h5> <h6 class="col col-xs-3 col-xs-offset-6">@comment.added</h6>
-        </div>
-        <div class="feedtext">
-            @comment.text
-        </div>
-    }
-    <br>
-    @user.map{ usr =>
-        @if(usr.isAdmin){
-            <form action="@controllers.nuts.routes.Blog.edit(article.id.get)" method="get" class="form-inline">
-                @helper.CSRF.formField
-                <button type="submit" class="btn btn-danger">@Messages("Edit")</button>
-                <a href="@controllers.nuts.routes.Comments.commentsAdmin" class="btn btn-primary">Редактировать комментарии</a>
-            </form>
+        @for(comment<-comments){
+            <hr>
+            <div class="row">
+                <h5 class="col col-xs-3">@comment.fullName </h5> <h6 class="col col-xs-3 col-xs-offset-6">@comment.added</h6>
+            </div>
+            <div class="feedtext">
+                @comment.text
+            </div>
         }
-    }
-    <form action="@controllers.nuts.routes.Comments.addComment" method="post" id="addCommentForm">
-        <button type="submit" class="btn btn-warning">@Messages("Add comment")</button>
-        @helper.CSRF.formField
-        <input type="hidden" value="@{article.id}" name="article-id"/>
+        <br>
         @user.map{ usr =>
-            <textarea name="article-comment" id="article-comment" placeholder="@Messages("Add your comment here ...")" rows="10"></textarea>
+            @if(usr.isAdmin){
+                <form action="@controllers.nuts.routes.Blog.edit(article.id.get)" method="get" class="form-inline">
+                    @helper.CSRF.formField
+                    <button type="submit" class="btn btn-danger">@Messages("Edit")</button>
+                    <a href="@controllers.nuts.routes.Comments.commentsAdmin" class="btn btn-primary">Редактировать комментарии</a>
+                </form>
+            }
         }
-    </form>
+        <form action="@controllers.nuts.routes.Comments.addComment" method="post" id="addCommentForm">
+            <button type="submit" class="btn btn-warning">@Messages("Add comment")</button>
+            @helper.CSRF.formField
+            <input type="hidden" value="@{article.id}" name="article-id"/>
+            @user.map{ usr =>
+                <textarea name="article-comment" id="article-comment" placeholder="@Messages("Add your comment here ...")" rows="10"></textarea>
+            }
+        </form>
+    </div>
 
     <script>
         let dlg = $('<div class="dialog" title="@Messages("Registration or login required!")">\

@@ -12,3 +12,5 @@ addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.14")
 addSbtPlugin("com.heroku" % "sbt-heroku" % "1.0.1")
 
 addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "0.7.6")
+
+//addSbtPlugin("org.irundaia.sbt" % "sbt-sassify" % "1.4.8")

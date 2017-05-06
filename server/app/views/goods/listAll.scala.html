@@ -1,4 +1,4 @@
-@(userOption: Option[models.User], goodsItems: Seq[models.nuts.Data.GoodsItem])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+@(userOption: Option[models.User], goodsItems: Seq[GoodsItemView])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
 @* @import helper.CSRF *@
 
 @main(Messages("blog.title"), userOption){
@@ -9,20 +9,35 @@
         </div>
     }}
     <div class="row">
+        @goodsItems.map(gi => (gi.categorySortOrder, gi.category)).toSet[(String, String)].toList.sortBy(_._1).map{ case (_: String, category: String) =>
+            <h2 class="col col-sx-12 col-sm-12 col-md-12 col-ld-12">@category</h2>
+            @goodsItems.filter(_.category == category).sortBy(_.sortOrder).map { item =>
+                <article class="col col-sx-3 col-sm-3 col-md-3 col-ld-3">
+                    <a href="@controllers.goods.routes.Goods.getGoodsItem(item.id.get)">
+                        @if(item.image.isDefined){
+                            <div style="background: url(@controllers.images.routes.Images.getImage(item.image.get)) center no-repeat; background-size:162px 162px;" class="cat_img">
+                                <img width="162px" src="/assets/images/imgmaskt.png" alt="">
+                            </div>
+                            <div class="title">@item.title</div>
+                        }
+                    </a>
+                </article>
+            }
+        }
+        @**************
     @for((category, items)<-goodsItems.groupBy(_.category)){
         <h2 class="col col-sx-12 col-sm-12 col-md-12 col-ld-12">@category</h2>
         @for(item<-items){
             <article class="col col-sx-3 col-sm-3 col-md-3 col-ld-3">
-                <a href="@controllers.nuts.routes.Goods.get(item.id.get)">
+                <a href="@controllers.goods.routes.Goods.getGoodsItem(item.id.get)">
                     @if(item.image.isDefined){
-                        <!--<img class="img-responsive" src="@controllers.nuts.routes.Images.get(item.image.get)"/>-->
-                        <div style="background: url(@controllers.nuts.routes.Images.get(item.image.get)) center no-repeat; background-size:162px 162px;" class="cat_img">
+                        <div style="background: url(@controllers.images.routes.Images.getImage(item.image.get)) center no-repeat; background-size:162px 162px;" class="cat_img">
                             <img width="162px" src="/assets/images/imgmaskt.png" alt="">
                         </div>
                         <div class="title">@item.title</div>
                     }
                     <!--<div class="image">-->
-                        <!--<img src="@controllers.nuts.routes.Images.get(item.image.get)"/>-->
+                        <!--<img src="controllers.images.routes.Images.getGoodsItem(item.image.getGoodsItem)"/>-->
                         <!--<div class="text">-->
                             <!--@item.title-->
                         <!--</div>-->
@@ -30,6 +45,7 @@
                 </a>
             </article>
         }
+        ********@
         @*********
         <a href='@if(userOption.isDefined && userOption.get.isAdmin){
                     @controllers.nuts.routes.Blog.edit(article.id.get)
@@ -44,8 +60,8 @@
                 }
         </a>
         <div class="article-short-text">@{article.short_text}</div>
-        *************@
     }
+        *************@
     </div>
 
 <!-- Include the Quill library -->

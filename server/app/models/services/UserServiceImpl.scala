@@ -42,19 +42,23 @@ class UserServiceImpl @Inject() (userDAO: UserDAO) extends UserService {
    * @return The saved user.
    */
   def save(user: User) = {
-    val admin = Some("admin")
+    //TODO: User.isAdmin !!!
+    //TODO: No more automatic admin user creation !!!
+    //    val admin = Some("admin")
     for {
-      countUsers <- userDAO.countUsers
-      role = if (countUsers == 0 || (user.role == admin && countUsers == 1)) admin else None
-      _ = Logger.warn(s"Going to create (or activate) a user ${user.email} with role = ${role} ...")
-      user <- userDAO.save(user.copy(role = role))
+      //      countUsers <- userDAO.countUsers
+      //      role = if (countUsers == 0 || (user.role == admin && countUsers == 1)) admin else None
+      //      role = if (countUsers == 0) admin else None
+      //      _ = Logger.warn(s"Going to create (or activate) a user ${user.email} with role = ${if (countUsers == 0) admin else None} ...")
+      //      user <- userDAO.save(user.copy(role = if (countUsers == 0) admin else None))
+      user <- userDAO.save(user)
     } yield user
   }
 
   /**
    * Saves the social profile for a user.
    *
-   * If a user exists for this profile then update the user, otherwise create a new user with the given profile.
+   * If a user exists for this profile then updateGoodsItem the user, otherwise create a new user with the given profile.
    *
    * @param profile The social profile to save.
    * @return The user for whom the profile was saved.
@@ -67,7 +71,8 @@ class UserServiceImpl @Inject() (userDAO: UserDAO) extends UserService {
           lastName = profile.lastName,
           fullName = profile.fullName,
           email = profile.email,
-          avatarURL = profile.avatarURL
+          avatarURL = profile.avatarURL,
+          role = None
         ))
       case None => // Insert a new user
         userDAO.save(User(

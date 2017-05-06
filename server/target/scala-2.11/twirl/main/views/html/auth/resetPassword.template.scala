@@ -12,8 +12,12 @@ object resetPassword_Scope0 {
   import play.api.templates.PlayMagic._
   import play.api.mvc._
   import play.api.data._
-  import models.nuts.Data._
-  import models.nuts.FormsData._
+  import models.blog.Data._
+  import models.blog.FormsData._
+  import models.goods._
+  import controllers.goods.FormsData._
+  import models.images._
+  import controllers.images.FormsData._
 
   class resetPassword extends BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable, Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with play.twirl.api.Template5[Form[String], java.util.UUID, RequestHeader, Messages, WebJarAssets, play.twirl.api.HtmlFormat.Appendable] {
 
@@ -64,10 +68,10 @@ object resetPassword_Scope0 {
 object resetPassword extends resetPassword_Scope0.resetPassword
 /*
                   -- GENERATED --
-                  DATE: Thu Mar 30 01:07:17 EEST 2017
+                  DATE: Sun May 07 01:06:03 EEST 2017
                   SOURCE: /Users/snc/scala/walnuts/server/app/views/auth/resetPassword.scala.html
-                  HASH: 2e89eb6cd76b2fcb7336cd26afc7f12efaa11e56
-                  MATRIX: 662->1|915->125|943->162|970->164|1016->202|1055->204|1086->209|1173->270|1219->296|1264->315|1278->321|1388->422|1428->424|1468->437|1511->454|1563->486|1608->504|1623->510|1659->525|1700->539|1868->685|1909->698|2095->856|2134->873|2226->934|2258->939|2301->952
-                  LINES: 22->1|27->1|29->4|30->5|30->5|30->5|31->6|32->7|32->7|33->8|33->8|33->8|33->8|34->9|34->9|34->9|35->10|35->10|35->10|36->11|36->11|37->12|39->14|39->14|42->17|43->18|44->19
+                  HASH: ce62517250331982c5a692a67563695c25eae411
+                  MATRIX: 782->1|1035->125|1063->162|1090->164|1136->202|1175->204|1206->209|1293->270|1339->296|1384->315|1398->321|1508->422|1548->424|1588->437|1631->454|1683->486|1728->504|1743->510|1779->525|1820->539|1988->685|2029->698|2215->856|2254->873|2346->934|2378->939|2421->952
+                  LINES: 26->1|31->1|33->4|34->5|34->5|34->5|35->6|36->7|36->7|37->8|37->8|37->8|37->8|38->9|38->9|38->9|39->10|39->10|39->10|40->11|40->11|41->12|43->14|43->14|46->17|47->18|48->19
                   -- GENERATED --
               */

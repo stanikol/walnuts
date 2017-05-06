@@ -1,10 +1,11 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/snc/scala/walnuts/server/conf/routes
-// @DATE:Thu Mar 30 01:46:36 EEST 2017
+// @DATE:Sun May 07 01:48:52 EEST 2017
 
 import play.api.mvc.{ QueryStringBindable, PathBindable, Call, JavascriptLiteral }
 import play.core.routing.{ HandlerDef, ReverseRouteContext, queryString, dynamicString }
+
 
 import _root_.controllers.Assets.Asset
 import _root_.utils.route.Binders._
@@ -18,18 +19,19 @@ package controllers.auth {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
+  
     // @LINE:13
     def view(): Call = {
       import ReverseRouteContext.empty
       Call("GET", _prefix + { _defaultPrefix } + "signIn")
     }
-
+  
     // @LINE:14
     def submit(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "signIn")
     }
-
+  
   }
 
   // @LINE:8
@@ -38,12 +40,13 @@ package controllers.auth {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
+  
     // @LINE:8
-    def authenticate(provider: String): Call = {
+    def authenticate(provider:String): Call = {
       import ReverseRouteContext.empty
       Call("GET", _prefix + { _defaultPrefix } + "authenticate/" + implicitly[PathBindable[String]].unbind("provider", dynamicString(provider)))
     }
-
+  
   }
 
   // @LINE:18
@@ -52,18 +55,19 @@ package controllers.auth {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
+  
     // @LINE:19
-    def submit(token: java.util.UUID): Call = {
+    def submit(token:java.util.UUID): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "password/reset/" + implicitly[PathBindable[java.util.UUID]].unbind("token", token))
     }
-
+  
     // @LINE:18
-    def view(token: java.util.UUID): Call = {
+    def view(token:java.util.UUID): Call = {
       import ReverseRouteContext.empty
       Call("GET", _prefix + { _defaultPrefix } + "password/reset/" + implicitly[PathBindable[java.util.UUID]].unbind("token", token))
     }
-
+  
   }
 
   // @LINE:23
@@ -72,18 +76,19 @@ package controllers.auth {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
+  
     // @LINE:24
-    def activate(token: java.util.UUID): Call = {
+    def activate(token:java.util.UUID): Call = {
       import ReverseRouteContext.empty
       Call("GET", _prefix + { _defaultPrefix } + "account/activate/" + implicitly[PathBindable[java.util.UUID]].unbind("token", token))
     }
-
+  
     // @LINE:23
-    def send(email: String): Call = {
+    def send(email:String): Call = {
       import ReverseRouteContext.empty
       Call("GET", _prefix + { _defaultPrefix } + "account/email/" + implicitly[PathBindable[String]].unbind("email", dynamicString(email)))
     }
-
+  
   }
 
   // @LINE:16
@@ -92,18 +97,19 @@ package controllers.auth {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
+  
     // @LINE:16
     def view(): Call = {
       import ReverseRouteContext.empty
       Call("GET", _prefix + { _defaultPrefix } + "password/forgot")
     }
-
+  
     // @LINE:17
     def submit(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "password/forgot")
     }
-
+  
   }
 
   // @LINE:20
@@ -112,18 +118,19 @@ package controllers.auth {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
+  
     // @LINE:20
     def view(): Call = {
       import ReverseRouteContext.empty
       Call("GET", _prefix + { _defaultPrefix } + "password/change")
     }
-
+  
     // @LINE:21
     def submit(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "password/change")
     }
-
+  
   }
 
   // @LINE:10
@@ -132,18 +139,20 @@ package controllers.auth {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
+  
     // @LINE:10
     def view(): Call = {
       import ReverseRouteContext.empty
       Call("GET", _prefix + { _defaultPrefix } + "signUp")
     }
-
+  
     // @LINE:11
     def submit(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "signUp")
     }
-
+  
   }
+
 
 }

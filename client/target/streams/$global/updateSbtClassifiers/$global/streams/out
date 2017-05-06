@@ -11,7 +11,6 @@
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.6 {default=[default(compile)]} => dependency: org.scala-lang#scala-library;2.10.6 {default=[default(compile)]}
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.10.6 {default=[default(compile)]} => dependency: org.scala-lang#scala-reflect;2.10.6 {default=[default(compile)]}
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.6 {default=[default(compile)]} => dependency: org.scala-lang#scala-compiler;2.10.6 {default=[default(compile)]}
-[debug] no default cache defined: set to /Users/snc/.ivy2/cache
 [info] Resolving org.scala-sbt#sbt;0.13.13 ...
 [debug] sbt-chain: Checking cache for: dependency: org.scala-sbt#sbt;0.13.13 {default=[default(compile)]}
 [debug] sbt-chain: module revision found in cache: org.scala-sbt#sbt;0.13.13
@@ -437,6 +436,7 @@
 [debug] 	found org.scala-sbt#classfile;0.13.13 in sbt-chain
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.6 {compile=[default(compile)]} => dependency: org.scala-lang#scala-library;2.10.6 {compile=[default(compile)]}
 [debug] == resolving dependencies org.scala-sbt#classfile;0.13.13->org.scala-lang#scala-library;2.10.6 [compile->default(compile)]
+[debug] no default cache defined: set to /Users/snc/.ivy2/cache
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.6 {compile=[default(compile)]} => dependency: org.scala-lang#scala-library;2.10.6 {compile=[default(compile)]}
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.6 {compile=[default(compile)]} => dependency: org.scala-lang#scala-library;2.10.6 {compile=[default(compile)]}
 [debug] == resolving dependencies org.scala-sbt#classfile;0.13.13->org.scala-lang#scala-library;2.10.6 [compile->runtime]
@@ -6600,9 +6600,9 @@
 [debug] 	[NOT REQUIRED] jfree#jfreechart;1.0.8a!jfreechart.jar
 [debug] 	[NOT REQUIRED] junit#junit;4.10!junit.jar
 [debug] 	[NOT REQUIRED] org.hamcrest#hamcrest-core;1.1!hamcrest-core.jar
-[debug] :: resolution report :: resolve 3099ms :: artifacts dl 88ms
+[debug] :: resolution report :: resolve 3181ms :: artifacts dl 69ms
 [debug] 	report for client#client$sbt_sjs0.6_2.10;0.1-SNAPSHOT default produced in /Users/snc/scala/walnuts/client/target/resolution-cache/reports/client-client$sbt_sjs0.6_2.10-default.xml
-[debug] 	resolve done (3099ms resolve - 88ms download)
+[debug] 	resolve done (3181ms resolve - 69ms download)
 [debug] Using inline dependencies specified in Scala.
 [debug] :: resolving dependencies :: client#client$sources_sjs0.6_2.10;0.1-SNAPSHOT
 [debug] 	confs: [default]
@@ -6820,6 +6820,7 @@
 [debug] sbt-chain: Checking cache for: dependency: org.ensime#sbt-ensime;1.12.5 {default=[default, compile, runtime, default(compile), master]}
 [debug] sbt-chain: module revision found in cache: org.ensime#sbt-ensime;1.12.5
 [debug] 	found org.ensime#sbt-ensime;1.12.5 in sbt-chain
+[debug] no default cache defined: set to /Users/snc/.ivy2/cache
 [debug] 	[1.12.5] org.ensime#sbt-ensime;1.12.5
 [debug] == resolving dependencies client#client$sources_sjs0.6_2.10;0.1-SNAPSHOT->org.ensime#sbt-ensime;1.12.5 [default->runtime]
 [debug] == resolving dependencies client#client$sources_sjs0.6_2.10;0.1-SNAPSHOT->org.ensime#sbt-ensime;1.12.5 [default->compile]
@@ -9878,6 +9879,6 @@
 [debug] 	[NOT REQUIRED] org.apache.httpcomponents#httpcore;4.4!httpcore.jar(src)
 [debug] 	[NOT REQUIRED] com.timushev.sbt#sbt-updates;0.3.0!sbt-updates.jar(src)
 [debug] 	[NOT REQUIRED] org.bouncycastle#bcpg-jdk15on;1.51!bcpg-jdk15on.jar(src)
-[debug] :: resolution report :: resolve 2020ms :: artifacts dl 54ms
+[debug] :: resolution report :: resolve 2059ms :: artifacts dl 98ms
 [debug] 	report for client#client$sources_sjs0.6_2.10;0.1-SNAPSHOT default produced in /Users/snc/scala/walnuts/client/target/resolution-cache/reports/client-client$sources_sjs0.6_2.10-default.xml
-[debug] 	resolve done (2020ms resolve - 54ms download)
+[debug] 	resolve done (2059ms resolve - 98ms download)

@@ -1,16 +1,16 @@
 [0m[[0minfo[0m] [0mFast optimizing /Users/snc/scala/walnuts/client/target/scala-2.11/client-fastopt.js[0m
-[0m[[0mdebug[0m] [0mLinker: Compute reachability: 168376 us[0m
-[0m[[0mdebug[0m] [0mLinker: Assemble LinkedClasses: 240088 us[0m
-[0m[[0mdebug[0m] [0mBasic Linking: 423706 us[0m
+[0m[[0mdebug[0m] [0mLinker: Compute reachability: 182981 us[0m
+[0m[[0mdebug[0m] [0mLinker: Assemble LinkedClasses: 393169 us[0m
+[0m[[0mdebug[0m] [0mBasic Linking: 602010 us[0m
 [0m[[0mdebug[0m] [0mInc. optimizer: Batch mode: true[0m
-[0m[[0mdebug[0m] [0mInc. optimizer: Incremental part: 196711 us[0m
+[0m[[0mdebug[0m] [0mInc. optimizer: Incremental part: 219985 us[0m
 [0m[[0mdebug[0m] [0mInc. optimizer: Optimizing 783 methods.[0m
-[0m[[0mdebug[0m] [0mInc. optimizer: Optimizer part: 323179 us[0m
-[0m[[0mdebug[0m] [0mInc. optimizer: 535539 us[0m
-[0m[[0mdebug[0m] [0mRefiner: Compute reachability: 73588 us[0m
-[0m[[0mdebug[0m] [0mRefiner: Assemble LinkedClasses: 10937 us[0m
-[0m[[0mdebug[0m] [0mRefiner: 88031 us[0m
+[0m[[0mdebug[0m] [0mInc. optimizer: Optimizer part: 424144 us[0m
+[0m[[0mdebug[0m] [0mInc. optimizer: 663564 us[0m
+[0m[[0mdebug[0m] [0mRefiner: Compute reachability: 89739 us[0m
+[0m[[0mdebug[0m] [0mRefiner: Assemble LinkedClasses: 17018 us[0m
+[0m[[0mdebug[0m] [0mRefiner: 111594 us[0m
 [0m[[0mdebug[0m] [0mEmitter: Class tree cache stats: reused: 0 -- invalidated: 40[0m
 [0m[[0mdebug[0m] [0mEmitter: Method tree cache stats: resued: 0 -- invalidated: 99[0m
-[0m[[0mdebug[0m] [0mEmitter (write output): 195196 us[0m
-[0m[[0mdebug[0m] [0mGlobal IR cache stats: reused: 0 -- invalidated: 4 -- trees read: 249[0m
+[0m[[0mdebug[0m] [0mEmitter (write output): 334770 us[0m
+[0m[[0mdebug[0m] [0mGlobal IR cache stats: reused: 4 -- invalidated: 4 -- trees read: 249[0m

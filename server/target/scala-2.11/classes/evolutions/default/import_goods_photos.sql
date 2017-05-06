@@ -1,6 +1,6 @@
-create or replace function import_img2(filename text, alt text default '') returns void as $$
+create or replace function import_img2(filename text, alt text default '', dirname text default './blog-photos/') returns void as $$
     declare
-        filepath text := './nuts-photos/' || filename ;
+        filepath text := dirname || filename ;
         img bytea := pg_read_binary_file(filepath);
     begin
         if (alt <> '') IS NOT TRUE then

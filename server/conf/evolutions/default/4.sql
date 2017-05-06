@@ -17,5 +17,5 @@ create view comments_info as
 
 drop view comments_info;
 
-drop table comments CASCADE;
+drop table comments;
 

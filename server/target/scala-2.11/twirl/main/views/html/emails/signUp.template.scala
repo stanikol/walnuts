@@ -12,8 +12,12 @@ object signUp_Scope0 {
   import play.api.templates.PlayMagic._
   import play.api.mvc._
   import play.api.data._
-  import models.nuts.Data._
-  import models.nuts.FormsData._
+  import models.blog.Data._
+  import models.blog.FormsData._
+  import models.goods._
+  import controllers.goods.FormsData._
+  import models.images._
+  import controllers.images.FormsData._
 
   class signUp extends BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable, Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with play.twirl.api.Template3[User, String, Messages, play.twirl.api.HtmlFormat.Appendable] {
 
@@ -49,10 +53,10 @@ object signUp_Scope0 {
 object signUp extends signUp_Scope0.signUp
 /*
                   -- GENERATED --
-                  DATE: Thu Mar 30 01:07:17 EEST 2017
+                  DATE: Sun May 07 01:06:03 EEST 2017
                   SOURCE: /Users/snc/scala/walnuts/server/app/views/emails/signUp.scala.html
-                  HASH: ffa8f649f8e9e012dd2cf5dccd9e8dab0fc906af
-                  MATRIX: 607->1|756->55|784->57|840->87|920->147|963->164|1029->210
-                  LINES: 22->1|27->1|29->3|31->5|31->5|32->6|32->6
+                  HASH: 3045d563eff44d0696bfacdc059d43d6240165ce
+                  MATRIX: 727->1|876->55|904->57|960->87|1040->147|1083->164|1149->210
+                  LINES: 26->1|31->1|33->3|35->5|35->5|36->6|36->6
                   -- GENERATED --
               */

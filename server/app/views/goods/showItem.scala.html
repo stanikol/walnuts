@@ -1,5 +1,5 @@
 
-@(user: Option[models.User], goodsItem: GoodsItem)(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+@(user: Option[models.User], goodsItem: GoodsItemView)(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
 
 @import helper.CSRF
 
@@ -7,7 +7,7 @@
     <div class="row">
         @if(goodsItem.image.isDefined){
             <div id="item_img" class="col col-xm-6 col-sm-6 col-md-6 col-ld-6">
-                <img class="someitem" src="@controllers.nuts.routes.Images.get(goodsItem.image.get)" alt="@goodsItem.title">
+                <img class="someitem" src="@controllers.images.routes.Images.getImage(goodsItem.image.get)" alt="@goodsItem.title">
             </div>
         }
         <div class="col col-xm-6 col-sm-6 col-md-6 col-ld-6">
@@ -22,10 +22,7 @@
     <br>
     @user.map{ usr =>
         @if(usr.isAdmin){
-            <form action="#" method="get">
-                @helper.CSRF.formField
-                <button type="submit" class="btn btn-danger">@Messages("Edit")</button>
-            </form>
+            <a href="@CSRF(controllers.goods.routes.Goods.showItemEditForm(goodsItem.id))" class="btn btn-danger">@Messages("Edit")</a>
         }
     }
 }

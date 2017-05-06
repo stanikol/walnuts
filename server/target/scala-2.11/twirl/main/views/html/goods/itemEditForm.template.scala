@@ -4,77 +4,65 @@ package views.html.goods
 import play.twirl.api._
 import play.twirl.api.TemplateMagic._
 
-object itemEditForm_Scope0 {
-  import models._
-  import controllers._
-  import play.api.i18n._
-  import views.html._
-  import play.api.templates.PlayMagic._
-  import play.api.mvc._
-  import play.api.data._
-  import models.nuts.Data._
-  import models.nuts.FormsData._
 
-  class itemEditForm extends BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable, Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with play.twirl.api.Template6[models.User, Form[GoodsItem], Map[String, String], RequestHeader, Messages, WebJarAssets, play.twirl.api.HtmlFormat.Appendable] {
+     object itemEditForm_Scope0 {
+import models._
+import controllers._
+import play.api.i18n._
+import views.html._
+import play.api.templates.PlayMagic._
+import play.api.mvc._
+import play.api.data._
+import models.blog.Data._
+import models.blog.FormsData._
+import models.goods._
+import controllers.goods.FormsData._
+import models.images._
+import controllers.images.FormsData._
 
-    /**/
-    def apply /*1.2*/ (user: models.User, item: Form[GoodsItem], errors: Map[String, String] = Map.empty[String, String])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets): play.twirl.api.HtmlFormat.Appendable = {
-      _display_ {
-        {
-          import helper.CSRF
+class itemEditForm extends BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with play.twirl.api.Template6[models.User,Form[GoodsItem],Seq[Category],RequestHeader,Messages,WebJarAssets,play.twirl.api.HtmlFormat.Appendable] {
 
-          Seq[Any](format.raw /*1.180*/ ("""
-"""), format.raw /*3.1*/ ("""
-"""), _display_( /*4.2*/ admin(Messages("itemEdit.title"), Some(user)) /*4.47*/ {
-            _display_(Seq[Any](format.raw /*4.48*/ ("""
-    """), _display_( /*5.6*/ {
-              if (item.hasErrors) {
-                item.errors.map {
-                  case play.api.data.FormError(key, errorMsgs, _) =>
-                    <div class="col-md-10 col-md-offset-2 alert alert-danger">
-                      <a href="#" class="close" data-dismiss="alert">&times;</a>
-                      <strong>{ Messages("error") } { Messages(key) } => { errorMsgs.mkString("; ") }</strong>
-                    </div>
-                }
-              }
-            }), format.raw /*12.7*/ ("""
-    """), format.raw /*13.5*/ ("""<input type="file" id="filepicker" style="display: none"/>
-    <form id="item-edit-form" method="POST" action=""""), _display_( /*14.54*/ CSRF(controllers.nuts.routes.Goods.updateOrCreateOrDelete)), format.raw /*14.112*/ ("""">
-        <strong>ID #"""), _display_( /*15.22*/ { item("id").value }), format.raw /*15.40*/ ("""</strong>
-        <input type="hidden" id="id" name="id" value=""""), _display_( /*16.56*/ { item("id").value }), format.raw /*16.74*/ (""""/>
+  /**/
+  def apply/*1.2*/(user: models.User, goodsItemForm: Form[GoodsItem], categories: Seq[Category])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets):play.twirl.api.HtmlFormat.Appendable = {
+    _display_ {
+      {
+import helper.CSRF
+import b3.vertical.fieldConstructor
+
+Seq[Any](format.raw/*1.161*/("""
+"""),format.raw/*4.1*/("""
+"""),_display_(/*5.2*/admin(Messages("itemEdit.title"), Some(user))/*5.47*/{_display_(Seq[Any](format.raw/*5.48*/("""
+    """),format.raw/*6.5*/("""<input type="file" id="filepickuper" style="display: none"/>
+    <form id="item-edit-form" method="POST" action=""""),_display_(/*7.54*/CSRF(controllers.goods.routes.Goods.itemEditFormHandle)),format.raw/*7.109*/("""">
+        <strong>ID #"""),_display_(/*8.22*/{goodsItemForm("id").value}),format.raw/*8.49*/("""</strong>
+        <input type="hidden" id="id" name="id" value=""""),_display_(/*9.56*/{goodsItemForm("id").value}),format.raw/*9.83*/(""""/>
         <input type="hidden" id="description" name="description" />
-        <!--<input type="hidden" id="action" name="action" />-->
-        <div class="form-group">
-            <label for="category" class="control-label">"""), _display_( /*20.58*/ Messages("Category")), format.raw /*20.78*/ ("""</label>
-            <input type="text" id="category" name="category" value='"""), _display_( /*21.70*/ { item("category").value }), format.raw /*21.94*/ ("""'
-                   class="form-control"/>
+        """),_display_(/*11.10*/b3/*11.12*/.select(goodsItemForm("category"),
+            options = categories.map(c=>c.id.map(_.toString).getOrElse("")->c.name),
+            '_label -> "Категория"
+        )),format.raw/*14.10*/("""
+        """),_display_(/*15.10*/b3/*15.12*/.text(goodsItemForm("title"), '_label -> "Наименование")),format.raw/*15.68*/("""
+        """),format.raw/*16.9*/("""<div class="form-group">
+            <label for="description-edit" class="control-label">Описание</label>
+            <div id="description-edit" class="form-control">
+                """),_display_(/*19.18*/{Html(goodsItemForm("description").value.getOrElse(""))}),format.raw/*19.74*/("""
+            """),format.raw/*20.13*/("""</div>
         </div>
-        <div class="form-group">
-            <label for="description-edit" class="control-label">"""), _display_( /*25.66*/ Messages("description")), format.raw /*25.89*/ ("""</label>
-            <div id="description-edit" class="form-control" rows="11">
-                """), _display_( /*27.18*/ { Html(item("description").value.getOrElse("")) }), format.raw /*27.65*/ ("""
-            """), format.raw /*28.13*/ ("""</div>
-        </div>
-        <div class="form-group">
-            <label for="title" class="control-label">"""), _display_( /*31.55*/ Messages("title")), format.raw /*31.72*/ ("""</label>
-            <input type="text" id="title" name="title" value='"""), _display_( /*32.64*/ { item("title").value }), format.raw /*32.85*/ ("""'
-                   class="form-control"/>
-        </div>
-        <div class="form-group">
-            <label for="show-order" class="control-label">"""), _display_( /*36.60*/ Messages("show-order")), format.raw /*36.82*/ ("""</label>
-            <input type="text" id="show-order" name="show-order" value='"""), _display_( /*37.74*/ { item("show-order").value }), format.raw /*37.100*/ ("""'
-                   class="form-control"/>
-        </div>
+        """),_display_(/*22.10*/b3/*22.12*/.text(goodsItemForm("show-order"), '_label -> "Порядок сортировки")),format.raw/*22.79*/("""
+        """),format.raw/*23.9*/("""<img id="image-displayed" src=""""),_display_(/*23.41*/controllers/*23.52*/.images.routes.Images.getThumbnail(goodsItemForm("image").value.getOrElse(""))),format.raw/*23.130*/("""">
+        """),_display_(/*24.10*/b3/*24.12*/.text(goodsItemForm("image"), '_label -> "Картинка")),format.raw/*24.64*/("""
+        """),format.raw/*25.9*/("""<button type="button" id="search-images-btn">Поиск фото</button>
+        <div id="search-images" class="row"></div>
         <!--BUTTONS-->
         <div class="btn-group btn-group-lg">
-            <button type="submit" id="new-btn" name="action" value="new" class="btn btn-warning">"""), _display_( /*42.99*/ Messages("Save as new")), format.raw /*42.122*/ ("""</button>
-            """), _display_( /*43.14*/ if (item("id").value.isDefined) /*43.44*/ {
-              _display_(Seq[Any](format.raw /*43.45*/ ("""
-                """), format.raw /*44.17*/ ("""<button type="submit" id="save-btn" name="action" value="save" class="btn btn-primary">"""), _display_( /*44.105*/ Messages("Update")), format.raw /*44.123*/ ("""</button>
-                <button type="submit" id="delete-btn" name="action" value="delete" class="btn btn-danger">"""), _display_( /*45.108*/ Messages("Delete")), format.raw /*45.126*/ ("""</button>
-            """)))
-            }), format.raw /*46.14*/ ("""
-        """), format.raw /*47.9*/ ("""</div>
+            <a href=""""),_display_(/*29.23*/CSRF(controllers.goods.routes.Goods.showItemEditForm(goodsItemForm("id").value.map(_.toLong)))),format.raw/*29.117*/(""""
+                class="btn btn-success">Обновить</a>
+            """),_display_(/*31.14*/if(goodsItemForm("id").value.isDefined)/*31.53*/{_display_(Seq[Any](format.raw/*31.54*/("""
+                """),format.raw/*32.17*/("""<button type="submit" id="save-btn" name="action" value="save" class="btn btn-primary">Сохранить</button>
+                <button type="submit" id="delete-btn" name="action" value="delete" class="btn btn-danger">Удалить</button>
+            """)))}),format.raw/*34.14*/("""
+            """),format.raw/*35.13*/("""<button type="submit" id="new-btn" name="action" value="new" class="btn btn-warning">Сохранить как новый сорт</button>
+        </div>
     </form>
 
     <!-- Include the Quill library -->
@@ -93,166 +81,195 @@ object itemEditForm_Scope0 {
             Then, after data is received, create dialog (with jQuery) and append
             to it all the image references received from DB.
         */
-        function image2Handler() """), format.raw /*66.34*/ ("""{"""), format.raw /*66.35*/ ("""
-            """), format.raw /*67.13*/ ("""$.get('"""), _display_( /*67.21*/ controllers /*67.32*/ .nuts.routes.Images.list), format.raw /*67.56*/ ("""', function(listOfImages, status)"""), format.raw /*67.89*/ ("""{"""), format.raw /*67.90*/ ("""
-               """), format.raw /*68.16*/ ("""let imagesDialog = $('<div />', """), format.raw /*68.48*/ ("""{"""), format.raw /*68.49*/ ("""id: "imagesDialog", class: "row""""), format.raw /*68.81*/ ("""}"""), format.raw /*68.82*/ (""").dialog("""), format.raw /*68.91*/ ("""{"""), format.raw /*68.92*/ ("""
-                        """), format.raw /*69.25*/ ("""autoOpen: false,
+        function image2Handler() """),format.raw/*55.34*/("""{"""),format.raw/*55.35*/("""
+            """),format.raw/*56.13*/("""$.get('"""),_display_(/*56.21*/controllers/*56.32*/.images.routes.Images.jsonAllImageInfo),format.raw/*56.70*/("""', function(listOfImages, status)"""),format.raw/*56.103*/("""{"""),format.raw/*56.104*/("""
+               """),format.raw/*57.16*/("""let imagesDialog = $('<div />', """),format.raw/*57.48*/("""{"""),format.raw/*57.49*/("""id: "imagesDialog", class: "row""""),format.raw/*57.81*/("""}"""),format.raw/*57.82*/(""").dialog("""),format.raw/*57.91*/("""{"""),format.raw/*57.92*/("""
+                        """),format.raw/*58.25*/("""autoOpen: false,
                         modal:    true,
                         width:    $(window).width() - $(window).width() * 0.2,
                         height:   $(window).height() - $(window).height() * 0.2,
-               """), format.raw /*73.16*/ ("""}"""), format.raw /*73.17*/ (""");
-               listOfImages.map((image) => """), format.raw /*74.44*/ ("""{"""), format.raw /*74.45*/ ("""
-                    """), format.raw /*75.21*/ ("""const imageHref = '/img/'+image.name;
-                    $('<img />', """), format.raw /*76.34*/ ("""{"""), format.raw /*76.35*/ ("""
-                        """), format.raw /*77.25*/ ("""src:   imageHref,
+               """),format.raw/*62.16*/("""}"""),format.raw/*62.17*/(""");
+               listOfImages.map((image) => """),format.raw/*63.44*/("""{"""),format.raw/*63.45*/("""
+                    """),format.raw/*64.21*/("""//const imageHref = '/img/'+image.name;
+                    const imageHref = '/img/150x150/'+image.name;
+                    $('<img />', """),format.raw/*66.34*/("""{"""),format.raw/*66.35*/("""
+                        """),format.raw/*67.25*/("""src:   imageHref,
                         alt:   image.content,
-                        class: "col col-sm-2",
-                        click: function()"""), format.raw /*80.42*/ ("""{"""), format.raw /*80.43*/ ("""
-                            """), format.raw /*81.29*/ ("""quill.updateContents(
+                        class: "col col-sm-2 image-responsive",
+                        click: function()"""),format.raw/*70.42*/("""{"""),format.raw/*70.43*/("""
+                            """),format.raw/*71.29*/("""quill.updateContents(
                                 new Delta()
                                   .retain(quill.getSelection().index)
-                                  .insert("""), format.raw /*84.43*/ ("""{"""), format.raw /*84.44*/ ("""
-                                    """), format.raw /*85.37*/ ("""image: imageHref
-                                  """), format.raw /*86.35*/ ("""}"""), format.raw /*86.36*/ (""",
-                                  """), format.raw /*87.35*/ ("""{"""), format.raw /*87.36*/ ("""
-                                """), format.raw /*88.33*/ ("""// link: imageHref,
-                                    alt: prompt('"""), _display_( /*89.51*/ Messages("Enter image description")), format.raw /*89.86*/ ("""', image.content)
-                                  """), format.raw /*90.35*/ ("""}"""), format.raw /*90.36*/ ("""));
+                                  .insert("""),format.raw/*74.43*/("""{"""),format.raw/*74.44*/("""
+                                    """),format.raw/*75.37*/("""image: imageHref
+                                  """),format.raw/*76.35*/("""}"""),format.raw/*76.36*/(""",
+                                  """),format.raw/*77.35*/("""{"""),format.raw/*77.36*/("""
+                                """),format.raw/*78.33*/("""// link: imageHref,
+                                    alt: prompt('"""),_display_(/*79.51*/Messages("Enter image description")),format.raw/*79.86*/("""', image.content)
+                                  """),format.raw/*80.35*/("""}"""),format.raw/*80.36*/("""));
                             imagesDialog.dialog('destroy').remove(); // dialog has to be destroyed, otherwise next time there will be 2 or more dialogs with the same id #imagesDialog
-                        """), format.raw /*92.25*/ ("""}"""), format.raw /*92.26*/ ("""
-                   """), format.raw /*93.20*/ ("""}"""), format.raw /*93.21*/ (""").appendTo(imagesDialog);
-               """), format.raw /*94.16*/ ("""}"""), format.raw /*94.17*/ (""");
+                        """),format.raw/*82.25*/("""}"""),format.raw/*82.26*/("""
+                   """),format.raw/*83.20*/("""}"""),format.raw/*83.21*/(""").appendTo(imagesDialog);
+               """),format.raw/*84.16*/("""}"""),format.raw/*84.17*/(""");
                imagesDialog.dialog('open');
-            """), format.raw /*96.13*/ ("""}"""), format.raw /*96.14*/ (""");
-        """), format.raw /*97.9*/ ("""}"""), format.raw /*97.10*/ (""";
+            """),format.raw/*86.13*/("""}"""),format.raw/*86.14*/(""");
+        """),format.raw/*87.9*/("""}"""),format.raw/*87.10*/(""";
 
         /**
             Handle image insertion from filesystem as base64 data.
             Used as default image handler.
         */
-        let filepicker = document.getElementById("filepicker");
+        var filepickuper = document.getElementById("filepickuper");
 
-        function insertImageInQuillJSAsBase64()"""), format.raw /*105.48*/ ("""{"""), format.raw /*105.49*/ ("""
-            """), format.raw /*106.13*/ ("""let reader = new FileReader();
-            reader.onloadend = function() """), format.raw /*107.43*/ ("""{"""), format.raw /*107.44*/ ("""
-                """), format.raw /*108.17*/ ("""let alt = prompt('"""), _display_( /*108.36*/ Messages("Enter image description")), format.raw /*108.71*/ ("""', file);
+        function insertImageInQuillJSAsBase64()"""),format.raw/*95.48*/("""{"""),format.raw/*95.49*/("""
+            """),format.raw/*96.13*/("""let reader = new FileReader();
+            reader.onloadend = function() """),format.raw/*97.43*/("""{"""),format.raw/*97.44*/("""
+                """),format.raw/*98.17*/("""let alt = prompt('"""),_display_(/*98.36*/Messages("Enter image description")),format.raw/*98.71*/("""', file);
                 let base64 = reader.result;
                 quill.updateContents(
                 new Delta()
                   .retain(quill.getSelection().index)
-                  .insert("""), format.raw /*113.27*/ ("""{"""), format.raw /*113.28*/ ("""
-                        """), format.raw /*114.25*/ ("""image: base64
-                    """), format.raw /*115.21*/ ("""}"""), format.raw /*115.22*/ (""",
-                    """), format.raw /*116.21*/ ("""{"""), format.raw /*116.22*/ ("""
-                """), format.raw /*117.17*/ ("""// link: imageHref,
+                  .insert("""),format.raw/*103.27*/("""{"""),format.raw/*103.28*/("""
+                        """),format.raw/*104.25*/("""image: base64
+                    """),format.raw/*105.21*/("""}"""),format.raw/*105.22*/(""",
+                    """),format.raw/*106.21*/("""{"""),format.raw/*106.22*/("""
+                """),format.raw/*107.17*/("""// link: imageHref,
                         alt: alt
-                    """), format.raw /*119.21*/ ("""}"""), format.raw /*119.22*/ (""")
+                    """),format.raw/*109.21*/("""}"""),format.raw/*109.22*/(""")
                 );
-            """), format.raw /*121.13*/ ("""}"""), format.raw /*121.14*/ (""";
-            let file = filepicker.files[0];
+            """),format.raw/*111.13*/("""}"""),format.raw/*111.14*/(""";
+            var file = filepickuper.files[0];
             reader.readAsDataURL(file);
-        """), format.raw /*124.9*/ ("""}"""), format.raw /*124.10*/ (""";
+        """),format.raw/*114.9*/("""}"""),format.raw/*114.10*/(""";
 
-        function imageBase64Handler() """), format.raw /*126.39*/ ("""{"""), format.raw /*126.40*/ ("""
-            """), format.raw /*127.13*/ ("""$('#filepicker').trigger('click');
-        """), format.raw /*128.9*/ ("""}"""), format.raw /*128.10*/ (""";
+        function imageBase64Handler() """),format.raw/*116.39*/("""{"""),format.raw/*116.40*/("""
+            """),format.raw/*117.13*/("""$('#filepickuper').trigger('click');
+        """),format.raw/*118.9*/("""}"""),format.raw/*118.10*/(""";
 
         var deleteButtonPressed = false;
 
-        $(document).ready(function()"""), format.raw /*132.37*/ ("""{"""), format.raw /*132.38*/ ("""
-            """), format.raw /*133.13*/ ("""// Init QuillJS.com editor
+        ////
+        $(document).ready(function()"""),format.raw/*123.37*/("""{"""),format.raw/*123.38*/("""
+            """),format.raw/*124.13*/("""// Init QuillJS.com editor
             const toolbarOptions = [
                 ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
                 ['blockquote', 'code-block'],
 
-                ["""), format.raw /*138.18*/ ("""{"""), format.raw /*138.19*/ (""" """), format.raw /*138.20*/ ("""'header': 1 """), format.raw /*138.32*/ ("""}"""), format.raw /*138.33*/ (""", """), format.raw /*138.35*/ ("""{"""), format.raw /*138.36*/ (""" """), format.raw /*138.37*/ ("""'header': 2 """), format.raw /*138.49*/ ("""}"""), format.raw /*138.50*/ ("""],               // custom button values
-                ["""), format.raw /*139.18*/ ("""{"""), format.raw /*139.19*/ (""" """), format.raw /*139.20*/ ("""'list': 'ordered'"""), format.raw /*139.37*/ ("""}"""), format.raw /*139.38*/ (""", """), format.raw /*139.40*/ ("""{"""), format.raw /*139.41*/ (""" """), format.raw /*139.42*/ ("""'list': 'bullet' """), format.raw /*139.59*/ ("""}"""), format.raw /*139.60*/ ("""],
-                ["""), format.raw /*140.18*/ ("""{"""), format.raw /*140.19*/ (""" """), format.raw /*140.20*/ ("""'script': 'sub'"""), format.raw /*140.35*/ ("""}"""), format.raw /*140.36*/ (""", """), format.raw /*140.38*/ ("""{"""), format.raw /*140.39*/ (""" """), format.raw /*140.40*/ ("""'script': 'super' """), format.raw /*140.58*/ ("""}"""), format.raw /*140.59*/ ("""],      // superscript/subscript
-                ["""), format.raw /*141.18*/ ("""{"""), format.raw /*141.19*/ (""" """), format.raw /*141.20*/ ("""'indent': '-1'"""), format.raw /*141.34*/ ("""}"""), format.raw /*141.35*/ (""", """), format.raw /*141.37*/ ("""{"""), format.raw /*141.38*/ (""" """), format.raw /*141.39*/ ("""'indent': '+1' """), format.raw /*141.54*/ ("""}"""), format.raw /*141.55*/ ("""],          // outdent/indent
-                ["""), format.raw /*142.18*/ ("""{"""), format.raw /*142.19*/ (""" """), format.raw /*142.20*/ ("""'direction': 'rtl' """), format.raw /*142.39*/ ("""}"""), format.raw /*142.40*/ ("""],                         // text direction
+                ["""),format.raw/*129.18*/("""{"""),format.raw/*129.19*/(""" """),format.raw/*129.20*/("""'header': 1 """),format.raw/*129.32*/("""}"""),format.raw/*129.33*/(""", """),format.raw/*129.35*/("""{"""),format.raw/*129.36*/(""" """),format.raw/*129.37*/("""'header': 2 """),format.raw/*129.49*/("""}"""),format.raw/*129.50*/("""],               // custom button values
+                ["""),format.raw/*130.18*/("""{"""),format.raw/*130.19*/(""" """),format.raw/*130.20*/("""'list': 'ordered'"""),format.raw/*130.37*/("""}"""),format.raw/*130.38*/(""", """),format.raw/*130.40*/("""{"""),format.raw/*130.41*/(""" """),format.raw/*130.42*/("""'list': 'bullet' """),format.raw/*130.59*/("""}"""),format.raw/*130.60*/("""],
+                ["""),format.raw/*131.18*/("""{"""),format.raw/*131.19*/(""" """),format.raw/*131.20*/("""'script': 'sub'"""),format.raw/*131.35*/("""}"""),format.raw/*131.36*/(""", """),format.raw/*131.38*/("""{"""),format.raw/*131.39*/(""" """),format.raw/*131.40*/("""'script': 'super' """),format.raw/*131.58*/("""}"""),format.raw/*131.59*/("""],      // superscript/subscript
+                ["""),format.raw/*132.18*/("""{"""),format.raw/*132.19*/(""" """),format.raw/*132.20*/("""'indent': '-1'"""),format.raw/*132.34*/("""}"""),format.raw/*132.35*/(""", """),format.raw/*132.37*/("""{"""),format.raw/*132.38*/(""" """),format.raw/*132.39*/("""'indent': '+1' """),format.raw/*132.54*/("""}"""),format.raw/*132.55*/("""],          // outdent/indent
+                ["""),format.raw/*133.18*/("""{"""),format.raw/*133.19*/(""" """),format.raw/*133.20*/("""'direction': 'rtl' """),format.raw/*133.39*/("""}"""),format.raw/*133.40*/("""],                         // text direction
 
-                ["""), format.raw /*144.18*/ ("""{"""), format.raw /*144.19*/ (""" """), format.raw /*144.20*/ ("""'size': ['small', false, 'large', 'huge'] """), format.raw /*144.62*/ ("""}"""), format.raw /*144.63*/ ("""],  // custom dropdown
-                ["""), format.raw /*145.18*/ ("""{"""), format.raw /*145.19*/ (""" """), format.raw /*145.20*/ ("""'header': [1, 2, 3, 4, 5, 6, false] """), format.raw /*145.56*/ ("""}"""), format.raw /*145.57*/ ("""],
+                ["""),format.raw/*135.18*/("""{"""),format.raw/*135.19*/(""" """),format.raw/*135.20*/("""'size': ['small', false, 'large', 'huge'] """),format.raw/*135.62*/("""}"""),format.raw/*135.63*/("""],  // custom dropdown
+                ["""),format.raw/*136.18*/("""{"""),format.raw/*136.19*/(""" """),format.raw/*136.20*/("""'header': [1, 2, 3, 4, 5, 6, false] """),format.raw/*136.56*/("""}"""),format.raw/*136.57*/("""],
                 [ 'link', 'image', 'image2', 'video', 'formula' ],          // add's image support
-                ["""), format.raw /*147.18*/ ("""{"""), format.raw /*147.19*/ (""" """), format.raw /*147.20*/ ("""'color': [] """), format.raw /*147.32*/ ("""}"""), format.raw /*147.33*/ (""", """), format.raw /*147.35*/ ("""{"""), format.raw /*147.36*/ (""" """), format.raw /*147.37*/ ("""'background': [] """), format.raw /*147.54*/ ("""}"""), format.raw /*147.55*/ ("""],          // dropdown with defaults from theme
-                ["""), format.raw /*148.18*/ ("""{"""), format.raw /*148.19*/ (""" """), format.raw /*148.20*/ ("""'font': [] """), format.raw /*148.31*/ ("""}"""), format.raw /*148.32*/ ("""],
-                ["""), format.raw /*149.18*/ ("""{"""), format.raw /*149.19*/ (""" """), format.raw /*149.20*/ ("""'align': [] """), format.raw /*149.32*/ ("""}"""), format.raw /*149.33*/ ("""],
+                ["""),format.raw/*138.18*/("""{"""),format.raw/*138.19*/(""" """),format.raw/*138.20*/("""'color': [] """),format.raw/*138.32*/("""}"""),format.raw/*138.33*/(""", """),format.raw/*138.35*/("""{"""),format.raw/*138.36*/(""" """),format.raw/*138.37*/("""'background': [] """),format.raw/*138.54*/("""}"""),format.raw/*138.55*/("""],          // dropdown with defaults from theme
+                ["""),format.raw/*139.18*/("""{"""),format.raw/*139.19*/(""" """),format.raw/*139.20*/("""'font': [] """),format.raw/*139.31*/("""}"""),format.raw/*139.32*/("""],
+                ["""),format.raw/*140.18*/("""{"""),format.raw/*140.19*/(""" """),format.raw/*140.20*/("""'align': [] """),format.raw/*140.32*/("""}"""),format.raw/*140.33*/("""],
 
                 ['clean']                                         // remove formatting button
             ];
-            quill = new Quill('#description-edit', """), format.raw /*153.52*/ ("""{"""), format.raw /*153.53*/ ("""
-                """), format.raw /*154.17*/ ("""modules: """), format.raw /*154.26*/ ("""{"""), format.raw /*154.27*/ ("""
-                    """), format.raw /*155.21*/ ("""toolbar: """), format.raw /*155.30*/ ("""{"""), format.raw /*155.31*/ ("""
-                      """), format.raw /*156.23*/ ("""container: toolbarOptions,
-                      handlers: """), format.raw /*157.33*/ ("""{"""), format.raw /*157.34*/ ("""
-                        """), format.raw /*158.25*/ ("""image: imageBase64Handler,
+            quill = new Quill('#description-edit', """),format.raw/*144.52*/("""{"""),format.raw/*144.53*/("""
+                """),format.raw/*145.17*/("""modules: """),format.raw/*145.26*/("""{"""),format.raw/*145.27*/("""
+                    """),format.raw/*146.21*/("""toolbar: """),format.raw/*146.30*/("""{"""),format.raw/*146.31*/("""
+                      """),format.raw/*147.23*/("""container: toolbarOptions,
+                      handlers: """),format.raw/*148.33*/("""{"""),format.raw/*148.34*/("""
+                        """),format.raw/*149.25*/("""image: imageBase64Handler,
                         image2: image2Handler
-                      """), format.raw /*160.23*/ ("""}"""), format.raw /*160.24*/ ("""
-                    """), format.raw /*161.21*/ ("""}"""), format.raw /*161.22*/ ("""
-                """), format.raw /*162.17*/ ("""}"""), format.raw /*162.18*/ (""",
+                      """),format.raw/*151.23*/("""}"""),format.raw/*151.24*/("""
+                    """),format.raw/*152.21*/("""}"""),format.raw/*152.22*/("""
+                """),format.raw/*153.17*/("""}"""),format.raw/*153.18*/(""",
                 theme: 'snow'
-            """), format.raw /*164.13*/ ("""}"""), format.raw /*164.14*/ (""");
+            """),format.raw/*155.13*/("""}"""),format.raw/*155.14*/(""");
 
-            $('#filepicker').change(insertImageInQuillJSAsBase64);
+            $('#filepickuper').change(insertImageInQuillJSAsBase64);
 
-            $('#item-edit-form').on('submit', function()"""), format.raw /*168.57*/ ("""{"""), format.raw /*168.58*/ ("""
-                """), format.raw /*169.17*/ ("""document.getElementById('description').value = document.getElementsByClassName('ql-editor')[0].innerHTML;
-                if( deleteButtonPressed )"""), format.raw /*170.42*/ ("""{"""), format.raw /*170.43*/ ("""
-                    """), format.raw /*171.21*/ ("""let id = document.getElementById('id').value;
+            $('#item-edit-form').on('submit', function()"""),format.raw/*159.57*/("""{"""),format.raw/*159.58*/("""
+                """),format.raw/*160.17*/("""document.getElementById('description').value = document.getElementsByClassName('ql-editor')[0].innerHTML;
+                if( deleteButtonPressed )"""),format.raw/*161.42*/("""{"""),format.raw/*161.43*/("""
+                    """),format.raw/*162.21*/("""var id = document.getElementById('id').value;
                     deleteButtonPressed = false;
                     return confirm('Delete item #'+id);
-                """), format.raw /*174.17*/ ("""}"""), format.raw /*174.18*/ (""" """), format.raw /*174.19*/ ("""else """), format.raw /*174.24*/ ("""{"""), format.raw /*174.25*/ ("""
-                    """), format.raw /*175.21*/ ("""return true;
-                """), format.raw /*176.17*/ ("""}"""), format.raw /*176.18*/ ("""
-            """), format.raw /*177.13*/ ("""}"""), format.raw /*177.14*/ (""");
+                """),format.raw/*165.17*/("""}"""),format.raw/*165.18*/(""" """),format.raw/*165.19*/("""else """),format.raw/*165.24*/("""{"""),format.raw/*165.25*/("""
+                    """),format.raw/*166.21*/("""return true;
+                """),format.raw/*167.17*/("""}"""),format.raw/*167.18*/("""
+            """),format.raw/*168.13*/("""}"""),format.raw/*168.14*/(""");
 
-            if(document.getElementById("delete-btn"))"""), format.raw /*179.54*/ ("""{"""), format.raw /*179.55*/ ("""
-                """), format.raw /*180.17*/ ("""document.getElementById("delete-btn").addEventListener('click', (event) => """), format.raw /*180.92*/ ("""{"""), format.raw /*180.93*/ ("""
-                    """), format.raw /*181.21*/ ("""deleteButtonPressed = true;
-                """), format.raw /*182.17*/ ("""}"""), format.raw /*182.18*/ (""");
-            """), format.raw /*183.13*/ ("""}"""), format.raw /*183.14*/ (""";
+            if(document.getElementById("delete-btn"))"""),format.raw/*170.54*/("""{"""),format.raw/*170.55*/("""
+                """),format.raw/*171.17*/("""document.getElementById("delete-btn").addEventListener('click', (event) => """),format.raw/*171.92*/("""{"""),format.raw/*171.93*/("""
+                    """),format.raw/*172.21*/("""deleteButtonPressed = true;
+                """),format.raw/*173.17*/("""}"""),format.raw/*173.18*/(""");
+            """),format.raw/*174.13*/("""}"""),format.raw/*174.14*/(""";
+
+            // SEARCH IMAGES
+            $('#search-images-btn').click(function() """),format.raw/*177.54*/("""{"""),format.raw/*177.55*/("""
+                """),format.raw/*178.17*/("""$.get('"""),_display_(/*178.25*/controllers/*178.36*/.images.routes.Images.jsonAllImageInfo),format.raw/*178.74*/("""', function(listOfImages, status)"""),format.raw/*178.107*/("""{"""),format.raw/*178.108*/("""
+                   """),format.raw/*179.20*/("""var searchImagesDiv = $('#search-images');
+                   listOfImages.map((image) => """),format.raw/*180.48*/("""{"""),format.raw/*180.49*/("""
+                        """),format.raw/*181.25*/("""const imageHref = '/img/150x150/'+image.name;
+                        const img = $('<img />', """),format.raw/*182.50*/("""{"""),format.raw/*182.51*/("""
+                            """),format.raw/*183.29*/("""src:   imageHref,
+                            alt:   image.content,
+                            click: function()"""),format.raw/*185.46*/("""{"""),format.raw/*185.47*/("""
+                                """),format.raw/*186.33*/("""$('#image').val(image.name);
+                                $('#image-displayed').attr('src', imageHref);
+                                $('#search-images').empty();
+                            """),format.raw/*189.29*/("""}"""),format.raw/*189.30*/("""
+                        """),format.raw/*190.25*/("""}"""),format.raw/*190.26*/(""");
+                        const div = $('<div />', """),format.raw/*191.50*/("""{"""),format.raw/*191.51*/("""
+                            """),format.raw/*192.29*/("""class: "col col-sm-2",
+                        """),format.raw/*193.25*/("""}"""),format.raw/*193.26*/(""");
+                        div.append(img).append(
+                            $('<span />', """),format.raw/*195.43*/("""{"""),format.raw/*195.44*/(""" """),format.raw/*195.45*/("""text: image.content.slice(0, 22)"""),format.raw/*195.77*/("""}"""),format.raw/*195.78*/(""")
+                        ).appendTo(searchImagesDiv);
+                    """),format.raw/*197.21*/("""}"""),format.raw/*197.22*/(""");
+                """),format.raw/*198.17*/("""}"""),format.raw/*198.18*/(""");
+            """),format.raw/*199.13*/("""}"""),format.raw/*199.14*/(""");
 
 
-        """), format.raw /*186.9*/ ("""}"""), format.raw /*186.10*/ (""");
+
+        """),format.raw/*203.9*/("""}"""),format.raw/*203.10*/(""");
     </script>
     <style>
-    #description-edit"""), format.raw /*189.22*/ ("""{"""), format.raw /*189.23*/ ("""
-        """), format.raw /*190.9*/ ("""min-height: 500px;
+    #description-edit"""),format.raw/*206.22*/("""{"""),format.raw/*206.23*/("""
+        """),format.raw/*207.9*/("""min-height: 500px;
         max-height: 400px;
         overflow: hidden;
         overflow-y: scroll;
         overflow-x: scroll;
-    """), format.raw /*195.5*/ ("""}"""), format.raw /*195.6*/ ("""
+    """),format.raw/*212.5*/("""}"""),format.raw/*212.6*/("""
 
-    """), format.raw /*197.5*/ (""".ql-image2:after """), format.raw /*197.22*/ ("""{"""), format.raw /*197.23*/ ("""
-        """), format.raw /*198.9*/ ("""content: "Ω";
-    """), format.raw /*199.5*/ ("""}"""), format.raw /*199.6*/ ("""
-    """), format.raw /*200.5*/ ("""</style>
-""")))
-          }), format.raw /*201.2*/ ("""
+    """),format.raw/*214.5*/(""".ql-image2:after """),format.raw/*214.22*/("""{"""),format.raw/*214.23*/("""
+        """),format.raw/*215.9*/("""content: "Ω";
+    """),format.raw/*216.5*/("""}"""),format.raw/*216.6*/("""
+    """),format.raw/*217.5*/("""</style>
+""")))}),format.raw/*218.2*/("""
 """))
-        }
       }
     }
-
-    def render(user: models.User, item: Form[GoodsItem], errors: Map[String, String], request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets): play.twirl.api.HtmlFormat.Appendable = apply(user, item, errors)(request, messages, webJarAssets)
-
-    def f: ((models.User, Form[GoodsItem], Map[String, String]) => (RequestHeader, Messages, WebJarAssets) => play.twirl.api.HtmlFormat.Appendable) = (user, item, errors) => (request, messages, webJarAssets) => apply(user, item, errors)(request, messages, webJarAssets)
-
-    def ref: this.type = this
-
   }
+
+  def render(user:models.User,goodsItemForm:Form[GoodsItem],categories:Seq[Category],request:RequestHeader,messages:Messages,webJarAssets:WebJarAssets): play.twirl.api.HtmlFormat.Appendable = apply(user,goodsItemForm,categories)(request,messages,webJarAssets)
+
+  def f:((models.User,Form[GoodsItem],Seq[Category]) => (RequestHeader,Messages,WebJarAssets) => play.twirl.api.HtmlFormat.Appendable) = (user,goodsItemForm,categories) => (request,messages,webJarAssets) => apply(user,goodsItemForm,categories)(request,messages,webJarAssets)
+
+  def ref: this.type = this
+
+}
+
 
 }
 
 /**/
 object itemEditForm extends itemEditForm_Scope0.itemEditForm
-/*
+              /*
                   -- GENERATED --
-                  DATE: Thu Mar 30 01:07:17 EEST 2017
+                  DATE: Sun May 07 01:06:03 EEST 2017
                   SOURCE: /Users/snc/scala/walnuts/server/app/views/goods/itemEditForm.scala.html
-                  HASH: b159ddd96119b7fec924a27dd80ea380b931f485
-                  MATRIX: 681->1|973->179|1000->200|1027->202|1080->247|1118->248|1149->254|1545->630|1577->635|1716->747|1796->805|1847->829|1886->847|1978->912|2017->930|2271->1157|2312->1177|2417->1255|2462->1279|2646->1436|2690->1459|2814->1556|2882->1603|2923->1616|3059->1725|3097->1742|3196->1814|3238->1835|3416->1986|3459->2008|3568->2090|3616->2116|3868->2341|3913->2364|3963->2387|4002->2417|4041->2418|4086->2435|4202->2523|4242->2541|4387->2658|4427->2676|4481->2699|4517->2708|5337->3500|5366->3501|5407->3514|5442->3522|5462->3533|5507->3557|5568->3590|5597->3591|5641->3607|5701->3639|5730->3640|5790->3672|5819->3673|5856->3682|5885->3683|5938->3708|6198->3940|6227->3941|6301->3987|6330->3988|6379->4009|6478->4080|6507->4081|6560->4106|6740->4258|6769->4259|6826->4288|7032->4466|7061->4467|7126->4504|7205->4555|7234->4556|7298->4592|7327->4593|7388->4626|7485->4696|7541->4731|7621->4783|7650->4784|7889->4995|7918->4996|7966->5016|7995->5017|8064->5058|8093->5059|8180->5118|8209->5119|8247->5130|8276->5131|8553->5379|8583->5380|8625->5393|8727->5466|8757->5467|8803->5484|8850->5503|8907->5538|9136->5738|9166->5739|9220->5764|9283->5798|9313->5799|9364->5821|9394->5822|9440->5839|9542->5912|9572->5913|9634->5946|9664->5947|9786->6041|9816->6042|9886->6083|9916->6084|9958->6097|10029->6140|10059->6141|10169->6222|10199->6223|10241->6236|10483->6449|10513->6450|10543->6451|10584->6463|10614->6464|10645->6466|10675->6467|10705->6468|10746->6480|10776->6481|10863->6539|10893->6540|10923->6541|10969->6558|10999->6559|11030->6561|11060->6562|11090->6563|11136->6580|11166->6581|11215->6601|11245->6602|11275->6603|11319->6618|11349->6619|11380->6621|11410->6622|11440->6623|11487->6641|11517->6642|11596->6692|11626->6693|11656->6694|11699->6708|11729->6709|11760->6711|11790->6712|11820->6713|11864->6728|11894->6729|11970->6776|12000->6777|12030->6778|12078->6797|12108->6798|12200->6861|12230->6862|12260->6863|12331->6905|12361->6906|12430->6946|12460->6947|12490->6948|12555->6984|12585->6985|12733->7104|12763->7105|12793->7106|12834->7118|12864->7119|12895->7121|12925->7122|12955->7123|13001->7140|13031->7141|13126->7207|13156->7208|13186->7209|13226->7220|13256->7221|13305->7241|13335->7242|13365->7243|13406->7255|13436->7256|13629->7420|13659->7421|13705->7438|13743->7447|13773->7448|13823->7469|13861->7478|13891->7479|13943->7502|14031->7561|14061->7562|14115->7587|14239->7682|14269->7683|14319->7704|14349->7705|14395->7722|14425->7723|14498->7767|14528->7768|14685->7896|14715->7897|14761->7914|14937->8061|14967->8062|15017->8083|15213->8250|15243->8251|15273->8252|15307->8257|15337->8258|15387->8279|15445->8308|15475->8309|15517->8322|15547->8323|15633->8380|15663->8381|15709->8398|15813->8473|15843->8474|15893->8495|15966->8539|15996->8540|16040->8555|16070->8556|16110->8568|16140->8569|16219->8619|16249->8620|16286->8629|16446->8761|16475->8762|16509->8768|16555->8785|16585->8786|16622->8795|16668->8813|16697->8814|16730->8819|16771->8829
-                  LINES: 22->1|27->1|28->3|29->4|29->4|29->4|30->5|37->12|38->13|39->14|39->14|40->15|40->15|41->16|41->16|45->20|45->20|46->21|46->21|50->25|50->25|52->27|52->27|53->28|56->31|56->31|57->32|57->32|61->36|61->36|62->37|62->37|67->42|67->42|68->43|68->43|68->43|69->44|69->44|69->44|70->45|70->45|71->46|72->47|91->66|91->66|92->67|92->67|92->67|92->67|92->67|92->67|93->68|93->68|93->68|93->68|93->68|93->68|93->68|94->69|98->73|98->73|99->74|99->74|100->75|101->76|101->76|102->77|105->80|105->80|106->81|109->84|109->84|110->85|111->86|111->86|112->87|112->87|113->88|114->89|114->89|115->90|115->90|117->92|117->92|118->93|118->93|119->94|119->94|121->96|121->96|122->97|122->97|130->105|130->105|131->106|132->107|132->107|133->108|133->108|133->108|138->113|138->113|139->114|140->115|140->115|141->116|141->116|142->117|144->119|144->119|146->121|146->121|149->124|149->124|151->126|151->126|152->127|153->128|153->128|157->132|157->132|158->133|163->138|163->138|163->138|163->138|163->138|163->138|163->138|163->138|163->138|163->138|164->139|164->139|164->139|164->139|164->139|164->139|164->139|164->139|164->139|164->139|165->140|165->140|165->140|165->140|165->140|165->140|165->140|165->140|165->140|165->140|166->141|166->141|166->141|166->141|166->141|166->141|166->141|166->141|166->141|166->141|167->142|167->142|167->142|167->142|167->142|169->144|169->144|169->144|169->144|169->144|170->145|170->145|170->145|170->145|170->145|172->147|172->147|172->147|172->147|172->147|172->147|172->147|172->147|172->147|172->147|173->148|173->148|173->148|173->148|173->148|174->149|174->149|174->149|174->149|174->149|178->153|178->153|179->154|179->154|179->154|180->155|180->155|180->155|181->156|182->157|182->157|183->158|185->160|185->160|186->161|186->161|187->162|187->162|189->164|189->164|193->168|193->168|194->169|195->170|195->170|196->171|199->174|199->174|199->174|199->174|199->174|200->175|201->176|201->176|202->177|202->177|204->179|204->179|205->180|205->180|205->180|206->181|207->182|207->182|208->183|208->183|211->186|211->186|214->189|214->189|215->190|220->195|220->195|222->197|222->197|222->197|223->198|224->199|224->199|225->200|226->201
+                  HASH: 932a247d4ea9127df21f46a46896fa828ec1317b
+                  MATRIX: 795->1|1104->160|1131->218|1158->220|1211->265|1249->266|1280->271|1420->385|1496->440|1546->464|1593->491|1684->556|1731->583|1839->664|1850->666|2035->830|2072->840|2083->842|2160->898|2196->907|2407->1091|2484->1147|2525->1160|2583->1191|2594->1193|2682->1260|2718->1269|2777->1301|2797->1312|2897->1390|2936->1402|2947->1404|3020->1456|3056->1465|3289->1671|3405->1765|3500->1833|3548->1872|3587->1873|3632->1890|3905->2132|3946->2145|4893->3064|4922->3065|4963->3078|4998->3086|5018->3097|5077->3135|5139->3168|5169->3169|5213->3185|5273->3217|5302->3218|5362->3250|5391->3251|5428->3260|5457->3261|5510->3286|5770->3518|5799->3519|5873->3565|5902->3566|5951->3587|6118->3726|6147->3727|6200->3752|6397->3921|6426->3922|6483->3951|6689->4129|6718->4130|6783->4167|6862->4218|6891->4219|6955->4255|6984->4256|7045->4289|7142->4359|7198->4394|7278->4446|7307->4447|7546->4658|7575->4659|7623->4679|7652->4680|7721->4721|7750->4722|7837->4781|7866->4782|7904->4793|7933->4794|8213->5046|8242->5047|8283->5060|8384->5133|8413->5134|8458->5151|8504->5170|8560->5205|8789->5405|8819->5406|8873->5431|8936->5465|8966->5466|9017->5488|9047->5489|9093->5506|9195->5579|9225->5580|9287->5613|9317->5614|9441->5710|9471->5711|9541->5752|9571->5753|9613->5766|9686->5811|9716->5812|9839->5906|9869->5907|9911->5920|10153->6133|10183->6134|10213->6135|10254->6147|10284->6148|10315->6150|10345->6151|10375->6152|10416->6164|10446->6165|10533->6223|10563->6224|10593->6225|10639->6242|10669->6243|10700->6245|10730->6246|10760->6247|10806->6264|10836->6265|10885->6285|10915->6286|10945->6287|10989->6302|11019->6303|11050->6305|11080->6306|11110->6307|11157->6325|11187->6326|11266->6376|11296->6377|11326->6378|11369->6392|11399->6393|11430->6395|11460->6396|11490->6397|11534->6412|11564->6413|11640->6460|11670->6461|11700->6462|11748->6481|11778->6482|11870->6545|11900->6546|11930->6547|12001->6589|12031->6590|12100->6630|12130->6631|12160->6632|12225->6668|12255->6669|12403->6788|12433->6789|12463->6790|12504->6802|12534->6803|12565->6805|12595->6806|12625->6807|12671->6824|12701->6825|12796->6891|12826->6892|12856->6893|12896->6904|12926->6905|12975->6925|13005->6926|13035->6927|13076->6939|13106->6940|13299->7104|13329->7105|13375->7122|13413->7131|13443->7132|13493->7153|13531->7162|13561->7163|13613->7186|13701->7245|13731->7246|13785->7271|13909->7366|13939->7367|13989->7388|14019->7389|14065->7406|14095->7407|14168->7451|14198->7452|14357->7582|14387->7583|14433->7600|14609->7747|14639->7748|14689->7769|14885->7936|14915->7937|14945->7938|14979->7943|15009->7944|15059->7965|15117->7994|15147->7995|15189->8008|15219->8009|15305->8066|15335->8067|15381->8084|15485->8159|15515->8160|15565->8181|15638->8225|15668->8226|15712->8241|15742->8242|15856->8327|15886->8328|15932->8345|15968->8353|15989->8364|16049->8402|16112->8435|16143->8436|16192->8456|16311->8546|16341->8547|16395->8572|16519->8667|16549->8668|16607->8697|16749->8810|16779->8811|16841->8844|17066->9040|17096->9041|17150->9066|17180->9067|17261->9119|17291->9120|17349->9149|17425->9196|17455->9197|17577->9290|17607->9291|17637->9292|17698->9324|17728->9325|17832->9400|17862->9401|17910->9420|17940->9421|17984->9436|18014->9437|18056->9451|18086->9452|18165->9502|18195->9503|18232->9512|18392->9644|18421->9645|18455->9651|18501->9668|18531->9669|18568->9678|18614->9696|18643->9697|18676->9702|18717->9712
+                  LINES: 26->1|32->1|33->4|34->5|34->5|34->5|35->6|36->7|36->7|37->8|37->8|38->9|38->9|40->11|40->11|43->14|44->15|44->15|44->15|45->16|48->19|48->19|49->20|51->22|51->22|51->22|52->23|52->23|52->23|52->23|53->24|53->24|53->24|54->25|58->29|58->29|60->31|60->31|60->31|61->32|63->34|64->35|84->55|84->55|85->56|85->56|85->56|85->56|85->56|85->56|86->57|86->57|86->57|86->57|86->57|86->57|86->57|87->58|91->62|91->62|92->63|92->63|93->64|95->66|95->66|96->67|99->70|99->70|100->71|103->74|103->74|104->75|105->76|105->76|106->77|106->77|107->78|108->79|108->79|109->80|109->80|111->82|111->82|112->83|112->83|113->84|113->84|115->86|115->86|116->87|116->87|124->95|124->95|125->96|126->97|126->97|127->98|127->98|127->98|132->103|132->103|133->104|134->105|134->105|135->106|135->106|136->107|138->109|138->109|140->111|140->111|143->114|143->114|145->116|145->116|146->117|147->118|147->118|152->123|152->123|153->124|158->129|158->129|158->129|158->129|158->129|158->129|158->129|158->129|158->129|158->129|159->130|159->130|159->130|159->130|159->130|159->130|159->130|159->130|159->130|159->130|160->131|160->131|160->131|160->131|160->131|160->131|160->131|160->131|160->131|160->131|161->132|161->132|161->132|161->132|161->132|161->132|161->132|161->132|161->132|161->132|162->133|162->133|162->133|162->133|162->133|164->135|164->135|164->135|164->135|164->135|165->136|165->136|165->136|165->136|165->136|167->138|167->138|167->138|167->138|167->138|167->138|167->138|167->138|167->138|167->138|168->139|168->139|168->139|168->139|168->139|169->140|169->140|169->140|169->140|169->140|173->144|173->144|174->145|174->145|174->145|175->146|175->146|175->146|176->147|177->148|177->148|178->149|180->151|180->151|181->152|181->152|182->153|182->153|184->155|184->155|188->159|188->159|189->160|190->161|190->161|191->162|194->165|194->165|194->165|194->165|194->165|195->166|196->167|196->167|197->168|197->168|199->170|199->170|200->171|200->171|200->171|201->172|202->173|202->173|203->174|203->174|206->177|206->177|207->178|207->178|207->178|207->178|207->178|207->178|208->179|209->180|209->180|210->181|211->182|211->182|212->183|214->185|214->185|215->186|218->189|218->189|219->190|219->190|220->191|220->191|221->192|222->193|222->193|224->195|224->195|224->195|224->195|224->195|226->197|226->197|227->198|227->198|228->199|228->199|232->203|232->203|235->206|235->206|236->207|241->212|241->212|243->214|243->214|243->214|244->215|245->216|245->216|246->217|247->218
                   -- GENERATED --
               */
+          

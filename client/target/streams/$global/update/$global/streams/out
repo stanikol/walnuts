@@ -1851,7 +1851,7 @@
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.eclipse.jetty#jetty-http;8.1.16.v20140903!jetty-http.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.eclipse.jetty.orbit#javax.servlet;3.0.0.v201112011016!javax.servlet.jar(orbit)[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.eclipse.jetty#jetty-continuation;8.1.16.v20140903!jetty-continuation.jar[0m
-[0m[[0mdebug[0m] [0m:: resolution report :: resolve 185ms :: artifacts dl 6ms[0m
+[0m[[0mdebug[0m] [0m:: resolution report :: resolve 235ms :: artifacts dl 9ms[0m
 [0m[[0mdebug[0m] [0m	report for client#client_sjs0.6_2.11;0.1-SNAPSHOT compile produced in /Users/snc/scala/walnuts/client/target/resolution-cache/reports/client-client_sjs0.6_2.11-compile.xml[0m
 [0m[[0mdebug[0m] [0m	report for client#client_sjs0.6_2.11;0.1-SNAPSHOT runtime produced in /Users/snc/scala/walnuts/client/target/resolution-cache/reports/client-client_sjs0.6_2.11-runtime.xml[0m
 [0m[[0mdebug[0m] [0m	report for client#client_sjs0.6_2.11;0.1-SNAPSHOT test produced in /Users/snc/scala/walnuts/client/target/resolution-cache/reports/client-client_sjs0.6_2.11-test.xml[0m
@@ -1866,5 +1866,5 @@
 [0m[[0mdebug[0m] [0m	report for client#client_sjs0.6_2.11;0.1-SNAPSHOT pom produced in /Users/snc/scala/walnuts/client/target/resolution-cache/reports/client-client_sjs0.6_2.11-pom.xml[0m
 [0m[[0mdebug[0m] [0m	report for client#client_sjs0.6_2.11;0.1-SNAPSHOT scala-tool produced in /Users/snc/scala/walnuts/client/target/resolution-cache/reports/client-client_sjs0.6_2.11-scala-tool.xml[0m
 [0m[[0mdebug[0m] [0m	report for client#client_sjs0.6_2.11;0.1-SNAPSHOT phantom-js-jetty produced in /Users/snc/scala/walnuts/client/target/resolution-cache/reports/client-client_sjs0.6_2.11-phantom-js-jetty.xml[0m
-[0m[[0mdebug[0m] [0m	resolve done (185ms resolve - 6ms download)[0m
+[0m[[0mdebug[0m] [0m	resolve done (235ms resolve - 9ms download)[0m
 [0m[[0minfo[0m] [0mDone updating.[0m

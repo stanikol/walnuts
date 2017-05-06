@@ -12,8 +12,12 @@ object passwordStrength_Scope0 {
   import play.api.templates.PlayMagic._
   import play.api.mvc._
   import play.api.data._
-  import models.nuts.Data._
-  import models.nuts.FormsData._
+  import models.blog.Data._
+  import models.blog.FormsData._
+  import models.goods._
+  import controllers.goods.FormsData._
+  import models.images._
+  import controllers.images.FormsData._
 
   object passwordStrength_Scope1 {
     import b3.inline.fieldConstructor
@@ -52,10 +56,10 @@ object passwordStrength_Scope0 {
 object passwordStrength extends passwordStrength_Scope0.passwordStrength_Scope1.passwordStrength
 /*
                   -- GENERATED --
-                  DATE: Thu Mar 30 01:07:17 EEST 2017
+                  DATE: Sun May 07 01:06:03 EEST 2017
                   SOURCE: /Users/snc/scala/walnuts/server/app/views/auth/passwordStrength.scala.html
-                  HASH: 7325258d349c151f5fc48b1aa527965d96d61f0b
-                  MATRIX: 752->36|968->156|995->157|1033->170|1042->172|1122->232|1152->236
-                  LINES: 25->2|30->2|31->3|32->4|32->4|32->4|34->6
+                  HASH: 48db58a9de2ba81422bec68afd91d3be92bfcfa0
+                  MATRIX: 872->36|1088->156|1115->157|1153->170|1162->172|1242->232|1272->236
+                  LINES: 29->2|34->2|35->3|36->4|36->4|36->4|38->6
                   -- GENERATED --
               */

@@ -12,8 +12,12 @@ object changePassword_Scope0 {
   import play.api.templates.PlayMagic._
   import play.api.mvc._
   import play.api.data._
-  import models.nuts.Data._
-  import models.nuts.FormsData._
+  import models.blog.Data._
+  import models.blog.FormsData._
+  import models.goods._
+  import controllers.goods.FormsData._
+  import models.images._
+  import controllers.images.FormsData._
 
   class changePassword extends BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable, Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with play.twirl.api.Template5[Form[scala.Tuple2[String, String]], models.User, RequestHeader, Messages, WebJarAssets, play.twirl.api.HtmlFormat.Appendable] {
 
@@ -65,10 +69,10 @@ object changePassword_Scope0 {
 object changePassword extends changePassword_Scope0.changePassword
 /*
                   -- GENERATED --
-                  DATE: Thu Mar 30 01:07:17 EEST 2017
+                  DATE: Sun May 07 01:06:03 EEST 2017
                   SOURCE: /Users/snc/scala/walnuts/server/app/views/auth/changePassword.scala.html
-                  HASH: f3743f0279d3fcb5b2d799e9c5a153e84b8ce3e3
-                  MATRIX: 683->1|956->145|984->182|1011->184|1070->235|1109->237|1140->242|1227->303|1274->330|1319->349|1333->355|1437->450|1477->452|1517->465|1560->482|1612->514|1657->532|1672->538|1708->553|1749->567|1760->569|1959->746|2000->760|2194->932|2235->945|2421->1103|2461->1121|2553->1182|2585->1187|2628->1200
-                  LINES: 22->1|27->1|29->4|30->5|30->5|30->5|31->6|32->7|32->7|33->8|33->8|33->8|33->8|34->9|34->9|34->9|35->10|35->10|35->10|36->11|36->11|36->11|37->12|37->12|38->13|40->15|40->15|43->18|44->19|45->20
+                  HASH: aa2134a5936fd9a5583460bd75247f3984f37958
+                  MATRIX: 803->1|1076->145|1104->182|1131->184|1190->235|1229->237|1260->242|1347->303|1394->330|1439->349|1453->355|1557->450|1597->452|1637->465|1680->482|1732->514|1777->532|1792->538|1828->553|1869->567|1880->569|2079->746|2120->760|2314->932|2355->945|2541->1103|2581->1121|2673->1182|2705->1187|2748->1200
+                  LINES: 26->1|31->1|33->4|34->5|34->5|34->5|35->6|36->7|36->7|37->8|37->8|37->8|37->8|38->9|38->9|38->9|39->10|39->10|39->10|40->11|40->11|40->11|41->12|41->12|42->13|44->15|44->15|47->18|48->19|49->20
                   -- GENERATED --
               */

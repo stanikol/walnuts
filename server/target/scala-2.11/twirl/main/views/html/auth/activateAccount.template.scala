@@ -12,8 +12,12 @@ object activateAccount_Scope0 {
   import play.api.templates.PlayMagic._
   import play.api.mvc._
   import play.api.data._
-  import models.nuts.Data._
-  import models.nuts.FormsData._
+  import models.blog.Data._
+  import models.blog.FormsData._
+  import models.goods._
+  import controllers.goods.FormsData._
+  import models.images._
+  import controllers.images.FormsData._
 
   class activateAccount extends BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable, Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with play.twirl.api.Template4[String, RequestHeader, Messages, WebJarAssets, play.twirl.api.HtmlFormat.Appendable] {
 
@@ -56,10 +60,10 @@ object activateAccount_Scope0 {
 object activateAccount extends activateAccount_Scope0.activateAccount
 /*
                   -- GENERATED --
-                  DATE: Thu Mar 30 01:07:17 EEST 2017
+                  DATE: Sun May 07 01:06:03 EEST 2017
                   SOURCE: /Users/snc/scala/walnuts/server/app/views/auth/activateAccount.scala.html
-                  HASH: c09bedb8370a6a3ccb5f70fa525d80f90232e2be
-                  MATRIX: 645->1|836->97|864->100|912->140|951->142|982->147|1069->208|1117->236|1196->289|1250->323|1300->347|1325->352|1376->377|1430->411|1478->432|1621->553|1688->590
-                  LINES: 22->1|27->1|29->3|29->3|29->3|30->4|31->5|31->5|33->7|33->7|34->8|34->8|35->9|35->9|36->10|36->10|39->13
+                  HASH: 9195aa64f415a690e85fe7aa179376c528a8dfe6
+                  MATRIX: 765->1|956->97|984->100|1032->140|1071->142|1102->147|1189->208|1237->236|1316->289|1370->323|1420->347|1445->352|1496->377|1550->411|1598->432|1741->553|1808->590
+                  LINES: 26->1|31->1|33->3|33->3|33->3|34->4|35->5|35->5|37->7|37->7|38->8|38->8|39->9|39->9|40->10|40->10|43->13
                   -- GENERATED --
               */

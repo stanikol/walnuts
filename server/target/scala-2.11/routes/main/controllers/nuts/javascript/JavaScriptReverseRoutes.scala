@@ -1,27 +1,29 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/snc/scala/walnuts/server/conf/routes
-// @DATE:Thu Mar 30 01:46:36 EEST 2017
+// @DATE:Sun May 07 01:48:52 EEST 2017
 
 import play.api.routing.JavaScriptReverseRoute
 import play.api.mvc.{ QueryStringBindable, PathBindable, Call, JavascriptLiteral }
 import play.core.routing.{ HandlerDef, ReverseRouteContext, queryString, dynamicString }
 
+
 import _root_.controllers.Assets.Asset
 import _root_.utils.route.Binders._
 
-// @LINE:33
+// @LINE:39
 package controllers.nuts.javascript {
   import ReverseRouteContext.empty
 
-  // @LINE:52
+  // @LINE:60
   class ReverseComments(_prefix: => String) {
 
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
-    // @LINE:55
+  
+    // @LINE:63
     def loginOrSignUp: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.nuts.Comments.loginOrSignUp",
       """
@@ -30,165 +32,98 @@ package controllers.nuts.javascript {
         }
       """
     )
-
-    // @LINE:52
+  
+    // @LINE:61
     def addComment: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.nuts.Comments.addComment",
       """
         function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "comments/add"})
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "admin/comments/add"})
         }
       """
     )
-
-    // @LINE:53
+  
+    // @LINE:62
     def editComment: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.nuts.Comments.editComment",
       """
         function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "comments/editComment"})
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "admin/comments/editComment"})
         }
       """
     )
-
-    // @LINE:54
+  
+    // @LINE:60
     def commentsAdmin: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.nuts.Comments.commentsAdmin",
       """
         function() {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "comments/admin"})
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "admin/comments"})
         }
       """
     )
-
+  
   }
 
-  // @LINE:60
-  class ReverseGoods(_prefix: => String) {
+  // @LINE:39
+  class ReverseAdminCategories(_prefix: => String) {
 
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
-    // @LINE:62
-    def viewEditForm: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.nuts.Goods.viewEditForm",
-      """
-        function(id0) {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "admin/items" + _qS([(""" + implicitly[QueryStringBindable[Option[Long]]].javascriptUnbind + """)("id", id0)])})
-        }
-      """
-    )
-
-    // @LINE:61
-    def get: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.nuts.Goods.get",
-      """
-        function(id0) {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "index.php/items/view/id/" + (""" + implicitly[PathBindable[Long]].javascriptUnbind + """)("id", id0)})
-        }
-      """
-    )
-
-    // @LINE:60
-    def listAllGoods: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.nuts.Goods.listAllGoods",
+  
+    // @LINE:40
+    def adminAlbumsCategoriesHandle: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.nuts.AdminCategories.adminAlbumsCategoriesHandle",
       """
         function() {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "items"})
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "admin/albums"})
         }
       """
     )
-
-    // @LINE:63
-    def updateOrCreateOrDelete: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.nuts.Goods.updateOrCreateOrDelete",
+  
+    // @LINE:79
+    def adminGoodsCategoriesHandle: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.nuts.AdminCategories.adminGoodsCategoriesHandle",
       """
         function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "admin/items"})
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "admin/cats"})
         }
       """
     )
-
+  
+    // @LINE:78
+    def adminGoodsCategories: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.nuts.AdminCategories.adminGoodsCategories",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "admin/cats"})
+        }
+      """
+    )
+  
+    // @LINE:39
+    def adminAlbumsCategories: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.nuts.AdminCategories.adminAlbumsCategories",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "admin/albums"})
+        }
+      """
+    )
+  
   }
 
-  // @LINE:33
-  class ReverseImages(_prefix: => String) {
-
-    def _defaultPrefix: String = {
-      if (_prefix.endsWith("/")) "" else "/"
-    }
-
-    // @LINE:36
-    def edit: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.nuts.Images.edit",
-      """
-        function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "img/edit"})
-        }
-      """
-    )
-
-    // @LINE:34
-    def find: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.nuts.Images.find",
-      """
-        function() {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "img/find"})
-        }
-      """
-    )
-
-    // @LINE:35
-    def list: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.nuts.Images.list",
-      """
-        function() {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "img/list"})
-        }
-      """
-    )
-
-    // @LINE:33
-    def show: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.nuts.Images.show",
-      """
-        function(search0,what1) {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "img/show" + _qS([(search0 == null ? null : (""" + implicitly[QueryStringBindable[String]].javascriptUnbind + """)("search", search0)), (what1 == null ? null : (""" + implicitly[QueryStringBindable[String]].javascriptUnbind + """)("what", what1))])})
-        }
-      """
-    )
-
-    // @LINE:37
-    def save: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.nuts.Images.save",
-      """
-        function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "img/save"})
-        }
-      """
-    )
-
-    // @LINE:38
-    def get: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.nuts.Images.get",
-      """
-        function(name0) {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "img/" + (""" + implicitly[PathBindable[String]].javascriptUnbind + """)("name", encodeURIComponent(name0))})
-        }
-      """
-    )
-
-  }
-
-  // @LINE:43
+  // @LINE:51
   class ReverseBlog(_prefix: => String) {
 
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
-    // @LINE:47
+  
+    // @LINE:55
     def onSubmit: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.nuts.Blog.onSubmit",
       """
@@ -197,8 +132,8 @@ package controllers.nuts.javascript {
         }
       """
     )
-
-    // @LINE:43
+  
+    // @LINE:51
     def showAllArticles: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.nuts.Blog.showAllArticles",
       """
@@ -207,8 +142,8 @@ package controllers.nuts.javascript {
         }
       """
     )
-
-    // @LINE:45
+  
+    // @LINE:53
     def create: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.nuts.Blog.create",
       """
@@ -217,8 +152,8 @@ package controllers.nuts.javascript {
         }
       """
     )
-
-    // @LINE:46
+  
+    // @LINE:54
     def edit: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.nuts.Blog.edit",
       """
@@ -227,8 +162,8 @@ package controllers.nuts.javascript {
         }
       """
     )
-
-    // @LINE:44
+  
+    // @LINE:52
     def article: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.nuts.Blog.article",
       """
@@ -237,7 +172,58 @@ package controllers.nuts.javascript {
         }
       """
     )
-
+  
   }
+
+  // @LINE:73
+  class ReverseImportData(_prefix: => String) {
+
+    def _defaultPrefix: String = {
+      if (_prefix.endsWith("/")) "" else "/"
+    }
+
+  
+    // @LINE:75
+    def importNuts: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.nuts.ImportData.importNuts",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "admin/import-nuts"})
+        }
+      """
+    )
+  
+    // @LINE:76
+    def importAll: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.nuts.ImportData.importAll",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "admin/import-all"})
+        }
+      """
+    )
+  
+    // @LINE:74
+    def importArticles: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.nuts.ImportData.importArticles",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "admin/import-articles"})
+        }
+      """
+    )
+  
+    // @LINE:73
+    def importImages: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.nuts.ImportData.importImages",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "admin/import-images"})
+        }
+      """
+    )
+  
+  }
+
 
 }

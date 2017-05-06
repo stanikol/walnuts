@@ -1,11 +1,12 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/snc/scala/walnuts/server/conf/routes
-// @DATE:Thu Mar 30 01:46:36 EEST 2017
+// @DATE:Sun May 07 01:48:52 EEST 2017
 
 import play.api.routing.JavaScriptReverseRoute
 import play.api.mvc.{ QueryStringBindable, PathBindable, Call, JavascriptLiteral }
 import play.core.routing.{ HandlerDef, ReverseRouteContext, queryString, dynamicString }
+
 
 import _root_.controllers.Assets.Asset
 import _root_.utils.route.Binders._
@@ -21,6 +22,7 @@ package controllers.pages.javascript {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
+  
     // @LINE:7
     def signOut: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.pages.ApplicationController.signOut",
@@ -30,7 +32,7 @@ package controllers.pages.javascript {
         }
       """
     )
-
+  
     // @LINE:6
     def index: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.pages.ApplicationController.index",
@@ -40,7 +42,8 @@ package controllers.pages.javascript {
         }
       """
     )
-
+  
   }
+
 
 }

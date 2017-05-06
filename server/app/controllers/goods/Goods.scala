@@ -11,6 +11,7 @@ import com.mohiva.play.silhouette.api.Silhouette
 import controllers.WebJarAssets
 import models.goods._
 import FormsData._
+import models.blog.FormsData.categoryForm
 //import models.blog._
 import play.api.Configuration
 import play.api.i18n.{ I18nSupport, Messages, MessagesApi }
@@ -94,5 +95,40 @@ class Goods @Inject() (
     )
 
   }
+
+  def adminGoodsCategories = silhouette.SecuredAction(Roles.Admin).async { implicit request =>
+    goodsCategoriesDAO.listCategories.map { categories =>
+      val submitTo = controllers.goods.routes.Goods.adminGoodsCategoriesHandle
+      Ok(views.html.adminCategories(request.identity, categories, submitTo))
+    }
+  }
+
+  def adminGoodsCategoriesHandle = silhouette.SecuredAction(Roles.Admin).async { implicit request =>
+    categoryForm.bindFromRequest().fold(
+      error => Future(Redirect(controllers.goods.routes.Goods.adminGoodsCategoriesHandle)
+        .flashing("error" -> ("Инвалидные данные: " + error.errors.mkString("\n")))),
+      categoryEdit => {
+        val category = categoryEdit.category
+        (categoryEdit.action match {
+          case "save" =>
+            category.id match {
+              case Some(id) =>
+                goodsCategoriesDAO.upsertCategory(category).map(_ => "ok" -> s"Внесены изменения в БД, категория: $category")
+              case None =>
+                goodsCategoriesDAO.addCategory(category).map(_ => "ok" -> s"Новая категория добавлена в БД: $category")
+            }
+          case "del" =>
+            if (category.id.isDefined)
+              goodsCategoriesDAO.deleteCategory(category.id.get).map(_ => "ok" -> s"Из БД удалена категория: $category")
+            else
+              Future("error" -> s"ID катерогии не указан, удаление не возможно !")
+        }).map {
+          case (status, msg) =>
+            Redirect(controllers.goods.routes.Goods.adminGoodsCategories).flashing(status -> msg)
+        }
+      }
+    )
+  }
+
 }
 

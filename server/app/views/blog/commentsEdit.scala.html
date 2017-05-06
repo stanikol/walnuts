@@ -11,7 +11,7 @@
     <div class="panel panel-info">
         <div class="panel-heading">Фильтр & сортировка</div>
         <div class="panel-body">
-            <form class="form-inline" method="get" action="@controllers.nuts.routes.Comments.commentsAdmin">
+            <form class="form-inline" method="get" action="@controllers.blog.routes.Comments.commentsAdmin">
                 @helper.select(
                     field = commentsShowForm("article-id"),
                     options = comments.groupBy(a => (a.articleID.toString, a.articleTitle)).keys.toSeq,
@@ -30,9 +30,9 @@
         </div>
     </div>
     @for(comment <- comments){
-        <form class="comments-edit-form" method="POST" action="@CSRF(controllers.nuts.routes.Comments.editComment)">
+        <form class="comments-edit-form" method="POST" action="@CSRF(controllers.blog.routes.Comments.editComment)">
             <!--@helper.CSRF.formField-->
-            <a href="@controllers.nuts.routes.Blog.article(comment.articleID)" class="form-group">#@comment.articleID @comment.articleTitle</a>
+            <a href="@controllers.blog.routes.Blog.article(comment.articleID)" class="form-group">#@comment.articleID @comment.articleTitle</a>
             <h5 class="form-group">@comment.fullName @comment.userEmail.map(e=>s"<$e>") (#@comment.id from @comment.added)</h5>
             <input type="hidden" name="comment-id" value="@comment.id"/>
             <textarea name="comment-text" rows="5" class="article-comment">@comment.text</textarea>

@@ -9,7 +9,7 @@
     </div>
     }}
     <input type="file" id="filepicker" style="display: none"/>
-    <form id="article-edit-form" method="POST" action="@CSRF(controllers.nuts.routes.Blog.onSubmit)">
+    <form id="article-edit-form" method="POST" action="@CSRF(controllers.blog.routes.Blog.onSubmit)">
         <strong>ID #@{article("id").value}</strong>
         <input type="hidden" id="id" name="id" value="@{article("id").value}"/>
         <input type="hidden" id="blog-text" name="blog-text" />

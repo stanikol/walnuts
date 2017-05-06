@@ -19,14 +19,14 @@
         <br>
         @user.map{ usr =>
             @if(usr.isAdmin){
-                <form action="@controllers.nuts.routes.Blog.edit(article.id.get)" method="get" class="form-inline">
+                <form action="@controllers.blog.routes.Blog.edit(article.id.get)" method="get" class="form-inline">
                     @helper.CSRF.formField
                     <button type="submit" class="btn btn-danger">@Messages("Edit")</button>
-                    <a href="@controllers.nuts.routes.Comments.commentsAdmin" class="btn btn-primary">Редактировать комментарии</a>
+                    <a href="@controllers.blog.routes.Comments.commentsAdmin" class="btn btn-primary">Редактировать комментарии</a>
                 </form>
             }
         }
-        <form action="@controllers.nuts.routes.Comments.addComment" method="post" id="addCommentForm">
+        <form action="@controllers.blog.routes.Comments.addComment" method="post" id="addCommentForm">
             <button type="submit" class="btn btn-warning">@Messages("Add comment")</button>
             @helper.CSRF.formField
             <input type="hidden" value="@{article.id}" name="article-id"/>

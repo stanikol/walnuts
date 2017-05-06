@@ -12,9 +12,9 @@
         <br>
         @*********
         <a href='@if(userOption.isDefined && userOption.get.isAdmin){
-                    @controllers.nuts.routes.Blog.edit(article.id.get)
+                    @controllers.blog.routes.Blog.edit(article.id.get)
                 } else {
-                    @controllers.nuts.routes.Blog.article(article.id.get)
+                    @controllers.blog.routes.Blog.article(article.id.get)
                 }'
             class="article-title-href">
                 @if(userOption.isDefined && userOption.get.isAdmin){
@@ -24,7 +24,7 @@
                 }
         </a>
         *********@
-        <a href='@controllers.nuts.routes.Blog.article(article.id.get)' class="article-title-href">
+        <a href='@controllers.blog.routes.Blog.article(article.id.get)' class="article-title-href">
             @if(userOption.isDefined && userOption.get.isAdmin){
                 @article.title <br> #@article.id.get @article.sort_order
             } else {

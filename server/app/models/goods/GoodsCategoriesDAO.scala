@@ -3,7 +3,6 @@ package models.goods
 import javax.inject.Inject
 
 import models.goods.GoodsTableDef.categories
-import models.CategoriesDAO
 import play.api.Logger
 import play.api.db.slick.DatabaseConfigProvider
 import slick.backend.DatabaseConfig

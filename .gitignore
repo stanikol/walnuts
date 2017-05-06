@@ -39,3 +39,6 @@ devnet.iml
 /images
 /logs
 
+target
+server/target
+

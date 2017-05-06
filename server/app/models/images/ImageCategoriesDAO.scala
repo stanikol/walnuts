@@ -2,7 +2,6 @@ package models.images
 
 import javax.inject.Inject
 
-import models.CategoriesDAO
 import models.goods.{ BindingImageCategory, Category }
 import models.images.ImageTableDef.{ albums, bindingImageCategory }
 import play.api.Logger
@@ -17,7 +16,7 @@ import scala.concurrent.Future
 /**
  * Created by snc on 5/7/17.
  */
-class ImageCategoriesDAO @Inject() (dbConfigProvider: DatabaseConfigProvider) extends CategoriesDAO {
+class ImageCategoriesDAO @Inject() (dbConfigProvider: DatabaseConfigProvider) {
 
   private val dbConfig: DatabaseConfig[JdbcProfile] = dbConfigProvider.get[JdbcProfile]
   private val db: JdbcBackend#DatabaseDef = dbConfig.db

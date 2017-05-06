@@ -6,6 +6,7 @@ import com.mohiva.play.silhouette.api.Silhouette
 import controllers.WebJarAssets
 import models.goods.Category
 import FormsData._
+import models.blog.FormsData.categoryForm
 import models.images.ImageCategoriesDAO
 //import models.images.ImageCategoriesDAO
 import models.images.{ Image, ImageInfo, ImagesDAO }
@@ -160,6 +161,42 @@ class Images @Inject() (
       Ok(views.html.images.showGallery(request.identity, images))
       //      Ok(views.html.images.showGallery2(request.identity, images))
     }
+  }
+
+  // PHOTO ALBUMS CATEGORIES
+
+  def adminAlbumsCategories = silhouette.SecuredAction(Roles.Admin).async { implicit request =>
+    imageCategoriesDAO.listCategories.map { categories =>
+      val submitTo = controllers.images.routes.Images.adminAlbumsCategoriesHandle
+      Ok(views.html.adminCategories(request.identity, categories, submitTo))
+    }
+  }
+
+  def adminAlbumsCategoriesHandle = silhouette.SecuredAction(Roles.Admin).async { implicit request =>
+    categoryForm.bindFromRequest().fold(
+      error => Future(Redirect(controllers.images.routes.Images.adminAlbumsCategories)
+        .flashing("error" -> ("Инвалидные данные: " + error.errors.mkString("\n")))),
+      categoryEdit => {
+        val category = categoryEdit.category
+        (categoryEdit.action match {
+          case "save" =>
+            category.id match {
+              case Some(id) =>
+                imageCategoriesDAO.upsertCategory(category).map(_ => "ok" -> s"Внесены изменения в БД, категория: $category")
+              case None =>
+                imageCategoriesDAO.addCategory(category).map(_ => "ok" -> s"Новая категория добавлена в БД: $category")
+            }
+          case "del" =>
+            if (category.id.isDefined)
+              imageCategoriesDAO.deleteCategory(category.id.get).map(_ => "ok" -> s"Из БД удалена категория: $category")
+            else
+              Future("error" -> s"ID катерогии не указан, удаление не возможно !")
+        }).map {
+          case (status, msg) =>
+            Redirect(controllers.images.routes.Images.adminAlbumsCategories).flashing(status -> msg)
+        }
+      }
+    )
   }
 
 }

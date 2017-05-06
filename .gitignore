@@ -42,3 +42,8 @@ devnet.iml
 target
 server/target
 
+shared/.jvm/
+shared/.js/
+
+server/app-2.11/
+server/test-2.11/

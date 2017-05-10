@@ -1,4 +1,4 @@
-@(user: models.User, imageInfoList: Seq[ImageInfo], adminImageForm: Form[AdminImage], albums: Seq[Category])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+@(user: models.User, imageInfoSeq: Seq[ImageInfo], adminImageForm: Form[AdminImage], albums: Seq[Category])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
 
 @import helper.CSRF
 @import helper._
@@ -80,7 +80,7 @@
             </div>
         }
         <hr/>
-        @imageInfoList.map{ imageInfo =>
+        @imageInfoSeq.map{ imageInfo =>
             <a href="@controllers.images.routes.Images.showAdminImageForm(imageInfo.name)" class="col-md-3">
                 @imageInfo.name
                 <img src="@controllers.images.routes.Images.getThumbnail(imageInfo.name)" class="img-responsive"/>

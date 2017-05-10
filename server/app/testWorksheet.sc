@@ -1,1 +1,1 @@
-Seq(1,2,3).map(i => i -> 1).toSet[(Int, Int)]
+Map(1->Seq(1,1,1), 2->Seq(2,2)).filter(_._1>0).values.flatten

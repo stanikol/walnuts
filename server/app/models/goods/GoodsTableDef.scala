@@ -30,7 +30,8 @@ object GoodsTableDef {
     def sortOrder = column[String]("sort_order")
     def image = column[Option[String]]("image")
     def * = (id.?, category, title, description, qnt, price, sortOrder, image) <> ((GoodsItem.apply _).tupled, GoodsItem.unapply)
-    def categoryFK = foreignKey("CATEGORY_FK", category, categories)(_.id, onUpdate = ForeignKeyAction.Restrict, onDelete = ForeignKeyAction.Cascade)
+    def categoryFK = foreignKey("goods_category_fkey", category, categories)(_.id, onUpdate = ForeignKeyAction.Restrict, onDelete = ForeignKeyAction.Cascade)
+    def imageConstrain = foreignKey("goods_image_fkey", image, models.images.ImageTableDef.images)(_.name.?)
   }
   val goods = TableQuery[Goods]
   val goodsReturning = goods returning (goods.map(_.id)) into ((goodsItem, newID) => goodsItem.copy(id = Some(newID)))

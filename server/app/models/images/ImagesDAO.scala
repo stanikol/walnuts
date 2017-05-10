@@ -1,9 +1,10 @@
 package models.images
 
+import java.io.ByteArrayInputStream
 import javax.inject.Inject
 
 import com.google.inject.Singleton
-import models.goods.BindingImageCategory
+import models.goods.{ BindingImageCategory, Category }
 import models.images.ImageTableDef._
 import play.api.Logger
 import play.api.db.slick.DatabaseConfigProvider
@@ -14,6 +15,8 @@ import slick.driver.JdbcProfile
 import slick.jdbc.JdbcBackend
 
 import scala.concurrent.Future
+import com.sksamuel.scrimage.{ Image => ScrImage }
+import slick.dbio.DBIOAction
 /**
  * Created by snc on 2/25/17.
  */
@@ -25,31 +28,28 @@ class ImagesDAO @Inject() (dbConfigProvider: DatabaseConfigProvider, imageCatego
 
   import dbConfig.driver.api._
 
-  def upsertImage(image: Image, imageCategoryIDs: Option[Seq[Int]]): Future[Unit] = {
-    db.run(images.filter(_.name === image.name).result.headOption).map {
-      case Some(foundImage) if image.bytes.isEmpty =>
-        Logger.info(s"ImagesDAO.upsertImage=> updating image info. Image size in DB = ${foundImage.bytes.map(_.length).getOrElse(0)}")
-        val bytes = if (image.bytes.isEmpty) foundImage.bytes else image.bytes
-        val thumbnailBytes = if (image.bytes.isEmpty) foundImage.bytes150x150 else image.bytes150x150
-        images.insertOrUpdate(image.copy(bytes = bytes, bytes150x150 = thumbnailBytes))
-      case _ =>
-        Logger.info(s"ImagesDAO.upsertImage=> updating image info. Image size in DB = 0")
-        images.insertOrUpdate(image)
-    }.map { query =>
-      db.run((query.flatMap { _ =>
-        bindingImageCategory.filter(_.imageName === image.name).delete.flatMap { _ =>
-          val bindings: Seq[BindingImageCategory] =
-            imageCategoryIDs.getOrElse(Seq.empty).map(BindingImageCategory(image.name, _))
-          bindingImageCategory ++= bindings
-        }
-      }).transactionally)
+  def insertOrUpdateImage(image: Image, albumIDsOpt: Option[Seq[Int]], bytes: Option[Array[Byte]]) = {
+    val upsertImage = images.insertOrUpdate(image)
+    val upsertAlbums = albumIDsOpt.map { albumIDs =>
+      bindingImageCategory.filter(_.imageName === image.name).delete.flatMap { _ =>
+        bindingImageCategory ++= albumIDs.map(albumID => BindingImageCategory(image.name, albumID))
+      }
     }
+    val upsertBytes = bytes.map { bytes =>
+      imageBytes.insertOrUpdate(ImageBytes(image.name, bytes)).flatMap { _ =>
+        val thumbnails = ScrImage.fromStream(new ByteArrayInputStream(bytes)).scaleTo(150, 150).bytes
+        thumbnailBytes.insertOrUpdate(ImageBytes(image.name, thumbnails))
+      }
+    }
+    val allQueries = upsertImage :: (List(upsertAlbums, upsertBytes).flatten)
+    db.run(DBIOAction.seq(allQueries: _*).transactionally)
+
   }
 
-  def getImage(name: String): Future[Option[Image]] = {
-    Logger.info(s"ImagesDAO.getImage => Getting from DB image `$name` ...")
+  def getImage(name: String): Future[Option[ImageBytes]] = {
+    Logger.debug(s"ImagesDAO.getImage => Getting from DB image `$name` ...")
     if (name.nonEmpty)
-      db.run(images.filter(_.name === name).result.headOption).recover {
+      db.run(imageBytes.filter(_.imageName === name).result.headOption).recover {
         case exception =>
           Logger.error(s"ImagesDAO.getImage => Ошибка БД при получении изображения `$name`! ${exception.getMessage}")
           None
@@ -58,8 +58,32 @@ class ImagesDAO @Inject() (dbConfigProvider: DatabaseConfigProvider, imageCatego
       Future(None)
   }
 
+  def getImageInfo(name: String): Future[Option[ImageInfo]] = {
+    Logger.debug(s"ImagesDAO.getImageInfo => Getting from DB image `$name` ...")
+    if (name.nonEmpty)
+      db.run(imageInfos.filter(_.name === name).result.headOption).recover {
+        case exception =>
+          Logger.error(s"ImagesDAO.getImageInfo => Ошибка БД при получении изображения `$name`! ${exception.getMessage}")
+          None
+      }
+    else
+      Future(None)
+  }
+
+  def getThumb(name: String): Future[Option[ImageBytes]] = {
+    Logger.debug(s"ImagesDAO.getThumb => Getting from DB image `$name` ...")
+    if (name.nonEmpty)
+      db.run(thumbnailBytes.filter(_.imageName === name).result.headOption).recover {
+        case exception =>
+          Logger.error(s"ImagesDAO.getThumb => Ошибка БД при получении изображения `$name`! ${exception.getMessage}")
+          None
+      }
+    else
+      Future(None)
+  }
+
   def findImages(search: String, what: String): Future[Seq[ImageInfo]] = {
-    Logger.info(s"ImagesDAO.findImages => Searching images '$what' for '$search'...")
+    Logger.debug(s"ImagesDAO.findImages => Searching images '$what' for '$search'...")
     listAllImageInfo.map(_.filter(ii =>
       ii.name.contains(search) || ii.categories.contains(search) || search.isEmpty || search.equals("%")))
   }
@@ -69,18 +93,18 @@ class ImagesDAO @Inject() (dbConfigProvider: DatabaseConfigProvider, imageCatego
   }
 
   def listAllImageInfo: Future[Seq[ImageInfo]] = {
-    val allBindingsImageCategoryF = imageCategoriesDAO.listAllBindingImageCategory
-    db.run(images.map(i => i.name -> i.content).result).flatMap { allImagesNameAndContent =>
-      allBindingsImageCategoryF.map { bindings =>
-        allImagesNameAndContent.map {
-          case (imageName, imageContent) =>
-            val imageCategoryIDs: Seq[Int] = bindings.filter(_.imageName == imageName).map(_.categoryID)
-            ImageInfo(
-              imageName,
-              imageContent,
-              if (imageCategoryIDs.nonEmpty) Some(imageCategoryIDs) else None
-            )
-        }
+    db.run(imageInfos.result)
+  }
+
+  def listAllGalleries: Future[Map[String, Seq[ImageInfo]]] = {
+    db.run(imageInfos.filter(_.categories.nonEmpty).result).flatMap { imageInfoSeq: Seq[ImageInfo] =>
+      val imagesWithAlbums: Seq[ImageInfoWithAlbums] =
+        imageInfoSeq.filter(_.categories.isDefined).map(ImageInfoWithAlbums(_))
+      val albumIDs: Set[Int] = imagesWithAlbums.map(_.categories.map(_._1)).flatten.toSet
+      db.run(albums.sortBy(_.sortOrder).result).map { albumSeq: Seq[Category] =>
+        albumSeq.filter(a => albumIDs.contains(a.id.get)).map { a: Category =>
+          a.name -> imagesWithAlbums.filter(_.categories.map(_._1).contains(a.id.get)).map(ia => ImageInfo.apply(ia))
+        }.toMap
       }
     }
   }

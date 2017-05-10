@@ -27,10 +27,7 @@ object ImageTableDef {
   class Images(tag: Tag) extends Table[Image](tag, "images") {
     def name = column[String]("name", O.PrimaryKey)
     def content = column[String]("content")
-    def bytes = column[Option[Array[Byte]]]("bytes")
-    def bytes150x150 = column[Option[Array[Byte]]]("bytes150x150")
-    //    def albums = column[Option[List[String]]]("albums")
-    def * = (name, content, bytes, bytes150x150) <> ((Image.apply _).tupled, Image.unapply)
+    def * = (name, content) <> ((Image.apply _).tupled, Image.unapply)
   }
   val images = TableQuery[Images]
 
@@ -38,9 +35,34 @@ object ImageTableDef {
     def imageName = column[String]("image_name")
     def categoryID = column[Int]("album_id")
     def * = (imageName, categoryID) <> (BindingImageCategory.tupled, BindingImageCategory.unapply)
-    def imageNameFK = foreignKey("image_name_forein_key", imageName, images)(_.name)
-    def categoryIDFK = foreignKey("album_id_forein_key", categoryID, albums)(_.id)
-    def pk = primaryKey("pk_binding_image_album", (imageName, categoryID))
+    def imageNameFK = foreignKey("binding_image_album_image_name_fkey", imageName, images)(_.name)
+    def categoryIDFK = foreignKey("binding_image_album_album_id_fkey", categoryID, albums)(_.id)
+    def pk = index("binding_image_album_unique", (imageName, categoryID), unique = true)
   }
   val bindingImageCategory = TableQuery[BindingImageCategoryTbl]
+
+  class ImageBytesTbl(tag: Tag) extends Table[ImageBytes](tag, "image_bytes") {
+    def imageName = column[String]("image_name", O.PrimaryKey)
+    def bytes = column[Array[Byte]]("bytes")
+    def * = (imageName, bytes) <> (ImageBytes.tupled, ImageBytes.unapply)
+    def imageNameFK = foreignKey("image_bytes_image_name_fkey", imageName, images)(_.name)
+  }
+  val imageBytes = TableQuery[ImageBytesTbl]
+
+  class ThumbnailBytesTbl(tag: Tag) extends Table[ImageBytes](tag, "image_thumbnail_bytes") {
+    def imageName = column[String]("image_name", O.PrimaryKey)
+    def bytes = column[Array[Byte]]("bytes")
+    def * = (imageName, bytes) <> (ImageBytes.tupled, ImageBytes.unapply)
+    def imageNameFK = foreignKey("image_thumbnail_bytes_image_name_fkey", imageName, images)(_.name)
+  }
+  val thumbnailBytes = TableQuery[ThumbnailBytesTbl]
+
+  class ImageInfoTbl(tag: Tag) extends Table[ImageInfo](tag, "image_info") {
+    def name = column[String]("name", O.PrimaryKey)
+    def content = column[String]("content")
+    def categories = column[Option[String]]("categories")
+    def * = (name, content, categories) <> ((ImageInfo.apply(_: String, _: String, _: Option[String])).tupled, ImageInfo.unapply)
+  }
+  val imageInfos = TableQuery[ImageInfoTbl]
+
 }

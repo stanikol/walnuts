@@ -14,7 +14,7 @@ import models.goods.GoodsTableDef._
 import models.blog._
 import models.blog.Data.{ Article, Comment, CommentInfo }
 import models.blog.FormsData._
-import models.images.ImagesDAO
+import models.images.{ Image, ImagesDAO }
 import play.api.db.slick.DatabaseConfigProvider
 import play.api.i18n.{ I18nSupport, Messages }
 import utils.auth.Roles.Admin
@@ -51,10 +51,11 @@ class ImportData @Inject() (
 
   def images = {
     val images = grab.GrabRead.readImagesFromDir(new File("grab")).toList
-    images.map { image =>
-      Logger.info(s"Upserting ${image.name}")
-      imagesDAO.upsertImage(image, Some(Seq(1)))
-      image
+    images.map {
+      case (image: Image, bytes: Array[Byte]) =>
+        Logger.info(s"ImportData => Upserting ${bytes.length} bytes in ${image.name} ...")
+        imagesDAO.insertOrUpdateImage(image, Some(Seq(1)), Some(bytes))
+        image
     }
   }
 
@@ -91,7 +92,7 @@ class ImportData @Inject() (
 
   def nuts = {
     case class TSV(id: Int, name: String, category: String, imageName: String)
-    val index = scala.io.Source.fromFile("grab/blog/blog-index.tsv").getLines().map { line =>
+    val index = scala.io.Source.fromFile("grab/nuts/nuts-index.tsv").getLines().map { line =>
       val splitted = line.split("\t")
       val (id: String, name: String, category: String, image: String) = (splitted(0), splitted(1), splitted(2), splitted(3))
       TSV(id.toInt, name, category, image)
@@ -103,8 +104,8 @@ class ImportData @Inject() (
       db.run(q)
     }
     //
-    val files = grab.GrabRead.getFileTree(new File("grab/blog")).filter(_.getName.endsWith(".html")).toList
-    val Reg = """grab/blog/\d+/(\d+)\.html""".r
+    val files = grab.GrabRead.getFileTree(new File("grab/nuts")).filter(_.getName.endsWith(".html")).toList
+    val Reg = """grab/nuts/\d+/(\d+)\.html""".r
     files.map { filename =>
       filename.getPath match {
         case Reg(id) =>

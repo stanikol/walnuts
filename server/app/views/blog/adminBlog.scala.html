@@ -34,8 +34,7 @@
         </div>
         <div class="form-group">
             <label for="keywords" class="control-label">@Messages("blog.keywords")</label>
-            <input type="text" id="keywords" name="keywords" value='@{article("keywords").value}'
-                   class="form-control"/>
+            <textarea type="text" id="keywords" name="keywords" class="form-control">@article("keywords").value</textarea>
         </div>
         <div class="form-group">
             <label for="sort-order" class="control-label">@Messages("blog.sort-order")</label>
@@ -160,7 +159,7 @@
 
                 ['clean']                                         // remove formatting button
             ];
-            quill = new Quill('#blog-edit', {
+            quill = new Quill('div#blog-edit', {
                 modules: {
                     toolbar: {
                       container: toolbarOptions,
@@ -198,4 +197,13 @@
 
         });
     </script>
+    <style>
+        .ql-image2:after {
+            content: "Ω";
+        }
+
+        textarea#keywords {
+            height: 4em;
+        }
+    </style>
 }

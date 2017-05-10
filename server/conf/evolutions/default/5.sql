@@ -1,34 +1,22 @@
 --- Users schema
 
-# --- !Ups
-create table categories (
-    id          serial primary key,
-    name        varchar unique,
-    sort_order  varchar default(to_char(now(), 'YYYY-MM-DD HH:SS:MS'))
+--- !Ups
+
+create table if not exists contact(
+    phones  varchar,
+    email   varchar,
+    city    varchar,
+    address varchar,
+    www     varchar
 );
+insert into contact values(E'phone1\\nphone2', 'email', 'city', 'address',  'www' );
 
---insert into categories(name) values ('Саженцы');
-
-create table goods (
-    id          serial         primary key,
-    category    int            references categories(id),
-    title       varchar        not null,
-    description varchar        not null,
-    qnt         int            not null default(0),
-    price       decimal(19, 2) not null default(0),
-    sort_order  varchar        default(to_char(now(), 'YYYY-MM-DD HH:SS:MS')),
-    image       varchar,
-    changed     timestamp      default(now()::timestamp)
+create table if not exists rich_contact(
+    html varchar
 );
+insert into rich_contact values('<b>rich</b> contact <i>info</i>' );
 
-create view goods_view as
-    select g.id, c.name as category, c.id as category_id, g.title, g.description, g.qnt, g.price,
-            c.sort_order as category_sort_order, g.sort_order, g.image, g.changed
-        from goods g left join categories c on c.id = g.category
-        order by c.sort_order, g.sort_order;
+--- !Downs
 
-
-# --- !Downs
-drop table goods CASCADE;
-
-drop table categories CASCADE;
+drop table contact;
+drop table rich_contact;

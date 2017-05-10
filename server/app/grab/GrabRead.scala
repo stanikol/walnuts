@@ -23,16 +23,18 @@ object GrabRead extends App {
     f #:: (if (f.isDirectory) f.listFiles().toStream.flatMap(getFileTree)
     else Stream.empty)
 
-  def readImagesFromDir(f: File): Stream[Image] = {
+  def readImagesFromDir(f: File): Stream[(Image, Array[Byte])] = {
     val imageFiles = getFileTree(f).filter(file =>
       //      file.isFile && !List(".html", ".tsv").contains(file.getName.endsWith(_)))
       file.isFile && Seq(".jpg", ".png").exists(file.getName.endsWith(_)))
-    val images = imageFiles.map { file =>
+    imageFiles.map { file =>
       println(s"Reading image ${file.getPath} ...")
-      val image = Image.readImageFromFile(file, file.getName, file.getParentFile.getParentFile.getName, None)
-      image
+      Image.readImageFromFile(file, file.getName, file.getParentFile.getParentFile.getName, None) match {
+        case Left(error) =>
+          throw new Exception(s"Error reading file ${file.getPath}")
+        case Right(res @ (img, bytes)) => res
+      }
     }
-    images
   }
 
   println(readImagesFromDir(new File("grab")).toList.mkString("\n"))

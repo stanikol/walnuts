@@ -1,4 +1,4 @@
-@(title: String, user: Option[models.User] = None, keywords: String = "", description: String = "")(content: Html)(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+@(title: String, user: Option[models.User], keywords: String = "", description: String = "")(content: Html)(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
 
 <!DOCTYPE html>
 <html lang="en" class="main-html">
@@ -60,11 +60,11 @@
                             <!--<li><a href="@controllers.goods.routes.Goods.listAllGoods">@Messages("Сорта орехов")</a></li>-->
                             <!--<li class="empty-li"><a href="#"></a></li>-->
                             <li><a href="@controllers.blog.routes.Blog.showAllArticles">@Messages("СТАТЬИ")</a></li>
-                            <li><a href="@controllers.images.routes.Images.showGallery">ФОТО</a></li>
+                            <li><a href="@controllers.images.routes.Images.showGallery()">ФОТО</a></li>
                             <li><a href="@controllers.blog.routes.Blog.showAllArticles">@Messages("КОНТАКТЫ")</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-lower navbar-left" id="navbar-lower-left">
-                        <li><a href="@controllers.images.routes.Images.showGallery">Фото</a></li>
+                        <li><a href="@controllers.images.routes.Images.showGallery("")">Фото</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-lower navbar-right" id="navbar-lower-right">
                         @user.map { u =>

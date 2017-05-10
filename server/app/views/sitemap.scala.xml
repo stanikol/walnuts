@@ -1,0 +1,16 @@
+@(goods: Seq[GoodsItemView], articles:Seq[Article])(implicit request: RequestHeader)
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    @goods.map{ goodsItem =>
+        <url>
+            <loc>@{controllers.goods.routes.Goods.getGoodsItem(goodsItem.id.get).absoluteURL}</loc>
+        </url>
+    }
+
+    @articles.map{ article =>
+    <url>
+        <loc>@{controllers.blog.routes.Blog.article(article.id.get).absoluteURL}</loc>
+    </url>
+    }
+</urlset>
+

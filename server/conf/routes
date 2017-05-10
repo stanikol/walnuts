@@ -2,6 +2,9 @@
 # This name defines all application routes (Higher priority routes first)
 # ~~~~
 
+GET         /sitemap.xml                     controllers.sitemap.Sitemap.sitemap
+GET         /robots.txt                      controllers.sitemap.Sitemap.robots
+
 # Home page
 GET         /                                controllers.pages.ApplicationController.index
 GET         /signOut                         controllers.pages.ApplicationController.signOut
@@ -33,8 +36,8 @@ GET         /webjars/*name                   controllers.WebJarAssets.at(name)
 GET         /admin/img                      controllers.images.Images.showAdminImageForm(name: String ?= "")
 POST        /admin/img                      controllers.images.Images.handleAdminImageForm
 GET         /img/list                       controllers.images.Images.jsonAllImageInfo
-GET         /gallery                        controllers.images.Images.showGallery
-GET         /img/:name                      controllers.images.Images.getImage(name)
+GET         /gallery                        controllers.images.Images.showGallery(name: String ?= "")
+GET         /img/                           controllers.images.Images.getImage(name)
 GET         /img/150x150/:name              controllers.images.Images.getThumbnail(name)
 GET         /admin/albums                   controllers.images.Images.adminAlbumsCategories
 POST        /admin/albums                   controllers.images.Images.adminAlbumsCategoriesHandle

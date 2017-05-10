@@ -1,5 +1,5 @@
 
-@(user: Option[models.User], images: Seq[ImageInfo])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+@(user: Option[models.User], selectedGallery: String, galleries: Map[String, Seq[ImageInfo]])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
 
 @import helper.CSRF
 
@@ -8,47 +8,56 @@
 <div class="container">
     <div id="main_area">
         <!-- Slider -->
-        <div class="row">
-            <div class="col-sm-6" id="slider-thumbs">
-                <!-- Bottom switcher of slider -->
-                <ul class="hide-bullets">
-                    @images.zipWithIndex.map { case (imageInfo, idx) =>
-                        <li class="col-sm-3">
-                            <a class="thumbnail" id="carousel-selector-@idx">
-                                <img class="img-responsive" src="@controllers.images.routes.Images.getThumbnail(imageInfo.name)" alt="@imageInfo.content">
-                                <!--<img class="img-responsive" src="@controllers.images.routes.Images.getImage(imageInfo.name)" alt="@imageInfo.content">-->
-                            </a>
-                            <!--<label for="carousel-selector-@idx">@imageInfo.name</label>-->
-                        </li>
-                    }
-                </ul>
-            </div>
-            <div class="col-sm-6">
-                <div class="col-xs-12" id="slider">
-                    <!-- Top part of the slider -->
-                    <div class="row">
-                        <div class="col-sm-12" id="carousel-bounding-box">
-                            <div class="carousel slide" id="myCarousel">
-                                <!-- Carousel items -->
-                                <div class="carousel-inner">
-                                    @images.zipWithIndex.map { case (imageInfo, idx) =>
-                                        <div class="@{if(idx==0) "active"} item" data-slide-number="@idx">
-                                            <img src="@controllers.images.routes.Images.getImage(imageInfo.name)" alt="@imageInfo.content">
-                                        </div>
-                                    }
+        @galleries.keys.map { galleryName=>
+            @defining(if(galleryName==selectedGallery) "btn btn-primary" else "btn btn-default"){ btn =>
+                <a href="@controllers.images.routes.Images.showGallery(galleryName)" class="@btn">@galleryName</a>
+            }
+        }
+        @galleries.filter(_._1 == selectedGallery || selectedGallery.isEmpty).values.flatten match  { case imagesSeq =>
+            <div class="row">
+                <div class="col-sm-6" id="slider-thumbs">
+                    <!-- Bottom switcher of slider -->
+                    <ul class="hide-bullets">
+                        @imagesSeq.zipWithIndex.map { case (imageInfo, idx) =>
+                            <li class="col-sm-3">
+                                <a class="thumbnail" id="carousel-selector-@idx">
+                                    <img class="img-responsive" src="@controllers.images.routes.Images.getThumbnail(imageInfo.name)" alt="@imageInfo.content">
+                                    <!--<img class="img-responsive" src="@controllers.images.routes.Images.getImage(imageInfo.name)" alt="@imageInfo.content">-->
+                                </a>
+                                <div id="slide-content-@idx" class="hidden">@imageInfo.content</div>
+                                <!--<label for="carousel-selector-@idx">@imageInfo.name</label>-->
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-xs-12" id="slider">
+                        <!-- Top part of the slider -->
+                        <div class="row">
+                            <div class="col-sm-12" id="carousel-bounding-box">
+                                <div class="carousel slide" id="myCarousel">
+                                    <!-- Carousel items -->
+                                    <div class="carousel-inner">
+                                        @imagesSeq.zipWithIndex.map { case (imageInfo, idx) =>
+                                            <div class="@{if(idx==0) "active"} item" data-slide-number="@idx">
+                                                <img src="@controllers.images.routes.Images.getImage(imageInfo.name)" alt="@imageInfo.content">
+                                            </div>
+                                        }
+                                    </div>
+                                    <!-- Carousel nav -->
+                                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left"></span>
+                                    </a>
+                                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </a>
                                 </div>
-                                <!-- Carousel nav -->
-                                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                </a>
-                                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                </a>
+                                <h3 id="carousel-text"></h3>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
             <!--/Slider-->
         </div>
 
@@ -78,18 +87,17 @@ jQuery(document).ready(function($) {
         $('#myCarousel').carousel({
                 interval: 5000
         });
-
         //Handles the carousel thumbnails
         $('[id^=carousel-selector-]').click(function () {
-        var id_selector = $(this).attr("id");
-        try {
-            var id = /-(\d+)$/.exec(id_selector)[1];
-            console.log(id_selector, id);
-            jQuery('#myCarousel').carousel(parseInt(id));
-        } catch (e) {
-            console.log('Regex failed!', e);
-        }
-    });
+            var id_selector = $(this).attr("id");
+            try {
+                var id = /-(\d+)$/.exec(id_selector)[1];
+                console.log(id_selector, id);
+                jQuery('#myCarousel').carousel(parseInt(id));
+            } catch (e) {
+                console.log('Regex failed!', e);
+            }
+        });
         // When the carousel slides, auto update the text
         $('#myCarousel').on('slid.bs.carousel', function (e) {
                  var id = $('.item.active').data('slide-number');

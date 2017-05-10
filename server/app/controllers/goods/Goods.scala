@@ -57,7 +57,7 @@ class Goods @Inject() (
     val goodsCategories: Future[Seq[Category]] = goodsCategoriesDAO.listCategories
     goodsItem.flatMap { item =>
       goodsCategories.map { cats =>
-        Ok(views.html.goods.itemEditForm(request.identity, goodsItemForm.fill(item), cats))
+        Ok(views.html.goods.adminGoodsItem(request.identity, goodsItemForm.fill(item), cats))
       }
 
     }
@@ -70,7 +70,7 @@ class Goods @Inject() (
         goodsItemForm.bindFromRequest().fold(
           { errors =>
             goodsCategoriesDAO.listCategories.map { cats =>
-              BadRequest(views.html.goods.itemEditForm(request.identity, errors, cats))
+              BadRequest(views.html.goods.adminGoodsItem(request.identity, errors, cats)).flashing("error" -> "Инвалидные данные !!!")
             }
           },
           { ok =>

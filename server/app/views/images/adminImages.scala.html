@@ -71,7 +71,7 @@
         <!--</form>-->
         <hr/>
             <div id="search-form">
-                @b3.text( adminImageForm("find.search"), '_id -> "search-image", '_label->"Искать" )
+                @b3.text( adminImageForm("find.search"), '_id -> "search-image", '_label->"Искать изображения" )
                 @defining( Seq("name"->"name", "content"->"content") ){ opts =>
                     @b3.select( adminImageForm("find.what"),  options = opts,
                         '_id -> "search-what-image", '_label -> "Где" )
@@ -81,10 +81,12 @@
         }
         <hr/>
         @imageInfoSeq.map{ imageInfo =>
-            <a href="@controllers.images.routes.Images.showAdminImageForm(imageInfo.name)" class="col-md-3">
-                @imageInfo.name
-                <img src="@controllers.images.routes.Images.getThumbnail(imageInfo.name)" class="img-responsive"/>
-            </a>
+            <div class="col-xs-6 col-sm-4 col-md-3 col-ld-3">
+                <a href="@controllers.images.routes.Images.showAdminImageForm(imageInfo.name)" >
+                    <p style="font-size: 0.75em;">@imageInfo.name</p>
+                    <img src="@controllers.images.routes.Images.getThumbnail(imageInfo.name)" class="img-responsive"/>
+                </a>
+            </div>
         }
     </div>
 }

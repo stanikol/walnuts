@@ -5877,7 +5877,8 @@ button.close {
 .main-body {
   background: url(/assets/images/tree.png) center no-repeat;
   background-attachment: fixed;
-  min-height: 576px; }
+  min-height: 576px;
+  width: 100%; }
 
 .starter-template {
   width: 100%; }

@@ -11,6 +11,7 @@ import utils.auth.DefaultEnv
 
 import scala.concurrent.Future
 import models.blog.BlogTablesDef._
+import models.goods.{ GoodsDAO, GoodsItem, GoodsItemView }
 import slick.driver.PostgresDriver.api._
 
 /**
@@ -23,6 +24,7 @@ import slick.driver.PostgresDriver.api._
  */
 class ApplicationController @Inject() (
   blogDAO: models.blog.BlogDAO,
+  goodsDAO: GoodsDAO,
   val messagesApi: MessagesApi,
   silhouette: Silhouette[DefaultEnv],
   socialProviderRegistry: SocialProviderRegistry,
@@ -37,10 +39,11 @@ class ApplicationController @Inject() (
    */
   def index: Action[AnyContent] = silhouette.UserAwareAction.async { implicit request =>
     import play.api.libs.concurrent.Execution.Implicits._
-    blogDAO.getAllArticles.map { articles =>
-      Ok(views.html.blog.blogList(request.identity, articles))
+    goodsDAO.listAllGoods.flatMap { goods: Seq[GoodsItemView] =>
+      blogDAO.getAllArticles.map { articles =>
+        Ok(views.html.blog.showBlogAndGoods(request.identity, articles, goods))
+      }
     }
-    //    Future.successful()
   }
 
   /**

@@ -1,0 +1,69 @@
+@(userOption: Option[models.User], articles: Seq[models.blog.Data.Article], goodsItems: Seq[GoodsItemView])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+@* @import helper.CSRF *@
+
+@main(Messages("ООО «Тимирязевское»"), userOption){
+    <div class="row">
+        <div class="col col-xs-9 col-sm-9 col-md-9 col-ld-9">
+            <div class="row">
+                @goodsItems.map(gi => (gi.categorySortOrder, gi.category)).toSet[(String, String)].toList.sortBy(_._1).map{ case (_: String, category: String) =>
+                    <h2 class="col col-xs-12 col-sm-12 col-md-12 col-ld-12">@category</h2>
+                    @goodsItems.filter(_.category == category).sortBy(_.sortOrder).map { item =>
+                        <div class="col col-xs-4 col-sm-3 col-md-3 col-ld-3">
+                            <a href="@controllers.goods.routes.Goods.getGoodsItem(item.id.get)">
+                                @if(item.image.isDefined){
+                                <div class="bg-img" style="background-image: url(@controllers.images.routes.Images.getThumbnail(item.image.get));" >
+                                    <img  />
+                                </div>
+                                <div class="h5">@item.title</div>
+                                }
+                            </a>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+        <div class="col col-xs-3 col-sm-3 col-md-3 col-ld-3">
+            @for(article<-articles.take(11)){
+                <br>
+                <a href='@controllers.blog.routes.Blog.article(article.id.get)' class="article-title-href">@article.title</a>
+                <div class="article-short-text">@{article.short_text.take(80) + "..."}</div>
+            }
+            <br>
+            <br>
+            <a href='@controllers.blog.routes.Blog.showAllArticles' class="h4 article-title-href">Читать все статьи >>></a>
+
+        </div>
+    </div>
+
+    <style>
+        .bg-img{
+            border-radius: 150px;
+            width: 150px;
+            background-size:150px 150px;
+            background-repeat: no-repeat;
+            background-position: left top;
+        }
+
+        div.bg-img > img {
+            width: 150px;
+            content:url(/assets/images/imgmaskt.png);
+        }
+        
+        @@media screen and (max-width: 800px) {
+            .bg-img{
+                border-radius: 70px;
+                width: 70px;
+                background-size:70px 70px;
+            }
+    
+            div.bg-img > img {
+                width: 70px;
+            }
+
+            .h5{
+                font-size: 10px;
+            }
+        }
+
+    </style>
+}

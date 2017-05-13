@@ -26,7 +26,7 @@
         <div id="search-images" class="row"></div>
         <!--BUTTONS-->
         <div class="btn-group btn-group-lg">
-            <a href="@CSRF(controllers.goods.routes.Goods.showItemEditForm(goodsItemForm("id").value.map(_.toLong)))"
+            <a href="@CSRF(controllers.goods.routes.Goods.adminGoodsItem(goodsItemForm("id").value.map(_.toLong)))"
                 class="btn btn-success">Обновить</a>
             @if(goodsItemForm("id").value.isDefined){
                 <button type="submit" id="save-btn" name="action" value="save" class="btn btn-primary">Сохранить</button>

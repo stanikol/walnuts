@@ -49,16 +49,10 @@
 
                 <div class="collapse navbar-collapse" id="navbar-nuts">
                     <ul class="nav navbar-nav navbar-upper navbar-left" id="navbar-upper-left">
-                            <li><a href="@controllers.blog.routes.Blog.showAllArticles">@Messages("ГЛАВНАЯ")</a></li>
-                            <li><a href="@controllers.goods.routes.Goods.listAllGoods">@Messages("СОРТА ОРЕХОВ")</a></li>
-                            <!--<li class="empty-li"><a href="#"></a></li>-->
-                            <!--<li><a href="@controllers.blog.routes.Blog.showAllArticles">@Messages("Статьи")</a></li>-->
-                            <!--<li><a href="@controllers.blog.routes.Blog.showAllArticles">@Messages("Контакты")</a></li>-->
+                            <li><a href="@controllers.pages.routes.ApplicationController.index">@Messages("ГЛАВНАЯ")</a></li>
+                            <li><a href="@controllers.goods.routes.Goods.showAllGoodsItems">@Messages("СОРТА ОРЕХОВ")</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-upper navbar-right" id="navbar-upper-right">
-                            <!--<li><a href="@controllers.blog.routes.Blog.showAllArticles">@Messages("Главная")</a></li>-->
-                            <!--<li><a href="@controllers.goods.routes.Goods.listAllGoods">@Messages("Сорта орехов")</a></li>-->
-                            <!--<li class="empty-li"><a href="#"></a></li>-->
                             <li><a href="@controllers.blog.routes.Blog.showAllArticles">@Messages("СТАТЬИ")</a></li>
                             <li><a href="@controllers.images.routes.Images.showGallery()">ФОТО</a></li>
                             <li><a href="@controllers.blog.routes.Blog.showAllArticles">@Messages("КОНТАКТЫ")</a></li>
@@ -67,11 +61,11 @@
                         <li><a href="@controllers.images.routes.Images.showGallery("")">Фото</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-lower navbar-right" id="navbar-lower-right">
+                        @if(user.map(_.isAdmin).getOrElse(false)){
+                            <li><a href="@controllers.images.routes.Images.showAdminImageForm()">Admin</a></li>
+                        }
                         @user.map { u =>
-                            <!--<li><a href="@controllers.pages.routes.ApplicationController.index">@u.name</a></li>-->
-                            @if(u.isAdmin){
-                                <li><a href="@controllers.images.routes.Images.showAdminImageForm()">Admin</a></li>
-                            }
+                            <li><a href="#">@u.name</a></li>
                             @if(u.loginInfo.providerID == com.mohiva.play.silhouette.impl.providers.CredentialsProvider.ID) {
                                 <li><a href="@controllers.auth.routes.ChangePasswordController.view">@Messages("change.password")</a></li>
                             }
@@ -105,7 +99,7 @@
                 </div>
                 }
             </div>
-            <div class="starter-template row">
+            <div class="starter-template">
                 @content
             </div>
         </main>

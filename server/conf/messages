@@ -139,7 +139,7 @@ images.invalidForm = Форма с инвалидными данными: {0} !
 images.errors-in-form = Ошибки в данных формы !
 
 # Blog
-blog.title = Заголовок
+# blog.title = Заголовок
 blog.keywords = Keywords/Ключевые слова (SEO)
 blog.sort-order = Порядок отображения
 blog.description = Description/Описание (SEO)

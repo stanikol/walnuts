@@ -33,9 +33,9 @@ class Goods @Inject() (
 
   val onSubmitMaxMemoryBuffer: Int = config.getBytes("blogOnSubmitMaxMemoryBuffer").getOrElse(512 * 1024L).asInstanceOf[Int]
 
-  def listAllGoods = silhouette.UserAwareAction.async { implicit request =>
+  def showAllGoodsItems = silhouette.UserAwareAction.async { implicit request =>
     goodsDAO.listAllGoods.map { goods: Seq[GoodsItemView] =>
-      Ok(views.html.goods.listAll(request.identity, goods))
+      Ok(views.html.goods.showAllGoodsItems(request.identity, goods))
     }
   }
 
@@ -49,7 +49,7 @@ class Goods @Inject() (
     }
   }
 
-  def showItemEditForm(itemID: Option[Long]) = silhouette.SecuredAction(Roles.Admin).async { implicit request =>
+  def adminGoodsItem(itemID: Option[Long]) = silhouette.SecuredAction(Roles.Admin).async { implicit request =>
     val goodsItem: Future[GoodsItem] = itemID match {
       case None => Future(GoodsItem.empty)
       case Some(id) => goodsDAO.getGoodsItem(id).map { goodsItemView => GoodsItem.fromGoodsItemView(goodsItemView.get) }
@@ -77,15 +77,15 @@ class Goods @Inject() (
             action match {
               case Some("new") =>
                 goodsDAO.createNewGoodsItem(ok).map(newItem =>
-                  Redirect(controllers.goods.routes.Goods.showItemEditForm(newItem.id))
+                  Redirect(controllers.goods.routes.Goods.adminGoodsItem(newItem.id))
                     .flashing("success" -> s"Item #${newItem.id.get} is created."))
               case Some("save") if ok.id.isDefined =>
                 goodsDAO.updateGoodsItem(ok).map(updatedItem =>
-                  Redirect(controllers.goods.routes.Goods.showItemEditForm(updatedItem.id))
+                  Redirect(controllers.goods.routes.Goods.adminGoodsItem(updatedItem.id))
                     .flashing("success" -> s"Item #${updatedItem.id.get} is updated."))
               case Some("delete") if ok.id.isDefined =>
                 goodsDAO.deleteGoodsItem(ok.id.get).map(rowsAffected =>
-                  Redirect(controllers.goods.routes.Goods.showItemEditForm(None))
+                  Redirect(controllers.goods.routes.Goods.adminGoodsItem(None))
                     .flashing("success" -> s"$rowsAffected item #${ok.id.get} is deleted."))
 
             }

@@ -6,26 +6,25 @@ package controllers.blog
 import java.io.File
 import javax.inject._
 
+import scala.collection.JavaConversions._
 import akka.stream.Materializer
 import com.mohiva.play.silhouette.api.Silhouette
 import controllers.WebJarAssets
-import models.goods.{ Category, GoodsCategoriesDAO, GoodsDAO, GoodsItem }
-import models.goods.GoodsTableDef._
+import models.blog.Data.Article
 import models.blog._
-import models.blog.Data.{ Article, Comment, CommentInfo }
-import models.blog.FormsData._
+import models.goods.GoodsTableDef._
+import models.goods.{ Category, GoodsCategoriesDAO, GoodsDAO, GoodsItem }
 import models.images.{ Image, ImagesDAO }
+import org.jsoup.Jsoup
+import org.jsoup.nodes.Element
 import play.api.db.slick.DatabaseConfigProvider
-import play.api.i18n.{ I18nSupport, Messages }
-import utils.auth.Roles.Admin
-import play.api.{ Configuration, Logger }
-import play.api.i18n.MessagesApi
+import play.api.i18n.{ I18nSupport, MessagesApi }
 import play.api.libs.concurrent.Execution.Implicits._
 import play.api.mvc._
+import play.api.{ Configuration, Logger }
 import slick.backend.DatabaseConfig
 import slick.driver.JdbcProfile
 import slick.jdbc.JdbcBackend
-import slick.model.Table
 import utils.auth.{ DefaultEnv, Roles }
 
 import scala.concurrent.duration.Duration
@@ -46,21 +45,56 @@ class ImportData @Inject() (
     implicit val mat: Materializer
 ) extends Controller with I18nSupport {
 
-  private val dbConfig: DatabaseConfig[JdbcProfile] = dbConfigProvider.get[JdbcProfile]
-  private val db: JdbcBackend#DatabaseDef = dbConfig.db
+  private val dbConfig2: DatabaseConfig[JdbcProfile] = dbConfigProvider.get[JdbcProfile]
+  import dbConfig2.driver.api._
+  private val db2: JdbcBackend#DatabaseDef = dbConfig2.db
 
   def images = {
-    val images = grab.GrabRead.readImagesFromDir(new File("grab")).toList
-    images.map {
+    val imagesNuts = grab.GrabRead.readImagesFromDir(new File("grab/nuts")).toList
+    imagesNuts.map {
       case (image: Image, bytes: Array[Byte]) =>
         Logger.info(s"ImportData => Upserting ${bytes.length} bytes in ${image.name} ...")
         imagesDAO.insertOrUpdateImage(image, Some(Seq(1)), Some(bytes))
         image
     }
+    val imagesArticles = grab.GrabRead.readImagesFromDir(new File("grab/articles")).toList
+    imagesArticles.map {
+      case (image: Image, bytes: Array[Byte]) =>
+        Logger.info(s"ImportData => Upserting ${bytes.length} bytes in ${image.name} ...")
+        imagesDAO.insertOrUpdateImage(image, Some(Seq(2)), Some(bytes))
+        image
+    }
+    val (g, a) = assignContentToImages()
+    imagesArticles ++ imagesNuts ++ g ++ a
+  }
+
+  private def assignContentToImages() = {
+    val articlesImagesF: Future[Map[String, Seq[String]]] = blogDAO.getAllArticles.map {
+      _.map { article: Article =>
+        val soup = Jsoup.parse(article.text)
+        val imagesNames = soup.select("img").map { case e: Element => e.attr("src").split("/").last }.filter(!_.startsWith("data"))
+        Logger.info(s"В статье ${article.title} \n\tнайдено ${imagesNames.mkString(", ")}")
+        imagesNames.map { imageName =>
+          imagesDAO.updateImageContent(imageName, article.title)
+        }
+        article.title -> imagesNames
+      }.filter(_._2.nonEmpty).toMap
+    }
+    val goodsImagesTitlesF: Future[Map[String, String]] =
+      db2.run(models.goods.GoodsTableDef.goods.filter(_.image.nonEmpty).map(g => g.image.get -> g.title).result).map {
+        _.map {
+          case x @ (imageName, imageTitle) =>
+            imagesDAO.updateImageContent(imageName, s"Сорт $imageTitle")
+            Logger.info(s"$imageName $imageTitle")
+            x
+        }.toMap
+      }
+
+    Await.result(articlesImagesF flatMap (a => goodsImagesTitlesF.map(_ -> a)), Duration.Inf)
   }
 
   def importImages = silhouette.SecuredAction(Roles.Admin) { implicit request =>
-    Ok(s"$images")
+    Ok(s"$images ")
   }
 
   def articles = {
@@ -98,10 +132,9 @@ class ImportData @Inject() (
       TSV(id.toInt, name, category, image)
     }.toList
     //
-    import dbConfig.driver.api._
     index.groupBy(_.category).keys.map { category =>
       val q = categories += Category(None, category, "")
-      db.run(q)
+      db2.run(q)
     }
     //
     val files = grab.GrabRead.getFileTree(new File("grab/nuts")).filter(_.getName.endsWith(".html")).toList
@@ -138,11 +171,12 @@ class ImportData @Inject() (
 
   def importAll = silhouette.SecuredAction(Roles.Admin) { implicit request =>
     Ok(s"""Images:
-         |$images
-         |Nuts:
-         |$nuts
-         |Articles:
-         |${articles}""".stripMargin)
+           |$images
+           |Nuts:
+           |$nuts
+           |Articles:
+           |${articles}""".stripMargin)
+
   }
 
 }

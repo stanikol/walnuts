@@ -23,7 +23,7 @@ import slick.dbio.DBIOAction
 @Singleton
 class ImagesDAO @Inject() (dbConfigProvider: DatabaseConfigProvider, imageCategoriesDAO: ImageCategoriesDAO) {
 
-  private val dbConfig: DatabaseConfig[JdbcProfile] = dbConfigProvider.get[JdbcProfile]
+  val dbConfig: DatabaseConfig[JdbcProfile] = dbConfigProvider.get[JdbcProfile]
   private val db: JdbcBackend#DatabaseDef = dbConfig.db
 
   import dbConfig.driver.api._
@@ -111,5 +111,9 @@ class ImagesDAO @Inject() (dbConfigProvider: DatabaseConfigProvider, imageCatego
 
   def deleteImage(name: String) =
     db.run(images.filter(img => img.name === name).delete)
+
+  def updateImageContent(imageName: String, imageTitle: String) = db.run {
+    images.filter(_.name === imageName).map(_.content).update(imageTitle)
+  }
 
 }

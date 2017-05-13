@@ -22,7 +22,7 @@
     <br>
     @user.map{ usr =>
         @if(usr.isAdmin){
-            <a href="@CSRF(controllers.goods.routes.Goods.showItemEditForm(goodsItem.id))" class="btn btn-danger">@Messages("Edit")</a>
+            <a href="@CSRF(controllers.goods.routes.Goods.adminGoodsItem(goodsItem.id))" class="btn btn-danger">@Messages("Edit")</a>
         }
     }
 }

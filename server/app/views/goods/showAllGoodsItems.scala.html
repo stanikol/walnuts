@@ -1,0 +1,61 @@
+@(userOption: Option[models.User], goodsItems: Seq[GoodsItemView])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+@* @import helper.CSRF *@
+
+@main(Messages("ООО «Тимирязевское»"), userOption){
+    @{if(goodsItems.length<=0){
+        <div class="col-md-10 col-md-offset-2 alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>Messages("There is no goods in the shop !")</strong>
+        </div>
+    }}
+    <div class="row">
+        @goodsItems.map(gi => (gi.categorySortOrder, gi.category)).toSet[(String, String)].toList.sortBy(_._1).map{ case (_: String, category: String) =>
+            <h2 class="col col-xs-12 col-sm-12 col-md-12 col-ld-12">@category</h2>
+            @goodsItems.filter(_.category == category).sortBy(_.sortOrder).map { item =>
+                <div class="col col-xs-4 col-sm-3 col-md-3 col-ld-3">
+                    <a href="@controllers.goods.routes.Goods.getGoodsItem(item.id.get)">
+                        @if(item.image.isDefined){
+                        <div class="bg-img" style="background-image: url(@controllers.images.routes.Images.getThumbnail(item.image.get));" >
+                            <img  />
+                        </div>
+                        <div class="h5">@item.title</div>
+                        }
+                    </a>
+                </div>
+            }
+        }
+    </div>
+
+    <style>
+        .bg-img{
+            border-radius: 150px;
+            width: 150px;
+            background-size:150px 150px;
+            background-repeat: no-repeat;
+            background-position: left top;
+        }
+
+        div.bg-img > img {
+            width: 150px;
+            content:url(/assets/images/imgmaskt.png);
+        }
+
+        @@media screen and (max-width: 800px) {
+            .bg-img{
+                border-radius: 120px;
+                width: 120px;
+                background-size:120px 120px;
+            }
+
+            div.bg-img > img {
+                width: 120px;
+            }
+
+            .h5{
+                font-size: 10px;
+            }
+        }
+
+    </style>
+}
+

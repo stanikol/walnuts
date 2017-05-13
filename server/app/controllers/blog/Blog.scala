@@ -53,7 +53,7 @@ class Blog @Inject() (
       ) yield (a, c)
     articleWithComments map {
       case (Some(article), comments) =>
-        Ok(views.html.blog.blogShow(request.identity, article, comments))
+        Ok(views.html.blog.showArticle(request.identity, article, comments))
       case _ => BadRequest(Messages("blog.not-found", id))
     }
   }

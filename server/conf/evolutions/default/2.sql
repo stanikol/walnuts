@@ -26,8 +26,8 @@ create table if not exists albums(
     sort_order varchar
 );
 
-insert into albums(name, sort_order) values('Gallery #1', '1');
-insert into albums(name, sort_order) values('Gallery #2', '1');
+insert into albums(name, sort_order) values('Сорта орехов', '1');
+insert into albums(name, sort_order) values('Статьи', '2');
 
 create table if not exists binding_image_album (
     image_name varchar references images(name) on delete cascade,

@@ -56,7 +56,7 @@
                                   <ul class="dropdown-menu">
                                     <li><a href="@controllers.images.routes.Images.showAdminImageForm("")">@Messages("Редактировать")</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="@controllers.images.routes.Images.showGallery("")>@Messages("Галлерея")</a></li>
+                                    <li><a href="@controllers.images.routes.Images.showGallery("")">@Messages("Галлерея")</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="@controllers.images.routes.Images.adminAlbumsCategories">@Messages("Редактировать альбомы")</a></li>
                                   </ul>
@@ -64,9 +64,9 @@
                                 <li class="dropdown">
                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@Messages("Орехи")<span class="caret"></span></a>
                                   <ul class="dropdown-menu">
-                                    <li><a href="@controllers.goods.routes.Goods.showItemEditForm(None)">Новый</a></li>
+                                    <li><a href="@controllers.goods.routes.Goods.adminGoodsItem(None)">Новый</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="@controllers.goods.routes.Goods.listAllGoods">Перечень орехов</a></li>
+                                    <li><a href="@controllers.goods.routes.Goods.showAllGoodsItems">Перечень орехов</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="@controllers.goods.routes.Goods.adminGoodsCategoriesHandle">Радактировать категории</a></li>
                                   </ul>

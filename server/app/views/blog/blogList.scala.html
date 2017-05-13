@@ -1,7 +1,6 @@
 @(userOption: Option[models.User], articles: Seq[models.blog.Data.Article])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
-@* @import helper.CSRF *@
 
-@main(Messages("blog.title"), userOption){
+@main(Messages("Статьи"), userOption){
     @{if(articles.length<=0){
         <div class="col-md-10 col-md-offset-2 alert alert-danger">
             <a href="#" class="close" data-dismiss="alert">&times;</a>
@@ -10,20 +9,6 @@
     }}
     @for(article<-articles){
         <br>
-        @*********
-        <a href='@if(userOption.isDefined && userOption.get.isAdmin){
-                    @controllers.blog.routes.Blog.edit(article.id.get)
-                } else {
-                    @controllers.blog.routes.Blog.article(article.id.get)
-                }'
-            class="article-title-href">
-                @if(userOption.isDefined && userOption.get.isAdmin){
-                    @article.title <br> #@article.id.get @article.sort_order
-                } else {
-                    @article.title
-                }
-        </a>
-        *********@
         <a href='@controllers.blog.routes.Blog.article(article.id.get)' class="article-title-href">
             @if(userOption.isDefined && userOption.get.isAdmin){
                 @article.title <br> #@article.id.get @article.sort_order
@@ -35,7 +20,7 @@
     }
 
 <!-- Include the Quill library -->
-<link href="https://cdn.quilljs.com/1.2.0/quill.snow.css" rel="stylesheet"/>
+<!--<link href="https://cdn.quilljs.com/1.2.0/quill.snow.css" rel="stylesheet"/>-->
 <!--<link href="/assets/styles/blogEdit.css" rel="stylesheet"/>-->
 <!--<script src="https://cdn.quilljs.com/1.2.0/quill.js"></script>-->
 }

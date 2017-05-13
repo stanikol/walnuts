@@ -37,7 +37,7 @@ GET         /admin/img                      controllers.images.Images.showAdminI
 POST        /admin/img                      controllers.images.Images.handleAdminImageForm
 GET         /img/list                       controllers.images.Images.jsonAllImageInfo
 GET         /gallery                        controllers.images.Images.showGallery(name: String ?= "")
-GET         /img/                           controllers.images.Images.getImage(name)
+GET         /img/:name                      controllers.images.Images.getImage(name)
 GET         /img/150x150/:name              controllers.images.Images.getThumbnail(name)
 GET         /admin/albums                   controllers.images.Images.adminAlbumsCategories
 POST        /admin/albums                   controllers.images.Images.adminAlbumsCategoriesHandle
@@ -68,9 +68,9 @@ GET         /comments/loginOrSignUp         controllers.blog.Comments.loginOrSig
 #############################################
 #           Goods                           #
 #############################################
-GET         /items                          controllers.goods.Goods.listAllGoods
+GET         /items                          controllers.goods.Goods.showAllGoodsItems
 GET         /index.php/items/view/id/:id    controllers.goods.Goods.getGoodsItem(id: Long)
-GET         /admin/item                     controllers.goods.Goods.showItemEditForm(id: Option[Long])
+GET         /admin/item                     controllers.goods.Goods.adminGoodsItem(id: Option[Long])
 POST        /admin/item                     controllers.goods.Goods.itemEditFormHandle
 GET         /admin/cats                     controllers.goods.Goods.adminGoodsCategories
 POST        /admin/cats                     controllers.goods.Goods.adminGoodsCategoriesHandle

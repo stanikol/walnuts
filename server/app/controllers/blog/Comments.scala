@@ -8,13 +8,10 @@ import javax.inject._
 
 import com.mohiva.play.silhouette.api.Silhouette
 import controllers.WebJarAssets
-import models.blog.{ BlogDAO, CommentsDAO }
-import models.blog.Data.{ Article, Comment, CommentInfo, CommentsShow }
-import models.blog.FormsData._
-import play.api.i18n.{ I18nSupport, Messages }
-import utils.auth.Roles.Admin
-import play.api.{ Configuration, Logger }
-import play.api.i18n.MessagesApi
+import controllers.blog.FormsData._
+import models.blog.{ BlogDAO, CommentInfo, CommentsDAO, CommentsShow }
+import play.api.Configuration
+import play.api.i18n.{ I18nSupport, Messages, MessagesApi }
 import play.api.libs.concurrent.Execution.Implicits._
 import play.api.libs.mailer.{ Email, MailerClient }
 import play.api.mvc._
@@ -39,29 +36,36 @@ class Comments @Inject() (
    * so that after signin (signup) process, user could be redirected to the url.
    * @return
    */
-  def addComment = silhouette.SecuredAction.async { implicit request =>
+  def addComment = silhouette.UserAwareAction.async { implicit request =>
     val badRequest = Future(BadRequest(Messages("Error! Either invalid form data or authorised user request.")))
     addCommentForm.bindFromRequest().fold(
       { error => badRequest },
       { ok: AddComment =>
-        ok.comment match {
-          case Some(text) =>
-            commentsDAO.newComment(ok.articleID, text, request.identity).map { _ =>
-              ok.comment.map { comment =>
-                mailerClient.send(Email(
-                  subject = Messages("email.newComment"),
-                  from = Messages("email.from"),
-                  to = Seq(sendCommentsToEmail),
-                  bodyText = Some(s"$ok $comment"),
-                  bodyHtml = None
-                ))
+        request.identity.map { userIdentity =>
+          ok.comment match {
+            case Some(text) =>
+              commentsDAO.newComment(ok.articleID, text, userIdentity).map { _ =>
+                ok.comment.map { comment =>
+                  mailerClient.send(Email(
+                    subject = Messages("email.newComment"),
+                    from = Messages("email.from"),
+                    to = Seq(sendCommentsToEmail),
+                    bodyText = Some(s"$ok $comment"),
+                    bodyHtml = None
+                  ))
+                }
+                Redirect(controllers.blog.routes.Blog.article(ok.articleID))
+                  .flashing("success" -> Messages("Your comment is successfully added."))
               }
-              Redirect(controllers.blog.routes.Blog.article(ok.articleID))
-                .flashing("success" -> Messages("Your comment is successfully added."))
-            }
-          case None =>
-            Future(Redirect(controllers.blog.routes.Blog.article(ok.articleID))
-              .flashing("error" -> Messages("Nothing to add!")))
+            case None =>
+              Future(Redirect(controllers.blog.routes.Blog.article(ok.articleID))
+                .flashing("error" -> Messages("Nothing to add!")))
+          }
+        }.getOrElse {
+          var returnUrl = controllers.blog.routes.Blog.article(ok.articleID).absoluteURL()
+          Future(Redirect(controllers.auth.routes.SignInController.view)
+            .withSession(("returnUrl", returnUrl))
+            .flashing("error" -> Messages("Nothing to add!")))
         }
       }
     )
@@ -75,7 +79,7 @@ class Comments @Inject() (
     Future(Ok(views.html.blog.loginOrSignUp(request.identity)))
   }
 
-  def editComment = silhouette.SecuredAction(Roles.Admin).async { implicit req =>
+  def deleteOrUpdateComment = silhouette.SecuredAction(Roles.Admin).async { implicit req =>
     editCommentForm.bindFromRequest().fold(
       { error => Future(Redirect(controllers.blog.routes.Comments.commentsAdmin()).flashing("error" -> s"Error $error")) },
       { editComment =>
@@ -105,7 +109,6 @@ class Comments @Inject() (
           .flashing("error" -> error.errors.mkString("; ")))
       },
       { commentsShow: CommentsShow =>
-        println(s"\t\t\t $commentsShow")
         commentsDAO.listAll(commentsShow).map {
           comments: Seq[CommentInfo] =>
             Ok(views.html.blog.commentsEdit(req.identity, comments, commentsShowForm.fill(commentsShow)))

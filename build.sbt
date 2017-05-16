@@ -77,11 +77,11 @@ lazy val server = (project in file("server"))
       // triggers scalaJSPipeline when using compile or continuous compilation
       compile in Compile := ((compile in Compile) dependsOn scalaJSPipeline).value,
       TwirlKeys.templateImports ++= Seq(
-        "models.blog.Data._",
-        "models.blog.FormsData._",
+        "models.blog._",
         "models.goods._",
-        "controllers.goods.FormsData._",
         "models.images._",
+        "controllers.blog.FormsData._",
+        "controllers.goods.FormsData._",
         "controllers.images.FormsData._"
       ),
       scalaVersion in ThisBuild := scalaV,

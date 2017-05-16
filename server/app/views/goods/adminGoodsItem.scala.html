@@ -4,7 +4,7 @@
 
 @admin(Messages("itemEdit.title"), Some(user)){
     <input type="file" id="filepickuper" style="display: none"/>
-    <form id="item-edit-form" method="POST" action="@CSRF(controllers.goods.routes.Goods.itemEditFormHandle)">
+    <form id="item-edit-form" method="POST" action="@CSRF(controllers.goods.routes.GoodsAdmin.itemEditFormHandle)">
         <strong>ID #@{goodsItemForm("id").value}</strong>
         <input type="hidden" id="id" name="id" value="@{goodsItemForm("id").value}"/>
         <input type="hidden" id="description" name="description" />
@@ -14,8 +14,10 @@
         )
         @b3.text(goodsItemForm("title"), '_label -> "Наименование")
         <div class="form-group">
-            <label for="description-edit" class="control-label">Описание</label>
-            <div id="description-edit" class="form-control">
+            <label for="quilljs-edit" class="control-label">Описание</label>
+            <br/>
+            <button type="button" id="insert-pic" class="btn btn-primary">Вставить картинку</button>
+            <div id="quilljs-edit" class="form-control">
                 @{Html(goodsItemForm("description").value.getOrElse(""))}
             </div>
         </div>
@@ -26,135 +28,25 @@
         <div id="search-images" class="row"></div>
         <!--BUTTONS-->
         <div class="btn-group btn-group-lg">
-            <a href="@CSRF(controllers.goods.routes.Goods.adminGoodsItem(goodsItemForm("id").value.map(_.toLong)))"
+            <a href="@CSRF(controllers.goods.routes.GoodsAdmin.adminGoodsItem(goodsItemForm("id").value.map(_.toLong)))"
                 class="btn btn-success">Обновить</a>
             @if(goodsItemForm("id").value.isDefined){
                 <button type="submit" id="save-btn" name="action" value="save" class="btn btn-primary">Сохранить</button>
                 <button type="submit" id="delete-btn" name="action" value="delete" class="btn btn-danger">Удалить</button>
             }
             <button type="submit" id="new-btn" name="action" value="new" class="btn btn-warning">Сохранить как новый сорт</button>
+            <a href="@CSRF(controllers.blog.routes.Blog.article(goodsItemForm("id").value.map(_.toLong).getOrElse(0L)))" class="btn btn-success">Просмотреть</a>
         </div>
     </form>
 
-    <!-- Include the Quill library -->
-    <link href="https://cdn.quilljs.com/1.2.0/quill.snow.css" rel="stylesheet"/>
+    <!--<link href="https://cdn.quilljs.com/1.2.0/quill.snow.css" rel="stylesheet"/>-->
+    <!--<script src="https://cdn.quilljs.com/1.2.0/quill.js"></script>-->
     <link href="/assets/styles/blogEdit.css" rel="stylesheet"/>
-    <script src="https://cdn.quilljs.com/1.2.0/quill.js"></script>
-    <!--<script src="/assets/javascripts/blogEdit.js"></script>-->
+    <!-- Include the Quill library -->
+    @Html(views.js.quill().toString())
     <script>
-        // QuillJS editor. Will be initiated later.
-        var quill;
-        var Delta =  Quill.import('delta');
-
-        /**
-            Handle image insertion from database.
-            First query `/img/list` for list of image available in database.
-            Then, after data is received, create dialog (with jQuery) and append
-            to it all the image references received from DB.
-        */
-        function image2Handler() {
-            $.get('@controllers.images.routes.Images.jsonAllImageInfo', function(listOfImages, status){
-               let imagesDialog = $('<div />', {id: "imagesDialog", class: "row"}).dialog({
-                        autoOpen: false,
-                        modal:    true,
-                        width:    $(window).width() - $(window).width() * 0.2,
-                        height:   $(window).height() - $(window).height() * 0.2,
-               });
-               listOfImages.map((image) => {
-                    //const imageHref = '/img/'+image.name;
-                    const imageHref = '/img/150x150/'+image.name;
-                    $('<img />', {
-                        src:   imageHref,
-                        alt:   image.content,
-                        class: "col col-sm-2 image-responsive",
-                        click: function(){
-                            quill.updateContents(
-                                new Delta()
-                                  .retain(quill.getSelection().index)
-                                  .insert({
-                                    image: imageHref
-                                  },
-                                  {
-                                // link: imageHref,
-                                    alt: prompt('@Messages("Enter image description")', image.content)
-                                  }));
-                            imagesDialog.dialog('destroy').remove(); // dialog has to be destroyed, otherwise next time there will be 2 or more dialogs with the same id #imagesDialog
-                        }
-                   }).appendTo(imagesDialog);
-               });
-               imagesDialog.dialog('open');
-            });
-        };
-
-        /**
-            Handle image insertion from filesystem as base64 data.
-            Used as default image handler.
-        */
-        var filepickuper = document.getElementById("filepickuper");
-
-        function insertImageInQuillJSAsBase64(){
-            let reader = new FileReader();
-            reader.onloadend = function() {
-                let alt = prompt('@Messages("Enter image description")', file);
-                let base64 = reader.result;
-                quill.updateContents(
-                new Delta()
-                  .retain(quill.getSelection().index)
-                  .insert({
-                        image: base64
-                    },
-                    {
-                // link: imageHref,
-                        alt: alt
-                    })
-                );
-            };
-            var file = filepickuper.files[0];
-            reader.readAsDataURL(file);
-        };
-
-        function imageBase64Handler() {
-            $('#filepickuper').trigger('click');
-        };
-
         var deleteButtonPressed = false;
-
-        ////
         $(document).ready(function(){
-            // Init QuillJS.com editor
-            const toolbarOptions = [
-                ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-                ['blockquote', 'code-block'],
-
-                [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-                [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-                [{ 'direction': 'rtl' }],                         // text direction
-
-                [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-                [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-                [ 'link', 'image', 'image2', 'video', 'formula' ],          // add's image support
-                [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-                [{ 'font': [] }],
-                [{ 'align': [] }],
-
-                ['clean']                                         // remove formatting button
-            ];
-            quill = new Quill('#description-edit', {
-                modules: {
-                    toolbar: {
-                      container: toolbarOptions,
-                      handlers: {
-                        image: imageBase64Handler,
-                        image2: image2Handler
-                      }
-                    }
-                },
-                theme: 'snow'
-            });
-
-            $('#filepickuper').change(insertImageInQuillJSAsBase64);
 
             $('#item-edit-form').on('submit', function(){
                 document.getElementById('description').value = document.getElementsByClassName('ql-editor')[0].innerHTML;
@@ -175,7 +67,7 @@
 
             // SEARCH IMAGES
             $('#search-images-btn').click(function() {
-                $.get('@controllers.images.routes.Images.jsonAllImageInfo', function(listOfImages, status){
+                $.get('@controllers.images.routes.ImagesAdmin.jsonAllImageInfo', function(listOfImages, status){
                    var searchImagesDiv = $('#search-images');
                    listOfImages.map((image) => {
                         const imageHref = '/img/150x150/'+image.name;
@@ -197,9 +89,6 @@
                     });
                 });
             });
-
-
-
         });
     </script>
     <style>
@@ -209,10 +98,6 @@
         overflow: hidden;
         overflow-y: scroll;
         overflow-x: scroll;
-    }
-
-    .ql-image2:after {
-        content: "Ω";
     }
     </style>
 }

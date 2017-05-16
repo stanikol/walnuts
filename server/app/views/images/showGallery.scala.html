@@ -15,26 +15,12 @@
         }
         @galleries.filter(_._1 == selectedGallery || selectedGallery.isEmpty).values.flatten match  { case imagesSeq =>
             <div class="row">
-                <div class="col-sm-6" id="slider-thumbs">
-                    <!-- Bottom switcher of slider -->
-                    <ul class="hide-bullets">
-                        @imagesSeq.zipWithIndex.map { case (imageInfo, idx) =>
-                            <li class="col-sm-3">
-                                <a class="thumbnail" id="carousel-selector-@idx">
-                                    <img class="img-responsive" src="@controllers.images.routes.Images.getThumbnail(imageInfo.name)" alt="@imageInfo.content">
-                                    <!--<img class="img-responsive" src="@controllers.images.routes.Images.getImage(imageInfo.name)" alt="@imageInfo.content">-->
-                                </a>
-                                <div id="slide-content-@idx" class="hidden">@imageInfo.content</div>
-                                <!--<label for="carousel-selector-@idx">@imageInfo.name</label>-->
-                            </li>
-                        }
-                    </ul>
-                </div>
-                <div class="col-sm-6">
+                <div class="col-sm-8">
                     <div class="col-xs-12" id="slider">
                         <!-- Top part of the slider -->
                         <div class="row">
                             <div class="col-sm-12" id="carousel-bounding-box">
+                                <h3 id="carousel-text">@imagesSeq.headOption.map(_.content).getOrElse("")</h3>
                                 <div class="carousel slide" id="myCarousel">
                                     <!-- Carousel items -->
                                     <div class="carousel-inner">
@@ -52,10 +38,24 @@
                                         <span class="glyphicon glyphicon-chevron-right"></span>
                                     </a>
                                 </div>
-                                <h3 id="carousel-text"></h3>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="col-sm-4" id="slider-thumbs">
+                    <!-- Bottom switcher of slider -->
+                    <ul class="hide-bullets">
+                        @imagesSeq.zipWithIndex.map { case (imageInfo, idx) =>
+                        <li class="col-sm-3">
+                            <a class="thumbnail" id="carousel-selector-@idx">
+                                <img class="img-responsive" src="@controllers.images.routes.Images.getThumbnail(imageInfo.name)" alt="@imageInfo.content">
+                                <!--<img class="img-responsive" src="@controllers.images.routes.Images.getImage(imageInfo.name)" alt="@imageInfo.content">-->
+                            </a>
+                            <div id="slide-content-@idx" class="hidden">@imageInfo.content</div>
+                            <!--<label for="carousel-selector-@idx">@imageInfo.name</label>-->
+                        </li>
+                        }
+                    </ul>
                 </div>
             }
             <!--/Slider-->
@@ -79,6 +79,9 @@
     .carousel-inner>.item>img, .carousel-inner>.item>a>img {
         width: 100%;
     }
+    .btn{
+        float: right;
+    }
 </style>
 
 <script>
@@ -92,7 +95,7 @@ jQuery(document).ready(function($) {
             var id_selector = $(this).attr("id");
             try {
                 var id = /-(\d+)$/.exec(id_selector)[1];
-                console.log(id_selector, id);
+                //console.log(id_selector, id);
                 jQuery('#myCarousel').carousel(parseInt(id));
             } catch (e) {
                 console.log('Regex failed!', e);

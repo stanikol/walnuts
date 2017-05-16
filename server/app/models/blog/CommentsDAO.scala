@@ -5,7 +5,7 @@ import java.util.Date
 import javax.inject.Inject
 
 import models.User
-import models.blog.Data.{ Article, Comment, CommentInfo, CommentsShow }
+//import models.blog.Data.{ Article, Comment, CommentInfo, CommentsShow }
 import models.blog.BlogTablesDef._
 import play.api.db.slick.DatabaseConfigProvider
 import slick.backend.DatabaseConfig

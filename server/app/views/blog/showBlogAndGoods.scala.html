@@ -1,4 +1,4 @@
-@(userOption: Option[models.User], articles: Seq[models.blog.Data.Article], goodsItems: Seq[GoodsItemView])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+@(userOption: Option[models.User], articles: Seq[Article], goodsItems: Seq[GoodsItemView])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
 @* @import helper.CSRF *@
 
 @main(Messages("ООО «Тимирязевское»"), userOption){
@@ -14,7 +14,7 @@
                                 <div class="bg-img" style="background-image: url(@controllers.images.routes.Images.getThumbnail(item.image.get));" >
                                     <img  />
                                 </div>
-                                <div class="h5">@item.title</div>
+                                <div class="h5 text-center">@item.title</div>
                                 }
                             </a>
                         </div>

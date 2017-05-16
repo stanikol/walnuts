@@ -2,7 +2,7 @@ package models.blog
 
 import javax.inject.Inject
 
-import models.blog.Data.Article
+//import models.blog.Article
 import models.blog.BlogTablesDef.{ articles, insertArticle }
 import play.api.db.slick.DatabaseConfigProvider
 import slick.backend.DatabaseConfig

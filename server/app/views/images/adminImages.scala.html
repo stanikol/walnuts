@@ -10,14 +10,14 @@
         }
     </div>
     <div class="image-info-list">
-        @b3.formCSRF(action = controllers.images.routes.Images.handleAdminImageForm, 'enctype -> "multipart/form-data") {
+        @b3.formCSRF(action = controllers.images.routes.ImagesAdmin.handleAdminImageForm, 'enctype -> "multipart/form-data") {
             <div class="row">
                 <div class="col-md-4">
                     <div class="well">
                         @b3.file( adminImageForm("new-image"), '_label -> Messages("images.choose-image"), 'class -> "form-control" )
                         <button type='submit' id='save' name='action' value='save'>@Messages("images.save-to-db")</button>
                         <button type='submit' id='delete' name='action' value='delete'>Удалить</button>
-                        <a href="@controllers.images.routes.Images.showAdminImageForm("")" id="add">Добавить</a>
+                        <a href="@controllers.images.routes.ImagesAdmin.showAdminImageForm("")" id="add">Добавить</a>
                     </div>
                     @adminImageForm("name").value.map{ image =>
                         <img class="img-responsive" src='@controllers.images.routes.Images.getImage(image)'/>
@@ -48,9 +48,7 @@
                                     'multiple -> true
                                 )
                                 <button type="button" id="clear-selected-albums">Очистить выбранные альбомы</button>
-                                <a href="@CSRF(controllers.images.routes.Images.adminAlbumsCategories)" class="btn btn-primary">Радактировать альбомы</a>
-                                <!--@b3.text(adminImageForm("new-tag"))-->
-                                <!--<button type="submit" name="action" value="new-tag" id="new-tag-btn"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>-->
+                                <a href="@CSRF(controllers.images.routes.ImagesAdmin.adminAlbumsCategories)" class="btn btn-primary">Радактировать альбомы</a>
                             </div>
                             <div class="well form-inline">
                                 @defining(b3.inline.fieldConstructorSpecific) { implicit ifc =>
@@ -82,7 +80,7 @@
         <hr/>
         @imageInfoSeq.map{ imageInfo =>
             <div class="col-xs-6 col-sm-4 col-md-3 col-ld-3">
-                <a href="@controllers.images.routes.Images.showAdminImageForm(imageInfo.name)" >
+                <a href="@controllers.images.routes.ImagesAdmin.showAdminImageForm(imageInfo.name)" >
                     <p style="font-size: 0.75em;">@imageInfo.name</p>
                     <img src="@controllers.images.routes.Images.getThumbnail(imageInfo.name)" class="img-responsive"/>
                 </a>

@@ -1,11 +1,8 @@
 package models.images
 
-//import models.blog.Data.Category
-//import models.blog.BlogTablesDef.categories
 import models.goods.{ BindingImageCategory, Category }
-import slick.lifted.TableQuery
 import slick.driver.PostgresDriver.api._
-import models.blog.Data._
+import slick.lifted.TableQuery
 
 object ImageTableDef {
 

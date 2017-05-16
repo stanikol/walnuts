@@ -35,49 +35,47 @@
         <script src="@routes.Assets.at("javascripts/zxcvbnShim.js")"></script>
     </head>
     <body class="main-body">
-        <!--<header class="navbar brand" role="navigation">-->
-        <header class="navbar brand" role="navigation">
-            <div class="container" >
-                <div class="navbar-header" >
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-nuts">
-                        <span class="sr-only">!!! @Messages("toggle.navigation")</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-
-                <div class="collapse navbar-collapse" id="navbar-nuts">
-                    <ul class="nav navbar-nav navbar-upper navbar-left" id="navbar-upper-left">
-                            <li><a href="@controllers.pages.routes.ApplicationController.index">@Messages("ГЛАВНАЯ")</a></li>
-                            <li><a href="@controllers.goods.routes.Goods.showAllGoodsItems">@Messages("СОРТА ОРЕХОВ")</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-upper navbar-right" id="navbar-upper-right">
-                            <li><a href="@controllers.blog.routes.Blog.showAllArticles">@Messages("СТАТЬИ")</a></li>
-                            <li><a href="@controllers.images.routes.Images.showGallery()">ФОТО</a></li>
-                            <li><a href="@controllers.blog.routes.Blog.showAllArticles">@Messages("КОНТАКТЫ")</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-lower navbar-left" id="navbar-lower-left">
-                        <li><a href="@controllers.images.routes.Images.showGallery("")">Фото</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-lower navbar-right" id="navbar-lower-right">
-                        @if(user.map(_.isAdmin).getOrElse(false)){
-                            <li><a href="@controllers.images.routes.Images.showAdminImageForm()">Admin</a></li>
-                        }
-                        @user.map { u =>
-                            <li><a href="#">@u.name</a></li>
-                            @if(u.loginInfo.providerID == com.mohiva.play.silhouette.impl.providers.CredentialsProvider.ID) {
-                                <li><a href="@controllers.auth.routes.ChangePasswordController.view">@Messages("change.password")</a></li>
+        <div class="">
+            <header class="navbar" role="navigation">
+                <div class="container brand" >
+                    <div class="navbar-header" >
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-all-items">
+                            <span class="sr-only">!!! @Messages("toggle.navigation")</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbar-all-items">
+                        <ul class="nav navbar-nav navbar-upper navbar-left" id="navbar-upper-left">
+                                <li><a href="@controllers.pages.routes.ApplicationController.index"><span class="glyphicon glyphicon-home"></span> @Messages("ГЛАВНАЯ")</a></li>
+                                <li><a href="@controllers.goods.routes.Goods.showAllGoodsItems"><span class="glyphicon glyphicon-leaf"></span> @Messages("СОРТА ОРЕХОВ")</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-upper navbar-right" id="navbar-upper-right">
+                                <li><a href="@controllers.blog.routes.Blog.showAllArticles"><span class="glyphicon glyphicon-pencil"></span> @Messages("СТАТЬИ")</a></li>
+                                <li><a href="@controllers.images.routes.Images.showGallery()"><span class="glyphicon glyphicon-film"></span> ФОТО</a></li>
+                                <li><a href="@controllers.blog.routes.Blog.showAllArticles"><span class="glyphicon glyphicon-envelope"></span> @Messages("КОНТАКТЫ")</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-lower" id="navbar-lower">
+                            <li><a href="#"></a></li>
+                            <!--<li><a href="@controllers.images.routes.Images.showGallery()">ФОТО</a></li>-->
+                            @if(user.map(_.isAdmin).getOrElse(false)){
+                                <li><a href="@controllers.images.routes.ImagesAdmin.showAdminImageForm()">Admin</a></li>
                             }
-                            <li><a href="@controllers.pages.routes.ApplicationController.signOut">@Messages("sign.out")</a></li>
-                        }.getOrElse {
-                            <li><a href="@controllers.auth.routes.SignInController.view">@Messages("sign.in")</a></li>
-                            <li><a href="@controllers.auth.routes.SignUpController.view">@Messages("sign.up")</a></li>
-                        }
-                    </ul>
+                            @user.map { u =>
+                                @if(u.loginInfo.providerID == com.mohiva.play.silhouette.impl.providers.CredentialsProvider.ID) {
+                                    <li><a href="@controllers.auth.routes.ChangePasswordController.view">@Messages("change.password")</a></li>
+                                }
+                                <li><a href="@controllers.pages.routes.ApplicationController.signOut">@Messages("sign.out")</a></li>
+                            }.getOrElse {
+                                <li><a href="@controllers.auth.routes.SignInController.view">@Messages("sign.in")</a></li>
+                                <li><a href="@controllers.auth.routes.SignUpController.view">@Messages("sign.up")</a></li>
+                            }
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </header>
+            </header>
+        </div>
         <main class="container" id="container-main">
             <div class="row">
                 @request.flash.get("error").map { msg =>
@@ -99,7 +97,7 @@
                 </div>
                 }
             </div>
-            <div class="starter-template">
+            <div class="content">
                 @content
             </div>
         </main>

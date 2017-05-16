@@ -13,12 +13,12 @@
             <h2 class="col col-xs-12 col-sm-12 col-md-12 col-ld-12">@category</h2>
             @goodsItems.filter(_.category == category).sortBy(_.sortOrder).map { item =>
                 <div class="col col-xs-4 col-sm-3 col-md-3 col-ld-3">
-                    <a href="@controllers.goods.routes.Goods.getGoodsItem(item.id.get)">
+                    <a href="@controllers.goods.routes.Goods.getGoodsItem(item.id.get)" class="centered">
                         @if(item.image.isDefined){
                         <div class="bg-img" style="background-image: url(@controllers.images.routes.Images.getThumbnail(item.image.get));" >
                             <img  />
                         </div>
-                        <div class="h5">@item.title</div>
+                        <div class="h5 text-center">@item.title</div>
                         }
                     </a>
                 </div>
@@ -27,16 +27,22 @@
     </div>
 
     <style>
+        .centered{
+        }
         .bg-img{
-            border-radius: 150px;
-            width: 150px;
-            background-size:150px 150px;
+            border-radius: 180px;
+            width: 180px;
+            background-size:180px 180px;
             background-repeat: no-repeat;
-            background-position: left top;
+            background-position: center top;
+            top: 50%;
+            left: 15%;
+            position: relative;
         }
 
         div.bg-img > img {
-            width: 150px;
+            background-position: center top;
+            width: 180px;
             content:url(/assets/images/imgmaskt.png);
         }
 

@@ -4,6 +4,16 @@
 @import helper.CSRF
 
 @main(article.title, user, article.keywords, article.description){
+    @user.map{ usr =>
+        @if(usr.isAdmin){
+            <form action="@controllers.blog.routes.BlogAdmin.edit(article.id.get)" method="get" class="form-inline">
+                @helper.CSRF.formField
+                <button type="submit" class="btn btn-danger">@Messages("Edit")</button>
+                <a href="@controllers.blog.routes.Comments.commentsAdmin" class="btn btn-primary">Редактировать комментарии</a>
+            </form>
+        }
+    }
+    <br>
     <div class="article">
         <h1>@{article.title}</h1>
         <div class="article-text" disabled>@Html(article.text)</div>
@@ -15,16 +25,6 @@
             <div class="feedtext">
                 @comment.text
             </div>
-        }
-        <br>
-        @user.map{ usr =>
-            @if(usr.isAdmin){
-                <form action="@controllers.blog.routes.Blog.edit(article.id.get)" method="get" class="form-inline">
-                    @helper.CSRF.formField
-                    <button type="submit" class="btn btn-danger">@Messages("Edit")</button>
-                    <a href="@controllers.blog.routes.Comments.commentsAdmin" class="btn btn-primary">Редактировать комментарии</a>
-                </form>
-            }
         }
         <form action="@controllers.blog.routes.Comments.addComment" method="post" id="addCommentForm">
             <button type="submit" class="btn btn-warning">@Messages("Add comment")</button>
@@ -79,6 +79,5 @@
         });
     </script>
 }
-
 
 

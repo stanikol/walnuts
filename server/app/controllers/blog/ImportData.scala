@@ -6,12 +6,10 @@ package controllers.blog
 import java.io.File
 import javax.inject._
 
-import scala.collection.JavaConversions._
 import akka.stream.Materializer
 import com.mohiva.play.silhouette.api.Silhouette
 import controllers.WebJarAssets
-import models.blog.Data.Article
-import models.blog._
+import models.blog.{ Article, _ }
 import models.goods.GoodsTableDef._
 import models.goods.{ Category, GoodsCategoriesDAO, GoodsDAO, GoodsItem }
 import models.images.{ Image, ImagesDAO }
@@ -27,6 +25,7 @@ import slick.driver.JdbcProfile
 import slick.jdbc.JdbcBackend
 import utils.auth.{ DefaultEnv, Roles }
 
+import scala.collection.JavaConversions._
 import scala.concurrent.duration.Duration
 import scala.concurrent.{ Await, Future }
 

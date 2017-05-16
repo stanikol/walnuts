@@ -16,15 +16,15 @@
         </div>
 
     </div>
+    @user.map{ usr =>
+        @if(usr.isAdmin){
+            <a href="@CSRF(controllers.goods.routes.GoodsAdmin.adminGoodsItem(goodsItem.id))" class="btn btn-danger">@Messages("Edit")</a>
+        }
+    }
+    <br>
     <div class="goodsItem">
         <div class="goodsItem-text" disabled>@Html(goodsItem.description)</div>
     </div>
-    <br>
-    @user.map{ usr =>
-        @if(usr.isAdmin){
-            <a href="@CSRF(controllers.goods.routes.Goods.adminGoodsItem(goodsItem.id))" class="btn btn-danger">@Messages("Edit")</a>
-        }
-    }
 }
 
 

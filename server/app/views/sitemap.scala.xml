@@ -1,15 +1,27 @@
-@(goods: Seq[GoodsItemView], articles:Seq[Article])(implicit request: RequestHeader)
+@(goods: Seq[GoodsItemView], articlesNameAndTitle: Map[Long, Seq[(String, String)]])(implicit request: RequestHeader)
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     @goods.map{ goodsItem =>
         <url>
             <loc>@{controllers.goods.routes.Goods.getGoodsItem(goodsItem.id.get).absoluteURL}</loc>
+            @goodsItem.image.map{imageName=>
+                <image:image>
+                    <image:loc>@{controllers.images.routes.Images.getImage(imageName).absoluteURL}</image:loc>
+                </image:image>
+            }
         </url>
     }
 
-    @articles.map{ article =>
+    @articlesNameAndTitle.map{ case (articleID: Long, namesAndTitle: Seq[(String, String)]) =>
     <url>
-        <loc>@{controllers.blog.routes.Blog.article(article.id.get).absoluteURL}</loc>
+        <loc>@{controllers.blog.routes.Blog.article(articleID).absoluteURL}</loc>
+        @namesAndTitle.map{case (imageName, imageTitle) =>
+            <image:image>
+                <image:loc>@{controllers.images.routes.Images.getImage(imageName).absoluteURL}</image:loc>
+                <image:title>@imageTitle</image:title>
+            </image:image>
+        }
     </url>
     }
 </urlset>

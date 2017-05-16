@@ -9,7 +9,7 @@ import java.sql.Timestamp
 import models.tables.UserTable
 import slick.lifted.TableQuery
 import slick.driver.PostgresDriver.api._
-import models.blog.Data._
+//import models.blog.Data._
 /**
  * Created by stanikol on 10/21/16.
  */

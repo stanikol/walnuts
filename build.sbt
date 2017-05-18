@@ -26,7 +26,7 @@ lazy val serverDependencies = Seq(
   "org.webjars" % "datatables" % "1.9.4-2",
   "net.codingwell" %% "scala-guice" % "4.0.1",
   "com.iheart" %% "ficus" % "1.2.6",
-  "com.typesafe.play" %% "play-mailer" % "5.0.0",
+  "com.typesafe.play" %% "play-mailer" % "5.0.0" % "provided",
   "com.enragedginger" %% "akka-quartz-scheduler" % "1.5.0-akka-2.4.x",
   "com.adrianhurt" %% "play-bootstrap" % "1.0-P25-B3",
   //"com.mohiva" %% "play-silhouette-testkit" % "4.0.0" % "test",
@@ -135,3 +135,25 @@ sassCompile in Global := {
 
 
 herokuAppName in Compile := "walnuts"
+
+herokuFatJar in Compile := Some((assemblyOutputPath in assembly).value)
+
+assemblyMergeStrategy in assembly :=  {
+//    case PathList("javax", "servlet", xs @ _*)         => MergeStrategy.first
+//    case PathList("javax", "transaction", xs @ _*)     => MergeStrategy.first
+//    case PathList("javax", "mail", xs @ _*)     => MergeStrategy.first
+//    case PathList("javax", "activation", xs @ _*)     => MergeStrategy.first
+    case PathList(ps @ _*) if ps.last endsWith "class" => MergeStrategy.first
+    case "application.conf" => MergeStrategy.concat
+    case "unwanted.txt"     => MergeStrategy.discard
+    case x =>
+      val oldStrategy = (assemblyMergeStrategy in assembly).value
+      oldStrategy(x)
+}
+
+//assemblyMergeStrategy in assembly := {
+//  case PathList("javax", "servlet", xs @ _*)         => MergeStrategy.first
+//  case x =>
+//    val oldStrategy = (assemblyMergeStrategy in assembly).value
+//    oldStrategy(x)
+//}

@@ -43,3 +43,11 @@ server/app-2.11/
 server/test-2.11/
 
 .sass-cache
+client/src/main/java/
+client/src/main/scala-2.11/
+client/src/test/
+server/app/assets/
+server/app/models/blog/slick_codegen/
+server/test/
+shared/
+src/

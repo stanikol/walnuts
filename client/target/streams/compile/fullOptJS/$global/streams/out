@@ -1,19 +1,19 @@
 [0m[[0minfo[0m] [0mFull optimizing /Users/snc/scala/walnuts/client/target/scala-2.11/client-opt.js[0m
-[0m[[0mdebug[0m] [0mLinker: Compute reachability: 276452 us[0m
-[0m[[0mdebug[0m] [0mLinker: Assemble LinkedClasses: 470343 us[0m
-[0m[[0mdebug[0m] [0mBasic Linking: 766952 us[0m
+[0m[[0mdebug[0m] [0mLinker: Compute reachability: 179989 us[0m
+[0m[[0mdebug[0m] [0mLinker: Assemble LinkedClasses: 382958 us[0m
+[0m[[0mdebug[0m] [0mBasic Linking: 1072958 us[0m
 [0m[[0mdebug[0m] [0mInc. optimizer: Batch mode: true[0m
-[0m[[0mdebug[0m] [0mInc. optimizer: Incremental part: 319730 us[0m
+[0m[[0mdebug[0m] [0mInc. optimizer: Incremental part: 235986 us[0m
 [0m[[0mdebug[0m] [0mInc. optimizer: Optimizing 777 methods.[0m
-[0m[[0mdebug[0m] [0mInc. optimizer: Optimizer part: 510347 us[0m
-[0m[[0mdebug[0m] [0mInc. optimizer: 849363 us[0m
-[0m[[0mdebug[0m] [0mRefiner: Compute reachability: 89032 us[0m
-[0m[[0mdebug[0m] [0mRefiner: Assemble LinkedClasses: 23235 us[0m
-[0m[[0mdebug[0m] [0mRefiner: 116030 us[0m
+[0m[[0mdebug[0m] [0mInc. optimizer: Optimizer part: 392420 us[0m
+[0m[[0mdebug[0m] [0mInc. optimizer: 648527 us[0m
+[0m[[0mdebug[0m] [0mRefiner: Compute reachability: 53568 us[0m
+[0m[[0mdebug[0m] [0mRefiner: Assemble LinkedClasses: 13249 us[0m
+[0m[[0mdebug[0m] [0mRefiner: 69974 us[0m
 [0m[[0mdebug[0m] [0mEmitter: Class tree cache stats: reused: 0 -- invalidated: 37[0m
 [0m[[0mdebug[0m] [0mEmitter: Method tree cache stats: resued: 0 -- invalidated: 95[0m
-[0m[[0mdebug[0m] [0mEmitter (create Closure trees): 372908 us[0m
+[0m[[0mdebug[0m] [0mEmitter (create Closure trees): 311351 us[0m
 [0m[[0minfo[0m] [0mClosure: 0 error(s), 0 warning(s)[0m
-[0m[[0mdebug[0m] [0mClosure: Compiler pass: 4158806 us[0m
-[0m[[0mdebug[0m] [0mClosure: Write result: 43929 us[0m
-[0m[[0mdebug[0m] [0mGlobal IR cache stats: reused: 4 -- invalidated: 0 -- trees read: 246[0m
+[0m[[0mdebug[0m] [0mClosure: Compiler pass: 2788210 us[0m
+[0m[[0mdebug[0m] [0mClosure: Write result: 55083 us[0m
+[0m[[0mdebug[0m] [0mGlobal IR cache stats: reused: 0 -- invalidated: 4 -- trees read: 246[0m

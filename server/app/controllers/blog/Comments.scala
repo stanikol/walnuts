@@ -37,9 +37,9 @@ class Comments @Inject() (
    * @return
    */
   def addComment = silhouette.UserAwareAction.async { implicit request =>
-    val badRequest = Future(BadRequest(Messages("Error! Either invalid form data or authorised user request.")))
+    //    val badRequest = Future(BadRequest(Messages("Ошибка (addComment): ")))
     addCommentForm.bindFromRequest().fold(
-      { error => badRequest },
+      { error => Future(BadRequest(Messages("Ошибка (addComment): данные формы инвалидны !"))) },
       { ok: AddComment =>
         request.identity.map { userIdentity =>
           ok.comment match {
@@ -55,17 +55,20 @@ class Comments @Inject() (
                   ))
                 }
                 Redirect(controllers.blog.routes.Blog.article(ok.articleID))
-                  .flashing("success" -> Messages("Your comment is successfully added."))
+                  .flashing("success" -> Messages("Ваш коментарий успешно добавлен."))
               }
             case None =>
               Future(Redirect(controllers.blog.routes.Blog.article(ok.articleID))
-                .flashing("error" -> Messages("Nothing to add!")))
+                .flashing("error" -> Messages("Коментарий пуст!")))
           }
         }.getOrElse {
           var returnUrl = controllers.blog.routes.Blog.article(ok.articleID).absoluteURL()
           Future(Redirect(controllers.auth.routes.SignInController.view)
             .withSession(("returnUrl", returnUrl))
-            .flashing("error" -> Messages("Nothing to add!")))
+            .flashing("error" -> {
+              "Для возможности добавления комментариев, необходимо зарегистрироваться как новый пользователь " +
+                "или войти в систему с уже имеющимися у Вас логином и паролем."
+            }))
         }
       }
     )

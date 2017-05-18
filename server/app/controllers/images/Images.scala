@@ -35,7 +35,7 @@ class Images @Inject() (
    */
   def getImage(name: String) = Action.async { _ =>
     val getImageBytesF = imagesDAO.getImage(name).map(_.map(_.bytes).getOrElse(Array.empty))
-    getImageBytes(name, getImageCacheKey _, getImageBytesF)
+    getImageBytesFromCache(name, getImageCacheKey _, getImageBytesF)
       .map { bytes =>
         Ok(bytes).as(BINARY)
       }
@@ -43,11 +43,11 @@ class Images @Inject() (
 
   def getThumbnail(name: String) = Action.async { _ =>
     val getImageBytesF = imagesDAO.getThumb(name).map(_.map(_.bytes).getOrElse(Array.empty))
-    getImageBytes(name, getThumbnailCacheKey _, getImageBytesF)
+    getImageBytesFromCache(name, getThumbnailCacheKey _, getImageBytesF)
       .map(bytes => Ok(bytes).as(BINARY))
   }
 
-  private def getImageBytes(
+  private def getImageBytesFromCache(
     name: String,
     getCacheKey: String => String,
     imageBytesF: Future[Array[Byte]]
@@ -68,7 +68,6 @@ class Images @Inject() (
 
   def showGallery(name: String) = silhouette.UserAwareAction.async { implicit request =>
     imagesDAO.listAllGalleries.map { galleries: Map[String, Seq[ImageInfo]] =>
-      lazy val allImages = galleries.values.flatten.toSeq
       Ok(views.html.images.showGallery(request.identity, name, galleries))
       //      Ok(views.html.images.showGallery2(request.identity, images))
     }

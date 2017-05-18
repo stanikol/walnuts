@@ -12,12 +12,19 @@
 };
 
 .brand{
-    min-height: 166px;
-    background-image: url(/assets/images/header.png);
-    background-position: center center;
+    min-height: 220px;
+    background-image: url(/assets/images/header-new.png);
+
+    background-attachment: fixed;
+    background-position: top center;
     background-repeat: no-repeat;
-    //background-size: contain;
-    background-size: 75%;
+    background-size: contain;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
 }
 
 
@@ -43,8 +50,8 @@
 
 .navbar-lower {
     li > a {
-        color: darkolivegreen;
-        text-shadow: 1px 1px 1px cornflowerblue;
+        color: red;
+        text-shadow: 1px 1px 5px yellow;
     }
     li > a:hover {
         font-weight: bold;
@@ -57,31 +64,17 @@
 }
 
 #navbar-upper-left{
-    margin-top: 5.4%;
-    padding-left: 15%;
+    margin-top: 3%;
 }
 
 
 #navbar-upper-right{
-    margin-top: 5.4%;
-    padding-right: 15%;
+    margin-top: 3%;
 }
 
-@media (max-width: 600px){
-    #navbar-upper-left{
-        margin-top: 0;
-        padding-left: 0;
-    }
-
-    #navbar-upper-right{
-        margin-top: 0;
-        padding-right:0;
-    }
-}
 
 #navbar-lower{
-    //padding-top: 8%;
-    // padding-left: 13%;
+    width: 100%;
 }
 
 

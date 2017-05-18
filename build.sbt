@@ -12,17 +12,6 @@ lazy val scalaV = "2.11.8"
 
 version := "1.0.0"
 
-//resolvers := ("Atlassian Releases" at "https://maven.atlassian.com/public/") +: resolvers.value
-
-//resolvers += Resolver.jcenterRepo
-
-// resolvers += "Atlassian Releases" at "https://maven.atlassian.com/public/"
-//
-// resolvers += "Atlassian" at "https://maven.atlassian.com/content/repositories/"
-//
-// resolvers += "iHeartRadio" at "https://dl.bintray.com/iheartradio/maven/"
-//
-// resolvers += Resolver.bintrayRepo("iheartradio", "maven")
 
 lazy val sassCompile = taskKey[Unit]("Sass C compile")
 
@@ -42,8 +31,6 @@ lazy val serverDependencies = Seq(
   "com.adrianhurt" %% "play-bootstrap" % "1.0-P25-B3",
   //"com.mohiva" %% "play-silhouette-testkit" % "4.0.0" % "test",
   "org.postgresql" % "postgresql" % "9.4.1212",
-//  "com.typesafe.play" %% "play-slick" % "2.0.0",
-//  "com.typesafe.play" %% "play-slick-evolutions" % "2.0.0",
   "com.typesafe.play" %% "play-slick" % "2.0.2",
   "com.typesafe.play" %% "play-slick-evolutions" % "2.0.2",
   "com.github.tototoshi" %% "slick-joda-mapper" % "2.2.0",
@@ -52,7 +39,6 @@ lazy val serverDependencies = Seq(
   specs2 % Test,
   cache,
   filters,
-//  jdbc,
   "org.jsoup" % "jsoup" % "1.10.2", // https://mvnrepository.com/artifact/org.jsoup/jsoup
   //
   "com.sksamuel.scrimage" %% "scrimage-core" % "2.1.8"
@@ -71,7 +57,7 @@ lazy val server = (project in file("server"))
       libraryDependencies ++= serverDependencies,
       routesGenerator := InjectedRoutesGenerator,
       routesImport += "utils.route.Binders._",
-      scalaJSProjects := Seq(client),
+//      scalaJSProjects := Seq(client),
       pipelineStages in Assets := Seq(scalaJSPipeline),
       //pipelineStages := Seq(digest, gzip),
       // triggers scalaJSPipeline when using compile or continuous compilation
@@ -99,7 +85,7 @@ lazy val server = (project in file("server"))
       )
     )
     .enablePlugins(PlayScala)
-    .dependsOn(sharedJvm)
+//    .dependsOn(sharedJvm)
 
 
 //********************************************************
@@ -114,23 +100,23 @@ lazy val server = (project in file("server"))
 //   .setPreference(DanglingCloseParenthesis, Preserve)
 
 
-lazy val client = (project in file("client")).settings(
-  scalaVersion := scalaV,
-  persistLauncher := true,
-  persistLauncher in Test := false,
-//  mainClass := Some("example.ScalaJSExample"),
-  libraryDependencies ++= Seq(
-    "org.scala-js" %%% "scalajs-dom" % "0.9.1"
-  )
-).enablePlugins(ScalaJSPlugin, ScalaJSWeb).
-  dependsOn(sharedJs)
-
-lazy val shared = (crossProject.crossType(CrossType.Pure) in file("shared")).
-  settings(scalaVersion := scalaV).
-  jsConfigure(_ enablePlugins ScalaJSWeb)
-
-lazy val sharedJvm = shared.jvm
-lazy val sharedJs = shared.js
+//lazy val client = (project in file("client")).settings(
+//  scalaVersion := scalaV,
+//  persistLauncher := true,
+//  persistLauncher in Test := false,
+////  mainClass := Some("example.ScalaJSExample"),
+//  libraryDependencies ++= Seq(
+//    "org.scala-js" %%% "scalajs-dom" % "0.9.1"
+//  )
+//).enablePlugins(ScalaJSPlugin, ScalaJSWeb).
+//  dependsOn(sharedJs)
+//
+//lazy val shared = (crossProject.crossType(CrossType.Pure) in file("shared")).
+//  settings(scalaVersion := scalaV).
+//  jsConfigure(_ enablePlugins ScalaJSWeb)
+//
+//lazy val sharedJvm = shared.jvm
+//lazy val sharedJs = shared.js
 
 // loads the server project at sbt startup
 onLoad in Global := (Command.process("project server", _: State)) compose (onLoad in Global).value
@@ -148,15 +134,4 @@ sassCompile in Global := {
 }
 
 
-//resolvers ++= Seq(Resolver.jcenterRepo)
-
-//resolvers += "Atlassian Releases" at "https://maven.atlassian.com/public/"
-
-//externalResolvers := externalResolvers.value.filter(! _.toString.contains("https://repo.typesafe.com/typesafe/releases"))
-//
-//externalResolvers ++= Seq(
-//  Resolver.jcenterRepo,
-//  Resolver.typesafeRepo("releases")
-//)
-//
 herokuAppName in Compile := "walnuts"

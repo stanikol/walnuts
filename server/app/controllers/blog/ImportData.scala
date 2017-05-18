@@ -31,11 +31,9 @@ import scala.concurrent.{ Await, Future }
 
 class ImportData @Inject() (
     blogDAO: BlogDAO,
-    //    commentsDAO: CommentsDAO,
     val goodsDAO: GoodsDAO,
     val imagesDAO: ImagesDAO,
     val goodsCategoriesDAO: GoodsCategoriesDAO,
-    //    val imageCategoriesDAO: ImageCategoriesDAO,
     silhouette: Silhouette[DefaultEnv],
     config: Configuration,
     dbConfigProvider: DatabaseConfigProvider,
@@ -114,7 +112,7 @@ class ImportData @Inject() (
           val title = index.filter(_.id == _id).map(_.title).head
           val shortText = org.jsoup.Jsoup.parse(text).text().replaceAll("[\\s\\t\\n]+", " ").split("\\s").take(60).mkString(" ") + " ..."
           val newArticle = Article(Some(_id), "sort", "kw", title, text, "descr", shortText)
-          blogDAO.addNewArticle(newArticle)
+          blogDAO.upsertArticle(newArticle)
           newArticle.title
       }
     }

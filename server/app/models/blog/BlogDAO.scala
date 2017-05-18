@@ -26,6 +26,8 @@ class BlogDAO @Inject() (dbConfigProvider: DatabaseConfigProvider) {
 
   def addNewArticle(article: Article): Future[Article] = db.run(insertArticle += article)
 
+  def upsertArticle(article: Article) = db.run(articles.insertOrUpdate(article))
+
   def updateArticle(article: Article) = db.run(articles.filter(_.id === article.id).update(article))
 
   def deleteArticle(id: Long): Future[Int] = db.run(articles.filter(_.id === id).delete)

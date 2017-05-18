@@ -81,3 +81,5 @@ GET         /admin/import-all               controllers.blog.ImportData.importAl
 
 
 GET         /assets/*name                    controllers.Assets.at(path="/public", name)
+
+GET         /*name                           controllers.pages.ApplicationController.getPage(name)

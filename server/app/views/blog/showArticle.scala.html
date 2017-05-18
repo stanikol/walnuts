@@ -27,11 +27,11 @@
             </div>
         }
         <form action="@controllers.blog.routes.Comments.addComment" method="post" id="addCommentForm">
-            <button type="submit" class="btn btn-warning">@Messages("Add comment")</button>
+            <button type="submit" class="btn btn-warning">@Messages("Добавить комментарий")</button>
             @helper.CSRF.formField
             <input type="hidden" value="@{article.id}" name="article-id"/>
             @user.map{ usr =>
-                <textarea name="article-comment" id="article-comment" placeholder="@Messages("Add your comment here ...")" rows="10"></textarea>
+                <textarea name="article-comment" id="article-comment" placeholder="@Messages("Прокомментируйте статью ...")" rows="10"></textarea>
             }
         </form>
     </div>

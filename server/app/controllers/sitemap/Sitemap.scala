@@ -40,7 +40,7 @@ class Sitemap @Inject() (
       val imagesMap = images.foldLeft(Map.empty[String, ImageInfo]) { case (m, ii) => m.updated(ii.name, ii) }
       goodsDAO.listAllGoods.flatMap { goods =>
         blogDAO.getAllArticles.map { articles =>
-          val articlesNameAndTitle: Map[Long, Seq[(String, String)]] =
+          val articlesNameAndTitle: Map[Long, Set[(String, String)]] =
             articles.filter(_.id.isDefined).map { article =>
               val soup = Jsoup.parse(article.text)
               soup.select("img").map { i: Element =>
@@ -56,7 +56,7 @@ class Sitemap @Inject() (
                 val imageTitle = imagesMap(imageName).content
                 (article.id.get, imageName, imageTitle)
               }
-            }.flatten.groupBy(_._1).mapValues(_.map(i => i._2 -> i._3))
+            }.flatten.groupBy(_._1).mapValues(_.map(i => i._2 -> i._3).toSet)
           Ok(views.xml.sitemap(goods, articlesNameAndTitle))
         }
       }

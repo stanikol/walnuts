@@ -1,1 +1,1 @@
-web: target/universal/stage/bin/walnuts -Dhttp.port=${PORT}
+web: server/target/universal/stage/bin/walnuts -Dhttp.port=${PORT}

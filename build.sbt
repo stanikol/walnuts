@@ -7,7 +7,7 @@ import org.scalajs.sbtplugin.ScalaJSPlugin
 
 import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._
 
-name := "Walnuts"
+name := "walnuts"
 
 lazy val scalaV = "2.11.8"
 
@@ -53,7 +53,7 @@ lazy val serverDependencies = Seq(
 
 lazy val server = (project in file("server"))
     .settings(
-//      name := "walnuts",
+      name := "walnuts",
       scalaVersion := scalaV,
       libraryDependencies ++= serverDependencies,
       routesGenerator := InjectedRoutesGenerator,

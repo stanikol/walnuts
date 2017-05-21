@@ -1,10 +1,11 @@
 package grab
 
 import java.io.File
-import javax.inject.{ Inject, _ }
+import javax.inject.{Inject, _}
 
-import com.google.inject.{ AbstractModule, Guice }
+import com.google.inject.{AbstractModule, Guice}
 import models.images._
+import play.api.Logger
 import play.api.inject.Injector
 /**
  * Created by snc on 4/27/17.
@@ -28,7 +29,7 @@ object GrabRead extends App {
       //      file.isFile && !List(".html", ".tsv").contains(file.getName.endsWith(_)))
       file.isFile && Seq(".jpg", ".png").exists(file.getName.endsWith(_)))
     imageFiles.map { file =>
-      println(s"Reading image ${file.getPath} ${file.getAbsolutePath}...")
+      Logger.info(s"Reading image ${file.getPath} ${file.getAbsolutePath}...")
       Image.readImageFromFile(file, file.getName, "", None) match {
         case Left(error) =>
           throw new Exception(s"Error reading file ${file.getPath}")
@@ -37,6 +38,6 @@ object GrabRead extends App {
     }
   }
 
-  println(readImagesFromDir(new File("grab")).toList.mkString("\n"))
+  //println(readImagesFromDir(new File("grab")).toList.mkString("\n"))
 
 }

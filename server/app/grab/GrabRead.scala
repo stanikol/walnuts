@@ -28,7 +28,7 @@ object GrabRead extends App {
       //      file.isFile && !List(".html", ".tsv").contains(file.getName.endsWith(_)))
       file.isFile && Seq(".jpg", ".png").exists(file.getName.endsWith(_)))
     imageFiles.map { file =>
-      println(s"Reading image ${file.getPath} ...")
+      println(s"Reading image ${file.getPath} ${file.getAbsolutePath}...")
       Image.readImageFromFile(file, file.getName, "", None) match {
         case Left(error) =>
           throw new Exception(s"Error reading file ${file.getPath}")

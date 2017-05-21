@@ -56,6 +56,7 @@ lazy val server = (project in file("server"))
       name := "walnuts",
       scalaVersion := scalaV,
       resolvers += "Atlassian Releases" at "https://maven.atlassian.com/public/",
+      resolvers += Resolver.jcenterRepo,
       libraryDependencies ++= serverDependencies,
       routesGenerator := InjectedRoutesGenerator,
       routesImport += "utils.route.Binders._",

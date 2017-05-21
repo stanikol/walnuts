@@ -1,3 +1,4 @@
+import com.heroku.sbt.HerokuPlugin.autoImport.herokuFatJar
 import com.typesafe.sbt.SbtScalariform._
 
 //import scalariform.formatter.preferences._
@@ -23,12 +24,13 @@ lazy val serverDependencies = Seq(
   "com.mohiva" %% "play-silhouette-crypto-jca" % "4.0.0",
   "org.webjars" %% "webjars-play" % "2.5.0-2",
   "org.webjars" % "jquery-ui" % "1.11.4",
-  "org.webjars" % "datatables" % "1.9.4-2",
   "net.codingwell" %% "scala-guice" % "4.0.1",
   "com.iheart" %% "ficus" % "1.2.6",
-  "com.typesafe.play" %% "play-mailer" % "5.0.0" % "provided",
+  "com.typesafe.play" %% "play-mailer" % "5.0.0",
   "com.enragedginger" %% "akka-quartz-scheduler" % "1.5.0-akka-2.4.x",
-  "com.adrianhurt" %% "play-bootstrap" % "1.0-P25-B3",
+  "com.adrianhurt" %% "play-bootstrap" % "1.0-P25-B3" exclude("org.webjars", "bootstrap"),
+  "org.webjars" % "jquery" % "2.2.3",
+  "org.webjars" % "bootstrap" % "3.3.7",
   //"com.mohiva" %% "play-silhouette-testkit" % "4.0.0" % "test",
   "org.postgresql" % "postgresql" % "9.4.1212",
   "com.typesafe.play" %% "play-slick" % "2.0.2",
@@ -36,7 +38,7 @@ lazy val serverDependencies = Seq(
   "com.github.tototoshi" %% "slick-joda-mapper" % "2.2.0",
   "joda-time" % "joda-time" % "2.7",
   "org.joda" % "joda-convert" % "1.7",
-  specs2 % Test,
+//  specs2 % Test,
   cache,
   filters,
   "org.jsoup" % "jsoup" % "1.10.2", // https://mvnrepository.com/artifact/org.jsoup/jsoup
@@ -49,19 +51,17 @@ lazy val serverDependencies = Seq(
 )
 
 
-
-
 lazy val server = (project in file("server"))
     .settings(
+//      name := "walnuts",
       scalaVersion := scalaV,
       libraryDependencies ++= serverDependencies,
       routesGenerator := InjectedRoutesGenerator,
       routesImport += "utils.route.Binders._",
 //      scalaJSProjects := Seq(client),
-      pipelineStages in Assets := Seq(scalaJSPipeline),
+//      pipelineStages in Assets := Seq(scalaJSPipeline),
       //pipelineStages := Seq(digest, gzip),
       // triggers scalaJSPipeline when using compile or continuous compilation
-      compile in Compile := ((compile in Compile) dependsOn scalaJSPipeline).value,
       TwirlKeys.templateImports ++= Seq(
         "models.blog._",
         "models.goods._",
@@ -82,7 +82,23 @@ lazy val server = (project in file("server"))
         "-Ywarn-inaccessible", // Warn about inaccessible types in method signatures.
         "-Ywarn-nullary-override", // Warn when non-nullary overrides nullary, e.g. def foo() over def foo.
         "-Ywarn-numeric-widen" // Warn when numerics are widened.
-      )
+      ),
+      //compile in Compile := ((compile in Compile) dependsOn scalaJSPipeline).value,
+      // mainClass in assembly := Some("play.core.server.ProdServerStart$.main"),
+      fullClasspath in assembly += Attributed.blank(PlayKeys.playPackageAssets.value),
+      assemblyMergeStrategy in assembly :=  {
+        case PathList(ps @ _*) if ps.last endsWith "class" => MergeStrategy.first
+        case PathList(ps @ _*) if ps.last == "io.netty.versions.properties" => MergeStrategy.concat
+        //case PathList(ps @ _*) if ps.last == "play-silhouette_2.11-4.0.0.jar" => MergeStrategy.first
+        case "messages" => MergeStrategy.concat
+        case "application.conf" => MergeStrategy.concat
+        case "unwanted.txt"     => MergeStrategy.discard
+        case x =>
+          val oldStrategy = (assemblyMergeStrategy in assembly).value
+          oldStrategy(x)
+      },
+      herokuAppName in Compile := "walnuts",
+      herokuFatJar in Compile := Some((assemblyOutputPath in assembly).value)
     )
     .enablePlugins(PlayScala)
 //    .dependsOn(sharedJvm)
@@ -132,28 +148,3 @@ sassCompile in Global := {
   val admin = "sassc server/sass/admin.scss server/public/styles/admin.css".!
   println(s"Compiling SASS: \n$main \n$admin")
 }
-
-
-herokuAppName in Compile := "walnuts"
-
-herokuFatJar in Compile := Some((assemblyOutputPath in assembly).value)
-
-assemblyMergeStrategy in assembly :=  {
-//    case PathList("javax", "servlet", xs @ _*)         => MergeStrategy.first
-//    case PathList("javax", "transaction", xs @ _*)     => MergeStrategy.first
-//    case PathList("javax", "mail", xs @ _*)     => MergeStrategy.first
-//    case PathList("javax", "activation", xs @ _*)     => MergeStrategy.first
-    case PathList(ps @ _*) if ps.last endsWith "class" => MergeStrategy.first
-    case "application.conf" => MergeStrategy.concat
-    case "unwanted.txt"     => MergeStrategy.discard
-    case x =>
-      val oldStrategy = (assemblyMergeStrategy in assembly).value
-      oldStrategy(x)
-}
-
-//assemblyMergeStrategy in assembly := {
-//  case PathList("javax", "servlet", xs @ _*)         => MergeStrategy.first
-//  case x =>
-//    val oldStrategy = (assemblyMergeStrategy in assembly).value
-//    oldStrategy(x)
-//}

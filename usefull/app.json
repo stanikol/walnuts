@@ -5,6 +5,7 @@
     "Play",
     "Silhouette"
   ],
+  postgres://wtjdohkkhuacrw:eb7f064ec3a56d6e8adefd9a7c1093faa7acb3fd7679552712554ca3b5c52619@ec2-54-235-119-27.compute-1.amazonaws.com:5432/d5hmv93cjk3q2g
   "success_url": "/",
   "env": {
     "BUILDPACK_URL": "https://github.com/heroku/heroku-buildpack-scala.git",

@@ -30,7 +30,7 @@ object GrabRead extends App {
       file.isFile && Seq(".jpg", ".png").exists(file.getName.endsWith(_)))
     imageFiles.map { file =>
       Logger.info(s"Reading image ${file.getPath} ${file.getAbsolutePath}...")
-      Image.readImageFromFile(file, file.getName, "", None) match {
+      Image.readImageFromFile(file.getAbsoluteFile, file.getName, "", None) match {
         case Left(error) =>
           throw new Exception(s"Error reading file ${file.getPath}")
         case Right(res @ (img, bytes)) => res

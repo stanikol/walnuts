@@ -32,7 +32,7 @@ object Image {
   ): Either[String, (Image, Array[Byte])] = {
     if (file.length() > 0) {
       Logger.info(s"readImageFromFile=> Reading ${file.getPath} ${file.getAbsolutePath} ...")
-      val scrImage = ScrImage.fromFile(file)
+      val scrImage = ScrImage.fromFile(file.getAbsoluteFile)
       val imageBytes: Array[Byte] = resizeTo.map {
         case (newHeight, newWidth) =>
           scrImage.scaleTo(newHeight, newWidth)

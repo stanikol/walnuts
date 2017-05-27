@@ -1,0 +1,72 @@
+@(user: models.User, page: Form[controllers.pages.FormsData.PageFormData])(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+@import helper.CSRF
+
+@admin(Messages("title"), Some(user)){
+
+    <input type="file" id="filepicker" style="display: none"/>
+    <form id="page-edit-form" method="POST" action="@CSRF(controllers.pages.routes.AdminPage.onSubmit(page("url").value.get))">
+        <strong>ID #@{page("id").value}</strong>
+        <input type="hidden" id="id"        name="page.url" value="@{page("url").value}"/>
+        <input type="hidden" id="page-html" name="page.html" />
+        <div class="form-group">
+            <label for="title" class="control-label">@Messages("blog.title")</label>
+            <input type="text" id="title" name="page.title" value='@{page("title").value}'
+                   class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="description" class="control-label">@Messages("blog.description")</label>
+            <textarea type="text" id="description" name="page.description" class="form-control">@{page("description").value}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="quilljs-edit" class="control-label">@Messages("blog.page-text")</label>
+            <br/>
+            <button type="button" id="insert-pic" class="btn btn-primary">Вставить картинку</button>
+            <div id="quilljs-edit" class="form-control">
+                @{Html(page("blog-text").value.getOrElse(""))}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="keywords" class="control-label">@Messages("blog.keywords")</label>
+            <textarea type="text" id="keywords" name="page.keywords" class="form-control">@page("keywords").value</textarea>
+        </div>
+        <!--BUTTONS-->
+        <div class="btn-group btn-group-lg">
+            <button type="submit" id="new-btn" name="action" value="new" class="btn btn-warning">@Messages("blog.save-as-new")</button>
+            @if(page("id").value.isDefined){
+                <button type="submit" id="save-btn" name="action" value="save" class="btn btn-primary">@Messages("blog.save-page")</button>
+                <button type="submit" id="delete-btn" name="action" value="delete" class="btn btn-danger">@Messages("blog.delete-page")</button>
+            }
+        </div>
+    </form>
+
+
+    <!-- Include the Quill library -->
+    @Html(views.js.quill().toString())
+    <script>
+
+        $(document).ready(function(){
+            $('#page-edit-form').on('submit', function(){
+                    document.getElementById('blog-text').value = document.getElementsByClassName('ql-editor')[0].innerHTML;
+                    document.getElementById('blog-short-text').value = quill.getText(0, 222);
+                    if( deleteButtonPressed ){
+                        let id = document.getElementById('id').value;
+                        deleteButtonPressed = false;
+                        return confirm('Delete page #'+id);
+                    } else {
+                        return true;
+                    }
+                });
+
+                if(document.getElementById("delete-btn")){
+                    document.getElementById("delete-btn").addEventListener('click', (event) => {
+                        deleteButtonPressed = true;
+                    });
+                };
+        });
+    </script>
+    <style>
+        textarea#keywords {
+            height: 4em;
+        }
+    </style>
+}

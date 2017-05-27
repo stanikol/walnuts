@@ -18,7 +18,7 @@ import play.api.libs.mailer.MailerClient
 import play.api.mvc._
 import utils.auth.DefaultEnv
 
-import scala.concurrent.Future
+import scala.concurrent.{ ExecutionContext, Future }
 
 class Blog @Inject() (
     blogDAO: BlogDAO,
@@ -43,16 +43,33 @@ class Blog @Inject() (
 
   def article(id: Long) = silhouette.UserAwareAction.async { implicit request =>
     Logger.debug("Retrieving article #%d ...".format(id))
-    val articleWithComments: Future[Tuple2[Option[Article], Seq[CommentInfo]]] =
-      for (
-        a <- getArticle(id);
-        c <- getComments(a.get.id.get) if a.isDefined
-      ) yield (a, c)
-    articleWithComments map {
-      case (Some(article), comments) =>
-        Ok(views.html.blog.showArticle(request.identity, article, comments))
-      case _ => BadRequest(Messages("blog.not-found", id))
-    }
+    val articleWithComments: Future[Option[(Article, Seq[CommentInfo])]] =
+      getArticle(id).flatMap { articleOpt =>
+        articleOpt.map { article =>
+          val id = article.id.getOrElse(0L)
+          getComments(id).map { comments =>
+            Some(article -> comments)
+          }
+        }.getOrElse(Future(None))
+      }
+    articleWithComments.map(
+      _.map {
+        case (article, comments) =>
+          Ok(views.html.blog.showArticle(request.identity, article, comments))
+      }.getOrElse {
+        Redirect(controllers.blog.routes.Blog.showAllArticles()).flashing("error" -> Messages("blog.not-found", id))
+      }
+    )
+    //    val articleWithComments: Future[Tuple2[Option[Article], Seq[CommentInfo]]] =
+    //      for (
+    //        a <- getArticle(id);
+    //        c <- getComments(a.get.id.get) if a.get.id.isDefined
+    //      ) yield (a, c)
+    //    articleWithComments map {
+    //      case (Some(article), comments) =>
+    //        Ok(views.html.blog.showArticle(request.identity, article, comments))
+    //      case _ => BadRequest(Messages("blog.not-found", id))
+    //    }
   }
 
 }

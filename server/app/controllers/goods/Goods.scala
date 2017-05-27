@@ -37,7 +37,9 @@ class Goods @Inject() (
   def getGoodsItem(id: Long) = silhouette.UserAwareAction.async { implicit request =>
     goodsDAO.getGoodsItem(id).map { goodsItemOpt =>
       goodsItemOpt match {
-        case None => BadRequest(Messages("No item #{0} was found !", id))
+        case None => Redirect(controllers.goods.routes.Goods.showAllGoodsItems()).flashing(
+          "error" -> Messages("goods.item-not-found", id)
+        )
         case Some(goodsItem) => Ok(views.html.goods.showItem(request.identity, goodsItem))
 
       }

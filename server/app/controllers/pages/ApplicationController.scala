@@ -1,12 +1,13 @@
 package controllers.pages
 
 import javax.inject.Inject
+
 import com.mohiva.play.silhouette.api.{ LogoutEvent, Silhouette }
 import com.mohiva.play.silhouette.impl.providers.SocialProviderRegistry
 import controllers.{ WebJarAssets, pages }
 import models.goods.{ GoodsDAO, GoodsItemView }
 import models.pages.PagesDAO
-import play.api.i18n.{ I18nSupport, MessagesApi }
+import play.api.i18n.{ I18nSupport, Lang, MessagesApi }
 import play.api.mvc.{ Action, AnyContent, Controller }
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import utils.auth.DefaultEnv
@@ -55,8 +56,10 @@ class ApplicationController @Inject() (
     silhouette.env.authenticatorService.discard(request.authenticator, result)
   }
 
-  def getPage(url: String) = silhouette.UserAwareAction.async { implicit request =>
-    pagesDAO.getPage(url).map {
+  def showPage(url: String) = silhouette.UserAwareAction.async { implicit request =>
+    val l = implicitly[Lang]
+    l.code
+    pagesDAO.getPage(url, "en").map {
       case Some(page) => Ok(views.html.pages.showPage(request.identity, page))
       case _ => Redirect(controllers.pages.routes.ApplicationController.index).flashing("error" -> s"Ресурс $url не найден!")
     }

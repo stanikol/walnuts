@@ -1,9 +1,9 @@
 package grab
 
 import java.io.File
-import javax.inject.{Inject, _}
+import javax.inject.{ Inject, _ }
 
-import com.google.inject.{AbstractModule, Guice}
+import com.google.inject.{ AbstractModule, Guice }
 import models.images._
 import play.api.Logger
 import play.api.inject.Injector

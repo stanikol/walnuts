@@ -12,11 +12,12 @@ object PagesTableDef {
 
   class Pages(tag: Tag) extends Table[Page](tag, "pages") {
     def url = column[String]("url", O.PrimaryKey)
+    def lang = column[String]("lang")
     def title = column[String]("title")
     def html = column[String]("html")
     def keywords = column[String]("keywords")
     def description = column[String]("description")
-    def * = (url, title, html, keywords, description) <> (Page.tupled, Page.unapply)
+    def * = (url, lang, title, html, keywords, description) <> (Page.tupled, Page.unapply)
 
   }
 

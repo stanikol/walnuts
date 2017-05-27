@@ -51,7 +51,7 @@ POST        /admin/albums                   controllers.images.ImagesAdmin.admin
 GET         /index.php/article              controllers.blog.Blog.showAllArticles
 GET         /index.php/article/view/id/:id  controllers.blog.Blog.article(id: Long)
 GET         /blog/new                       controllers.blog.BlogAdmin.create
-GET         /blog/:id/edit                  controllers.blog.BlogAdmin.edit(id: Long)
+GET         /blog/:id/edit                  controllers.blog.BlogAdmin.showAdminBlog(id: Long)
 POST        /blog/submit                    controllers.blog.BlogAdmin.onSubmit
 
 #############################################
@@ -82,4 +82,6 @@ GET         /admin/import-all               controllers.blog.ImportData.importAl
 
 GET         /assets/*name                    controllers.Assets.at(path="/public", name)
 
-GET         /*name                           controllers.pages.ApplicationController.getPage(name)
+GET         /pages/admin/*name               controllers.pages.AdminPage.showAdminPage(name)
+POST        /pages/admin/*name               controllers.pages.AdminPage.onSubmit(name)
+GET         /pages/*name                     controllers.pages.ApplicationController.showPage(name)

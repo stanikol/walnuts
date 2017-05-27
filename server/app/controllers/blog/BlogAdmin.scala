@@ -10,7 +10,9 @@ import com.mohiva.play.silhouette.api.Silhouette
 import controllers.WebJarAssets
 import controllers.blog.FormsData._
 import models.blog.{ Article, BlogDAO, CommentsDAO }
-import play.api.i18n.{ I18nSupport, Messages, MessagesApi }
+import models.pages.PagesDAO
+import play.api.data.Form
+import play.api.i18n.{ I18nSupport, Lang, Messages, MessagesApi }
 import play.api.libs.concurrent.Execution.Implicits._
 import play.api.libs.mailer.MailerClient
 import play.api.mvc._
@@ -22,6 +24,7 @@ import scala.concurrent.Future
 
 class BlogAdmin @Inject() (
     blogDAO: BlogDAO,
+    pagesDAO: PagesDAO,
     commentsDAO: CommentsDAO,
     mailerClient: MailerClient,
     silhouette: Silhouette[DefaultEnv],
@@ -39,9 +42,11 @@ class BlogAdmin @Inject() (
     Ok(views.html.blog.adminBlog(request.identity, articleForm.fill(Article.empty)))
   }
 
-  def edit(id: Long) = silhouette.SecuredAction(Admin).async { implicit request =>
+  //  import play.api.d
+  //  val pageForm = Form(mapping())
+  def showAdminBlog(id: Long) = silhouette.SecuredAction(Admin).async { implicit request =>
     getArticle(id).map {
-      case someArticle @ Some(article) =>
+      case Some(article) =>
         Ok(views.html.blog.adminBlog(request.identity, articleForm.fill(article)))
       case _ =>
         Ok(views.html.blog.adminBlog(request.identity, articleForm.fill(Article.empty),
@@ -96,7 +101,7 @@ class BlogAdmin @Inject() (
           case unknown =>
             val errorMsg = Messages("blog.unknown-command", unknown.toString(), article.id.getOrElse("None"))
             Logger.error(errorMsg)
-            Future(Redirect(controllers.blog.routes.BlogAdmin.edit(article.id.get)).flashing("error" -> errorMsg))
+            Future(Redirect(controllers.blog.routes.BlogAdmin.showAdminBlog(article.id.get)).flashing("error" -> errorMsg))
         }
       }
     )

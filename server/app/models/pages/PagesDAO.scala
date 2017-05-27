@@ -21,6 +21,16 @@ class PagesDAO @Inject() (dbConfigProvider: DatabaseConfigProvider) {
   private val db: JdbcBackend#DatabaseDef = dbConfig.db
   import dbConfig.driver.api._
 
-  def getPage(fileName: String): Future[Option[Page]] = db.run(pages.filter(_.url === fileName).result.headOption)
+  def getPage(fileName: String, langCode: String): Future[Option[Page]] = db.run(
+    pages.filter(p => p.url === fileName && p.lang === langCode).result.headOption
+  )
+
+  def upsertPage(page: Page) = db.run(
+    pages.insertOrUpdate(page)
+  )
+
+  def deletePage(pageUrl: String, langCode: String) = db.run(
+    pages.filter(p => p.url === pageUrl && p.lang === langCode).delete
+  )
 
 }

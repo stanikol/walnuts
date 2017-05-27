@@ -6,7 +6,7 @@
 @main(article.title, user, article.keywords, article.description){
     @user.map{ usr =>
         @if(usr.isAdmin){
-            <form action="@controllers.blog.routes.BlogAdmin.edit(article.id.get)" method="get" class="form-inline">
+            <form action="@controllers.blog.routes.BlogAdmin.showAdminBlog(article.id.get)" method="get" class="form-inline">
                 @helper.CSRF.formField
                 <button type="submit" class="btn btn-danger">@Messages("Edit")</button>
                 <a href="@controllers.blog.routes.Comments.commentsAdmin" class="btn btn-primary">Редактировать комментарии</a>

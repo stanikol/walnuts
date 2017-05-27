@@ -157,3 +157,5 @@ blog.article-delete-failed = Ошибка при удалении статьи #
 blog.unknown-command = Комманда {0} для статьи #{1} не распознана системой !
 title = ООО «Тимирязевское»
 
+goods.item-not-found = Товар №{0} не найден !
+

@@ -25,7 +25,6 @@
         <img id="image-displayed" src="@controllers.images.routes.Images.getThumbnail(goodsItemForm("image").value.getOrElse(""))">
         @b3.text(goodsItemForm("image"), '_label -> "Картинка")
         <button type="button" id="search-images-btn">Поиск фото</button>
-        <div id="search-images" class="row"></div>
         <!--BUTTONS-->
         <div class="btn-group btn-group-lg">
             <a href="@CSRF(controllers.goods.routes.GoodsAdmin.adminGoodsItem(goodsItemForm("id").value.map(_.toLong)))"
@@ -35,8 +34,9 @@
                 <button type="submit" id="delete-btn" name="action" value="delete" class="btn btn-danger">Удалить</button>
             }
             <button type="submit" id="new-btn" name="action" value="new" class="btn btn-warning">Сохранить как новый сорт</button>
-            <a href="@CSRF(controllers.blog.routes.Blog.article(goodsItemForm("id").value.map(_.toLong).getOrElse(0L)))" class="btn btn-success">Просмотреть</a>
+            <a href="@CSRF(controllers.goods.routes.Goods.getGoodsItem(goodsItemForm("id").value.map(_.toLong).getOrElse(0L)))" class="btn btn-success">Просмотреть</a>
         </div>
+        <div id="search-images" class="row"></div>
     </form>
 
     <!--<link href="https://cdn.quilljs.com/1.2.0/quill.snow.css" rel="stylesheet"/>-->
